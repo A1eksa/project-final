@@ -1,19 +1,30 @@
 import React from 'react';
-import './App.css';
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import TodoForm from './components/todo/TodoForm';
-import SignUp from './components/startPage/SignUp';
+import Dashboard from './components/startPage/Dashboard';
 import SignIn from './components/startPage/SignIn';
+
+import user from './reducers/user';
+import { Provider } from 'react-redux';
+
+const reducer = combineReducers({
+  user: user.reducer,
+});
+
+const store = configureStore({ reducer });
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<SignUp />} />
-        {/* <Route path='/signin' element={<SignIn />} /> */}
-        <Route path='/todoform' element={<TodoForm />} />
-      </Routes>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Routes>
+          <Route exact path='/' element={<Dashboard />} />
+          <Route path='/signin' element={<SignIn />} />
+          <Route path='/todoform' element={<TodoForm />} />
+        </Routes>
+      </BrowserRouter>
+    </Provider>
   );
 }
 
