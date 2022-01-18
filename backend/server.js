@@ -9,8 +9,10 @@ mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
 // mongoose.set('useCreateIndex', true); //added due to deprecation error 26868
 mongoose.Promise = Promise;
 
+//Schemas
+
 // Schema for database users
-const userSchema = new mongoose.Schema({
+const UserSchema = new mongoose.Schema({
   email: {
     type: String,
     unique: true,
@@ -31,8 +33,63 @@ const userSchema = new mongoose.Schema({
   },
 });
 
+// Schema for database todos
+const TodoSchema = new mongoose.Schema({
+  heading: {
+    type: String,
+    required: true,
+    minlength: 5,
+    maxlength: 50,
+    trim: true,
+  },
+  message: {
+    type: String,
+    required: true,
+    minlength: 5,
+    maxlength: 140,
+    trim: true,
+  },
+  category: {
+    type: String,
+    required: true,
+    enum: ['home', 'work', 'family', 'friends'],
+  },
+  createdAt: {
+    type: Number,
+    default: () => Date.now(),
+  },
+});
+
+// Schema for database habits
+const HabitSchema = new mongoose.Schema({
+  heading: {
+    type: String,
+    required: true,
+    minlength: 5,
+    maxlength: 50,
+    trim: true,
+  },
+  description: {
+    type: String,
+    required: true,
+    minlength: 5,
+    maxlength: 50,
+    trim: true,
+  },
+  createdAt: {
+    type: Number,
+    default: () => Date.now(),
+  },
+});
+
 // Model for database users
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model('User', UserSchema);
+
+//Model for todo's
+const Todo = mongoose.model('Todo', TodoSchema);
+
+//Model for habits
+const Habit = mongoose.model('Habit', HabitSchema);
 
 // Defines the port the app will run on. Defaults to 8080, but can be
 // overridden when starting the server. For example:
@@ -45,7 +102,24 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Endpoints
+//Authentication--->
+const authenticateUser = async (req, res, next) => {
+  const accessToken = req.header('Authorization');
+
+  try {
+    const user = await User.findOne({ accessToken });
+    if (user) {
+      req.user = user;
+      next(); // built in function for express that makes the app move along if there's for example an user
+    } else {
+      res.status(401).json({ response: 'Please log in', success: false });
+    }
+  } catch (error) {
+    res.status(400).json({ response: error, success: false });
+  }
+};
+
+// ENDPOINTS
 
 // POST method for signing up user with hashed password
 app.post('/signup', async (req, res) => {
@@ -80,6 +154,7 @@ app.post('/signup', async (req, res) => {
 });
 
 // POST method for signing in user with hashed password
+
 app.post('/signin', async (req, res) => {
   const { username, password } = req.body;
 
@@ -105,6 +180,48 @@ app.post('/signin', async (req, res) => {
       .status(400)
       .json({ message: 'Invalid request', response: error, success: false });
   }
+});
+
+//POST method for adding Todo
+app.post('/todos', authenticateUser);
+app.post('/todos', async (req, res) => {
+  const { heading, message, category } = req.body;
+
+  try {
+    const newTodo = await new Todo({ heading, message, category, User }).save();
+    res.status(201).json({ response: newTodo, success: true });
+  } catch (error) {
+    res
+      .status(400)
+      .json({ message: 'Invalid request', response: error, success: false });
+  }
+});
+
+//GET method for Todos
+app.get('/todos', async (req, res) => {
+  const todos = await Todo.find({}).sort({ createdAt: 'desc' });
+  res.status(201).json({ response: todos, success: true });
+});
+
+//POST method for adding Habit
+app.post('/habits', async (req, res) => {
+  const { heading, description } = req.body;
+
+  try {
+    const newHabit = await new Habit({ heading, description }).save();
+    res.status(201).json({ response: newHabit, success: true });
+  } catch (error) {
+    res
+      .status(400)
+      .json({ message: 'Invalid request', response: error, success: false });
+  }
+});
+
+//GET method for Habits
+app.get('/habits', async (req, res) => {
+  const habits = await Habit.find({}).sort({ createdAt: 'desc' });
+
+  res.status(201).json({ response: habits, succes: true });
 });
 
 // Start the server
