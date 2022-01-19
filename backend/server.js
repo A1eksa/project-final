@@ -58,6 +58,11 @@ const TodoSchema = new mongoose.Schema({
     type: Number,
     default: () => Date.now(),
   },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: 'User',
+  },
 });
 
 // Schema for database habits
@@ -109,7 +114,7 @@ const authenticateUser = async (req, res, next) => {
   try {
     const user = await User.findOne({ accessToken });
     if (user) {
-      req.user = user;
+      // req.user = user;
       next(); // built in function for express that makes the app move along if there's for example an user
     } else {
       res.status(401).json({ response: 'Please log in', success: false });
@@ -185,10 +190,16 @@ app.post('/signin', async (req, res) => {
 //POST method for adding Todo
 app.post('/todos', authenticateUser);
 app.post('/todos', async (req, res) => {
-  const { heading, message, category } = req.body;
+  const { heading, message, category, user } = req.body;
 
   try {
-    const newTodo = await new Todo({ heading, message, category, User }).save();
+    const queriedUser = await User.findById(user);
+    const newTodo = await new Todo({
+      heading,
+      message,
+      category,
+      user: queriedUser,
+    }).save();
     res.status(201).json({ response: newTodo, success: true });
   } catch (error) {
     res
@@ -200,6 +211,42 @@ app.post('/todos', async (req, res) => {
 //GET method for Todos
 app.get('/todos', async (req, res) => {
   const todos = await Todo.find({}).sort({ createdAt: 'desc' });
+  res.status(201).json({ response: todos, success: true });
+});
+
+// COPY
+// endpoint for getting all the tasks of a user
+// app.get('/tasks/:userId', authenticateUser);
+// app.get('/tasks/:userId', async (req, res) => {
+//   const { userId } = req.params;
+
+//   const tasks = await Task.find({ user: userId });
+//   res.status(201).json({ response: tasks, success: true });
+// });
+
+// // endpoint for posting a new task
+// app.post('/tasks', authenticateUser);
+// app.post('/tasks', async (req, res) => {
+//   const { description, user } = req.body;
+
+//   try {
+//     const queriedUser = await User.findById(user);
+//     const newTask = await new Task({ description, user: queriedUser }).save();
+
+//     res.status(201).json({ response: newTask, success: true });
+//   } catch (error) {
+//     res.status(400).json({ response: error, success: false });
+//   }
+// });
+
+//COPY
+
+//GET method to get todos of one user
+app.get('/todos/:userId', authenticateUser);
+app.get('/todos/:userId', async (req, res) => {
+  const { userId } = req.params;
+
+  const todos = await Todo.find({ user: userId });
   res.status(201).json({ response: todos, success: true });
 });
 
