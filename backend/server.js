@@ -214,33 +214,6 @@ app.get('/todos', async (req, res) => {
   res.status(201).json({ response: todos, success: true });
 });
 
-// COPY
-// endpoint for getting all the tasks of a user
-// app.get('/tasks/:userId', authenticateUser);
-// app.get('/tasks/:userId', async (req, res) => {
-//   const { userId } = req.params;
-
-//   const tasks = await Task.find({ user: userId });
-//   res.status(201).json({ response: tasks, success: true });
-// });
-
-// // endpoint for posting a new task
-// app.post('/tasks', authenticateUser);
-// app.post('/tasks', async (req, res) => {
-//   const { description, user } = req.body;
-
-//   try {
-//     const queriedUser = await User.findById(user);
-//     const newTask = await new Task({ description, user: queriedUser }).save();
-
-//     res.status(201).json({ response: newTask, success: true });
-//   } catch (error) {
-//     res.status(400).json({ response: error, success: false });
-//   }
-// });
-
-//COPY
-
 //GET method to get todos of one user
 app.get('/todos/:userId', authenticateUser);
 app.get('/todos/:userId', async (req, res) => {
