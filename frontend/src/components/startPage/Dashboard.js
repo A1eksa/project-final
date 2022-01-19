@@ -60,6 +60,7 @@ const Dashboard = () => {
     <>
       <h1>Hello</h1>
       <button onClick={handleLogout}>SIGN OUT</button>
+      
     </>
   );
 };
