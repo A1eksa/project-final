@@ -37,12 +37,12 @@ const user = createSlice({
     setError: (store, action) => {
       store.error = action.payload;
     },
-    // logout: (store, action) => {
-    //   store.userId = null;
-    //   store.username = null;
-    //   store.accessToken = null;
-    //   localStorage.removeItem('accessToken');
-    // },
+    logout: (store, action) => {
+      store.userId = null;
+      store.username = null;
+      store.accessToken = null;
+      localStorage.removeItem('accessToken');
+    },
   },
 });
 
