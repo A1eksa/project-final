@@ -209,7 +209,7 @@ app.get('/todos/:userId', authenticateUser);
 app.get('/todos/:userId', async (req, res) => {
   const { userId } = req.params;
 
-  const todos = await Todo.find({ user: userId });
+  const todos = await Todo.find({ user: userId }).sort({ createdAt: 'desc' });
   res.status(201).json({ response: todos, success: true });
 });
 
@@ -235,9 +235,10 @@ app.post('/habits', async (req, res) => {
 // ******** GET method habits ******** //
 app.get('/habits/:userId', authenticateUser);
 app.get('/habits/:userId', async (req, res) => {
-  const habits = await Habit.find({}).sort({ createdAt: 'desc' });
+  const { userId } = req.params;
+  const habits = await Habit.find({ user: userId }).sort({ createdAt: 'desc' });
 
-  res.status(201).json({ response: habits, succes: true });
+  res.status(201).json({ response: habits, success: true });
 });
 
 // ******** Start server ******** //
