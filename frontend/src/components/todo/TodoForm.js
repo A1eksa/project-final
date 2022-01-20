@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import { useSelector, useDispatch, batch } from 'react-redux';
+
 import { API_URL } from '../../utils/constants';
 import user from '../../reducers/user';
 import todo from '../../reducers/todo';
-import { useSelector, useDispatch, batch } from 'react-redux';
 
 export const TodoForm = () => {
   const [heading, setHeading] = useState('');
@@ -29,6 +30,7 @@ export const TodoForm = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
+          console.log('add todo', data);
           batch(() => {
             dispatch(todo.actions.setItems(data.response.items));
             dispatch(user.actions.setUserId(data.response.userId));
