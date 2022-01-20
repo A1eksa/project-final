@@ -9,9 +9,7 @@ mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
 // mongoose.set('useCreateIndex', true); //added due to deprecation error 26868
 mongoose.Promise = Promise;
 
-//Schemas
-
-// Schema for database users
+// ******** Schemas ******** //
 const UserSchema = new mongoose.Schema({
   email: {
     type: String,
@@ -33,7 +31,6 @@ const UserSchema = new mongoose.Schema({
   },
 });
 
-// Schema for database todos
 const TodoSchema = new mongoose.Schema({
   heading: {
     type: String,
@@ -60,12 +57,10 @@ const TodoSchema = new mongoose.Schema({
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    // required: true,
     ref: 'User',
   },
 });
 
-// Schema for database habits
 const HabitSchema = new mongoose.Schema({
   heading: {
     type: String,
@@ -85,29 +80,26 @@ const HabitSchema = new mongoose.Schema({
     type: Number,
     default: () => Date.now(),
   },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+  },
 });
 
-// Model for database users
+// ******** Models ******** //
 const User = mongoose.model('User', UserSchema);
-
-//Model for todo's
 const Todo = mongoose.model('Todo', TodoSchema);
-
-//Model for habits
 const Habit = mongoose.model('Habit', HabitSchema);
 
-// Defines the port the app will run on. Defaults to 8080, but can be
-// overridden when starting the server. For example:
-//
-//   PORT=9000 npm start
+// ******** Defined Port ******** //
 const port = process.env.PORT || 8080;
 const app = express();
 
-// Add middlewares to enable cors and json body parsing
+// ******** Middlewear ******** //
 app.use(cors());
 app.use(express.json());
 
-//Authentication--->
+// ******** Authentication function ******** //
 const authenticateUser = async (req, res, next) => {
   const accessToken = req.header('Authorization');
 
@@ -115,7 +107,7 @@ const authenticateUser = async (req, res, next) => {
     const user = await User.findOne({ accessToken });
     if (user) {
       req.user = user;
-      next(); // built in function for express that makes the app move along if there's for example an user
+      next();
     } else {
       res.status(401).json({ response: 'Please log in', success: false });
     }
@@ -124,9 +116,9 @@ const authenticateUser = async (req, res, next) => {
   }
 };
 
-// ENDPOINTS
+// ******** ENDPOINTS ******** //
 
-// POST method for signing up user with hashed password
+// ******** POST method signup ******** //
 app.post('/signup', async (req, res) => {
   const { username, password, email } = req.body;
   try {
@@ -158,8 +150,7 @@ app.post('/signup', async (req, res) => {
   }
 });
 
-// POST method for signing in user with hashed password
-
+// ******** POST method signin ******** //
 app.post('/signin', async (req, res) => {
   const { username, password } = req.body;
 
@@ -187,13 +178,12 @@ app.post('/signin', async (req, res) => {
   }
 });
 
-//POST method for adding Todo
+// ******** POST method todo ******** //
 app.post('/todos', authenticateUser);
 app.post('/todos', async (req, res) => {
   const { heading, message, category, user } = req.body;
 
   try {
-    // const queriedUser = await User.findById(user);
     const newTodo = await new Todo({
       heading,
       message,
@@ -208,13 +198,13 @@ app.post('/todos', async (req, res) => {
   }
 });
 
-//GET method for Todos
-app.get('/todos', async (req, res) => {
-  const todos = await Todo.find({}).sort({ createdAt: 'desc' });
-  res.status(201).json({ response: todos, success: true });
-});
+// ******** GET method todos ******** //
+// app.get('/todos', async (req, res) => {
+//   const todos = await Todo.find({}).sort({ createdAt: 'desc' });
+//   res.status(201).json({ response: todos, success: true });
+// });
 
-//GET method to get todos of one user
+// ******** GET method user todos ******** //
 app.get('/todos/:userId', authenticateUser);
 app.get('/todos/:userId', async (req, res) => {
   const { userId } = req.params;
@@ -223,12 +213,17 @@ app.get('/todos/:userId', async (req, res) => {
   res.status(201).json({ response: todos, success: true });
 });
 
-//POST method for adding Habit
+// ******** POST method habit ******** //
+app.post('/habits', authenticateUser);
 app.post('/habits', async (req, res) => {
-  const { heading, description } = req.body;
+  const { heading, description, user } = req.body;
 
   try {
-    const newHabit = await new Habit({ heading, description }).save();
+    const newHabit = await new Habit({
+      heading,
+      description,
+      user: req.user,
+    }).save();
     res.status(201).json({ response: newHabit, success: true });
   } catch (error) {
     res
@@ -237,14 +232,15 @@ app.post('/habits', async (req, res) => {
   }
 });
 
-//GET method for Habits
-app.get('/habits', async (req, res) => {
+// ******** GET method habits ******** //
+app.get('/habits/:userId', authenticateUser);
+app.get('/habits/:userId', async (req, res) => {
   const habits = await Habit.find({}).sort({ createdAt: 'desc' });
 
   res.status(201).json({ response: habits, succes: true });
 });
 
-// Start the server
+// ******** Start server ******** //
 app.listen(port, () => {
   // eslint-disable-next-line
   console.log(`Server running on http://localhost:${port}`);
