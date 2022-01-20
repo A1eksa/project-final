@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
 import { API_URL } from '../../utils/constants';
 import user from '../../reducers/user';
+import todo from '../../reducers/todo';
+import { useSelector, useDispatch, batch } from 'react-redux';
 
-const TodoForm = () => {
-  const [todo, setTodo] = useState('');
+export const TodoForm = () => {
   const [heading, setHeading] = useState('');
   const [message, setMessage] = useState('');
   const [category, setCategory] = useState('');
+
+  const accessToken = useSelector((store) => store.user.accessToken);
+  const userId = useSelector((store) => store.user.userId);
+
+  const dispatch = useDispatch();
 
   const onFormSubmit = (event) => {
     event.preventDefault();
@@ -15,12 +21,20 @@ const TodoForm = () => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        Authorization: accessToken,
       },
-      body: JSON.stringify({ heading, message, category }),
+      body: JSON.stringify({ heading, message, category, user: userId }),
     };
     fetch(API_URL('todos'), options)
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        if (data.success) {
+          batch(() => {
+            dispatch(todo.actions.setItems(data.response.items));
+            dispatch(user.actions.setUserId(data.response.userId));
+          });
+        }
+      });
   };
   return (
     <form onSubmit={onFormSubmit}>
@@ -52,5 +66,3 @@ const TodoForm = () => {
     </form>
   );
 };
-
-export default TodoForm;

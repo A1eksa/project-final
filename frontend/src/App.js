@@ -1,7 +1,7 @@
 import React from 'react';
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import TodoForm from './components/todo/TodoForm';
+import { TodoForm } from './components/todo/TodoForm';
 import Dashboard from './components/startPage/Dashboard';
 import SignIn from './components/startPage/SignIn';
 
