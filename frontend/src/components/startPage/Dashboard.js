@@ -3,7 +3,8 @@ import { useSelector, batch, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { API_URL } from '../../utils/constants';
 import user from '../../reducers/user';
-// import todo from '../../reducers/todo';
+import todo from '../../reducers/todo';
+// import { TodoList } from '../todo/TodoList';
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -60,7 +61,7 @@ const Dashboard = () => {
     <>
       <h1>Hello</h1>
       <button onClick={handleLogout}>SIGN OUT</button>
-      
+      {/* <TodoList /> */}
     </>
   );
 };
