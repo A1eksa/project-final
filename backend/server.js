@@ -60,7 +60,7 @@ const TodoSchema = new mongoose.Schema({
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    required: true,
+    // required: true,
     ref: 'User',
   },
 });
@@ -114,7 +114,7 @@ const authenticateUser = async (req, res, next) => {
   try {
     const user = await User.findOne({ accessToken });
     if (user) {
-      // req.user = user;
+      req.user = user;
       next(); // built in function for express that makes the app move along if there's for example an user
     } else {
       res.status(401).json({ response: 'Please log in', success: false });
@@ -193,12 +193,12 @@ app.post('/todos', async (req, res) => {
   const { heading, message, category, user } = req.body;
 
   try {
-    const queriedUser = await User.findById(user);
+    // const queriedUser = await User.findById(user);
     const newTodo = await new Todo({
       heading,
       message,
       category,
-      user: queriedUser,
+      user: req.user,
     }).save();
     res.status(201).json({ response: newTodo, success: true });
   } catch (error) {
