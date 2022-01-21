@@ -241,6 +241,52 @@ app.get('/habits/:userId', async (req, res) => {
   res.status(201).json({ response: habits, success: true });
 });
 
+// ******** DELETE method habits ******** //
+
+app.delete('/habits/:habitId', authenticateUser);
+app.delete('/habits/:habitId', async (req, res) => {
+  const { habitId } = req.params;
+  const { user } = req.body;
+
+  try {
+    const habitUser = await User.findById(user);
+    const deletedHabit = await Habit.findOneAndDelete({
+      _id: habitId,
+      user: habitUser,
+    });
+    res.status(200).json({ response: deletedHabit, success: true });
+
+    // if (deletedHabit) {
+    //   res.status(200).json({ response: deletedHabit, success: true });
+    // } else {
+    //   res.status(404).json({ response: 'No habit found', success: false });
+    // }
+
+    // if (deletedHabit) {
+    //   res.status(404).json({ response: 'No habit found', success: false });
+    // } else {
+    //   res.status(200).json({ response: deletedHabit, success: true });
+    // }
+  } catch (error) {
+    res.status(400).json({ message: 'could not delete habit', success: false });
+  }
+});
+
+// app.delete('/games/:id', async (req, res) => {
+//   try {
+//       //Try to delete game
+//       await Game.deleteOne({ _id: req.params.id })
+
+//       // Send a successful response
+//       res.status(200).json({ success: true })
+//   } catch (error) {
+//       console.log(error)
+
+//       // Inform client about deletion failure
+//       res.status(400).json({success: false })
+//   }
+// })
+
 // ******** Start server ******** //
 app.listen(port, () => {
   // eslint-disable-next-line
