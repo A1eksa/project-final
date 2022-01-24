@@ -31,8 +31,6 @@ function App() {
           <Route path='/signin' element={<SignIn />} />
           <Route path='/todoform' element={<TodoForm />} />
           <Route path='/habitform' element={<HabitForm />} />
-          <Route path='/todolist' element={<TodoList />} />
-          <Route path='/habitlist' element={<HabitList />} />
         </Routes>
       </BrowserRouter>
     </Provider>
