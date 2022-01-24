@@ -51,6 +51,10 @@ const TodoSchema = new mongoose.Schema({
     required: true,
     enum: ['home', 'work', 'family', 'friends'],
   },
+  isCompleted: {
+    type: Boolean,
+    default: false,
+  },
   createdAt: {
     type: Number,
     default: () => Date.now(),
@@ -79,6 +83,10 @@ const HabitSchema = new mongoose.Schema({
   createdAt: {
     type: Number,
     default: () => Date.now(),
+  },
+  isCompleted: {
+    type: Boolean,
+    default: false,
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,
@@ -213,6 +221,42 @@ app.get('/todos/:userId', async (req, res) => {
   res.status(201).json({ response: todos, success: true });
 });
 
+// ******** DELETE method todos ******** //
+app.delete('/todos/:todoId', authenticateUser);
+app.delete('/todos/:todoId', async (req, res) => {
+  const { todoId } = req.params;
+
+  try {
+    const deletedTodo = await Todo.findByIdAndDelete({ _id: todoId });
+    if (deletedTodo) {
+      res.status(200).json({ response: deletedTodo, success: true });
+    } else {
+      res.status(400).json({ message: 'todo not found', success: false });
+    }
+  } catch (error) {
+    res.status(400).json({ message: 'could not delete todo', success: false });
+  }
+});
+
+// ******** PATCH method todo ******** //
+app.patch('/todos/:todoId', authenticateUser);
+app.patch('/todos/:todoId', async (req, res) => {
+  const { todoId } = req.params;
+
+  try {
+    const updatedTodo = await Todo.findOneAndUpdate({ _id: todoId }, req.body, {
+      new: true,
+    });
+    if (updatedTodo) {
+      res.status(200).json({ response: updatedTodo, success: true });
+    } else {
+      res.status(400).json({ message: 'todo not found', success: false });
+    }
+  } catch (error) {
+    res.status(400).json({ message: 'could not update todo', success: false });
+  }
+});
+
 // ******** POST method habit ******** //
 app.post('/habits', authenticateUser);
 app.post('/habits', async (req, res) => {
@@ -246,46 +290,57 @@ app.get('/habits/:userId', async (req, res) => {
 app.delete('/habits/:habitId', authenticateUser);
 app.delete('/habits/:habitId', async (req, res) => {
   const { habitId } = req.params;
-  const { user } = req.body;
+  // const { user } = req.body;
 
   try {
-    const habitUser = await User.findById(user);
-    const deletedHabit = await Habit.findOneAndDelete({
-      _id: habitId,
-      user: habitUser,
-    });
-    res.status(200).json({ response: deletedHabit, success: true });
-
-    // if (deletedHabit) {
-    //   res.status(200).json({ response: deletedHabit, success: true });
-    // } else {
-    //   res.status(404).json({ response: 'No habit found', success: false });
-    // }
-
-    // if (deletedHabit) {
-    //   res.status(404).json({ response: 'No habit found', success: false });
-    // } else {
-    //   res.status(200).json({ response: deletedHabit, success: true });
-    // }
+    const deletedHabit = await Habit.findByIdAndDelete({ _id: habitId });
+    if (deletedHabit) {
+      res.status(200).json({ response: deletedHabit, success: true });
+    } else {
+      res.status(400).json({ message: 'task not found', success: false });
+    }
   } catch (error) {
     res.status(400).json({ message: 'could not delete habit', success: false });
   }
+
+  // try {
+  //   // const habitUser = await User.findById(user);
+  //   const deletedHabit = await Habit.deleteOne({
+  //     _id: habitId,
+  //     user: habitUser,
+  //   });
+  //   if (!deletedHabit) {
+  //     res.status(404).json({ message: 'No habit found', success: false });
+  //   } else {
+  //     res.status(200).json({ response: deletedHabit, success: true });
+  //   }
+  // } catch (error) {
+  //   res.status(400).json({ message: 'could not delete habit', success: false });
+  // }
 });
 
-// app.delete('/games/:id', async (req, res) => {
-//   try {
-//       //Try to delete game
-//       await Game.deleteOne({ _id: req.params.id })
+// ******** PATCH method habits ******** //
 
-//       // Send a successful response
-//       res.status(200).json({ success: true })
-//   } catch (error) {
-//       console.log(error)
+app.patch('/habits/:habitId', async (req, res) => {
+  const { habitId } = req.params;
 
-//       // Inform client about deletion failure
-//       res.status(400).json({success: false })
-//   }
-// })
+  try {
+    const updatedHabit = await Habit.findOneAndUpdate(
+      { _id: habitId },
+      req.body,
+      {
+        new: true,
+      }
+    );
+    if (updatedHabit) {
+      res.status(200).json({ response: updatedHabit, success: true });
+    } else {
+      res.status(400).json({ message: 'task not found', success: false });
+    }
+  } catch (error) {
+    res.status(400).json({ message: 'could not update habit', success: false });
+  }
+});
 
 // ******** Start server ******** //
 app.listen(port, () => {
