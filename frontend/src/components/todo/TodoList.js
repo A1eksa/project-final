@@ -1,13 +1,21 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { API_URL } from '../../utils/constants';
 import todo from '../../reducers/todo';
+// import './SlideOut.css';
 
 export const TodoList = () => {
   const todoItems = useSelector((store) => store.todo.items);
   const accessToken = useSelector((store) => store.user.accessToken);
   const userId = useSelector((store) => store.user.userId);
+
+  //THIS IS THE SLIDEOUT FUNCTION FOR SHOW SLIDEOUT //
+  const [slideout, setSlideout] = useState(false);
+  // const [form, setForm] = useState('edit-todo');
+
+  const showSlideOut = () => setSlideout(!slideout);
 
   const dispatch = useDispatch();
 
@@ -54,6 +62,8 @@ export const TodoList = () => {
       });
   };
 
+  // const updateTodo = (userId) => {};
+
   return (
     <>
       <h3>These are your todos</h3>
@@ -63,9 +73,23 @@ export const TodoList = () => {
           <p>{items.message}</p>
           <p>{items.category}</p>
           <button onClick={() => deleteTodo(items._id)}>Delete</button>
-          {/* <button onClick={() => deleteHabit()}>Edit</button> */}
+          <nav className={slideout ? 'nav-menu active' : 'nav-menu'}></nav>
+          <button onClick={() => showSlideOut()}>Edit button</button>
+          {/* <button onClick={() => updateTodo(items._id)}>Update todo</button> */}
+
+          {/* {form === 'edit-todo' && <EditTodoForm />} */}
         </div>
       ))}
     </>
   );
 };
+
+{
+  /* <Link to='#' className='menu-bars'>
+    Edit
+    <button onClick={() => showSlideOut()}>disapear button</button>
+  </Link> */
+}
+{
+  /* {form === 'todo' && <TodoForm />} */
+}

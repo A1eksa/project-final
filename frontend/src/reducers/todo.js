@@ -22,6 +22,12 @@ const todo = createSlice({
       );
       store.items = decreasedTodos;
     },
+    editTodo: (store, action) => {
+      const editedTodos = store.items.filter(
+        (item) => (item._id = action.payload)
+      );
+      store.items = editedTodos;
+    },
   },
 });
 

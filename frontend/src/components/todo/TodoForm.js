@@ -6,12 +6,19 @@ import user from '../../reducers/user';
 import todo from '../../reducers/todo';
 
 export const TodoForm = () => {
+  // const [heading, setHeading] = useState(
+  //   selectedTodo ? selectedTodo.heading : ''
+  // );
   const [heading, setHeading] = useState('');
   const [message, setMessage] = useState('');
   const [category, setCategory] = useState('');
 
+  // const [category, setCategory] = useState(currentlySelectedTodo?);
+
   const accessToken = useSelector((store) => store.user.accessToken);
   const userId = useSelector((store) => store.user.userId);
+  // const selectedTodo = useSelector((store) => store.items);
+  // const todoId = useSelector((store) => store.item._id);
 
   const dispatch = useDispatch();
 
@@ -38,6 +45,31 @@ export const TodoForm = () => {
         }
       });
   };
+
+  // const updateTodo = (event) => {
+  //   event.preventDefault();
+
+  //   const options = {
+  //     method: 'PATCH',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       Authorization: accessToken,
+  //     },
+  //     body: JSON.stringify({ heading, message, category, user: userId }),
+  //   };
+  //   fetch(API_URL(`todos/${todoId}`), options)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       if (data.success) {
+  //         console.log('edit todo', data);
+  //         batch(() => {
+  //         dispatch(todo.actions.setItems(data.response.items));
+  //         dispatch(user.actions.setUserId(data.response.userId));
+  //         });
+  //       }
+  //     });
+  // };
+
   return (
     <form onSubmit={onFormSubmit}>
       <label htmlFor='heading'>
