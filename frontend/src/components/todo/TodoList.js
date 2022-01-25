@@ -33,6 +33,27 @@ export const TodoList = () => {
       });
   }, [accessToken, dispatch, userId, todoItems]);
 
+  const deleteTodo = (todoId) => {
+    const options = {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: accessToken,
+      },
+      body: JSON.stringify({ user: userId }),
+    };
+    fetch(API_URL(`todos/${todoId}`), options)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          dispatch(todo.actions.setErrors(null));
+        } else {
+          dispatch(todo.actions.setItems([]));
+          dispatch(todo.actions.setErrors(data.response));
+        }
+      });
+  };
+
   return (
     <>
       <h3>These are your todos</h3>
@@ -41,6 +62,8 @@ export const TodoList = () => {
           <h4>{items.heading}</h4>
           <p>{items.message}</p>
           <p>{items.category}</p>
+          <button onClick={() => deleteTodo(items._id)}>Delete</button>
+          {/* <button onClick={() => deleteHabit()}>Edit</button> */}
         </div>
       ))}
     </>

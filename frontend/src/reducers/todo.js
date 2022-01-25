@@ -16,6 +16,12 @@ const todo = createSlice({
     setErrors: (store, action) => {
       store.error = action.payload;
     },
+    deleteTodo: (store, action) => {
+      const decreasedTodos = store.items.filter(
+        (item) => item._id !== action.payload
+      );
+      store.items = decreasedTodos;
+    },
   },
 });
 

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch, batch } from 'react-redux';
 import { API_URL } from '../../utils/constants';
 
-import habit from '../../reducers/habit';
+import user from '../../reducers/user';
 
 export const HabitForm = () => {
   const [heading, setHeading] = useState('');
@@ -28,8 +28,8 @@ export const HabitForm = () => {
       .then((data) => {
         if (data.success) {
           batch(() => {
-            dispatch(habit.actions.setItems(data.response.items));
-            // dispatch(habit.actions.setUserId(data.response.userId));
+            //dispatch(habit.actions.setItems(data.response.items));
+            dispatch(user.actions.setUserId(data.response.userId));
           });
         }
       });

@@ -16,6 +16,12 @@ const habit = createSlice({
     setErrors: (store, action) => {
       store.error = action.payload;
     },
+    deleteHabit: (store, action) => {
+      const decreasedHabits = store.items.filter(
+        (item) => item._id !== action.payload
+      );
+      store.items = decreasedHabits;
+    },
   },
 });
 

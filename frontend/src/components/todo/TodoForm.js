@@ -32,7 +32,7 @@ export const TodoForm = () => {
         if (data.success) {
           console.log('add todo', data);
           batch(() => {
-            dispatch(todo.actions.setItems(data.response.items));
+            //dispatch(todo.actions.setItems(data.response.items));
             dispatch(user.actions.setUserId(data.response.userId));
           });
         }
