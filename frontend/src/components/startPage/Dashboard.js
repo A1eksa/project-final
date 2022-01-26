@@ -6,6 +6,7 @@ import user from '../../reducers/user';
 import { TodoList } from '../todo/TodoList';
 import { HabitList } from '../habits/HabitList';
 import SlideOut from '../modal/SlideOut';
+import { Weather } from '../date-time-weather/Weather';
 // import Quote from '../quotes/Quote';
 
 const Dashboard = () => {
@@ -39,6 +40,7 @@ const Dashboard = () => {
       {/* <Quote /> */}
       <TodoList />
       <HabitList />
+      <Weather />
     </>
   );
 };

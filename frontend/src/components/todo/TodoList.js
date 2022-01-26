@@ -10,12 +10,20 @@ export const TodoList = () => {
   const todoItems = useSelector((store) => store.todo.items);
   const accessToken = useSelector((store) => store.user.accessToken);
   const userId = useSelector((store) => store.user.userId);
+  // const editTodo = useSelector((store) => store.todo.)
 
   //THIS IS THE SLIDEOUT FUNCTION FOR SHOW SLIDEOUT //
   const [slideout, setSlideout] = useState(false);
+  const [editTodo, setEditTodo] = useState(false); ///maybe should be false
   // const [form, setForm] = useState('edit-todo');
 
-  const showSlideOut = () => setSlideout(!slideout);
+  // const showSlideOut = () => setSlideout(!slideout);
+
+  const showSlideOut = (id) => {
+    ///fetch with todo id and right url with todo Id endpoint (create).
+    setSlideout(!slideout);
+    setEditTodo(!editTodo);
+  };
 
   const dispatch = useDispatch();
 
@@ -74,7 +82,7 @@ export const TodoList = () => {
           <p>{items.category}</p>
           <button onClick={() => deleteTodo(items._id)}>Delete</button>
           <nav className={slideout ? 'nav-menu active' : 'nav-menu'}></nav>
-          <button onClick={() => showSlideOut()}>Edit button</button>
+          <button onClick={() => showSlideOut(item._id)}>Edit button</button>
           {/* <button onClick={() => updateTodo(items._id)}>Update todo</button> */}
 
           {/* {form === 'edit-todo' && <EditTodoForm />} */}

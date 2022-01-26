@@ -6,19 +6,23 @@ import user from '../../reducers/user';
 import todo from '../../reducers/todo';
 
 export const TodoForm = () => {
-  // const [heading, setHeading] = useState(
-  //   selectedTodo ? selectedTodo.heading : ''
+  const accessToken = useSelector((store) => store.user.accessToken);
+  const userId = useSelector((store) => store.user.userId);
+  // const editTodo = useSelector((store) => store.items._id);
+  // const selectedTodo = useSelector((store) => store.editTodo.item);
+
+  // const [heading, setHeading] = useState(selectedTodo ? items.heading : '');
+  // const [message, setMessage] = useState(selectedTodo ? items._id.message : '');
+  // const [category, setCategory] = useState(
+  //   selectedTodo ? editTodo.category : ''
   // );
+
   const [heading, setHeading] = useState('');
   const [message, setMessage] = useState('');
   const [category, setCategory] = useState('');
 
-  // const [category, setCategory] = useState(currentlySelectedTodo?);
-
-  const accessToken = useSelector((store) => store.user.accessToken);
-  const userId = useSelector((store) => store.user.userId);
-  // const selectedTodo = useSelector((store) => store.items);
-  // const todoId = useSelector((store) => store.item._id);
+  // From the recording:
+  // const [category, setCategory] = useState(currentlySelectedTodo ? currentlySelectedTodo.category : '');
 
   const dispatch = useDispatch();
 
