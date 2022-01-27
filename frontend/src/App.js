@@ -12,11 +12,13 @@ import user from './reducers/user';
 import habit from './reducers/habit';
 // import { TodoList } from './components/todo/TodoList';
 import todo from './reducers/todo';
+import modal from './reducers/modal';
 
 const reducer = combineReducers({
   user: user.reducer,
   habit: habit.reducer,
   todo: todo.reducer,
+  modal: modal.reducer,
 });
 
 const store = configureStore({ reducer });
@@ -27,6 +29,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route exact path='/' element={<Dashboard />} />
+          {/* <Route path='edit' element={<SlideOut />} /> */}
+          {/* </Route> */}
           <Route path='/signin' element={<SignIn />} />
 
           {/* <Route path='/habitform' element={<HabitForm />} /> */}

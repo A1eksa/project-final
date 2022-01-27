@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Moment from 'moment';
 
 import { API_URL } from '../../utils/constants';
 import todo from '../../reducers/todo';
-// import './SlideOut.css';
+import SlideOut from '../modal/SlideOut';
+import '../modal/SlideOut.css';
 
 export const TodoList = () => {
+  const date = Moment();
   const todoItems = useSelector((store) => store.todo.items);
   const accessToken = useSelector((store) => store.user.accessToken);
   const userId = useSelector((store) => store.user.userId);
@@ -74,15 +77,28 @@ export const TodoList = () => {
 
   return (
     <>
+      <SlideOut />
       <h3>These are your todos</h3>
       {todoItems.map((items) => (
         <div key={items._id}>
+          <input
+            className='checkbox'
+            type='checkbox'
+            checked={items.isComplete}
+            // onChange={() => onToggleTodo(item.id)}
+          />
+
           <h4>{items.heading}</h4>
           <p>{items.message}</p>
           <p>{items.category}</p>
+          {/* <span className='created-at'>
+            {Moment(items.createdAt).format('hh:mm:ss')}
+          </span>
+          <span className='created-at-day'>{Moment(date).format('dddd')}</span> */}
+
           <button onClick={() => deleteTodo(items._id)}>Delete</button>
-          <nav className={slideout ? 'nav-menu active' : 'nav-menu'}></nav>
-          <button onClick={() => showSlideOut(item._id)}>Edit button</button>
+          {/* <nav className={slideout ? 'nav-menu active' : 'nav-menu'}></nav> */}
+          <button onClick={() => showSlideOut()}>Edit button</button>
           {/* <button onClick={() => updateTodo(items._id)}>Update todo</button> */}
 
           {/* {form === 'edit-todo' && <EditTodoForm />} */}

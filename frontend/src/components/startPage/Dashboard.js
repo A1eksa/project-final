@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { API_URL } from '../../utils/constants';
@@ -7,9 +7,17 @@ import { TodoList } from '../todo/TodoList';
 import { HabitList } from '../habits/HabitList';
 import SlideOut from '../modal/SlideOut';
 import { Weather } from '../date-time-weather/Weather';
+import modal from '../../reducers/modal';
 // import Quote from '../quotes/Quote';
+import '../modal/SlideOut.css';
 
 const Dashboard = () => {
+  // const slideout = useSelector((store) => store.modal.slideout);
+
+  const showSlideOut = () => {
+    dispatch(modal.actions.setSlideout(true));
+  };
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -37,6 +45,15 @@ const Dashboard = () => {
       <SlideOut />
       <h1>Hello</h1>
       <button onClick={handleLogout}>SIGN OUT</button>
+      <button onClick={showSlideOut}>OPEN MODAL</button>
+      {/* <button
+        onClick={() => {
+          navigate('edit');
+          toggleEditModal();
+        }}
+      >
+        OPEN MODAL
+      </button> */}
       {/* <Quote /> */}
       <TodoList />
       <HabitList />

@@ -10,9 +10,9 @@ const todo = createSlice({
     setItems: (store, action) => {
       store.items = action.payload;
     },
-    setNewItems: (store, action) => {
-      store.items = [action.payload, ...store.items];
-    },
+    // setNewItems: (store, action) => {
+    //   store.items = [action.payload, ...store.items];
+    // },
     setErrors: (store, action) => {
       store.error = action.payload;
     },
