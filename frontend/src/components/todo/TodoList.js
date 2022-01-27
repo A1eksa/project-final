@@ -1,32 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
 import Moment from 'moment';
 
 import { API_URL } from '../../utils/constants';
 import todo from '../../reducers/todo';
 import SlideOut from '../modal/SlideOut';
-import '../modal/SlideOut.css';
+import modal from '../../reducers/modal';
 
 export const TodoList = () => {
   const date = Moment();
   const todoItems = useSelector((store) => store.todo.items);
   const accessToken = useSelector((store) => store.user.accessToken);
   const userId = useSelector((store) => store.user.userId);
-  // const editTodo = useSelector((store) => store.todo.)
 
-  //THIS IS THE SLIDEOUT FUNCTION FOR SHOW SLIDEOUT //
-  const [slideout, setSlideout] = useState(false);
-  const [editTodo, setEditTodo] = useState(false); ///maybe should be false
-  // const [form, setForm] = useState('edit-todo');
-
-  // const showSlideOut = () => setSlideout(!slideout);
-
-  const showSlideOut = (id) => {
-    ///fetch with todo id and right url with todo Id endpoint (create).
-    setSlideout(!slideout);
-    setEditTodo(!editTodo);
+  const showSlideOut = () => {
+    dispatch(modal.actions.setSlideout(true));
   };
+
+  // const onToggleTodo = () => {
+  //   dispatch(todo.actions.toggleTodo(true));
+  // };
 
   const dispatch = useDispatch();
 
@@ -73,7 +66,31 @@ export const TodoList = () => {
       });
   };
 
-  // const updateTodo = (userId) => {};
+  const onToggleTodo = (todoId, isCompleted) => {
+    return (dispatch) => {
+      const options = {
+        method: 'PATCH',
+        body: JSON.stringify({
+          isCompleted: !isCompleted ? true : false,
+          user: userId,
+        }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      };
+      fetch(API_URL(`/todo/${todoId}/completed`), options)
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.success) {
+            console.log(todoId);
+            dispatch(todo.actions.toggleTodo(todoId));
+            dispatch(todo.actions.setErrors(null));
+          } else {
+            dispatch(todo.actions.setErrors(data.response));
+          }
+        });
+    };
+  };
 
   return (
     <>
@@ -85,7 +102,7 @@ export const TodoList = () => {
             className='checkbox'
             type='checkbox'
             checked={items.isComplete}
-            // onChange={() => onToggleTodo(item.id)}
+            onChange={() => onToggleTodo(items._id)}
           />
 
           <h4>{items.heading}</h4>
@@ -97,23 +114,9 @@ export const TodoList = () => {
           <span className='created-at-day'>{Moment(date).format('dddd')}</span> */}
 
           <button onClick={() => deleteTodo(items._id)}>Delete</button>
-          {/* <nav className={slideout ? 'nav-menu active' : 'nav-menu'}></nav> */}
           <button onClick={() => showSlideOut()}>Edit button</button>
-          {/* <button onClick={() => updateTodo(items._id)}>Update todo</button> */}
-
-          {/* {form === 'edit-todo' && <EditTodoForm />} */}
         </div>
       ))}
     </>
   );
 };
-
-{
-  /* <Link to='#' className='menu-bars'>
-    Edit
-    <button onClick={() => showSlideOut()}>disapear button</button>
-  </Link> */
-}
-{
-  /* {form === 'todo' && <TodoForm />} */
-}

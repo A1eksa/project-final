@@ -5,6 +5,7 @@ const todo = createSlice({
   initialState: {
     items: [],
     error: null,
+    // isComplete: false,
   },
   reducers: {
     setItems: (store, action) => {
@@ -22,12 +23,19 @@ const todo = createSlice({
       );
       store.items = decreasedTodos;
     },
-    editTodo: (store, action) => {
-      const editedTodos = store.items.filter(
-        (item) => (item._id = action.payload)
+    toggleTodo: (store, action) => {
+      const toggledTodo = store.items.find(
+        (item) => item._id === action.payload
       );
-      store.items = editedTodos;
+      toggledTodo.isCompleted = !toggledTodo.isCompleted;
     },
+
+    // setEdit: (store, action) => {
+    //   const editedTodos = store.items.filter(
+    //     (item) => (item._id = action.payload)
+    //   );
+    //   store.items = editedTodos;
+    // },
   },
 });
 

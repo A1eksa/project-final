@@ -43,16 +43,14 @@ export const TodoForm = () => {
         if (data.success) {
           console.log('add todo', data);
           batch(() => {
-            //dispatch(todo.actions.setItems(data.response.items));
             dispatch(user.actions.setUserId(data.response.userId));
           });
         }
       });
   };
 
-  // const updateTodo = (event) => {
+  // const updateTodo = (event, todoId) => {
   //   event.preventDefault();
-
   //   const options = {
   //     method: 'PATCH',
   //     headers: {
@@ -63,16 +61,20 @@ export const TodoForm = () => {
   //   };
   //   fetch(API_URL(`todos/${todoId}`), options)
   //     .then((res) => res.json())
-  //     .then((data) => {
-  //       if (data.success) {
-  //         console.log('edit todo', data);
-  //         batch(() => {
-  //         dispatch(todo.actions.setItems(data.response.items));
-  //         dispatch(user.actions.setUserId(data.response.userId));
-  //         });
-  //       }
-  //     });
+  //     .then((data) => console.log(data));
   // };
+
+  // {
+  //   if (data.success) {
+  //     console.log('edit todo', data);
+  //     batch(() => {
+  //       dispatch(todo.actions.setItems(data.response.items));
+  //       dispatch(todo.actions.setEdit(data.response.todo));
+  //     });
+  //   } else {
+  //     dispatch(todo.actions.setErrors(data.response));
+  //   }
+  // }
 
   return (
     <form onSubmit={onFormSubmit}>
@@ -100,7 +102,11 @@ export const TodoForm = () => {
           onChange={(e) => setCategory(e.target.value)}
         ></input>
       </label>
-      <button type='submit'>Press</button>
+      <button type='submit'>ADD</button>
+      {/* <button type='submit'>UPDATE TODO</button> */}
+      {/* <button type='submit' onClick={updateTodo}>
+        UPDATE TODO
+      </button> */}
     </form>
   );
 };

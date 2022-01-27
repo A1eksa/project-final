@@ -42,7 +42,6 @@ const Dashboard = () => {
 
   return (
     <>
-      <SlideOut />
       <h1>Hello</h1>
       <button onClick={handleLogout}>SIGN OUT</button>
       <button onClick={showSlideOut}>OPEN MODAL</button>

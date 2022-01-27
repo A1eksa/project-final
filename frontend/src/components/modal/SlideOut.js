@@ -18,6 +18,10 @@ const SlideOut = () => {
     // dispatch modal.actions.setSlideout
     dispatch(modal.actions.setSlideout(true));
   };
+  const closeSlideOut = () => {
+    // dispatch modal.actions.setSlideout
+    dispatch(modal.actions.setSlideout(false));
+  };
 
   return (
     <>
@@ -30,7 +34,7 @@ const SlideOut = () => {
       <div className={slideout ? 'modal active' : 'modal'}>
         <div className='close-toggle'>
           Close
-          <button className='close-button' onClick={showSlideOut}>
+          <button className='close-button' onClick={closeSlideOut}>
             +
           </button>
         </div>
@@ -46,40 +50,6 @@ const SlideOut = () => {
         {form === 'habit' && <HabitForm />}
       </div>
     </>
-
-    // <>
-    //   <div className='navbar'>
-    //     <Link to='#' className='menu-bars'>
-    //       Add todo/habit
-    //       <button className='add-button' onClick={showSlideOut}>
-    //         +
-    //       </button>
-    //     </Link>
-    //   </div>
-    //   <nav className={slideout ? 'nav-menu active' : 'nav-menu'}>
-    //     <div className='close-toggle'>
-    //       <Link to='#' className='menu-bars'>
-    //         Close
-    //         <button className='close-button' onClick={showSlideOut}>
-    //           +
-    //         </button>
-    //       </Link>
-    //     </div>
-    //     <ul className='nav-menu-items' onClick={showSlideOut}>
-    //       <li className='navbar-toggle'></li>
-    //     </ul>
-    //     <div className='add-buttons'>
-    //       <button className='choose-form-btn' onClick={() => setForm('todo')}>
-    //         Create todo
-    //       </button>
-    //       <button className='choose-form-btn' onClick={() => setForm('habit')}>
-    //         Create habit
-    //       </button>
-    //     </div>
-    //     {form === 'todo' && <TodoForm />}
-    //     {form === 'habit' && <HabitForm />}
-    //   </nav>
-    // </>
   );
 };
 
