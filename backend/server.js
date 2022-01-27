@@ -242,6 +242,7 @@ app.delete('/todos/:todoId', async (req, res) => {
 app.patch('/todos/:todoId', authenticateUser);
 app.patch('/todos/:todoId', async (req, res) => {
   const { todoId } = req.params;
+  // const { heading, message, category, user } = req.body;
 
   try {
     const updatedTodo = await Todo.findOneAndUpdate({ _id: todoId }, req.body, {
@@ -254,6 +255,23 @@ app.patch('/todos/:todoId', async (req, res) => {
     }
   } catch (error) {
     res.status(400).json({ message: 'could not update todo', success: false });
+  }
+});
+
+// ******** PATCH method toggle completed ******** //
+app.patch('/todo/:todoId/completed', async (req, res) => {
+  const { todoId } = req.params;
+  const { isCompleted } = req.body;
+
+  try {
+    const updateIsCompleted = await Todo.findOneAndUpdate(
+      { _id: todoId },
+      { isCompleted },
+      { new: true }
+    );
+    res.status(200).json({ response: updateIsCompleted, success: true });
+  } catch (error) {
+    res.status(400).json({ response: error, success: false });
   }
 });
 
