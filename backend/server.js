@@ -86,7 +86,7 @@ const HabitSchema = new mongoose.Schema({
   },
   isCompleted: {
     type: Boolean,
-    default: false,
+    default: true,
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,
@@ -270,6 +270,13 @@ app.patch('/todo/:todoId/completed', async (req, res) => {
       { new: true }
     );
     res.status(200).json({ response: updateIsCompleted, success: true });
+    // if (!updateIsCompleted) {
+    //   res
+    //     .status(404)
+    //     .json({ response: 'No task found with this Id', success: false });
+    // } else {
+    //   res.status(200).json({ response: updateIsCompleted, success: true });
+    // }
   } catch (error) {
     res.status(400).json({ response: error, success: false });
   }
@@ -357,6 +364,30 @@ app.patch('/habits/:habitId', async (req, res) => {
     }
   } catch (error) {
     res.status(400).json({ message: 'could not update habit', success: false });
+  }
+});
+
+// ******** PATCH method toggle completed ******** //
+app.patch('/habits/:habitId/completed', async (req, res) => {
+  const { habitId } = req.params;
+  const { isCompleted } = req.body;
+
+  try {
+    const updateIsCompleted = await Habit.findOneAndUpdate(
+      { _id: habitId },
+      { isCompleted },
+      { new: true }
+    );
+    res.status(200).json({ response: updateIsCompleted, success: true });
+    // if (!updateIsCompleted) {
+    //   res
+    //     .status(404)
+    //     .json({ response: 'No task found with this Id', success: false });
+    // } else {
+    //   res.status(200).json({ response: updateIsCompleted, success: true });
+    // }
+  } catch (error) {
+    res.status(400).json({ response: error, success: false });
   }
 });
 
