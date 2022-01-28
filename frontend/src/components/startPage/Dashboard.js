@@ -6,12 +6,14 @@ import user from '../../reducers/user';
 import { TodoList } from '../todo/TodoList';
 import { HabitList } from '../habits/HabitList';
 import SlideOut from '../modal/SlideOut';
-import { Weather } from '../date-time-weather/Weather';
+//
 import modal from '../../reducers/modal';
 // import Quote from '../quotes/Quote';
 import '../modal/SlideOut.css';
+import { MainContentWrapper, DashboardWrapper } from './_DashboardStyles';
 
 const Dashboard = () => {
+  const username = useSelector((store) => store.user.username);
   // const slideout = useSelector((store) => store.modal.slideout);
 
   const showSlideOut = () => {
@@ -42,21 +44,16 @@ const Dashboard = () => {
 
   return (
     <>
-      <h1>Hello</h1>
-      <button onClick={handleLogout}>SIGN OUT</button>
-      <button onClick={showSlideOut}>OPEN MODAL</button>
-      {/* <button
-        onClick={() => {
-          navigate('edit');
-          toggleEditModal();
-        }}
-      >
-        OPEN MODAL
-      </button> */}
-      {/* <Quote /> */}
-      <TodoList />
-      <HabitList />
-      <Weather />
+      <SlideOut />
+      <DashboardWrapper>
+        <h1>Hello {username}!</h1>
+        {/* remove h1 to header */}
+        <button onClick={handleLogout}>SIGN OUT</button>
+        <MainContentWrapper>
+          <TodoList />
+          <HabitList />
+        </MainContentWrapper>
+      </DashboardWrapper>
     </>
   );
 };

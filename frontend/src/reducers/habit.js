@@ -22,6 +22,12 @@ const habit = createSlice({
       );
       store.items = decreasedHabits;
     },
+    toggleHabit: (store, action) => {
+      const toggledHabit = store.items.filter(
+        (item) => item._id === action.payload
+      );
+      toggledHabit.isCompleted = !toggledHabit.isCompleted;
+    },
   },
 });
 

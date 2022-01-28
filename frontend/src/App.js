@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import Dashboard from './components/startPage/Dashboard';
 import SignIn from './components/startPage/SignIn';
 // import { HabitForm } from './components/habits/HabitForm';
+import { GlobalStyles } from './components/styling/GlobalStyles';
 
 import user from './reducers/user';
 import habit from './reducers/habit';
@@ -26,6 +27,7 @@ const store = configureStore({ reducer });
 function App() {
   return (
     <Provider store={store}>
+      <GlobalStyles />
       <BrowserRouter>
         <Routes>
           <Route exact path='/' element={<Dashboard />} />

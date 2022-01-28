@@ -5,15 +5,11 @@ const todo = createSlice({
   initialState: {
     items: [],
     error: null,
-    // isComplete: false,
   },
   reducers: {
     setItems: (store, action) => {
       store.items = action.payload;
     },
-    // setNewItems: (store, action) => {
-    //   store.items = [action.payload, ...store.items];
-    // },
     setErrors: (store, action) => {
       store.error = action.payload;
     },
@@ -24,18 +20,11 @@ const todo = createSlice({
       store.items = decreasedTodos;
     },
     toggleTodo: (store, action) => {
-      const toggledTodo = store.items.find(
+      const toggledTodo = store.items.filter(
         (item) => item._id === action.payload
       );
       toggledTodo.isCompleted = !toggledTodo.isCompleted;
     },
-
-    // setEdit: (store, action) => {
-    //   const editedTodos = store.items.filter(
-    //     (item) => (item._id = action.payload)
-    //   );
-    //   store.items = editedTodos;
-    // },
   },
 });
 
