@@ -86,7 +86,7 @@ const HabitSchema = new mongoose.Schema({
   },
   isCompleted: {
     type: Boolean,
-    default: true,
+    default: false,
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,
@@ -270,13 +270,6 @@ app.patch('/todo/:todoId/completed', async (req, res) => {
       { new: true }
     );
     res.status(200).json({ response: updateIsCompleted, success: true });
-    // if (!updateIsCompleted) {
-    //   res
-    //     .status(404)
-    //     .json({ response: 'No task found with this Id', success: false });
-    // } else {
-    //   res.status(200).json({ response: updateIsCompleted, success: true });
-    // }
   } catch (error) {
     res.status(400).json({ response: error, success: false });
   }
@@ -346,21 +339,20 @@ app.delete('/habits/:habitId', async (req, res) => {
 
 // ******** PATCH method habits ******** //
 
-app.patch('/habits/:habitId', async (req, res) => {
+app.patch('/habits/:habitId/update', async (req, res) => {
   const { habitId } = req.params;
-
+  const { heading, description } = req.body;
+  ///maybe try FindByIdAndUpdate??
   try {
     const updatedHabit = await Habit.findOneAndUpdate(
       { _id: habitId },
-      req.body,
-      {
-        new: true,
-      }
+      { description, heading },
+      { new: true }
     );
     if (updatedHabit) {
       res.status(200).json({ response: updatedHabit, success: true });
     } else {
-      res.status(400).json({ message: 'task not found', success: false });
+      res.status(400).json({ message: 'habit not found', success: false });
     }
   } catch (error) {
     res.status(400).json({ message: 'could not update habit', success: false });
