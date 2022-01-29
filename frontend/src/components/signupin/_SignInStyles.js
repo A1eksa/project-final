@@ -24,6 +24,16 @@ margin-top: 1.5rem;
 color: #1a1a1a;
 `
 
+export const H2 = styled.h1`
+font-size: 2rem;
+font-weight: 300;
+line-height: 2rem;
+margin-bottom: 0;
+max-width: 240px;
+margin-top: 1.5rem;
+color: var(--primary);
+`
+
 export const FormTitle = styled.h3`
 font-size: 2rem;
 font-weight: 300;

@@ -115,7 +115,7 @@ export const TodoList = () => {
   return (
     <>
       <ListWrapper>
-        <H2>This is whatsup</H2>
+        <H2>Your todos</H2>
         {todoItems &&
           todoItems.map((items) => (
             <CardWrapper key={items._id}>

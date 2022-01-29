@@ -33,11 +33,19 @@ export const H2 = styled.h2`
 
 export const HeroText = styled.div`
   max-width: 1440px;
-  margin: 0 auto;
-  padding-bottom: 1rem;
-  padding-top: 2rem;
+  // margin: 0 auto;
+  // padding-bottom: 1rem;
   color: var(--text-primary);
 `;
+
+export const UpperWrapper = styled.div`
+display: flex;
+flex-direction: row;
+padding-top: 3rem;
+justify-content: space-between;
+align-items: flex-end;
+padding-bottom: 3rem;
+`
 
 export const MainContentWrapper = styled.div`
   display: flex;

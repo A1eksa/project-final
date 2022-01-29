@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { API_URL } from '../../utils/constants';
 import { IconContext } from 'react-icons';
 import { AiTwotoneEdit } from 'react-icons/ai';
 import { FaTimes } from 'react-icons/fa';
+import { HabitEditButton } from '../small components/HabitEditButton';
 import habit from '../../reducers/habit';
 import user from '../../reducers/user';
 
@@ -19,6 +20,8 @@ import {
   LeftWrapper,
   Button,
 } from './_HabitStyles';
+import { CreateSlideOut } from '../modal/CreateSlideOut';
+
 
 export const HabitList = () => {
   const habitItems = useSelector((store) => store.habit.items);
@@ -130,7 +133,7 @@ export const HabitList = () => {
 
   return (
     <HabitWrapper>
-      <H2>these are your habits</H2>
+      <H2>Your habits</H2>
       <ListWrapper>
         {habitItems &&
           habitItems.map((items) => (
@@ -153,6 +156,7 @@ export const HabitList = () => {
                     <Button onClick={() => updateHabit()}>
                       <AiTwotoneEdit />
                     </Button>
+                    <HabitEditButton />
                   </IconContext.Provider>
                 </LeftWrapper>
                 <div>

@@ -5,6 +5,8 @@ import user from '../../reducers/user';
 import { TodoList } from '../todo/TodoList';
 import { HabitList } from '../habits/HabitList';
 import { CreateSlideOut } from '../modal/CreateSlideOut';
+import { TimeTicker} from '../small components/TimeTicker'
+// import { HabitsSlideOut } from '../modal/HabitsSlideOut';
 import { TheHeader } from '../header/TheHeader';
 import { Footer } from '../footer/Footer';
 import '../modal/SlideOut.css';
@@ -18,6 +20,7 @@ import {
   H2,
   Line,
   HeroText,
+  UpperWrapper,
 } from './_DashboardStyles';
 
 const Dashboard = () => {
@@ -53,11 +56,13 @@ const Dashboard = () => {
         <H1>Hello {loggedInUser}!</H1>
         <LogOutButton onClick={handleLogout}>SIGN OUT</LogOutButton>
       </User> */}
-
+        <UpperWrapper>
         <HeroText>
           <Line></Line>
           <H2>What's on your mind?</H2>
         </HeroText>
+        <TimeTicker />
+        </UpperWrapper>
 
         <MainContentWrapper>
           <TodoList />
