@@ -7,7 +7,7 @@ import { AiTwotoneEdit } from 'react-icons/ai';
 import { FaTimes } from 'react-icons/fa';
 import { HabitEditButton } from '../small components/HabitEditButton';
 import habit from '../../reducers/habit';
-import user from '../../reducers/user';
+import editModal from '../../reducers/editModal';
 
 import {
   HabitWrapper,
@@ -20,13 +20,16 @@ import {
   LeftWrapper,
   Button,
 } from './_HabitStyles';
-import { CreateSlideOut } from '../modal/CreateSlideOut';
-
 
 export const HabitList = () => {
   const habitItems = useSelector((store) => store.habit.items);
   const accessToken = useSelector((store) => store.user.accessToken);
   const userId = useSelector((store) => store.user.userId);
+
+  const showEditSlideout = () => {
+    // dispatch(editModal.actions.setSlideout(true));
+    dispatch(editModal.actions.setEditSlideout(true));
+  };
 
   const dispatch = useDispatch();
 
@@ -153,7 +156,7 @@ export const HabitList = () => {
                     <Button onClick={() => deleteHabit(items._id)}>
                       <FaTimes />
                     </Button>
-                    <Button onClick={() => updateHabit()}>
+                    <Button onClick={() => showEditSlideout()}>
                       <AiTwotoneEdit />
                     </Button>
                     <HabitEditButton />

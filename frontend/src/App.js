@@ -14,12 +14,16 @@ import habit from './reducers/habit';
 // import { TodoList } from './components/todo/TodoList';
 import todo from './reducers/todo';
 import modal from './reducers/modal';
+import editModal from './reducers/editModal';
+import editTodoModal from './reducers/editTodoModal';
 
 const reducer = combineReducers({
   user: user.reducer,
   habit: habit.reducer,
   todo: todo.reducer,
   modal: modal.reducer,
+  editModal: editModal.reducer,
+  editTodoModal: editTodoModal.reducer,
 });
 
 const store = configureStore({ reducer });

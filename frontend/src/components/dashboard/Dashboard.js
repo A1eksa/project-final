@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import user from '../../reducers/user';
+// import user from '../../reducers/user';
 import { TodoList } from '../todo/TodoList';
 import { HabitList } from '../habits/HabitList';
 import { CreateSlideOut } from '../modal/CreateSlideOut';
-import { TimeTicker} from '../small components/TimeTicker'
-// import { HabitsSlideOut } from '../modal/HabitsSlideOut';
+import { HabitsSlideOut } from '../modal/HabitsSlideOut';
+import { TodoSlideOut } from '../modal/TodoSlideOut';
+import { TimeTicker } from '../small components/TimeTicker';
 import { TheHeader } from '../header/TheHeader';
 import { Footer } from '../footer/Footer';
 import '../modal/SlideOut.css';
@@ -14,9 +15,9 @@ import '../modal/SlideOut.css';
 import {
   DashboardWrapper,
   MainContentWrapper,
-  User,
-  LogOutButton,
-  H1,
+  // User,
+  // LogOutButton,
+  // H1,
   H2,
   Line,
   HeroText,
@@ -24,7 +25,7 @@ import {
 } from './_DashboardStyles';
 
 const Dashboard = () => {
-  const loggedInUser = useSelector((store) => store.user.username);
+  // const loggedInUser = useSelector((store) => store.user.username);
 
   const navigate = useNavigate();
 
@@ -51,17 +52,15 @@ const Dashboard = () => {
     <>
       <TheHeader />
       <CreateSlideOut />
+      <HabitsSlideOut />
+      <TodoSlideOut />
       <DashboardWrapper>
-        {/* <User>
-        <H1>Hello {loggedInUser}!</H1>
-        <LogOutButton onClick={handleLogout}>SIGN OUT</LogOutButton>
-      </User> */}
         <UpperWrapper>
-        <HeroText>
-          <Line></Line>
-          <H2>What's on your mind?</H2>
-        </HeroText>
-        <TimeTicker />
+          <HeroText>
+            <Line></Line>
+            <H2>What's on your mind?</H2>
+          </HeroText>
+          <TimeTicker />
         </UpperWrapper>
 
         <MainContentWrapper>

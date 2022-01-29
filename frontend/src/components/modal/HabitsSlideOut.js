@@ -1,41 +1,39 @@
-// import React, { useState } from 'react';
-// import { useSelector, useDispatch } from 'react-redux';
-// import modal from '../../reducers/modal';
-// import { HabitEditForm } from '../habits/HabitEditForm';
-// import './SlideOut.css';
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { HabitEditForm } from '../habits/HabitEditForm';
+import './SlideOut.css';
+import editModal from '../../reducers/editModal';
 
-// import {
-//   P,
-//   OpenToggle,
-//   CloseToggle,
-//   // SlideOutWrapper,
-//   // OpenToggleWrapper,
-//   CloseToggleWrapper,
-// } from './_ModalStyles';
+import {
+  P,
+  CloseToggle,
+  // SlideOutWrapper,
+  // OpenToggleWrapper,
+  CloseToggleWrapper,
+} from './_ModalStyles';
 
-// // const SlideOut = (isEditModalActive, toggleEditModal) => {
-// export const HabitsSlideOut = () => {
-//   const slideout = useSelector((store) => store.modal.slideout);
-//   const [form, setForm] = useState('habit-edit');
+// const SlideOut = (isEditModalActive, toggleEditModal) => {
+export const HabitsSlideOut = () => {
+  const editSlideout = useSelector((store) => store.editModal.editSlideout);
 
-//   const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-//   const closeSlideOut = () => {
-//     // dispatch modal.actions.setSlideout
-//     dispatch(modal.actions.setSlideout(false));
-//   };
+  const closeEditSlideOut = () => {
+    // dispatch modal.actions.setSlideout
+    dispatch(editModal.actions.setEditSlideout(false));
+  };
 
-//   return (
-//     <>
-//       <div className={slideout ? 'modal active' : 'modal'}>
-//         <CloseToggleWrapper>
-//           <P>Close</P>
-//           <CloseToggle className='close-button' onClick={closeSlideOut}>
-//             +
-//           </CloseToggle>
-//         </CloseToggleWrapper>
-//         {form === 'habit-edit' &&<HabitEditForm />}
-//       </div>
-//     </>
-//   );
-// };
+  return (
+    <>
+      <div className={editSlideout ? 'modal active' : 'modal'}>
+        <CloseToggleWrapper>
+          <P>Close</P>
+          <CloseToggle className='close-button' onClick={closeEditSlideOut}>
+            +
+          </CloseToggle>
+        </CloseToggleWrapper>
+        <HabitEditForm />
+      </div>
+    </>
+  );
+};

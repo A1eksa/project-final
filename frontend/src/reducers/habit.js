@@ -5,6 +5,7 @@ const habit = createSlice({
   initialState: {
     items: [],
     error: null,
+    slideout: false,
   },
   reducers: {
     setItems: (store, action) => {

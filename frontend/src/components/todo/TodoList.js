@@ -8,6 +8,7 @@ import { FaTimes } from 'react-icons/fa';
 import { API_URL } from '../../utils/constants';
 import todo from '../../reducers/todo';
 import modal from '../../reducers/modal';
+import editTodoModal from '../../reducers/editTodoModal';
 
 import {
   H2,
@@ -33,8 +34,12 @@ export const TodoList = () => {
   const accessToken = useSelector((store) => store.user.accessToken);
   const userId = useSelector((store) => store.user.userId);
 
-  const showSlideOut = () => {
-    dispatch(modal.actions.setSlideout(true));
+  // const showSlideOut = () => {
+  //   dispatch(modal.actions.setSlideout(true));
+  // };
+
+  const showTodoSlideOut = () => {
+    dispatch(editTodoModal.actions.setEditTodoSlideout(true));
   };
 
   // const onToggleTodo = () => {
@@ -138,7 +143,7 @@ export const TodoList = () => {
                     <Button onClick={() => deleteTodo(items._id)}>
                       <FaTimes />
                     </Button>
-                    <Button onClick={() => showSlideOut()}>
+                    <Button onClick={() => showTodoSlideOut()}>
                       <AiTwotoneEdit />
                     </Button>
                   </IconContext.Provider>

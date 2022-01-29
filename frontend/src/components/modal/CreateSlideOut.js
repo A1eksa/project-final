@@ -21,7 +21,6 @@ export const CreateSlideOut = () => {
 
   const dispatch = useDispatch();
 
-
   const closeSlideOut = () => {
     // dispatch modal.actions.setSlideout
     dispatch(modal.actions.setSlideout(false));
