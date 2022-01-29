@@ -2,9 +2,23 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { API_URL } from '../../utils/constants';
+import { IconContext } from 'react-icons';
+import { AiTwotoneEdit } from 'react-icons/ai';
+import { FaTimes } from 'react-icons/fa';
 import habit from '../../reducers/habit';
 import user from '../../reducers/user';
-import { CardWrapper, ListWrapper } from './_HabitListStyles';
+
+import {
+  HabitWrapper,
+  CardWrapper,
+  ListWrapper,
+  H2,
+  HabitSubject,
+  HabitText,
+  BottomContainer,
+  LeftWrapper,
+  Button,
+} from './_HabitStyles';
 
 export const HabitList = () => {
   const habitItems = useSelector((store) => store.habit.items);
@@ -83,26 +97,91 @@ export const HabitList = () => {
       });
   };
 
+  const updateHabit = (habitId, description, heading) => {
+    console.log(
+      'habit Id:',
+      habitId,
+      'description:',
+      description,
+      'heading:',
+      heading
+    );
+    const options = {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        // Authorization: accessToken,
+      },
+      body: JSON.stringify({ description, heading, _id: habitId }),
+    };
+
+    fetch(API_URL(`habits/${habitId}/update`), options)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          console.log(data.response);
+          dispatch(habit.actions.updateHabit(habitId));
+          dispatch(habit.actions.setErrors(null));
+        } else {
+          dispatch(habit.actions.setErrors(data.response));
+        }
+      });
+  };
+
   return (
-    <ListWrapper>
-      <h3>these are your habits</h3>
-      {habitItems &&
-        habitItems.map((items) => (
-          <CardWrapper key={items._id}>
-            <h4>{items.heading}</h4>
-            <p>{items.description}</p>
-            <input
-              className='checkbox'
-              name={items._id}
-              id={items._id}
-              type='checkbox'
-              checked={items.isCompleted}
-              onChange={() => onToggleHabit(items._id, items.isCompleted)}
-            />
-            <button onClick={() => deleteHabit(items._id)}>Delete</button>
-            {/* <button onClick={() => deleteHabit()}>Edit</button> */}
-          </CardWrapper>
-        ))}
-    </ListWrapper>
+    <HabitWrapper>
+      <H2>these are your habits</H2>
+      <ListWrapper>
+        {habitItems &&
+          habitItems.map((items) => (
+            <CardWrapper key={items._id}>
+              <HabitSubject>{items.heading}</HabitSubject>
+              <HabitText>{items.description}</HabitText>
+              <BottomContainer>
+                <LeftWrapper>
+                  <IconContext.Provider
+                    value={{
+                      color: '#444444',
+                      className: 'global-class-name',
+                      size: '1.125rem',
+                      style: { verticalAlign: 'middle', marginLeft: '0.05rem' },
+                    }}
+                  >
+                    <Button onClick={() => deleteHabit(items._id)}>
+                      <FaTimes />
+                    </Button>
+                    <Button onClick={() => updateHabit()}>
+                      <AiTwotoneEdit />
+                    </Button>
+                  </IconContext.Provider>
+                </LeftWrapper>
+                <div>
+                  <input
+                    className='checkbox'
+                    name={items._id}
+                    id={items._id}
+                    type='checkbox'
+                    checked={items.isCompleted}
+                    onChange={() => onToggleHabit(items._id, items.isCompleted)}
+                  />
+                </div>
+                {/* <CheckboxContainer>
+            <InputLabel>Mark as done
+            <HiddenCheckbox
+                className='checkbox'
+                type='checkbox'>
+            </HiddenCheckbox>
+              <CustomCheckbox
+                  type='checkbox'
+                  checked={items.isCompleted}
+                  onChange={() => onToggleTodo(items._id)}>
+              </CustomCheckbox>
+            </InputLabel>
+          </CheckboxContainer> */}
+              </BottomContainer>
+            </CardWrapper>
+          ))}
+      </ListWrapper>
+    </HabitWrapper>
   );
 };

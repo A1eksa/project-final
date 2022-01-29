@@ -5,6 +5,17 @@ import { useNavigate } from 'react-router-dom';
 import user from '../../reducers/user';
 import { API_URL } from '../../utils/constants';
 
+import { 
+  PageWrapper,
+  Line,
+  H1,
+  Preamble,
+  FormWrapper,
+  Label,
+  Input,
+  Button,
+} from './_SignInStyles';
+
 const SignIn = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -69,38 +80,43 @@ const SignIn = () => {
       });
   };
   return (
-    <form onSubmit={onFormSubmit}>
-      <label htmlFor='username'>
-        username
-        <input
+    <PageWrapper>
+            <Line></Line>
+      <H1>What's on your mind?</H1>
+      <Preamble>Create a user and save all your thoughts, habits and daily tasks!</Preamble>
+    <FormWrapper onSubmit={onFormSubmit}>
+      <Label htmlFor='username'>
+        Username
+        <Input
           type='text'
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-        ></input>
-      </label>
-      <label htmlFor='message'>
-        email
-        <input
+        ></Input>
+      </Label>
+      <Label htmlFor='message'>
+        Email
+        <Input
           type='text'
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-        ></input>
-      </label>
-      <label htmlFor='password'>
-        password
-        <input
+        ></Input>
+      </Label>
+      <Label htmlFor='password'>
+        Password
+        <Input
           type='text'
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-        ></input>
-      </label>
-      <button type='submit' onClick={() => setMode('signup')}>
+        ></Input>
+      </Label>
+      <Button type='submit' onClick={() => setMode('signup')}>
         SignUp
-      </button>
-      <button type='submit' onClick={() => setMode('signin')}>
+      </Button>
+      <Button type='submit' onClick={() => setMode('signin')}>
         SignIn
-      </button>
-    </form>
+      </Button>
+    </FormWrapper>
+    </PageWrapper>
   );
 };
 export default SignIn;

@@ -1,27 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { API_URL } from '../../utils/constants';
 import user from '../../reducers/user';
 import { TodoList } from '../todo/TodoList';
 import { HabitList } from '../habits/HabitList';
-import SlideOut from '../modal/SlideOut';
-//
-import modal from '../../reducers/modal';
-// import Quote from '../quotes/Quote';
+import { CreateSlideOut } from '../modal/CreateSlideOut';
+import { TheHeader } from '../header/TheHeader';
+import { Footer } from '../footer/Footer';
 import '../modal/SlideOut.css';
-import { MainContentWrapper, DashboardWrapper } from './_DashboardStyles';
+
+import {
+  DashboardWrapper,
+  MainContentWrapper,
+  User,
+  LogOutButton,
+  H1,
+  H2,
+  Line,
+  HeroText,
+} from './_DashboardStyles';
 
 const Dashboard = () => {
-  const username = useSelector((store) => store.user.username);
-  // const slideout = useSelector((store) => store.modal.slideout);
-
-  const showSlideOut = () => {
-    dispatch(modal.actions.setSlideout(true));
-  };
+  const loggedInUser = useSelector((store) => store.user.username);
 
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const accessToken = useSelector((store) => store.user.accessToken);
   // if there is no accessToken then redirect to login
@@ -31,10 +33,10 @@ const Dashboard = () => {
     }
   }, [accessToken, navigate]);
 
-  const handleLogout = () => {
-    dispatch(user.actions.logout());
-    localStorage.removeItem('user');
-  };
+  // const handleLogout = () => {
+  //   dispatch(user.actions.logout());
+  //   localStorage.removeItem('user');
+  // };
 
   useEffect(() => {
     if (!accessToken) {
@@ -44,16 +46,25 @@ const Dashboard = () => {
 
   return (
     <>
-      <SlideOut />
+      <TheHeader />
+      <CreateSlideOut />
       <DashboardWrapper>
-        <h1>Hello {username}!</h1>
-        {/* remove h1 to header */}
-        <button onClick={handleLogout}>SIGN OUT</button>
+        {/* <User>
+        <H1>Hello {loggedInUser}!</H1>
+        <LogOutButton onClick={handleLogout}>SIGN OUT</LogOutButton>
+      </User> */}
+
+        <HeroText>
+          <Line></Line>
+          <H2>What's on your mind?</H2>
+        </HeroText>
+
         <MainContentWrapper>
           <TodoList />
           <HabitList />
         </MainContentWrapper>
       </DashboardWrapper>
+      <Footer />
     </>
   );
 };

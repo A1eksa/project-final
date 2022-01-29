@@ -3,6 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 export const GlobalStyles = createGlobalStyle`
 
 body {
+    box-sizing:border-box;
     margin: 0;
     padding: 0 0 10rem 0;
     font-family: Raleway, Open-Sans, Roboto, Helvetica, Sans-Serif;

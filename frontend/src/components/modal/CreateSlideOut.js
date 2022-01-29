@@ -1,14 +1,21 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { HabitForm } from '../habits/HabitForm';
 import { TodoForm } from '../todo/TodoForm';
-import { TodoList } from '../todo/TodoList';
 import { useSelector, useDispatch } from 'react-redux';
 import modal from '../../reducers/modal';
 import './SlideOut.css';
 
+import {
+  P,
+  OpenToggle,
+  CloseToggle,
+  // SlideOutWrapper,
+  // OpenToggleWrapper,
+  CloseToggleWrapper,
+} from './_ModalStyles';
+
 // const SlideOut = (isEditModalActive, toggleEditModal) => {
-const SlideOut = () => {
+export const CreateSlideOut = () => {
   const slideout = useSelector((store) => store.modal.slideout);
   const [form, setForm] = useState('todo');
 
@@ -25,19 +32,20 @@ const SlideOut = () => {
 
   return (
     <>
-      <div className='open-toggle'>
-        Add todo/habit
-        <button className='add-button' onClick={showSlideOut}>
+      {/* <OpenToggleWrapper>
+        <P>Add todo/habit</P>
+        <OpenToggle onClick={showSlideOut}>
           +
-        </button>
-      </div>
+        </OpenToggle>
+      </OpenToggleWrapper> */}
       <div className={slideout ? 'modal active' : 'modal'}>
-        <div className='close-toggle'>
-          Close
-          <button className='close-button' onClick={closeSlideOut}>
+        <CloseToggleWrapper>
+          <P>Close</P>
+          <CloseToggle className='close-button' onClick={closeSlideOut}>
             +
-          </button>
-        </div>
+          </CloseToggle>
+        </CloseToggleWrapper>
+
         <div className='form-toggle'>
           <button className='choose-form-btn' onClick={() => setForm('todo')}>
             Create todo
@@ -52,5 +60,3 @@ const SlideOut = () => {
     </>
   );
 };
-
-export default SlideOut;

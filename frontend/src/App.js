@@ -4,8 +4,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 // import { TodoForm } from './components/todo/TodoForm';
-import Dashboard from './components/startPage/Dashboard';
-import SignIn from './components/startPage/SignIn';
+import Dashboard from './components/dashboard/Dashboard';
+import SignIn from './components/signupin/SignIn';
 // import { HabitForm } from './components/habits/HabitForm';
 import { GlobalStyles } from './components/styling/GlobalStyles';
 

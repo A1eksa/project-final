@@ -4,6 +4,8 @@ import { API_URL } from '../../utils/constants';
 
 import user from '../../reducers/user';
 
+import { FormWrapper, Label, Input, Button } from '../signupin/_SignInStyles';
+
 export const HabitForm = () => {
   const [heading, setHeading] = useState('');
   const [description, setDescription] = useState('');
@@ -35,24 +37,24 @@ export const HabitForm = () => {
       });
   };
   return (
-    <form onSubmit={onHabitSubmit}>
-      <label htmlFor='heading'>
-        heading
-        <input
+    <FormWrapper onSubmit={onHabitSubmit}>
+      <Label htmlFor='heading'>
+        Heading
+        <Input
           type='text'
           value={heading}
           onChange={(e) => setHeading(e.target.value)}
-        ></input>
-      </label>
-      <label htmlFor='description'>
-        message
-        <input
+        ></Input>
+      </Label>
+      <Label htmlFor='description'>
+        Message
+        <Input
           type='text'
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-        ></input>
-      </label>
-      <button type='submit'>Press</button>
-    </form>
+        ></Input>
+      </Label>
+      <Button type='submit'>Save</Button>
+    </FormWrapper>
   );
 };

@@ -5,6 +5,8 @@ import { API_URL } from '../../utils/constants';
 import user from '../../reducers/user';
 import todo from '../../reducers/todo';
 
+import { FormWrapper, Label, Input, Button } from '../signupin/_SignInStyles';
+
 export const TodoForm = () => {
   const accessToken = useSelector((store) => store.user.accessToken);
   const userId = useSelector((store) => store.user.userId);
@@ -77,36 +79,38 @@ export const TodoForm = () => {
   // }
 
   return (
-    <form onSubmit={onFormSubmit}>
-      <label htmlFor='heading'>
-        heading
-        <input
-          type='text'
-          value={heading}
-          onChange={(e) => setHeading(e.target.value)}
-        ></input>
-      </label>
-      <label htmlFor='message'>
-        message
-        <input
-          type='text'
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-        ></input>
-      </label>
-      <label htmlFor='category'>
-        category
-        <input
-          type='text'
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-        ></input>
-      </label>
-      <button type='submit'>ADD</button>
-      {/* <button type='submit'>UPDATE TODO</button> */}
-      {/* <button type='submit' onClick={updateTodo}>
+    <>
+      <FormWrapper onSubmit={onFormSubmit}>
+        <Label htmlFor='heading'>
+          Heading
+          <Input
+            type='text'
+            value={heading}
+            onChange={(e) => setHeading(e.target.value)}
+          ></Input>
+        </Label>
+        <Label htmlFor='message'>
+          Message
+          <Input
+            type='text'
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+          ></Input>
+        </Label>
+        <Label htmlFor='category'>
+          Category
+          <Input
+            type='text'
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+          ></Input>
+        </Label>
+        <Button type='submit'>Save</Button>
+        {/* <button type='submit'>UPDATE TODO</button> */}
+        {/* <button type='submit' onClick={updateTodo}>
         UPDATE TODO
       </button> */}
-    </form>
+      </FormWrapper>
+    </>
   );
 };

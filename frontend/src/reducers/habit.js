@@ -28,6 +28,12 @@ const habit = createSlice({
       );
       toggledHabit.isCompleted = !toggledHabit.isCompleted;
     },
+    updateHabit: (store, action) => {
+      const updatedHabit = store.items.filter(
+        (item) => item._id === action.payload
+      );
+      store.items = updatedHabit;
+    },
   },
 });
 
