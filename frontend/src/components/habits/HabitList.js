@@ -31,6 +31,8 @@ export const HabitList = () => {
     dispatch(editModal.actions.setEditSlideout(true));
     // dispatch(editModal.actions.setSelectedId(_id));
     dispatch(editModal.actions.setSelectedHabit(item));
+    dispatch(editModal.actions.setSelectedHeading(item.heading));
+    dispatch(editModal.actions.setSelectedDescription(item.description));
     console.log('habitId', item);
   };
 

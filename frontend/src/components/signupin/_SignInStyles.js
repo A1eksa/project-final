@@ -81,7 +81,7 @@ text-transform: inherit;
 box-sizing: border-box;
 width: 100%;
 height: 3rem;
-padding: 16px 48px;
+padding: 16px;
 border: 1px solid #f1f1f1;
 background-color: inherit;
 margin-bottom: 1rem;
