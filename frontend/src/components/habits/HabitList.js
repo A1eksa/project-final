@@ -26,9 +26,12 @@ export const HabitList = () => {
   const accessToken = useSelector((store) => store.user.accessToken);
   const userId = useSelector((store) => store.user.userId);
 
-  const showEditSlideout = () => {
+  const showEditSlideout = (item) => {
     // dispatch(editModal.actions.setSlideout(true));
     dispatch(editModal.actions.setEditSlideout(true));
+    // dispatch(editModal.actions.setSelectedId(_id));
+    dispatch(editModal.actions.setSelectedHabit(item));
+    console.log('habitId', item);
   };
 
   const dispatch = useDispatch();
@@ -156,7 +159,7 @@ export const HabitList = () => {
                     <Button onClick={() => deleteHabit(items._id)}>
                       <FaTimes />
                     </Button>
-                    <Button onClick={() => showEditSlideout()}>
+                    <Button onClick={() => showEditSlideout(items)}>
                       <AiTwotoneEdit />
                     </Button>
                     <HabitEditButton />
