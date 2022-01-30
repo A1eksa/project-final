@@ -67,7 +67,7 @@ export const HabitEditForm = () => {
           Heading
           <Input
             type='text'
-            value={habitInfo.heading}
+            value={selectedHeading}
             onChange={(e) => setHabitInfo(e.target.value)}
           ></Input>
         </Label>
@@ -75,7 +75,7 @@ export const HabitEditForm = () => {
           Message
           <Input
             type='text'
-            value={habitInfo.description}
+            value={selectedDescription}
             onChange={(e) => setHabitInfo(e.target.value)}
           ></Input>
         </Label>
