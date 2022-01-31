@@ -21,7 +21,7 @@ const editModal = createSlice({
     },
     setSelectedId: (store, action) => {
       store.selectedId = action.payload;
-      console.log('actionpayload', action.payload);
+      console.log('actionpayload ID', action.payload);
     },
     setSelectedHabit: (store, action) => {
       store.selectedHabit = action.payload;
@@ -29,11 +29,11 @@ const editModal = createSlice({
     },
     setSelectedHeading: (store, action) => {
       store.selectedHeading = action.payload;
-      console.log('heading', action.payload);
+      // console.log('heading', action.payload);
     },
     setSelectedDescription: (store, action) => {
       store.selectedDescription = action.payload;
-      console.log('description', action.payload);
+      // console.log('description', action.payload);
     },
   },
 });

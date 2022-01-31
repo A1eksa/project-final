@@ -60,7 +60,7 @@ const Dashboard = () => {
             <Line></Line>
             <H2>What's on your mind?</H2>
           </HeroText>
-          <TimeTicker />
+          {/* <TimeTicker /> */}
         </UpperWrapper>
 
         <MainContentWrapper>

@@ -31,7 +31,9 @@ export const HabitList = () => {
     dispatch(editModal.actions.setEditSlideout(true));
     // dispatch(editModal.actions.setSelectedId(_id));
     dispatch(editModal.actions.setSelectedHabit(item));
-    console.log('habitId', item);
+    dispatch(editModal.actions.setSelectedHeading(item.heading));
+    dispatch(editModal.actions.setSelectedDescription(item.description));
+    console.log('habitId line 36', item);
   };
 
   const dispatch = useDispatch();
@@ -106,36 +108,36 @@ export const HabitList = () => {
       });
   };
 
-  const updateHabit = (habitId, description, heading) => {
-    console.log(
-      'habit Id:',
-      habitId,
-      'description:',
-      description,
-      'heading:',
-      heading
-    );
-    const options = {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-        // Authorization: accessToken,
-      },
-      body: JSON.stringify({ description, heading, _id: habitId }),
-    };
+  // const updateHabit = (habitId, description, heading) => {
+  //   console.log(
+  //     'habit Id:',
+  //     habitId,
+  //     'description:',
+  //     description,
+  //     'heading:',
+  //     heading
+  //   );
+  //   const options = {
+  //     method: 'PATCH',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       // Authorization: accessToken,
+  //     },
+  //     body: JSON.stringify({ description, heading, _id: habitId }),
+  //   };
 
-    fetch(API_URL(`habits/${habitId}/update`), options)
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.success) {
-          console.log(data.response);
-          dispatch(habit.actions.updateHabit(habitId));
-          dispatch(habit.actions.setErrors(null));
-        } else {
-          dispatch(habit.actions.setErrors(data.response));
-        }
-      });
-  };
+  //   fetch(API_URL(`habits/${habitId}/update`), options)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       if (data.success) {
+  //         console.log(data.response);
+  //         dispatch(habit.actions.updateHabit(habitId));
+  //         dispatch(habit.actions.setErrors(null));
+  //       } else {
+  //         dispatch(habit.actions.setErrors(data.response));
+  //       }
+  //     });
+  // };
 
   return (
     <HabitWrapper>

@@ -12,58 +12,109 @@ import {
   Button,
   H2,
 } from '../signupin/_SignInStyles';
+import editModal from '../../reducers/editModal';
 
 export const HabitEditForm = () => {
-  // const [heading, setHeading] = useState('');
-  // const [description, setDescription] = useState('');
+  const habitId = useSelector((store) => store.selectedHabit);
+  console.log('is this the id?', habitId);
+  const habitItems = useSelector((store) => store.habit.items);
+  const updatedHabit = useSelector((store) => store.habit.updateHabit);
 
-  const accessToken = useSelector((store) => store.user.accessToken);
-  // const selectedHabit = useSelector((store) => store.editModal.selectedHabit);
-
-  const selectedHeading = useSelector((store) => store.editModal.heading);
-  const selectedDescription = useSelector(
-    (store) => store.editModal.description
+  const selectedHeading = useSelector(
+    (store) => store.editModal.selectedHeading
   );
+  const selectedDescription = useSelector(
+    (store) => store.editModal.selectedDescription
+  );
+  // const selectedId = useSelector((store) => store.editModal.selectedId);
 
-  // const setSelectedId = useSelector((store) => store.editModal.setSelectedId);
-  // const habitItems = useSelector((store) => store.habit.items);
-
-  const [habitInfo, setHabitInfo] = useState({
-    description: selectedDescription,
-    heading: selectedHeading,
-  });
+  const [heading, setHeading] = useState(selectedHeading);
+  const [description, setDescription] = useState(selectedDescription);
 
   const dispatch = useDispatch();
 
-  const onHabitSubmit = (event) => {
+  const submitUpdatedHabit = (event) => {
+    console.log('habitId', habitId);
     event.preventDefault();
-
     const options = {
-      method: 'POST',
+      method: 'PATCH',
       headers: {
+        // Authorization: accessToken,
         'Content-Type': 'application/json',
-        Authorization: accessToken,
       },
-      // body: JSON.stringify({ heading, description }),
+      body: JSON.stringify({ heading, description, _id: habitId }),
     };
-    fetch(API_URL('habits'), options)
+
+    fetch(API_URL(`habits/${habitId}/update`), options)
       .then((res) => res.json())
       .then((data) => {
-        if (data.success) {
-          batch(() => {
-            //dispatch(habit.actions.setItems(data.response.items));
-            dispatch(user.actions.setUserId(data.response.userId));
-          });
-        }
+        console.log('what is data?', data);
+        batch(() => {
+          // dispatch(editModal.actions.setSelectedId(selectedId));
+          // dispatch(editModal.actions.setSelectedHeading(selectedHeading));
+          // dispatch(
+          //   editModal.actions.setSelectedDescription(selectedDescription)
+          // );
+          dispatch(habit.actions.setItems(data.response.habitItems));
+          dispatch(habit.actions.updateHabit(updatedHabit));
+          dispatch(habit.actions.setErrors(null));
+          // dispatch(editModal.actions.setSelectedHabit());
+        });
       });
   };
+
+  /// ------ /// TEST
+  //   const options = {
+  //     method: 'PATCH',
+  //     body: JSON.stringify({
+  //       isCompleted: !isCompleted,
+  //       _id: habitId,
+  //     }),
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //   };
+  //   fetch(API_URL(`habits/${habitId}/completed`), options)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       if (data.success) {
+  //         console.log(data.response);
+  //         // dispatch(todo.actions.setItems(accessToken, userId));
+  //         dispatch(habit.actions.toggleHabit(habitId));
+  //         dispatch(habit.actions.setErrors(null));
+  //       } else {
+  //         console.log('error');
+  //         dispatch(habit.actions.setErrors(data.response));
+  //       }
+  //     });
+  // };
+  /// ------ /// TEST
+
   return (
     <>
-      {/* onChange={(e) =>
-                setUserInfo({ ...userInfo, bio: e.target.value }) */}
       <h2>Edit your habit</h2>
-      <FormWrapper onSubmit={onHabitSubmit}>
+      <FormWrapper onSubmit={() => submitUpdatedHabit()}>
         <Label htmlFor='heading'>
+          Heading
+          <Input
+            type='text'
+            defaultValue={selectedHeading}
+            onChange={(e) =>
+              setHeading({ ...heading, heading: e.target.value })
+            }
+          ></Input>
+        </Label>
+        <Label htmlFor='description'>
+          Message
+          <Input
+            type='text'
+            defaultValue={selectedDescription}
+            onChange={(e) =>
+              setDescription({ ...description, description: e.target.value })
+            }
+          ></Input>
+        </Label>
+        {/* <Label htmlFor='heading'>
           Heading
           <Input
             type='text'
@@ -78,7 +129,7 @@ export const HabitEditForm = () => {
             value={selectedDescription}
             onChange={(e) => setHabitInfo(e.target.value)}
           ></Input>
-        </Label>
+        </Label> */}
         <Button type='submit'>Update</Button>
       </FormWrapper>
     </>

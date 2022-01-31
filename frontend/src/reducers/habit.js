@@ -34,7 +34,12 @@ const habit = createSlice({
         (item) => item._id === action.payload
       );
       store.items = updatedHabit;
+      console.log('updateHabit', action.payload);
     },
+    // updateHabit: (store, action) => {
+    //   store.items.patch(action.payload);
+    //   console.log('updateHabit', action.payload);
+    // },
   },
 });
 
