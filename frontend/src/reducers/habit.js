@@ -4,6 +4,8 @@ const habit = createSlice({
   name: 'habit',
   initialState: {
     items: [],
+    heading: null,
+    description: null,
     error: null,
     slideout: false,
   },

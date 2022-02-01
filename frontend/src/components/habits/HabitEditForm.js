@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch, batch } from 'react-redux';
 import { API_URL } from '../../utils/constants';
 
-import user from '../../reducers/user';
+// import user from '../../reducers/user';
 import habit from '../../reducers/habit';
 
 import {
@@ -11,97 +11,83 @@ import {
   Input,
   Button,
   H2,
+  Preamble,
 } from '../signupin/_SignInStyles';
 import editModal from '../../reducers/editModal';
 
 export const HabitEditForm = () => {
-  const habitId = useSelector((store) => store.selectedHabit);
-  console.log('is this the id?', habitId);
-  const habitItems = useSelector((store) => store.habit.items);
-  const updatedHabit = useSelector((store) => store.habit.updateHabit);
-
   const selectedHeading = useSelector(
     (store) => store.editModal.selectedHeading
   );
+
   const selectedDescription = useSelector(
     (store) => store.editModal.selectedDescription
   );
-  // const selectedId = useSelector((store) => store.editModal.selectedId);
+  const selectedHabit = useSelector((store) => store.editModal.selectedHabit);
+  const heading = useSelector((store) => store.habit.heading);
+  const description = useSelector((store) => store.habit.description);
 
-  const [heading, setHeading] = useState(selectedHeading);
-  const [description, setDescription] = useState(selectedDescription);
+  // const [heading, setHeading] = useState({ heading: selectedHeading });
+  // const [description, setDescription] = useState({
+  //   description: selectedDescription,
+  // });
+
+  const [habit, setHabit] = useState({
+    description: description,
+    heading: heading,
+  });
 
   const dispatch = useDispatch();
 
-  const submitUpdatedHabit = (event) => {
-    console.log('habitId', habitId);
-    event.preventDefault();
+  const updateHabit = (event, habitId) => {
+    event.eventPreventDefault();
+    console.log(
+      'console id:',
+      habitId,
+      'console description:',
+      description,
+      'console heading:',
+      heading
+    );
     const options = {
       method: 'PATCH',
       headers: {
-        // Authorization: accessToken,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ heading, description, _id: habitId }),
+      body: JSON.stringify({ _id: habitId, ...heading, ...description }),
     };
 
     fetch(API_URL(`habits/${habitId}/update`), options)
       .then((res) => res.json())
       .then((data) => {
-        console.log('what is data?', data);
-        batch(() => {
-          // dispatch(editModal.actions.setSelectedId(selectedId));
-          // dispatch(editModal.actions.setSelectedHeading(selectedHeading));
-          // dispatch(
-          //   editModal.actions.setSelectedDescription(selectedDescription)
-          // );
-          dispatch(habit.actions.setItems(data.response.habitItems));
-          dispatch(habit.actions.updateHabit(updatedHabit));
-          dispatch(habit.actions.setErrors(null));
-          // dispatch(editModal.actions.setSelectedHabit());
-        });
+        console.log('vad är data?', data);
+        if (data.success) {
+          console.log(data.response);
+          setHabit(data.response);
+          batch(() => {
+            dispatch(habit.actions.setItems());
+            dispatch(habit.actions.updateHabit(habitId));
+            dispatch(editModal.actions.setError(null));
+            dispatch(habit.actions.setHeading(data.response.heading));
+            dispatch(habit.actions.setDescription(data.response.description));
+          });
+        } else {
+          dispatch(editModal.actions.setErrors(data.response));
+        }
       });
   };
 
-  /// ------ /// TEST
-  //   const options = {
-  //     method: 'PATCH',
-  //     body: JSON.stringify({
-  //       isCompleted: !isCompleted,
-  //       _id: habitId,
-  //     }),
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //   };
-  //   fetch(API_URL(`habits/${habitId}/completed`), options)
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       if (data.success) {
-  //         console.log(data.response);
-  //         // dispatch(todo.actions.setItems(accessToken, userId));
-  //         dispatch(habit.actions.toggleHabit(habitId));
-  //         dispatch(habit.actions.setErrors(null));
-  //       } else {
-  //         console.log('error');
-  //         dispatch(habit.actions.setErrors(data.response));
-  //       }
-  //     });
-  // };
-  /// ------ /// TEST
-
   return (
     <>
-      <h2>Edit your habit</h2>
-      <FormWrapper onSubmit={() => submitUpdatedHabit()}>
+      <H2>Edit your habit</H2>
+      <Preamble>Here is some text!</Preamble>
+      <FormWrapper onSubmit={() => updateHabit(selectedHabit._id)}>
         <Label htmlFor='heading'>
           Heading
           <Input
             type='text'
             defaultValue={selectedHeading}
-            onChange={(e) =>
-              setHeading({ ...heading, heading: e.target.value })
-            }
+            onChange={(e) => setHabit({ ...habit, heading: e.target.value })}
           ></Input>
         </Label>
         <Label htmlFor='description'>
@@ -110,26 +96,10 @@ export const HabitEditForm = () => {
             type='text'
             defaultValue={selectedDescription}
             onChange={(e) =>
-              setDescription({ ...description, description: e.target.value })
+              setHabit({ ...habit, description: e.target.value })
             }
           ></Input>
         </Label>
-        {/* <Label htmlFor='heading'>
-          Heading
-          <Input
-            type='text'
-            value={selectedHeading}
-            onChange={(e) => setHabitInfo(e.target.value)}
-          ></Input>
-        </Label>
-        <Label htmlFor='description'>
-          Message
-          <Input
-            type='text'
-            value={selectedDescription}
-            onChange={(e) => setHabitInfo(e.target.value)}
-          ></Input>
-        </Label> */}
         <Button type='submit'>Update</Button>
       </FormWrapper>
     </>

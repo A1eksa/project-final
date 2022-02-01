@@ -11,8 +11,8 @@ export const HabitForm = () => {
   const [description, setDescription] = useState('');
 
   const accessToken = useSelector((store) => store.user.accessToken);
-  const insideStore = useSelector((store) => store.habit);
-  console.log('inside store', insideStore);
+  // const insideStore = useSelector((store) => store.habit);
+  // console.log('inside store', insideStore);
 
   const dispatch = useDispatch();
 

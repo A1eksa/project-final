@@ -344,7 +344,7 @@ app.patch('/habits/:habitId/update', async (req, res) => {
   const { heading, description } = req.body;
   ///maybe try FindByIdAndUpdate??
   try {
-    const updatedHabit = await Habit.findOneAndUpdate(
+    const updatedHabit = await Habit.findByIdAndUpdate(
       { _id: habitId },
       { description, heading },
       { new: true }

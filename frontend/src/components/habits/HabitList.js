@@ -16,7 +16,6 @@ import {
   H2,
   HabitSubject,
   HabitText,
-  BottomContainer,
   LeftWrapper,
   Button,
 } from './_HabitStyles';
@@ -108,37 +107,6 @@ export const HabitList = () => {
       });
   };
 
-  // const updateHabit = (habitId, description, heading) => {
-  //   console.log(
-  //     'habit Id:',
-  //     habitId,
-  //     'description:',
-  //     description,
-  //     'heading:',
-  //     heading
-  //   );
-  //   const options = {
-  //     method: 'PATCH',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       // Authorization: accessToken,
-  //     },
-  //     body: JSON.stringify({ description, heading, _id: habitId }),
-  //   };
-
-  //   fetch(API_URL(`habits/${habitId}/update`), options)
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       if (data.success) {
-  //         console.log(data.response);
-  //         dispatch(habit.actions.updateHabit(habitId));
-  //         dispatch(habit.actions.setErrors(null));
-  //       } else {
-  //         dispatch(habit.actions.setErrors(data.response));
-  //       }
-  //     });
-  // };
-
   return (
     <HabitWrapper>
       <H2>Your habits</H2>
@@ -148,7 +116,7 @@ export const HabitList = () => {
             <CardWrapper key={items._id}>
               <HabitSubject>{items.heading}</HabitSubject>
               <HabitText>{items.description}</HabitText>
-              <BottomContainer>
+              <div>
                 <LeftWrapper>
                   <IconContext.Provider
                     value={{
@@ -190,7 +158,7 @@ export const HabitList = () => {
               </CustomCheckbox>
             </InputLabel>
           </CheckboxContainer> */}
-              </BottomContainer>
+              </div>
             </CardWrapper>
           ))}
       </ListWrapper>
