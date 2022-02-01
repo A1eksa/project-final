@@ -16,6 +16,7 @@ import {
 import editModal from '../../reducers/editModal';
 
 export const HabitEditForm = () => {
+  const accessToken = useSelector((store) => store.user.accessToken);
   const selectedHeading = useSelector(
     (store) => store.editModal.selectedHeading
   );
@@ -24,35 +25,27 @@ export const HabitEditForm = () => {
     (store) => store.editModal.selectedDescription
   );
   const selectedHabit = useSelector((store) => store.editModal.selectedHabit);
-  const heading = useSelector((store) => store.habit.heading);
-  const description = useSelector((store) => store.habit.description);
+  // const heading = useSelector((store) => store.habit.heading);
+  // const description = useSelector((store) => store.habit.description);
 
-  // const [heading, setHeading] = useState({ heading: selectedHeading });
-  // const [description, setDescription] = useState({
-  //   description: selectedDescription,
+  const [heading, setHeading] = useState(selectedHeading);
+  const [description, setDescription] = useState(selectedDescription);
+
+  // const [habit, setHabit] = useState({
+  //   description: description,
+  //   heading: heading,
   // });
-
-  const [habit, setHabit] = useState({
-    description: description,
-    heading: heading,
-  });
 
   const dispatch = useDispatch();
 
-  const updateHabit = (event, habitId) => {
-    event.eventPreventDefault();
-    console.log(
-      'console id:',
-      habitId,
-      'console description:',
-      description,
-      'console heading:',
-      heading
-    );
+  const updateHabit = (habitId) => {
+    // event.eventPreventDefault();
+
     const options = {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
+        Authorization: accessToken,
       },
       body: JSON.stringify({ _id: habitId, ...heading, ...description }),
     };
@@ -60,16 +53,15 @@ export const HabitEditForm = () => {
     fetch(API_URL(`habits/${habitId}/update`), options)
       .then((res) => res.json())
       .then((data) => {
-        console.log('vad är data?', data);
         if (data.success) {
-          console.log(data.response);
-          setHabit(data.response);
+          setHeading(data.response);
+          setDescription(data.response);
           batch(() => {
             dispatch(habit.actions.setItems());
             dispatch(habit.actions.updateHabit(habitId));
             dispatch(editModal.actions.setError(null));
-            dispatch(habit.actions.setHeading(data.response.heading));
-            dispatch(habit.actions.setDescription(data.response.description));
+            // dispatch(habit.actions.setHeading(data.response.heading));
+            // dispatch(habit.actions.setDescription(data.response.description));
           });
         } else {
           dispatch(editModal.actions.setErrors(data.response));
@@ -87,7 +79,9 @@ export const HabitEditForm = () => {
           <Input
             type='text'
             defaultValue={selectedHeading}
-            onChange={(e) => setHabit({ ...habit, heading: e.target.value })}
+            onChange={(e) =>
+              setHeading({ ...heading, heading: e.target.value })
+            }
           ></Input>
         </Label>
         <Label htmlFor='description'>
@@ -96,7 +90,7 @@ export const HabitEditForm = () => {
             type='text'
             defaultValue={selectedDescription}
             onChange={(e) =>
-              setHabit({ ...habit, description: e.target.value })
+              setHeading({ ...habit, description: e.target.value })
             }
           ></Input>
         </Label>

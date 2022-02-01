@@ -338,7 +338,7 @@ app.delete('/habits/:habitId', async (req, res) => {
 });
 
 // ******** PATCH method habits ******** //
-
+app.patch('/habits/:habitId', authenticateUser);
 app.patch('/habits/:habitId/update', async (req, res) => {
   const { habitId } = req.params;
   const { heading, description } = req.body;
