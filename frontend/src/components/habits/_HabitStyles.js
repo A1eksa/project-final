@@ -5,6 +5,7 @@ export const HabitWrapper = styled.section`
   flex-direction: column;
   width: 100%;
 `;
+
 export const H2 = styled.h2`
   font-size: 1.5rem;
   font-weight: 400;
@@ -40,7 +41,29 @@ export const HabitText = styled.p`
   color: var(--text-primary);
 `;
 
-export const Button = styled.button`
+export const DeleteButton = styled.button`
+  display: flex;
+  align-items: center;
+  height: 32px;
+  width: 32px;
+  border-radius: 16px;
+  color: var(--text-primary);
+  font-family: Raleway;
+  font-size: 1rem;
+  font-weight: 300;
+  margin-right: 0.5rem;
+  transition: 0.4s;
+  border: none;
+  max-width: 200px;
+  background-color: var(--accent-yellow);
+  :hover {
+    background-color: #f1f1f1;
+    color: var(--text-primary);
+    cursor: pointer;
+  }
+`;
+
+export const EditButton = styled.button`
   display: flex;
   align-items: center;
   height: 32px;

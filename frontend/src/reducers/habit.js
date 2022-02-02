@@ -32,16 +32,17 @@ const habit = createSlice({
       toggledHabit.isCompleted = !toggledHabit.isCompleted;
     },
     updateHabit: (store, action) => {
-      const updatedHabit = store.items.filter(
-        (item) => item._id === action.payload
-      );
-      store.items = updatedHabit;
-      console.log('updateHabit', action.payload);
+      const updatedHabits = store.items.map((item) => {
+        if (item._id === action.payload._id) {
+          item = action.payload;
+          return item;
+        } else {
+          return item;
+        }
+      });
+      store.items = updatedHabits;
+      console.log('updatedHabit', updatedHabits);
     },
-    // updateHabit: (store, action) => {
-    //   store.items.patch(action.payload);
-    //   console.log('updateHabit', action.payload);
-    // },
   },
 });
 

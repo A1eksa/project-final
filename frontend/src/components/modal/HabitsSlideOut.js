@@ -32,7 +32,7 @@ export const HabitsSlideOut = () => {
             +
           </CloseToggle>
         </CloseToggleWrapper>
-        <HabitEditForm />
+        {editSlideout && <HabitEditForm />}
       </div>
     </>
   );

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch, batch } from 'react-redux';
 
 import { API_URL } from '../../utils/constants';
 import { IconContext } from 'react-icons';
@@ -16,8 +16,10 @@ import {
   H2,
   HabitSubject,
   HabitText,
+  BottomContainer,
   LeftWrapper,
-  Button,
+  DeleteButton,
+  EditButton,
 } from './_HabitStyles';
 
 export const HabitList = () => {
@@ -25,14 +27,26 @@ export const HabitList = () => {
   const accessToken = useSelector((store) => store.user.accessToken);
   const userId = useSelector((store) => store.user.userId);
 
+  // const showEditSlideout = (item) => {
+  //   // dispatch(editModal.actions.setSlideout(true));
+  //   dispatch(editModal.actions.setEditSlideout(true));
+  //   // dispatch(editModal.actions.setSelectedId(_id));
+  //   dispatch(editModal.actions.setSelectedHabit(item));
+  //   dispatch(editModal.actions.setSelectedHeading(item.heading));
+  //   dispatch(editModal.actions.setSelectedDescription(item.description));
+  //   console.log('habitId', item);
+  // };
+
   const showEditSlideout = (item) => {
-    // dispatch(editModal.actions.setSlideout(true));
-    dispatch(editModal.actions.setEditSlideout(true));
-    // dispatch(editModal.actions.setSelectedId(_id));
-    dispatch(editModal.actions.setSelectedHabit(item));
-    dispatch(editModal.actions.setSelectedHeading(item.heading));
-    dispatch(editModal.actions.setSelectedDescription(item.description));
-    console.log('habitId line 36', item);
+    batch(() => {
+      // dispatch(editModal.actions.setSlideout(true));
+      // dispatch(editModal.actions.setSelectedId(_id));
+      dispatch(editModal.actions.setSelectedHabit(item));
+      // dispatch(editModal.actions.setSelectedHeading(item.heading));
+      // dispatch(editModal.actions.setSelectedDescription(item.description));
+      dispatch(editModal.actions.setEditSlideout(true));
+      // console.log('habitId line 36', item);
+    });
   };
 
   const dispatch = useDispatch();
@@ -56,7 +70,7 @@ export const HabitList = () => {
           dispatch(habit.actions.setErrors(data.response));
         }
       });
-  }, [accessToken, userId, habitItems, dispatch]);
+  }, [accessToken, userId, dispatch]);
 
   const deleteHabit = (habitId) => {
     const options = {
@@ -107,6 +121,37 @@ export const HabitList = () => {
       });
   };
 
+  const updateHabit = (habitId, description, heading) => {
+    console.log(
+      'habit Id:',
+      habitId,
+      'description:',
+      description,
+      'heading:',
+      heading
+    );
+    const options = {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        // Authorization: accessToken,
+      },
+      body: JSON.stringify({ description, heading, _id: habitId }),
+    };
+
+    fetch(API_URL(`habits/${habitId}/update`), options)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          console.log(data.response);
+          dispatch(habit.actions.updateHabit(habitId));
+          dispatch(habit.actions.setErrors(null));
+        } else {
+          dispatch(habit.actions.setErrors(data.response));
+        }
+      });
+  };
+
   return (
     <HabitWrapper>
       <H2>Your habits</H2>
@@ -116,7 +161,7 @@ export const HabitList = () => {
             <CardWrapper key={items._id}>
               <HabitSubject>{items.heading}</HabitSubject>
               <HabitText>{items.description}</HabitText>
-              <div>
+              <BottomContainer>
                 <LeftWrapper>
                   <IconContext.Provider
                     value={{
@@ -126,13 +171,13 @@ export const HabitList = () => {
                       style: { verticalAlign: 'middle', marginLeft: '0.05rem' },
                     }}
                   >
-                    <Button onClick={() => deleteHabit(items._id)}>
+                    <DeleteButton onClick={() => deleteHabit(items._id)}>
                       <FaTimes />
-                    </Button>
-                    <Button onClick={() => showEditSlideout(items)}>
+                    </DeleteButton>
+                    <EditButton onClick={() => showEditSlideout(items)}>
                       <AiTwotoneEdit />
-                    </Button>
-                    <HabitEditButton />
+                    </EditButton>
+                    {/* <HabitEditButton /> */}
                   </IconContext.Provider>
                 </LeftWrapper>
                 <div>
@@ -158,7 +203,7 @@ export const HabitList = () => {
               </CustomCheckbox>
             </InputLabel>
           </CheckboxContainer> */}
-              </div>
+              </BottomContainer>
             </CardWrapper>
           ))}
       </ListWrapper>

@@ -68,7 +68,7 @@ export const TodoList = () => {
           dispatch(todo.actions.setErrors(data.response));
         }
       });
-  }, [accessToken, dispatch, userId, todoItems]);
+  }, [accessToken, dispatch, userId]);
 
   const deleteTodo = (todoId) => {
     const options = {
