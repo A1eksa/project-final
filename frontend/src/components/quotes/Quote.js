@@ -1,31 +1,38 @@
 import React, { useState, useEffect } from 'react';
+import { QuoteWrapper, Author, QuoteText } from './_QuotesStyles';
 
-const Quote = () => {
+export const Quote = () => {
   const [quote, setQuote] = useState({});
+  const [render, setRender] = useState();
 
   useEffect(() => {
     generateQuote();
   }, []);
 
+  // useEffect(() => {
+  //   setInterval(() => {
+  //     setRender();
+  //   }, 10 * 1000);
+  //   return () => clearTimeout();
+  // }, []);
+
   const generateQuote = () => {
     fetch('http://api.quotable.io/random')
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((quote) => setQuote(quote));
   };
+
   return (
-    <div>
-      {/* {quoteItems.map((items) => (
-        <>
-          <h2>{quote.text}</h2>
-          <h3>{quote.author}</h3>
-        </>
-      ))} */}
-    </div>
+    <QuoteWrapper>
+      <QuoteText>{quote.content}</QuoteText>
+      <Author>{quote.author}</Author>
+      <button onClick={generateQuote}>PRESS</button>
+    </QuoteWrapper>
   );
 };
 
-export default Quote;
 // setQuote(data)
+// setInterval(Quote, 1000);
 
 // https://zenquotes.io/api/today
 // http://api.quotable.io/random /// ok api

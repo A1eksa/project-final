@@ -1,22 +1,17 @@
 import React, { useState } from 'react';
-import './Weather.css';
-import { api, api_key } from '../../utils/constants';
 
-export const Weather = () => {
-  const [query, setQuery] = useState('');
+// import { API_KEY } from '../../utils/constants';
+import { API_FIXED } from '../../utils/constants';
+
+export const WeatherTest = () => {
   const [weather, setWeather] = useState({});
 
-  const search = (event) => {
-    if (event.key === 'Enter') {
-      fetch(`${api}weather?q=${query}&units=metric&APPID=${api_key}`)
-        .then((res) => res.json())
-        .then((data) => {
-          setWeather(data);
-          setQuery('');
-          console.log(data);
-        });
-    }
-  };
+  fetch(API_FIXED)
+    .then((res) => res.json())
+    .then((data) => {
+      setWeather(data);
+      console.log(data);
+    });
 
   const dateBuilder = (d) => {
     let months = [
@@ -49,28 +44,19 @@ export const Weather = () => {
 
     return `${day}${date}${month}${year}`;
   };
+
   return (
     <div className='weather'>
       <main>
-        <div className='search-box'>
-          <input
-            type='text'
-            className='search-bar'
-            placeholder='Search...'
-            onChange={(event) => setQuery(event.target.value)}
-            value={query}
-            onKeyPress={search}
-          />
-        </div>
         <div className='location-box'>
-          <div className='location'>{weather.name}</div>
+          <div className='location'>{timezone}</div>
           {/* <div className='location-country'>{weather.sys.country}</div> */}
           <div className='date'>{dateBuilder(new Date())}</div>
         </div>
         <div className='weather-box'>
-          <div className='temp'>{weather.base}</div>
+          {/* <div className='temp'>{current.temp}</div> */}
         </div>
-        <div className='weather'>sunny</div>
+        <div className='weather'>{weather.description}</div>
       </main>
     </div>
   );

@@ -7,10 +7,13 @@ import { HabitList } from '../habits/HabitList';
 import { CreateSlideOut } from '../modal/CreateSlideOut';
 import { HabitsSlideOut } from '../modal/HabitsSlideOut';
 import { TodoSlideOut } from '../modal/TodoSlideOut';
-import { TimeTicker } from '../small components/TimeTicker';
+// import { TimeTicker } from '../small components/TimeTicker';
 import { TheHeader } from '../header/TheHeader';
 import { Footer } from '../footer/Footer';
+import { Quote } from '../quotes/Quote';
+import { WeatherTest } from '../dateTimeWeather/WeatherTest';
 import '../modal/SlideOut.css';
+import Thoughts from '../small components/Thoughts';
 
 import {
   DashboardWrapper,
@@ -59,7 +62,10 @@ const Dashboard = () => {
           <HeroText>
             <Line></Line>
             <H2>What's on your mind?</H2>
+            {/* <Thoughts /> */}
           </HeroText>
+          <Quote />
+          <WeatherTest />
           {/* <TimeTicker /> */}
         </UpperWrapper>
 

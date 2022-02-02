@@ -80,7 +80,18 @@ export const TodoForm = () => {
 
   return (
     <>
+      {/* <select>
+        <option value='work'>work</option>
+        <option>2</option>
+      </select> */}
       <FormWrapper onSubmit={onFormSubmit}>
+        <Label htmlFor='category'>
+          Category
+          <select>
+            <option value='work'>work</option>
+            <option>2</option>
+          </select>
+        </Label>
         <Label htmlFor='heading'>
           Heading
           <Input
@@ -104,6 +115,18 @@ export const TodoForm = () => {
             value={category}
             onChange={(e) => setCategory(e.target.value)}
           ></Input>
+          {/* Created */}
+          {/* <Input
+            type='date'
+            value={heading}
+            onChange={(e) => setHeading(e.target.value)}
+          ></Input>
+          Due date
+          <Input
+            type='date'
+            value={heading}
+            onChange={(e) => setHeading(e.target.value)}
+          ></Input> */}
         </Label>
         <Button type='submit'>Save</Button>
         {/* <button type='submit'>UPDATE TODO</button> */}

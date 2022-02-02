@@ -38,8 +38,8 @@ export const HabitEditForm = () => {
 
   const dispatch = useDispatch();
 
-  const updateHabit = (habitId) => {
-    // event.eventPreventDefault();
+  const updateHabit = (event, habitId) => {
+    event.preventDefault();
 
     const options = {
       method: 'PATCH',
@@ -73,7 +73,7 @@ export const HabitEditForm = () => {
     <>
       <H2>Edit your habit</H2>
       <Preamble>Here is some text!</Preamble>
-      <FormWrapper onSubmit={() => updateHabit(selectedHabit._id)}>
+      <FormWrapper onSubmit={(event) => updateHabit(event, selectedHabit._id)}>
         <Label htmlFor='heading'>
           Heading
           <Input
@@ -88,7 +88,7 @@ export const HabitEditForm = () => {
           Message
           <Input
             type='text'
-            defaultValue={selectedDescription}
+            defaultvalue={selectedDescription}
             onChange={(e) =>
               setHeading({ ...habit, description: e.target.value })
             }

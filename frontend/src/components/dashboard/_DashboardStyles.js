@@ -39,13 +39,13 @@ export const HeroText = styled.div`
 `;
 
 export const UpperWrapper = styled.div`
-display: flex;
-flex-direction: row;
-padding-top: 3rem;
-justify-content: space-between;
-align-items: flex-end;
-padding-bottom: 3rem;
-`
+  display: flex;
+  flex-direction: row;
+  padding-top: 3rem;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-bottom: 3rem;
+`;
 
 export const MainContentWrapper = styled.div`
   display: flex;
