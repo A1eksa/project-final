@@ -11,7 +11,7 @@ import { TodoSlideOut } from '../modal/TodoSlideOut';
 import { TheHeader } from '../header/TheHeader';
 import { Footer } from '../footer/Footer';
 import { Quote } from '../quotes/Quote';
-import { WeatherTest } from '../dateTimeWeather/WeatherTest';
+// import { WeatherTest } from '../dateTimeWeather/WeatherTest';
 import '../modal/SlideOut.css';
 import Thoughts from '../small components/Thoughts';
 
@@ -65,7 +65,7 @@ const Dashboard = () => {
             {/* <Thoughts /> */}
           </HeroText>
           <Quote />
-          <WeatherTest />
+          {/* <WeatherTest /> */}
           {/* <TimeTicker /> */}
         </UpperWrapper>
 
