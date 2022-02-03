@@ -23,19 +23,19 @@ export const Label = styled.p`
 `;
 
 export const TimeTicker = () => {
-  // const [timeState, setTimeState] = useState();
+  const [timeState, setTimeState] = useState();
 
-  // useEffect(() => {
-  //     setInterval(() => {
-  //         const date = new Date()
-  //         setTimeState(date.toLocaleTimeString())
-  //     }, 1000)
-  // }, [])
+  useEffect(() => {
+    setInterval(() => {
+      const date = new Date();
+      setTimeState(date.toLocaleTimeString());
+    }, 1000);
+  }, []);
 
   return (
     <TimeWrapper>
       <Label>Your local time is</Label>
-      {/* <H4>{timeState}</H4> */}
+      <H4>{timeState}</H4>
     </TimeWrapper>
   );
 };

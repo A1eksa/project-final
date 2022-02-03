@@ -92,6 +92,11 @@ const HabitSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
   },
+  regularity: {
+    type: String,
+    required: true,
+    enum: ['once a day', 'every other day', 'once a week'],
+  },
 });
 
 // ******** Models ******** //
@@ -278,13 +283,14 @@ app.patch('/todo/:todoId/completed', async (req, res) => {
 // ******** POST method habit ******** //
 app.post('/habits', authenticateUser);
 app.post('/habits', async (req, res) => {
-  const { heading, description, user } = req.body;
+  const { heading, description, user, regularity } = req.body;
 
   try {
     const newHabit = await new Habit({
       heading,
       description,
       user: req.user,
+      regularity,
     }).save();
     res.status(201).json({ response: newHabit, success: true });
   } catch (error) {

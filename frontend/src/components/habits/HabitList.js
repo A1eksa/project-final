@@ -8,6 +8,8 @@ import { FaTimes } from 'react-icons/fa';
 import { HabitEditButton } from '../small components/HabitEditButton';
 import habit from '../../reducers/habit';
 import editModal from '../../reducers/editModal';
+// import { RealProgress } from '../small components/RealProgress';
+import { HabitTracker } from '../small components/HabitTracker';
 
 import {
   HabitWrapper,
@@ -20,6 +22,9 @@ import {
   LeftWrapper,
   DeleteButton,
   EditButton,
+  RegularityWrapper,
+  RegularityText,
+  Label,
 } from './_HabitStyles';
 
 export const HabitList = () => {
@@ -159,8 +164,13 @@ export const HabitList = () => {
         {habitItems &&
           habitItems.map((items) => (
             <CardWrapper key={items._id}>
+              <RegularityWrapper>
+                <Label>Regularity</Label>
+                <RegularityText>{items.regularity}</RegularityText>
+              </RegularityWrapper>
               <HabitSubject>{items.heading}</HabitSubject>
               <HabitText>{items.description}</HabitText>
+              <HabitTracker />
               <BottomContainer>
                 <LeftWrapper>
                   <IconContext.Provider

@@ -5,9 +5,9 @@ export const Quote = () => {
   const [quote, setQuote] = useState({});
   const [render, setRender] = useState();
 
-  useEffect(() => {
-    generateQuote();
-  }, []);
+  // useEffect(() => {
+  //   generateQuote();
+  // }, []);
 
   // useEffect(() => {
   //   setInterval(() => {

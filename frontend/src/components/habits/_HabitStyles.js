@@ -25,6 +25,35 @@ border-radius: 10px;
 padding 1rem;
 box-sizing: border-box;
 margin-bottom: 1rem;
+
+`;
+
+export const RegularityWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+`;
+
+export const Label = styled.p`
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  margin: 0;
+`;
+
+export const RegularityText = styled.p`
+  font-size: 14px;
+  line-height: 14px;
+  font-weight: 500;
+  margin: 0;
+  // background-color: #dedede;
+  // height: 24px;
+  // width: 80px;
+  border-radius: 12px;
+  // text-align: center;
+  // display: table-cell;
+  // vertical-align: middle;
+  color: var(--text-primary);
 `;
 
 export const HabitSubject = styled.h3`
