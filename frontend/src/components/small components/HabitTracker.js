@@ -92,7 +92,7 @@ export const HabitTracker = () => {
   var occasions = Math.round((numberOfOccasions * 100) / 100);
   var increment = Math.round(100 / occasions);
 
-  console.log('inrement', increment);
+  console.log('increment', increment);
 
   // console.log(
   //   'number of occations this task should be done: ',

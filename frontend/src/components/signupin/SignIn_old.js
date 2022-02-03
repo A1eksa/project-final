@@ -1,48 +1,32 @@
-import React, { useState, useEffect, createContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, batch, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import user from '../../reducers/user';
 import { API_URL } from '../../utils/constants';
-// import { SignInMargins } from './SignInMargins';
 
 import {
-  BoldLink,
-  BoxContainer,
-  FormContainer,
-  NewInput,
-  MutedLink,
-  SubmitButton,
-  Label,
+  PageWrapper,
   Line,
   H1,
   Preamble,
+  FormWrapper,
+  Label,
+  Input,
+  Button,
 } from './_SignInStyles';
 
 const SignIn = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
-  const [mode, setMode] = useState('signin');
-  const [activeForm, setActiveForm] = useState('signin');
-
-  // const AccountContext = createContext();
+  const [mode, setMode] = useState('signup');
   // const [validationError, setValidationError] = useState(null);
 
   const accessToken = useSelector((store) => store.user.accessToken);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  // const onToggleClick = () => {
-  //   if (mode === 'signin') {
-  //     setMode('signup');
-  //     setIsContainerActive(true);
-  //   } else {
-  //     setMode('signin');
-  //     setIsContainerActive(false);
-  //   }
-  // };
 
   useEffect(() => {
     if (accessToken) {
@@ -97,85 +81,65 @@ const SignIn = () => {
   };
   return (
     <>
-      {/* {activeForm ? 'signin' : 'signup') */}
-
-      <BoxContainer>
+      <PageWrapper>
         <Line></Line>
         <H1>What's on your mind?</H1>
         <Preamble>
-          Create a user and let us help you keep track of your habits and todos!
+          Create a user and save all your thoughts, habits and daily tasks!
         </Preamble>
-        <FormContainer onSubmit={onFormSubmit}>
+        <FormWrapper onSubmit={onFormSubmit}>
           <Label htmlFor='username'>
             Username
-            <NewInput
+            <Input
               type='text'
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-            />
+            ></Input>
           </Label>
-          <Label htmlFor='email'>
+          <Label htmlFor='message'>
             Email
-            <NewInput
+            <Input
               type='text'
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-            />
+            ></Input>
           </Label>
           <Label htmlFor='password'>
             Password
-            <NewInput
+            <Input
               type='text'
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-            />
+            ></Input>
           </Label>
-          <SubmitButton type='submit' onClick={() => setMode('signup')}>
-            Signup
-          </SubmitButton>
-        </FormContainer>
-        <MutedLink href='#'>
-          Already a user?
-          <BoldLink>Signin!</BoldLink>
-        </MutedLink>
-        {/* <SignInMargins direction='vertical' margin={10} /> */}
-
-        {/* <SignInMargins direction='vertical' margin='1em' /> */}
-      </BoxContainer>
-
-      <BoxContainer>
-        <Line></Line>
-        <H1>Welcome back friend!</H1>
-        <Preamble>Sign in and keep track of your stuff!</Preamble>
-        <FormContainer onSubmit={onFormSubmit}>
+          <Button type='submit' onClick={() => setMode('signup')}>
+            SignUp
+          </Button>
+        </FormWrapper>
+        <p>Already a user?</p>
+        <Link></Link>
+        <FormWrapper onSubmit={onFormSubmit}>
           <Label htmlFor='username'>
             Username
-            <NewInput
+            <Input
               type='text'
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-            />
+            ></Input>
           </Label>
           <Label htmlFor='password'>
             Password
-            <NewInput
+            <Input
               type='text'
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-            />
+            ></Input>
           </Label>
-          <SubmitButton type='submit' onClick={() => setMode('signin')}>
-            Signin
-          </SubmitButton>
-        </FormContainer>
-        <MutedLink>
-          Wanna be friends?
-          <BoldLink>Signup</BoldLink>
-        </MutedLink>
-        {/* <SignInMargins direction='vertical' margin={10} /> */}
-
-        {/* <SignInMargins direction='vertical' margin='1em' /> */}
-      </BoxContainer>
+          <Button type='submit' onClick={() => setMode('signin')}>
+            SignIn
+          </Button>
+        </FormWrapper>
+      </PageWrapper>
     </>
   );
 };
