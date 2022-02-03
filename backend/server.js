@@ -98,11 +98,11 @@ const HabitSchema = new mongoose.Schema({
     enum: ['once a day', 'every other day', 'once a week'],
   },
   startDate: {
-    type: Number,
+    type: String,
     default: () => Date.now(),
   },
   endDate: {
-    type: Number,
+    type: String,
     default: () => Date.now(),
   },
 });

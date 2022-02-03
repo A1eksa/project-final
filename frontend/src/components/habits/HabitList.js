@@ -171,6 +171,10 @@ export const HabitList = () => {
               <HabitSubject>{items.heading}</HabitSubject>
               <HabitText>{items.description}</HabitText>
               <HabitTracker />
+              <div>
+                <p>Start {items.startDate}</p>
+                <p>End {items.endDate}</p>
+              </div>
               <BottomContainer>
                 <LeftWrapper>
                   <IconContext.Provider

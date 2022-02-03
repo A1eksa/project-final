@@ -5,7 +5,8 @@ import styled from 'styled-components';
 import { IconContext } from 'react-icons';
 // import { FaCheck } from 'react-icons/fa';
 import { FaHandPeace } from 'react-icons/fa';
-// import habit from '../../reducers/habit';
+import habit from '../../reducers/habit';
+import { HabitsSlideOut } from '../modal/HabitsSlideOut';
 
 const ProgressWrapper = styled.div`
   // transform: rotate(-90deg);
@@ -61,34 +62,63 @@ export const AddButton = styled.button`
 `;
 
 export const HabitTracker = () => {
-  //   const habitItems = useSelector((store) => store.habit.items);
-  //   const accessToken = useSelector((store) => store.user.accessToken);
+  //const habitItems = useSelector((store) => store.habit.items);
+  // const accessToken = useSelector((store) => store.user.accessToken);
+
+  // console.log('habit items', habitItems);
+
+  //console.log('habit items', habitItems[0].endDate);
 
   const [progress, setProgress] = useState({ percentage: 20 });
 
+  const start = new Date();
+  const end = new Date();
+  const diffDays = Math.ceil(
+    Math.abs(end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24)
+  );
+  console.log('amount of days in period', diffDays);
+
+  // const startDate = new Date('February 3, 2022 03:24:00');
+  // const endDate = new Date('February 22, 2022 03:24:0');
+  // const diffDays = Math.ceil(
+  //   Math.abs(endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24)
+  // );
+  // console.log('amount of days in period', diffDays);
+
+  // const regularity = 7; // 1 är varje dag, 2 är varannan och 7 är varje vecka
+
+  // var numberOfOccasions = diffDays / regularity;
+
+  // console.log(
+  //   'number of occations this task should be done: ',
+  //   numberOfOccasions
+  // );
+
   return (
-    <ProgressWrapper>
-      <Track>
-        <Thumb percentage={progress.percentage}></Thumb>
-      </Track>
-      <TrackText>{progress.percentage}%</TrackText>
-      <IconContext.Provider
-        value={{
-          color: '#444444',
-          className: 'global-class-name',
-          size: '1rem',
-          style: { verticalAlign: 'middle', marginBottom: '0.1rem' },
-        }}
-      >
-        <AddButton
-          onClick={(event) =>
-            setProgress({ percentage: progress.percentage + 10 })
-          }
+    <>
+      <ProgressWrapper>
+        <Track>
+          <Thumb percentage={progress.percentage}></Thumb>
+        </Track>
+        <TrackText>{progress.percentage}%</TrackText>
+        <IconContext.Provider
+          value={{
+            color: '#444444',
+            className: 'global-class-name',
+            size: '1rem',
+            style: { verticalAlign: 'middle', marginBottom: '0.1rem' },
+          }}
         >
-          <FaHandPeace />
-        </AddButton>
-        {/* <AddButton onClick={() => setProgress({ percentage: progress.percentage - 10})}></AddButton> */}
-      </IconContext.Provider>
-    </ProgressWrapper>
+          <AddButton
+            onClick={(event) =>
+              setProgress({ percentage: progress.percentage + 10 })
+            }
+          >
+            <FaHandPeace />
+          </AddButton>
+          {/* <AddButton onClick={() => setProgress({ percentage: progress.percentage - 10})}></AddButton> */}
+        </IconContext.Provider>
+      </ProgressWrapper>
+    </>
   );
 };

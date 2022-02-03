@@ -45,12 +45,6 @@ const Dashboard = () => {
   //   localStorage.removeItem('user');
   // };
 
-  useEffect(() => {
-    if (!accessToken) {
-      navigate('/signin');
-    }
-  }, [accessToken, navigate]);
-
   return (
     <>
       <TheHeader />
