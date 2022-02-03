@@ -9,6 +9,8 @@ import { FormWrapper, Label, Input, Button } from '../signupin/_SignInStyles';
 export const HabitForm = () => {
   const [heading, setHeading] = useState('');
   const [description, setDescription] = useState('');
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
   const [regularity, setRegularity] = useState({
     onceAday: 'Once a day',
     everyOtherDay: 'Every other day',
@@ -30,7 +32,13 @@ export const HabitForm = () => {
         'Content-Type': 'application/json',
         Authorization: accessToken,
       },
-      body: JSON.stringify({ heading, description, regularity }),
+      body: JSON.stringify({
+        heading,
+        description,
+        regularity,
+        startDate,
+        endDate,
+      }),
     };
     fetch(API_URL('habits'), options)
       .then((res) => res.json())
@@ -90,6 +98,22 @@ export const HabitForm = () => {
           id_='3'
           value='once a week'
           onChange={(e) => setRegularity(e.target.value)}
+        ></input>
+      </Label>
+      <Label htmlFor='date'>
+        Start date
+        <input
+          type='date'
+          value={startDate}
+          onChange={(e) => setStartDate(e.target.value)}
+        ></input>
+      </Label>
+      <Label htmlFor='date'>
+        End date
+        <input
+          type='date'
+          value={endDate}
+          onChange={(e) => setEndDate(e.target.value)}
         ></input>
       </Label>
 
