@@ -62,37 +62,49 @@ export const AddButton = styled.button`
 `;
 
 export const HabitTracker = () => {
-  //const habitItems = useSelector((store) => store.habit.items);
+  const habitItems = useSelector((store) => store.habit.items);
   // const accessToken = useSelector((store) => store.user.accessToken);
 
   // console.log('habit items', habitItems);
 
   //console.log('habit items', habitItems[0].endDate);
 
-  const [progress, setProgress] = useState({ percentage: 20 });
+  const [progress, setProgress] = useState({ percentage: 0 });
 
-  const start = new Date();
-  const end = new Date();
-  const diffDays = Math.ceil(
-    Math.abs(end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24)
-  );
-  console.log('amount of days in period', diffDays);
-
-  // const startDate = new Date('February 3, 2022 03:24:00');
-  // const endDate = new Date('February 22, 2022 03:24:0');
+  const start = new Date('2022/02/05');
+  const end = new Date('2022/02/15');
   // const diffDays = Math.ceil(
-  //   Math.abs(endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24)
+  //   Math.abs(end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24)
   // );
   // console.log('amount of days in period', diffDays);
 
-  // const regularity = 7; // 1 är varje dag, 2 är varannan och 7 är varje vecka
+  const startDate = new Date(habitItems.startDate);
 
-  // var numberOfOccasions = diffDays / regularity;
+  const endDate = new Date(habitItems.endDate);
+  const diffDays = Math.ceil(
+    Math.abs(endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24)
+  );
+  // console.log('amount of days in period', diffDays);
+
+  const regularity = habitItems.regularity; // 1 är varje dag, 2 är varannan och 7 är varje vecka
+
+  var numberOfOccasions = diffDays / regularity;
+  var occasions = Math.round((numberOfOccasions * 100) / 100);
+  var increment = Math.round(100 / occasions);
+
+  console.log('inrement', increment);
 
   // console.log(
   //   'number of occations this task should be done: ',
-  //   numberOfOccasions
+  //   Math.round((2.67 * 100) / 100)
   // );
+
+  // console.log(
+  //   'number of occations this task should be done: ',
+  //   Math.round((numberOfOccasions * 100) / 100)
+  // );
+
+  console.log('number of occations whitout decimal: ', occasions);
 
   return (
     <>
@@ -111,7 +123,10 @@ export const HabitTracker = () => {
         >
           <AddButton
             onClick={(event) =>
-              setProgress({ percentage: progress.percentage + 10 })
+              // setProgress({ percentage: progress.percentage + 10 })
+              setProgress({
+                percentage: progress.percentage + `${increment}`,
+              })
             }
           >
             <FaHandPeace />
