@@ -164,10 +164,6 @@ export const HabitList = () => {
         {habitItems &&
           habitItems.map((items) => (
             <CardWrapper key={items._id}>
-              <RegularityWrapper>
-                <Label>Regularity</Label>
-                <RegularityText>{items.regularity}</RegularityText>
-              </RegularityWrapper>
               <HabitSubject>{items.heading}</HabitSubject>
               <HabitText>{items.description}</HabitText>
               <HabitTracker />

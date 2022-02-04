@@ -63,28 +63,19 @@ export const AddButton = styled.button`
 
 export const HabitTracker = () => {
   const habitItems = useSelector((store) => store.habit.items);
-  // const accessToken = useSelector((store) => store.user.accessToken);
-
-  // console.log('habit items', habitItems);
-
-  //console.log('habit items', habitItems[0].endDate);
-
   const [progress, setProgress] = useState({ percentage: 0 });
 
-  const start = new Date('2022/02/05');
-  const end = new Date('2022/02/15');
-  // const diffDays = Math.ceil(
-  //   Math.abs(end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24)
-  // );
-  // console.log('amount of days in period', diffDays);
+  const startDate = new Date('22/02/01');
+  const endDate = new Date('22/02/12');
 
-  const startDate = new Date(habitItems.startDate);
+  // const startDate = new Date(habitItems.startDate);
+  // const endDate = new Date(habitItems.endDate);
 
-  const endDate = new Date(habitItems.endDate);
+  console.log('start date', startDate);
   const diffDays = Math.ceil(
     Math.abs(endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24)
   );
-  // console.log('amount of days in period', diffDays);
+  console.log('amount of days in period', diffDays);
 
   const regularity = habitItems.regularity; // 1 är varje dag, 2 är varannan och 7 är varje vecka
 
@@ -92,7 +83,9 @@ export const HabitTracker = () => {
   var occasions = Math.round((numberOfOccasions * 100) / 100);
   var increment = Math.round(100 / occasions);
 
-  console.log('increment', increment);
+  // console.log('increment', increment);
+  // console.log('occasions', occasions);
+  // console.log('habitItems.endDate', habitItems.startDate);
 
   // console.log(
   //   'number of occations this task should be done: ',
@@ -104,7 +97,7 @@ export const HabitTracker = () => {
   //   Math.round((numberOfOccasions * 100) / 100)
   // );
 
-  console.log('number of occations whitout decimal: ', occasions);
+  // console.log('number of occations whitout decimal: ', occasions);
 
   return (
     <>

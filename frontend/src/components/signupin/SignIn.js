@@ -96,87 +96,88 @@ const SignIn = () => {
       });
   };
   return (
-    <>
-      {/* {activeForm ? 'signin' : 'signup') */}
+    <div>
+      {activeForm === 'signin' && (
+        <BoxContainer>
+          <Line></Line>
+          <H1>Welcome back friend!</H1>
+          <Preamble>Sign in and keep track of your stuff!</Preamble>
+          <FormContainer onSubmit={onFormSubmit}>
+            <Label htmlFor='username'>
+              Username
+              <NewInput
+                type='text'
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+            </Label>
+            <Label htmlFor='password'>
+              Password
+              <NewInput
+                type='text'
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </Label>
+            <SubmitButton type='submit' onClick={() => setMode('signin')}>
+              Signin
+            </SubmitButton>
+          </FormContainer>
+          {/* <MutedLink onClick={() => setActiveForm('signup')}> */}
 
-      <BoxContainer>
-        <Line></Line>
-        <H1>What's on your mind?</H1>
-        <Preamble>
-          Create a user and let us help you keep track of your habits and todos!
-        </Preamble>
-        <FormContainer onSubmit={onFormSubmit}>
-          <Label htmlFor='username'>
-            Username
-            <NewInput
-              type='text'
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-          </Label>
-          <Label htmlFor='email'>
-            Email
-            <NewInput
-              type='text'
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </Label>
-          <Label htmlFor='password'>
-            Password
-            <NewInput
-              type='text'
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </Label>
-          <SubmitButton type='submit' onClick={() => setMode('signup')}>
-            Signup
-          </SubmitButton>
-        </FormContainer>
-        <MutedLink href='#'>
-          Already a user?
-          <BoldLink>Signin!</BoldLink>
-        </MutedLink>
-        {/* <SignInMargins direction='vertical' margin={10} /> */}
+          <BoldLink onClick={() => setActiveForm('signup')}>
+            Wanna be friends? Signup
+          </BoldLink>
+          {/* </MutedLink> */}
+        </BoxContainer>
+      )}
 
-        {/* <SignInMargins direction='vertical' margin='1em' /> */}
-      </BoxContainer>
+      {activeForm === 'signup' && (
+        <BoxContainer>
+          <Line></Line>
+          <H1>What's on your mind?</H1>
+          <Preamble>
+            Create a user and let us help you keep track of your habits and
+            todos!
+          </Preamble>
+          <FormContainer onSubmit={onFormSubmit}>
+            <Label htmlFor='username'>
+              Username
+              <NewInput
+                type='text'
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+            </Label>
+            <Label htmlFor='email'>
+              Email
+              <NewInput
+                type='text'
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </Label>
+            <Label htmlFor='password'>
+              Password
+              <NewInput
+                type='text'
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </Label>
+            <SubmitButton type='submit' onClick={() => setMode('signup')}>
+              Signup
+            </SubmitButton>
+          </FormContainer>
+          {/* <MutedLink > */}
 
-      <BoxContainer>
-        <Line></Line>
-        <H1>Welcome back friend!</H1>
-        <Preamble>Sign in and keep track of your stuff!</Preamble>
-        <FormContainer onSubmit={onFormSubmit}>
-          <Label htmlFor='username'>
-            Username
-            <NewInput
-              type='text'
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-          </Label>
-          <Label htmlFor='password'>
-            Password
-            <NewInput
-              type='text'
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </Label>
-          <SubmitButton type='submit' onClick={() => setMode('signin')}>
-            Signin
-          </SubmitButton>
-        </FormContainer>
-        <MutedLink>
-          Wanna be friends?
-          <BoldLink>Signup</BoldLink>
-        </MutedLink>
-        {/* <SignInMargins direction='vertical' margin={10} /> */}
-
-        {/* <SignInMargins direction='vertical' margin='1em' /> */}
-      </BoxContainer>
-    </>
+          <BoldLink onClick={() => setActiveForm('signin')}>
+            Already a user? Signin!
+          </BoldLink>
+          {/* </MutedLink> */}
+        </BoxContainer>
+      )}
+    </div>
   );
 };
 export default SignIn;

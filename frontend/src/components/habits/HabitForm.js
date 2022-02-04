@@ -116,7 +116,6 @@ export const HabitForm = () => {
           onChange={(e) => setEndDate(e.target.value)}
         ></input>
       </Label>
-
       {/* <Label htmlFor='progress'>
         How many days
         <Input

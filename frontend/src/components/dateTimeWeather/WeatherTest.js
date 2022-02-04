@@ -3,24 +3,27 @@ import React, { useState, useEffect } from 'react';
 import { API_KEY } from '../../utils/constants';
 import { API_FIXED } from '../../utils/constants';
 
+import {
+  WeatherWrapper,
+  DateNumber,
+  DateWrapper,
+  DayMonth,
+  Day,
+} from './_DateTimeWeatherStyles';
+
 export const WeatherTest = () => {
-  const [weather, setWeather] = useState([]);
+  const [weather, setWeather] = useState({});
 
-  //   useEffect(() => {
-  //     fetch(API_FIXED)
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         setWeather(data.response);
-  //         console.log(data);
-  //       });
-  //   }, []);
-
-  //   fetch(API_FIXED)
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       //   setWeather(data);
-  //       console.log(data);
-  //     });
+  useEffect(() => {
+    fetch(API_FIXED)
+      .then((res) => res.json())
+      .then((result) => {
+        setWeather(result);
+        console.log(result);
+        console.log(weather);
+        console.log(result.weather[0].description);
+      });
+  }, []);
 
   const dateBuilder = (d) => {
     let months = [
@@ -49,24 +52,36 @@ export const WeatherTest = () => {
     let day = days[d.getDay()];
     let date = d.getDate();
     let month = months[d.getMonth()];
-    let year = d.getFullYear();
+    // let year = d.getFullYear();
 
-    return `${day}${date}${month}${year}`;
+    return (
+      <DateWrapper>
+        <DateNumber>{date}</DateNumber>
+        <DayMonth>
+          <Day>{day} </Day>
+          <Day>{month}</Day>
+        </DayMonth>
+      </DateWrapper>
+    );
   };
 
-  //   return (
-  //     <div className='weather'>
-  //       <main>
-  //         <div className='location-box'>
-  //           {/* <div className='location'>{weather.name}</div> */}
-  //           {/* <div className='location-country'>{weather.sys.country}</div> */}
-  //           <div className='date'>{dateBuilder(new Date())}</div>
-  //         </div>
-  //         <div className='weather-box'>
-  //           {/* <div className='temp'>{current.temp}</div> */}
-  //         </div>
-  //         <div className='weather'>{weather.description}</div>
-  //       </main>
-  //     </div>
-  //   );
+  return (
+    <>
+      <WeatherWrapper>
+        {typeof weather.main != 'undefined' ? (
+          <div>
+            <div>
+              {weather.name}, {weather.sys.country}{' '}
+            </div>
+            <div className='date'>{dateBuilder(new Date())}</div>
+            {/* <div>`${day}`</div> */}
+            <div className='weather'>{weather.main.temp}°C </div>
+            <div className='weather'>{weather.weather[0].description}</div>
+          </div>
+        ) : (
+          ''
+        )}
+      </WeatherWrapper>
+    </>
+  );
 };

@@ -35,6 +35,7 @@ export const BoldLink = styled.a`
   font-weight: 500;
   text-decoration: none;
   margin: 0 4px;
+  cursor: pointer;
 `;
 
 export const NewInput = styled.input`

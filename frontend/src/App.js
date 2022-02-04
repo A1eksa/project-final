@@ -16,7 +16,6 @@ import todo from './reducers/todo';
 import modal from './reducers/modal';
 import editModal from './reducers/editModal';
 import editTodoModal from './reducers/editTodoModal';
-import Thoughts from './components/small components/Thoughts';
 
 const reducer = combineReducers({
   user: user.reducer,

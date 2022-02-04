@@ -6,6 +6,13 @@ import user from '../../reducers/user';
 import todo from '../../reducers/todo';
 
 import { FormWrapper, Label, Input, Button } from '../signupin/_SignInStyles';
+import {
+  FormCategoryWrapper,
+  HiddenRadioButton,
+  RadioButton,
+  CategoryLabel,
+  Inputlabel,
+} from './_TodoStyles';
 
 export const TodoForm = () => {
   const accessToken = useSelector((store) => store.user.accessToken);
@@ -21,7 +28,12 @@ export const TodoForm = () => {
 
   const [heading, setHeading] = useState('');
   const [message, setMessage] = useState('');
-  const [category, setCategory] = useState('');
+  const [category, setCategory] = useState({
+    home: 'Home',
+    family: 'Family',
+    work: 'Work',
+    friends: 'Friends',
+  });
 
   // From the recording:
   // const [category, setCategory] = useState(currentlySelectedTodo ? currentlySelectedTodo.category : '');
@@ -80,18 +92,7 @@ export const TodoForm = () => {
 
   return (
     <>
-      {/* <select>
-        <option value='work'>work</option>
-        <option>2</option>
-      </select> */}
       <FormWrapper onSubmit={onFormSubmit}>
-        <Label htmlFor='category'>
-          Category
-          <select>
-            <option value='work'>work</option>
-            <option>2</option>
-          </select>
-        </Label>
         <Label htmlFor='heading'>
           Heading
           <Input
@@ -108,31 +109,57 @@ export const TodoForm = () => {
             onChange={(e) => setMessage(e.target.value)}
           ></Input>
         </Label>
-        <Label htmlFor='category'>
-          Category
-          <Input
-            type='text'
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-          ></Input>
-          {/* Created */}
-          {/* <Input
-            type='date'
-            value={heading}
-            onChange={(e) => setHeading(e.target.value)}
-          ></Input>
-          Due date
-          <Input
-            type='date'
-            value={heading}
-            onChange={(e) => setHeading(e.target.value)}
-          ></Input> */}
-        </Label>
+
+        <Label htmlFor='categories'> Choose category </Label>
+
+        <FormCategoryWrapper>
+          <CategoryLabel htmlFor='Home'>
+            Home
+            <HiddenRadioButton
+              name='options'
+              id_='1'
+              value='Home'
+              onChange={(e) => setCategory(e.target.value)}
+            ></HiddenRadioButton>
+            <RadioButton></RadioButton>
+          </CategoryLabel>
+
+          <CategoryLabel htmlFor='Family'>
+            Family
+            <HiddenRadioButton
+              name='options'
+              id_='2'
+              value='Family'
+              onChange={(e) => setCategory(e.target.value)}
+            ></HiddenRadioButton>
+            <RadioButton></RadioButton>
+          </CategoryLabel>
+
+          <CategoryLabel htmlFor='Work'>
+            Work
+            <HiddenRadioButton
+              name='options'
+              id_='3'
+              value='Work'
+              onChange={(e) => setCategory(e.target.value)}
+            ></HiddenRadioButton>
+            <RadioButton></RadioButton>
+          </CategoryLabel>
+
+          <CategoryLabel htmlFor='Friends'>
+            Friends
+            <HiddenRadioButton
+              type='radio'
+              name='options'
+              id_='4'
+              value='Friends'
+              onChange={(e) => setCategory(e.target.value)}
+            ></HiddenRadioButton>
+            <RadioButton></RadioButton>
+          </CategoryLabel>
+        </FormCategoryWrapper>
+
         <Button type='submit'>Save</Button>
-        {/* <button type='submit'>UPDATE TODO</button> */}
-        {/* <button type='submit' onClick={updateTodo}>
-        UPDATE TODO
-      </button> */}
       </FormWrapper>
     </>
   );
