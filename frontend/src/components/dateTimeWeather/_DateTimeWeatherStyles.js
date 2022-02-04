@@ -15,6 +15,7 @@ export const DateNumber = styled.h3`
   margin-top: 0;
   margin-bottom: 0;
   line-height: 2.5rem;
+  color: var(--text-primary);
 `;
 export const DateWrapper = styled.div`
   display: flex;

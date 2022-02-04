@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const StyledFooter = styled.footer`
   width: 100%;
-  background-color: #dedede80;
+  background-color: var(--footer);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -23,6 +23,7 @@ export const P = styled.p`
   font-size: 1.125rem;
   font-weight: 400;
   line-height: 1.125rem;
+  color: var(--text-primary);
 `;
 
 export const LogOutButton = styled.button`
@@ -39,7 +40,7 @@ export const LogOutButton = styled.button`
   max-width: 200px;
   background-color: var(--accent-green);
   :hover {
-    background-color: #f1f1f1;
+    background-color: var(--level-two);
     color: var(--text-primary);
     cursor: pointer;
   }

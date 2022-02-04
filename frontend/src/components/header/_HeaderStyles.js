@@ -33,4 +33,5 @@ export const H1 = styled.h1`
   font-weight: 300;
   max-width: 220px;
   margin: 0;
+  color: var(--text-primary);
 `;

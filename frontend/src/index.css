@@ -1,14 +1,49 @@
-body {
-  box-sizing: border-box;
-  margin: 0 auto;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0 0 10rem 0;
+  font-family: Raleway, Open-Sans, Roboto, Helvetica, Sans-Serif;
+}
+
+:root {
+  --background: #ffffff;
+  --level-one: #ffffff;
+  --level-two: #ffffff;
+  --level-three: #ffffff;
+  --text-primary: #1a1a1a;
+  --text-secondary: #868686;
+  --accent-green: #8cc173;
+  --accent-yellow: #e1ad01;
+  --box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+  --grey-100: #dedede;
+  --grey-200: #cecece;
+  --grey-300: #adadad;
+  --grey-400: #868686;
+  --grey-500: #494949;
+  --grey-600: #333333;
+  --footer: #dedede80;
+}
+
+[data-theme='dark'] {
+  --background: #121212;
+  --level-one: #222222;
+  --level-two: #272727;
+  --level-three: #2c2c2c;
+  --text-primary: #dedede;
+  --text-secondary: #999999;
+  --accent-green: #679c4e;
+  --accent-yellow: #e1ad01;
+  --box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+  --grey-100: #dedede;
+  --grey-200: #cecece;
+  --grey-300: #adadad;
+  --grey-400: #868686;
+  --grey-500: #494949;
+  --grey-600: #333333;
+  --footer: #dedede80;
 }

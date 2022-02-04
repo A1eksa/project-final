@@ -4,7 +4,7 @@ export const QuoteWrapper = styled.div`
 // margin-left: 220px;
 min-width: 343px;
 max-width: 50%;
-box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+box-shadow: var(--box-shadow);
 border-radius: 10px;
 padding 1rem;
 box-sizing: border-box;

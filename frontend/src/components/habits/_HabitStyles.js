@@ -20,7 +20,7 @@ export const ListWrapper = styled.section`
 
 export const CardWrapper = styled.div`
 min-height: 148px;
-box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+box-shadow: var(--box-shadow);
 border-radius: 10px;
 padding 1rem;
 box-sizing: border-box;
@@ -46,13 +46,7 @@ export const RegularityText = styled.p`
   line-height: 14px;
   font-weight: 500;
   margin: 0;
-  // background-color: #dedede;
-  // height: 24px;
-  // width: 80px;
   border-radius: 12px;
-  // text-align: center;
-  // display: table-cell;
-  // vertical-align: middle;
   color: var(--text-primary);
 `;
 
@@ -86,8 +80,10 @@ export const DeleteButton = styled.button`
   max-width: 200px;
   background-color: var(--accent-yellow);
   :hover {
-    background-color: #f1f1f1;
+    background-color: var(--grey-300);
     color: var(--text-primary);
+    cursor: pointer;
+    transform: rotate(360deg);
     cursor: pointer;
   }
 `;
@@ -108,8 +104,10 @@ export const EditButton = styled.button`
   max-width: 200px;
   background-color: var(--accent-green);
   :hover {
-    background-color: #f1f1f1;
+    background-color: var(--grey-300);
     color: var(--text-primary);
+    cursor: pointer;
+    transform: rotate(360deg);
     cursor: pointer;
   }
 `;
@@ -124,4 +122,52 @@ export const LeftWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+`;
+
+export const HiddenRadioButton = styled.input.attrs({
+  type: 'radio',
+})`
+  height: 32px;
+  width: 48px;
+  cursor: pointer;
+  position: absolute;
+  opacity: 0;
+`;
+export const RadioButton = styled.span`
+  display: flex;
+  width: 100%;
+  height: 32px;
+  border-radius: 32px;
+  background-color: var(--grey-100);
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+  padding: 0.25rem 0.75rem;
+
+  ${HiddenRadioButton}:checked + && {
+    background-color: var(--accent-green);
+  }
+`;
+export const CategoryLabel = styled.label`
+  min-width: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: 300;
+  color: var(--text-primary);
+  //width: 100%;
+  transition: 0.2s;
+  font-size: 1rem;
+  font-weight: 400;
+  position: relative;
+`;
+export const FormCategoryWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+  width: 100%;
+  justify-content: space-between;
 `;

@@ -18,12 +18,12 @@ export const FormContainer = styled.form`
   padding: 2rem;
   border-radius: 10px;
   margin-top: 3rem;
-  box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+  box-shadow: var(--box-shadow);
 `;
 
 export const MutedLink = styled.a`
   font-size: 14px;
-  color: #999999;
+  color: var(--text-secondary);
   font-weight: 500;
   text-decoration: none;
   margin-top: 2rem;
@@ -31,7 +31,7 @@ export const MutedLink = styled.a`
 
 export const BoldLink = styled.a`
   font-size: 14px;
-  color: #1a1a1a;
+  color: var(--text-primary);
   font-weight: 500;
   text-decoration: none;
   margin: 0 4px;
@@ -40,7 +40,7 @@ export const BoldLink = styled.a`
 
 export const NewInput = styled.input`
   border-radius: 8px;
-  color: #868686;
+  color: var(--text-secondary);
   font-size: 1rem;
   font-weight: 300;
   text-decoration: inherit;
@@ -49,28 +49,28 @@ export const NewInput = styled.input`
   width: 100%;
   height: 3rem;
   padding: 16px;
-  border: 1px solid #dedede;
-  background-color: inherit;
+  border: 1px solid var(--grey-500);
+  background-color: var(--level-one);
   margin-bottom: 1rem;
   margin-top: 0.5rem;
   outline: none;
   transition: 0.4s;
   :hover {
     cursor: pointer;
-    box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+    box-shadow: var(--box-shadow);
   }
   :focus {
     ::placeholder {
-      color: #868686;
+      color: var(--text-secondary);
     }
     padding: 16px;
-    background-color: #f1f1f1;
+    background-color: var(--level-two);
     border: none;
     ::placeholder {
-      color: #868686;
+      color: var(--text-secondary);
     }
     :focus {
-      color: #868686;
+      color: var(--text-secondary);
       font-size: 14px;
     }
   }
@@ -79,18 +79,19 @@ export const NewInput = styled.input`
 export const SubmitButton = styled.button`
   padding: 1rem;
   border-radius: 8px;
-  color: #1a1a1a;
+  color: var(--grey-600);
   font-family: Raleway;
   font-size: 1rem;
   font-weight: 300;
   transition: 0.4s;
   border: none;
   width: 100%;
-  margin: 1rem 0 0 0;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
   background-color: var(--accent-green);
   :hover {
-    background-color: #f1f1f1;
-    color: #1a1a1a;
+    background-color: var(--grey-300);
+    color: var(--grey-600);
     cursor: pointer;
   }
 `;
@@ -179,7 +180,7 @@ export const Label = styled.label`
 
 export const Input = styled.input`
   border-radius: 8px;
-  color: #868686;
+  color: var(--text-secondary);
   font-size: 1rem;
   font-weight: 300;
   text-decoration: inherit;
@@ -188,36 +189,37 @@ export const Input = styled.input`
   width: 100%;
   height: 3rem;
   padding: 16px;
-  border: 1px solid #f1f1f1;
-  background-color: inherit;
+  border: 1px solid var(--grey-200);
+  background-color: var(--level-one);
   margin-bottom: 1rem;
   margin-top: 0.5rem;
   outline: none;
   transition: 0.4s;
   :hover {
     cursor: pointer;
-    box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+    box-shadow: var(--box-shadow);
   }
   :focus {
     ::placeholder {
-      color: #868686;
+      color: var(--text-secondary);
     }
     padding: 16px;
-    background-color: #f1f1f1;
+    background-color: var(--level-two);
     border: none;
     ::placeholder {
-      color: #868686;
+      color: var(--text-secondary);
     }
     :focus {
-      color: #868686;
+      color: var(--text-secondary);
       font-size: 14px;
     }
   }
 `;
+
 export const Button = styled.button`
   padding: 1rem;
   border-radius: 8px;
-  color: #1a1a1a;
+  color: var(--grey-600);
   font-family: Raleway;
   font-size: 1rem;
   font-weight: 300;
@@ -225,10 +227,11 @@ export const Button = styled.button`
   border: none;
   width: 100%;
   margin-bottom: 1rem;
+  margin-top: 1rem;
   background-color: var(--accent-green);
   :hover {
-    background-color: #f1f1f1;
-    color: #1a1a1a;
+    background-color: var(--grey-300);
+    color: var(--grey-600);
     cursor: pointer;
   }
 `;

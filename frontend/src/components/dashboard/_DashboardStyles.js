@@ -18,7 +18,7 @@ export const Line = styled.div`
   margin-top: 1.3rem;
   height: 4px;
   width: 96px;
-  background-color: #1a1a1a;
+  background-color: (--text-primary);
 `;
 
 export const H2 = styled.h2`

@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 // import user from '../../reducers/user';
 import { OpenModalToggle } from '../small components/OpenModalToggle';
+// import { ThemeToggle } from '../styling/ThemeToggle';
 
 import {
   HeaderWrapper,
@@ -22,6 +23,7 @@ export const TheHeader = () => {
 
   return (
     <HeaderWrapper>
+      {/* <ThemeToggle /> */}
       <User>
         <H1>Hello {loggedInUser}!</H1>
         {/* <LogOutButton onClick={handleLogout}>SIGN OUT</LogOutButton> */}

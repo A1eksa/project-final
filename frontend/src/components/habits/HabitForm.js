@@ -5,6 +5,12 @@ import { API_URL } from '../../utils/constants';
 import user from '../../reducers/user';
 
 import { FormWrapper, Label, Input, Button } from '../signupin/_SignInStyles';
+import {
+  HiddenRadioButton,
+  RadioButton,
+  CategoryLabel,
+  FormCategoryWrapper,
+} from './_HabitStyles';
 
 export const HabitForm = () => {
   const [heading, setHeading] = useState('');
@@ -70,36 +76,41 @@ export const HabitForm = () => {
         ></Input>
       </Label>
       <Label>Regularity</Label>
-      <Label htmlFor='heading'>
-        Once a day
-        <input
-          type='radio'
-          name='options'
-          id_='1'
-          value='once a day'
-          onChange={(e) => setRegularity(e.target.value)}
-        ></input>
-      </Label>
-      <Label htmlFor='heading'>
-        Every other day
-        <input
-          type='radio'
-          name='options'
-          id_='2'
-          value='every other day'
-          onChange={(e) => setRegularity(e.target.value)}
-        ></input>
-      </Label>
-      <Label htmlFor='heading'>
-        Once a week
-        <input
-          type='radio'
-          name='options'
-          id_='3'
-          value='once a week'
-          onChange={(e) => setRegularity(e.target.value)}
-        ></input>
-      </Label>
+      <FormCategoryWrapper>
+        <CategoryLabel htmlFor='heading'>
+          Daily
+          <HiddenRadioButton
+            type='radio'
+            name='options'
+            id_='1'
+            value='once a day'
+            onChange={(e) => setRegularity(e.target.value)}
+          ></HiddenRadioButton>
+          <RadioButton></RadioButton>
+        </CategoryLabel>
+        <CategoryLabel htmlFor='heading'>
+          Every other day
+          <HiddenRadioButton
+            type='radio'
+            name='options'
+            id_='2'
+            value='every other day'
+            onChange={(e) => setRegularity(e.target.value)}
+          ></HiddenRadioButton>
+          <RadioButton></RadioButton>
+        </CategoryLabel>
+        <CategoryLabel htmlFor='heading'>
+          Once a week
+          <HiddenRadioButton
+            type='radio'
+            name='options'
+            id_='3'
+            value='once a week'
+            onChange={(e) => setRegularity(e.target.value)}
+          ></HiddenRadioButton>
+          <RadioButton></RadioButton>
+        </CategoryLabel>
+      </FormCategoryWrapper>
       <Label htmlFor='date'>
         Start date
         <input

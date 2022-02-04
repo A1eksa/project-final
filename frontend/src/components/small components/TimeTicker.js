@@ -11,6 +11,7 @@ export const H4 = styled.h4`
   line-height: 3rem;
   font-weight: 200;
   margin: 0;
+  color: var(--text-secondary);
   font-feature-settings: 'lnum' 1;
 `;
 
