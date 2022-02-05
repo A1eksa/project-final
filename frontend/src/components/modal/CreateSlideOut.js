@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { HabitForm } from '../habits/HabitForm';
-import { TodoForm } from '../todo/TodoForm';
+import { HabitForm } from '../forms/HabitForm';
+import { TodoForm } from '../forms/TodoForm';
 import { useSelector, useDispatch } from 'react-redux';
 import modal from '../../reducers/modal';
 import './SlideOut.css';

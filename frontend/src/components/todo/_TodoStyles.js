@@ -14,11 +14,12 @@ export const ListWrapper = styled.section`
 export const CardWrapper = styled.div`
 min-width: 343px;
 width: 100%;
-box-shadow: var(--box-shadow) 0px 4px 12px;
+box-shadow: var(--box-shadow);
 border-radius: 10px;
 padding 1rem;
 box-sizing: border-box;
 margin-bottom: 1rem;
+background-color: var(--level-one);
 `;
 
 export const TodoSubject = styled.h3`

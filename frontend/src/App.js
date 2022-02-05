@@ -8,6 +8,7 @@ import Dashboard from './components/dashboard/Dashboard';
 import SignIn from './components/signupin/SignIn';
 // import { HabitForm } from './components/habits/HabitForm';
 // import { GlobalStyles } from './components/styling/GlobalStyles';
+import { DarkMode } from './components/styling/DarkMode';
 
 import user from './reducers/user';
 import habit from './reducers/habit';
@@ -16,6 +17,7 @@ import todo from './reducers/todo';
 import modal from './reducers/modal';
 import editModal from './reducers/editModal';
 import editTodoModal from './reducers/editTodoModal';
+import { ThemeProvider } from 'styled-components';
 
 const reducer = combineReducers({
   user: user.reducer,
@@ -31,7 +33,7 @@ const store = configureStore({ reducer });
 function App() {
   return (
     <Provider store={store}>
-      {/* <GlobalStyles /> */}
+      <DarkMode />
       <BrowserRouter>
         <Routes>
           <Route exact path='/' element={<Dashboard />} />

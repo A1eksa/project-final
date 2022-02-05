@@ -11,7 +11,7 @@ import {
   BoxContainer,
   FormContainer,
   NewInput,
-  MutedLink,
+  PageWrapper,
   SubmitButton,
   Label,
   Line,
@@ -96,7 +96,7 @@ const SignIn = () => {
       });
   };
   return (
-    <div>
+    <PageWrapper>
       {activeForm === 'signin' && (
         <BoxContainer>
           <Line></Line>
@@ -177,7 +177,7 @@ const SignIn = () => {
           {/* </MutedLink> */}
         </BoxContainer>
       )}
-    </div>
+    </PageWrapper>
   );
 };
 export default SignIn;

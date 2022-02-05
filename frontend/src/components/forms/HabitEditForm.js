@@ -5,15 +5,7 @@ import { API_URL } from '../../utils/constants';
 import habit from '../../reducers/habit';
 import editModal from '../../reducers/editModal';
 
-import {
-  FormWrapper,
-  Label,
-  Input,
-  Button,
-  H2,
-  H3,
-  Preamble,
-} from '../signupin/_SignInStyles';
+import { FormWrapper, Label, Input, Button, H3, Preamble } from './FormsStyles';
 
 export const HabitEditForm = () => {
   const accessToken = useSelector((store) => store.user.accessToken);

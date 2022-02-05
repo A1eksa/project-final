@@ -25,6 +25,7 @@ border-radius: 10px;
 padding 1rem;
 box-sizing: border-box;
 margin-bottom: 1rem;
+background-color: var(--level-one);
 
 `;
 
@@ -122,52 +123,4 @@ export const LeftWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-`;
-
-export const HiddenRadioButton = styled.input.attrs({
-  type: 'radio',
-})`
-  height: 32px;
-  width: 48px;
-  cursor: pointer;
-  position: absolute;
-  opacity: 0;
-`;
-export const RadioButton = styled.span`
-  display: flex;
-  width: 100%;
-  height: 32px;
-  border-radius: 32px;
-  background-color: var(--grey-100);
-  pointer-events: none;
-  position: absolute;
-  z-index: -1;
-  padding: 0.25rem 0.75rem;
-
-  ${HiddenRadioButton}:checked + && {
-    background-color: var(--accent-green);
-  }
-`;
-export const CategoryLabel = styled.label`
-  min-width: 70px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-weight: 300;
-  color: var(--text-primary);
-  //width: 100%;
-  transition: 0.2s;
-  font-size: 1rem;
-  font-weight: 400;
-  position: relative;
-`;
-export const FormCategoryWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  padding-top: 1rem;
-  padding-bottom: 2rem;
-  width: 100%;
-  justify-content: space-between;
 `;

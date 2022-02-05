@@ -4,13 +4,16 @@ import { API_URL } from '../../utils/constants';
 
 import user from '../../reducers/user';
 
-import { FormWrapper, Label, Input, Button } from '../signupin/_SignInStyles';
 import {
   HiddenRadioButton,
   RadioButton,
   CategoryLabel,
   FormCategoryWrapper,
-} from './_HabitStyles';
+  FormWrapper,
+  Label,
+  Input,
+  Button,
+} from './FormsStyles';
 
 export const HabitForm = () => {
   const [heading, setHeading] = useState('');
@@ -29,9 +32,7 @@ export const HabitForm = () => {
 
   const dispatch = useDispatch();
 
-  const onHabitSubmit = (event) => {
-    event.preventDefault();
-
+  const onHabitSubmit = () => {
     const options = {
       method: 'POST',
       headers: {

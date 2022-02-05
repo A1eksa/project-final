@@ -5,7 +5,7 @@ import { API_URL } from '../../utils/constants';
 import user from '../../reducers/user';
 import todo from '../../reducers/todo';
 
-import { FormWrapper, Label, Input, Button } from '../signupin/_SignInStyles';
+import { FormWrapper, Label, Input, Button } from './FormsStyles';
 
 export const TodoEditForm = () => {
   const accessToken = useSelector((store) => store.user.accessToken);

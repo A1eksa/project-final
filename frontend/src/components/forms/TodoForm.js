@@ -5,14 +5,17 @@ import { API_URL } from '../../utils/constants';
 import user from '../../reducers/user';
 import todo from '../../reducers/todo';
 
-import { FormWrapper, Label, Input, Button } from '../signupin/_SignInStyles';
 import {
   FormCategoryWrapper,
   HiddenRadioButton,
   RadioButton,
   CategoryLabel,
   Inputlabel,
-} from './_TodoStyles';
+  FormWrapper,
+  Label,
+  Input,
+  Button,
+} from './FormsStyles';
 
 export const TodoForm = () => {
   const accessToken = useSelector((store) => store.user.accessToken);
@@ -40,9 +43,7 @@ export const TodoForm = () => {
 
   const dispatch = useDispatch();
 
-  const onFormSubmit = (event) => {
-    event.preventDefault();
-
+  const onFormSubmit = () => {
     const options = {
       method: 'POST',
       headers: {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { HabitEditForm } from '../habits/HabitEditForm';
+import { HabitEditForm } from '../forms/HabitEditForm';
 import './SlideOut.css';
 import editModal from '../../reducers/editModal';
 

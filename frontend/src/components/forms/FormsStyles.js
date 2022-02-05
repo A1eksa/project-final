@@ -1,64 +1,70 @@
 import styled from 'styled-components';
 
-//******** SIGNIN FORM NEW ********//
+// HABIT FORM //
 
-export const PageWrapper = styled.section`
-  min-height: 100vh;
-  margin: 0 auto;
-  background-color: var(--background);
+export const HiddenRadioButton = styled.input.attrs({
+  type: 'radio',
+})`
+  height: 32px;
+  width: 48px;
+  cursor: pointer;
+  position: absolute;
+  opacity: 0;
 `;
 
-export const BoxContainer = styled.div`
-  max-width: 400px;
-  margin: 0 auto;
+export const RadioButton = styled.span`
   display: flex;
-  flex-direction: column;
-  // align-items: center;
-  margin-top: 10px;
-`;
-
-export const Line = styled.div`
-  margin-top: 4rem;
-  height: 4px;
-  width: 96px;
-  background-color: var(--grey-200);
-`;
-
-export const H1 = styled.h1`
-  font-size: 3rem;
-  font-weight: 300;
-  line-height: 3.2rem;
-  margin-bottom: 0;
-  max-width: 240px;
-  margin-top: 1.5rem;
-  color: var(--text-primary);
-`;
-
-export const Preamble = styled.p`
-  font-size: 1.5rem;
-  font-weight: 200;
-  line-height: 1.875rem;
-  margin-bottom: 0;
-  max-width: 400px;
-  color: var(--text-primary);
-`;
-
-export const FormContainer = styled.form`
   width: 100%;
+  height: 32px;
+  border-radius: 32px;
+  background-color: var(--grey-100);
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+  padding: 0.25rem 0.75rem;
+
+  ${HiddenRadioButton}:checked + && {
+    background-color: var(--accent-green);
+  }
+`;
+
+export const CategoryLabel = styled.label`
+  min-width: 70px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: 300;
+  color: var(--text-primary);
+  //width: 100%;
+  transition: 0.2s;
+  font-size: 1rem;
+  font-weight: 400;
+  position: relative;
+`;
+
+export const FormCategoryWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+  width: 100%;
+  justify-content: space-between;
+`;
+
+export const FormWrapper = styled.form`
   padding: 2rem;
   border-radius: 10px;
   margin-top: 3rem;
-  box-shadow: var(--box-shadow);
-  background-color: var(--level-one);
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
 `;
 
 export const Label = styled.label`
   display: flex;
   flex-direction: column;
   font-weight: 300;
-  color: var(--text-primary);
+  color: #1a1a1a;
   width: 100%;
   transition: 0.2s;
   font-size: 1rem;
@@ -66,7 +72,7 @@ export const Label = styled.label`
   margin-top: 1rem;
 `;
 
-export const NewInput = styled.input`
+export const Input = styled.input`
   border-radius: 8px;
   color: var(--text-secondary);
   font-size: 1rem;
@@ -77,7 +83,7 @@ export const NewInput = styled.input`
   width: 100%;
   height: 3rem;
   padding: 16px;
-  border: 1px solid var(--grey-100);
+  border: 1px solid var(--grey-200);
   background-color: var(--level-one);
   margin-bottom: 1rem;
   margin-top: 0.5rem;
@@ -104,7 +110,7 @@ export const NewInput = styled.input`
   }
 `;
 
-export const SubmitButton = styled.button`
+export const Button = styled.button`
   padding: 1rem;
   border-radius: 8px;
   color: var(--grey-600);
@@ -124,11 +130,21 @@ export const SubmitButton = styled.button`
   }
 `;
 
-export const BoldLink = styled.a`
-  font-size: 14px;
-  color: var(--text-primary);
+export const Preamble = styled.p`
+  font-size: 1.5rem;
+  font-weight: 200;
+  line-height: 1.875rem;
+  margin-bottom: 0;
+  max-width: 400px;
+  color: #1a1a1a;
+`;
+
+export const H3 = styled.h3`
+  font-size: 1.5rem;
   font-weight: 500;
-  text-decoration: none;
-  margin: 0 4px;
-  cursor: pointer;
+  line-height: 2rem;
+  margin-bottom: 0;
+  max-width: 240px;
+  margin-top: 4rem;
+  color: var(--primary);
 `;

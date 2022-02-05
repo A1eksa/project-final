@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { TodoEditForm } from '../todo/TodoEditForm';
+import { TodoEditForm } from '../forms/TodoEditForm';
 import './SlideOut.css';
 import editTodoModal from '../../reducers/editTodoModal';
 
