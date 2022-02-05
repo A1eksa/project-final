@@ -26,6 +26,7 @@ import {
   // CheckboxContainer,
   BottomContainer,
   LeftWrapper,
+  // DeleteIcon,
 } from '../todo/_TodoStyles';
 
 export const TodoList = () => {

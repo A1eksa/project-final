@@ -25,6 +25,9 @@ import {
   RegularityWrapper,
   RegularityText,
   Label,
+  Start,
+  End,
+  Dates,
 } from './_HabitStyles';
 
 export const HabitList = () => {
@@ -167,10 +170,10 @@ export const HabitList = () => {
               <HabitSubject>{items.heading}</HabitSubject>
               <HabitText>{items.description}</HabitText>
               <HabitTracker />
-              <div>
-                <p>Start {items.startDate}</p>
-                <p>End {items.endDate}</p>
-              </div>
+              <Dates>
+                <Start>Start {items.startDate}</Start>
+                <End>End {items.endDate}</End>
+              </Dates>
               <BottomContainer>
                 <LeftWrapper>
                   <IconContext.Provider

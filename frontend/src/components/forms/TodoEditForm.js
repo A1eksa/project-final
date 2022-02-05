@@ -5,7 +5,7 @@ import { API_URL } from '../../utils/constants';
 import user from '../../reducers/user';
 import todo from '../../reducers/todo';
 
-import { FormWrapper, Label, Input, Button } from './FormsStyles';
+import { FormWrapper, Label, Input, Button, H3, Preamble } from './FormsStyles';
 
 export const TodoEditForm = () => {
   const accessToken = useSelector((store) => store.user.accessToken);
@@ -69,7 +69,8 @@ export const TodoEditForm = () => {
 
   return (
     <>
-      <h2>Edit your todo</h2>
+      <H3>Edit your todo</H3>
+      <Preamble>You are doing great! What do you wanna update?</Preamble>
       <FormWrapper onSubmit={onFormSubmit}>
         <Label htmlFor='heading'>
           Heading

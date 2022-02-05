@@ -14,14 +14,13 @@ export const HiddenRadioButton = styled.input.attrs({
 
 export const RadioButton = styled.span`
   display: flex;
-  width: 100%;
+  width: 95%;
   height: 32px;
   border-radius: 32px;
-  background-color: var(--grey-100);
+  background-color: var(--level-one);
   pointer-events: none;
   position: absolute;
   z-index: -1;
-  padding: 0.25rem 0.75rem;
 
   ${HiddenRadioButton}:checked + && {
     background-color: var(--accent-green);
@@ -57,14 +56,15 @@ export const FormWrapper = styled.form`
   padding: 2rem;
   border-radius: 10px;
   margin-top: 3rem;
-  box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+  box-shadow: var(--box-shadow);
+  background-color: var(--level-one);
 `;
 
 export const Label = styled.label`
   display: flex;
   flex-direction: column;
   font-weight: 300;
-  color: #1a1a1a;
+  color: var(--text-primary);
   width: 100%;
   transition: 0.2s;
   font-size: 1rem;
@@ -136,7 +136,7 @@ export const Preamble = styled.p`
   line-height: 1.875rem;
   margin-bottom: 0;
   max-width: 400px;
-  color: #1a1a1a;
+  color: var(--text-primary);
 `;
 
 export const H3 = styled.h3`
@@ -146,5 +146,5 @@ export const H3 = styled.h3`
   margin-bottom: 0;
   max-width: 240px;
   margin-top: 4rem;
-  color: var(--primary);
+  color: var(--text-primary);
 `;

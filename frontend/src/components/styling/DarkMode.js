@@ -51,11 +51,13 @@ const Label = styled.label`
   align-items: center;
   gap: 10px;
   cursor: pointer;
+  color: var(--text-primary);
 `;
+
 const Switch = styled.div`
   width: 56px;
   height: 28px;
-  background: #999999;
+  background: var(--grey-200);
   border-radius: 32px;
   padding: 4px;
   position: relative;
@@ -69,7 +71,7 @@ const Switch = styled.div`
     border-radius: 35px;
     top: 50%;
     left: 4px;
-    background: #ffffff;
+    background-color: #ffffff;
     transform: translate(0, -50%);
     transition: 0.2s;
   }

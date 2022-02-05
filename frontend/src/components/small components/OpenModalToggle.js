@@ -4,10 +4,6 @@ import styled from 'styled-components';
 
 import modal from '../../reducers/modal';
 
-export const P = styled.p`
-  margin: 0 1rem 0 0;
-`;
-
 export const OpenModalToggle = () => {
   const dispatch = useDispatch();
 
@@ -28,6 +24,11 @@ export const OpenModalToggle = () => {
 
 // S T Y L I N G //
 
+export const P = styled.p`
+  margin: 0 1rem 0 0;
+  color: var(--text-primary);
+`;
+
 export const OpenToggleWrapper = styled.div`
   background-color: transparent;
   height: 64px;
@@ -43,7 +44,7 @@ export const OpenToggle = styled.button`
   width: 48px;
   border-radius: 50%;
   background-color: var(--accent-green);
-  color: var(--text-primary);
+  color: var(--grey-600);
   font-size: 3rem;
   line-height: 2rem;
   font-family: Raleway;
@@ -51,7 +52,7 @@ export const OpenToggle = styled.button`
   border: none;
   transition: 0.3s;
   :hover {
-    background-color: #f1f1f1;
+    background-color: var(--grey-600);
     color: var(--text-primary);
     cursor: pointer;
     transform: rotate(360deg);

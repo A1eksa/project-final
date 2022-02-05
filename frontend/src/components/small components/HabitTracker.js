@@ -30,6 +30,7 @@ const TrackText = styled.p`
   font-size: 1rem;
   line-height: 1rem;
   margin: 0;
+  color: var(--text-primary);
 `;
 
 const Thumb = styled.div`

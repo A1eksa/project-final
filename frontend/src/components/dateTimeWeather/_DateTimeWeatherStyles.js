@@ -32,4 +32,24 @@ export const Day = styled.p`
   font-size: 1rem;
   margin: 0;
   line-height: 1rem;
+  color: var(--text-primary);
+`;
+
+export const City = styled.p`
+  font-size: 1rem;
+  margin: 0;
+  line-height: 1rem;
+  color: var(--text-primary);
+`;
+export const Temp = styled.p`
+  font-size: 1rem;
+  margin: 0;
+  line-height: 1rem;
+  color: var(--text-primary);
+`;
+export const Desc = styled.p`
+  font-size: 1rem;
+  margin: 0;
+  line-height: 1rem;
+  color: var(--text-primary);
 `;

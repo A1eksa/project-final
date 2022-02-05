@@ -11,7 +11,7 @@
 /* HOW DO WE CONVERT THIS TO STYLED COMPONENT? */
 .modal {
   padding: 0 2rem;
-  background-color: #ffffff;
+  background-color: var(--background);
   width: 400px;
   height: 100vh;
   display: flex;
@@ -45,7 +45,7 @@
   display: flex;
   flex-direction: row;
   gap: 1rem;
-  border-bottom: 1px solid #1a1a1a;
+  border-bottom: 1px solid var(--grey-100);
 }
 
 /* MOVE THIS INTO STYLED!! */
@@ -60,15 +60,15 @@
 .close-button:hover {
   transition: 0.3s;
   transform: rotate(315deg);
-  background-color: #dedede;
-  color: #1a1a1a;
+  background-color: var(--grey-600);
+  color: var(--text-primary);
   cursor: pointer;
 }
 
 .choose-form-btn {
   width: 100%;
   background-color: transparent;
-  color: #1a1a1a;
+  color: var(--text-primary);
   font-size: 1.125rem;
   line-height: 1.125rem;
   border: none;
@@ -77,13 +77,13 @@
 
 .choose-form-btn:hover {
   cursor: pointer;
-  border-bottom: 4px solid #1a1a1a;
+  border-bottom: 4px solid var(--grey-100);
   font-weight: 400;
   transition: 0.2s;
 }
 
 .choose-form-btn:focus {
-  border-bottom: 4px solid #1a1a1a;
+  border-bottom: 4px solid var(--grey-100);
   font-weight: 400;
 }
 

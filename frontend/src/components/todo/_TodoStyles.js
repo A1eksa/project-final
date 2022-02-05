@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { FaTimes } from 'react-icons/fa';
 
 export const H2 = styled.h2`
   font-size: 1.5rem;
@@ -75,9 +76,10 @@ export const Button = styled.button`
   max-width: 200px;
   background-color: var(--accent-green);
   :hover {
-    background-color: #f1f1f1;
-    color: var(--text-primary);
+    background-color: var(--grey-300);
     cursor: pointer;
+    transform: rotate(360deg);
+    color: var(--text-primary);
   }
 `;
 

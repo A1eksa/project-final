@@ -11,6 +11,9 @@ import {
   DateWrapper,
   DayMonth,
   Day,
+  City,
+  Temp,
+  Desc,
 } from './_DateTimeWeatherStyles';
 
 export const WeatherTest = () => {
@@ -91,13 +94,13 @@ export const WeatherTest = () => {
       <WeatherWrapper>
         {typeof weather.main != 'undefined' ? (
           <div>
-            <div>
+            <City>
               {weather.name}, {weather.sys.country}{' '}
-            </div>
+            </City>
             <div className='date'>{dateBuilder(new Date())}</div>
             {/* <div>`${day}`</div> */}
-            <div className='weather'>{weather.main.temp}°C </div>
-            <div className='weather'>{weather.weather[0].description}</div>
+            <Temp className='weather'>{weather.main.temp}°C </Temp>
+            <Desc className='weather'>{weather.weather[0].description}</Desc>
           </div>
         ) : (
           ''

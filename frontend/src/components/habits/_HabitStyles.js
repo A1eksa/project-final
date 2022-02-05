@@ -124,3 +124,23 @@ export const LeftWrapper = styled.div`
   flex-direction: row;
   align-items: center;
 `;
+
+export const Start = styled.p`
+  font-size: 1rem;
+  margin: 0;
+  line-height: 1rem;
+  color: var(--text-primary);
+`;
+export const End = styled.p`
+  font-size: 1rem;
+  margin: 0;
+  line-height: 1rem;
+  color: var(--text-primary);
+`;
+
+export const Dates = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin-bottom: 1rem;
+`;
