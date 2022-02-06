@@ -51,8 +51,7 @@ export const TodoList = () => {
       dispatch(editModal.actions.setSelectedTodo(item));
       // dispatch(editModal.actions.setSelectedHeading(item.heading));
       // dispatch(editModal.actions.setSelectedDescription(item.description));
-      dispatch(editModal.actions.setEditSlideout(true));
-      // console.log('habitId line 36', item);
+      dispatch(editModal.actions.setEditTodoSlideout(true));
     });
   };
 
@@ -78,7 +77,6 @@ export const TodoList = () => {
           dispatch(todo.actions.setErrors(null));
         } else {
           dispatch(todo.actions.setItems([]));
-          //what does this do?
           dispatch(todo.actions.setErrors(data.response));
         }
       });
@@ -97,8 +95,8 @@ export const TodoList = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
-          dispatch(todo.actions.deleteTodo(todoId));
           dispatch(todo.actions.setErrors(null));
+          dispatch(todo.actions.deleteTodo(todoId));
         } else {
           dispatch(todo.actions.setItems([]));
           dispatch(todo.actions.setErrors(data.response));
@@ -145,9 +143,7 @@ export const TodoList = () => {
               </CategoryWrapper>
               <TodoSubject>{items.heading}</TodoSubject>
               <TodoText>{items.message}</TodoText>
-              <div>
-                <p>Due date {items.dueDate}</p>
-              </div>
+              <TodoText>Due date {items.dueDate}</TodoText>
               <BottomContainer>
                 <LeftWrapper>
                   <IconContext.Provider
@@ -161,7 +157,7 @@ export const TodoList = () => {
                     <Button onClick={() => deleteTodo(items._id)}>
                       <FaTimes />
                     </Button>
-                    <Button onClick={() => showEditSlideOut(item)}>
+                    <Button onClick={() => showEditSlideout(items)}>
                       <AiTwotoneEdit />
                     </Button>
                   </IconContext.Provider>

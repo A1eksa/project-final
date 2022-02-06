@@ -2,22 +2,17 @@ import React from 'react';
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import { ChakraProvider } from '@chakra-ui/react';
 
-// import { TodoForm } from './components/todo/TodoForm';
 import Dashboard from './components/dashboard/Dashboard';
 import SignIn from './components/signupin/SignIn';
-// import { HabitForm } from './components/habits/HabitForm';
-// import { GlobalStyles } from './components/styling/GlobalStyles';
 import { DarkMode } from './components/styling/DarkMode';
 
 import user from './reducers/user';
 import habit from './reducers/habit';
-// import { TodoList } from './components/todo/TodoList';
 import todo from './reducers/todo';
 import modal from './reducers/modal';
 import editModal from './reducers/editModal';
-import editTodoModal from './reducers/editTodoModal';
-import { ThemeProvider } from 'styled-components';
 
 const reducer = combineReducers({
   user: user.reducer,
@@ -25,7 +20,6 @@ const reducer = combineReducers({
   todo: todo.reducer,
   modal: modal.reducer,
   editModal: editModal.reducer,
-  editTodoModal: editTodoModal.reducer,
 });
 
 const store = configureStore({ reducer });

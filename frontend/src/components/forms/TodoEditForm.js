@@ -79,7 +79,7 @@ export const TodoEditForm = () => {
           Message
           <Input
             type='text'
-            value={selectedMessage}
+            defaultValue={selectedMessage}
             onChange={(e) => setMessage(e.target.value)}
           ></Input>
         </Label>
@@ -87,7 +87,7 @@ export const TodoEditForm = () => {
           Category
           <Input
             type='text'
-            value={selectedCategory}
+            defaultValue={selectedCategory}
             onChange={(e) => setCategory(e.target.value)}
           ></Input>
         </Label>
@@ -95,7 +95,7 @@ export const TodoEditForm = () => {
           Due date
           <Input
             type='date'
-            value={selectedDueDate}
+            defaultValue={selectedDueDate}
             onChange={(e) => setDueDate(e.target.value)}
           ></Input>
         </Label>

@@ -13,6 +13,7 @@ import {
   Label,
   Input,
   Button,
+  RegularityLabel,
 } from './FormsStyles';
 
 export const HabitForm = () => {
@@ -81,10 +82,9 @@ export const HabitForm = () => {
           onChange={(e) => setDescription(e.target.value)}
         ></Input>
       </Label>
-
       <Label>Regularity</Label>
       <FormCategoryWrapper>
-        <CategoryLabel htmlFor='once a day'>
+        <RegularityLabel htmlFor='once a day'>
           Daily
           <HiddenRadioButton
             type='radio'
@@ -94,7 +94,7 @@ export const HabitForm = () => {
             onChange={(e) => setRegularity(e.target.value)}
           ></HiddenRadioButton>
           <RadioButton></RadioButton>
-        </CategoryLabel>
+        </RegularityLabel>
         <CategoryLabel htmlFor='every other day'>
           Every other day
           <HiddenRadioButton

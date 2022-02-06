@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { TodoEditForm } from '../forms/TodoEditForm';
 import './SlideOut.css';
-import editTodoModal from '../../reducers/editTodoModal';
+import editModal from '../../reducers/editModal';
 
 import {
   P,
@@ -14,14 +14,14 @@ import {
 
 export const TodoSlideOut = () => {
   const editTodoSlideout = useSelector(
-    (store) => store.editTodoModal.editTodoSlideout
+    (store) => store.editModal.editTodoSlideout
   );
 
   const dispatch = useDispatch();
 
   const closeEditTodoSlideOut = () => {
     // dispatch modal.actions.setSlideout
-    dispatch(editTodoModal.actions.setEditTodoSlideout(false));
+    dispatch(editModal.actions.setEditTodoSlideout(false));
   };
 
   return (

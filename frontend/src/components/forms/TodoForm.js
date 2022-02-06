@@ -20,27 +20,11 @@ import {
 export const TodoForm = () => {
   const accessToken = useSelector((store) => store.user.accessToken);
   const userId = useSelector((store) => store.user.userId);
-  // const editTodo = useSelector((store) => store.items._id);
-  // const selectedTodo = useSelector((store) => store.editTodo.item);
-
-  // const [heading, setHeading] = useState(selectedTodo ? items.heading : '');
-  // const [message, setMessage] = useState(selectedTodo ? items._id.message : '');
-  // const [category, setCategory] = useState(
-  //   selectedTodo ? editTodo.category : ''
-  // );
 
   const [heading, setHeading] = useState('');
   const [dueDate, setDueDate] = useState('');
   const [message, setMessage] = useState('');
-  const [category, setCategory] = useState({
-    home: 'Home',
-    family: 'Family',
-    work: 'Work',
-    friends: 'Friends',
-  });
-
-  // From the recording:
-  // const [category, setCategory] = useState(currentlySelectedTodo ? currentlySelectedTodo.category : '');
+  const [category, setCategory] = useState('');
 
   const dispatch = useDispatch();
 
@@ -71,33 +55,6 @@ export const TodoForm = () => {
         }
       });
   };
-
-  // const updateTodo = (event, todoId) => {
-  //   event.preventDefault();
-  //   const options = {
-  //     method: 'PATCH',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       Authorization: accessToken,
-  //     },
-  //     body: JSON.stringify({ heading, message, category, user: userId }),
-  //   };
-  //   fetch(API_URL(`todos/${todoId}`), options)
-  //     .then((res) => res.json())
-  //     .then((data) => console.log(data));
-  // };
-
-  // {
-  //   if (data.success) {
-  //     console.log('edit todo', data);
-  //     batch(() => {
-  //       dispatch(todo.actions.setItems(data.response.items));
-  //       dispatch(todo.actions.setEdit(data.response.todo));
-  //     });
-  //   } else {
-  //     dispatch(todo.actions.setErrors(data.response));
-  //   }
-  // }
 
   return (
     <>
