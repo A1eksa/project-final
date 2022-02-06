@@ -35,6 +35,25 @@ const editModal = createSlice({
       store.selectedDescription = action.payload;
       // console.log('description', action.payload);
     },
+    setSelectedTodoId: (store, action) => {
+      store.selectedTodoId = action.payload;
+      console.log('actionpayload ID', action.payload);
+    },
+    setSelectedTodo: (store, action) => {
+      store.selectedTodo = action.payload;
+    },
+    setSelectedTodoHeading: (store, action) => {
+      store.selectedTodoHeading = action.payload;
+    },
+    setSelectedMessage: (store, action) => {
+      store.selectedMessage = action.payload;
+    },
+    setSelectedCategory: (store, action) => {
+      store.selectedCategory = action.payload;
+    },
+    setSelectedDueDate: (store, action) => {
+      store.selectedDueDate = action.payload;
+    },
   },
 });
 

@@ -49,7 +49,7 @@ const TodoSchema = new mongoose.Schema({
   category: {
     type: String,
     required: true,
-    enum: ['home', 'work', 'family', 'friends'],
+    enum: ['Home', 'Work', 'Family', 'Friends'],
   },
   isCompleted: {
     type: Boolean,
@@ -57,6 +57,10 @@ const TodoSchema = new mongoose.Schema({
   },
   createdAt: {
     type: Number,
+    default: () => Date.now(),
+  },
+  dueDate: {
+    type: String,
     default: () => Date.now(),
   },
   user: {
@@ -97,14 +101,19 @@ const HabitSchema = new mongoose.Schema({
     required: true,
     enum: ['once a day', 'every other day', 'once a week'],
   },
-  startDate: {
+  length: {
     type: String,
-    default: () => Date.now(),
+    required: true,
+    enum: ['30 days', '90 days', '6 months', '1 year'],
   },
-  endDate: {
-    type: String,
-    default: () => Date.now(),
-  },
+  // startDate: {
+  //   type: String,
+  //   default: () => Date.now(),
+  // },
+  // endDate: {
+  //   type: String,
+  //   default: () => Date.now(),
+  // },
 });
 
 // ******** Models ******** //
@@ -202,13 +211,14 @@ app.post('/signin', async (req, res) => {
 // ******** POST method todo ******** //
 app.post('/todos', authenticateUser);
 app.post('/todos', async (req, res) => {
-  const { heading, message, category, user } = req.body;
+  const { heading, message, category, user, dueDate } = req.body;
 
   try {
     const newTodo = await new Todo({
       heading,
       message,
       category,
+      dueDate,
       user: req.user,
     }).save();
     res.status(201).json({ response: newTodo, success: true });
@@ -253,7 +263,7 @@ app.delete('/todos/:todoId', async (req, res) => {
 
 // ******** PATCH method todo ******** //
 app.patch('/todos/:todoId', authenticateUser);
-app.patch('/todos/:todoId', async (req, res) => {
+app.patch('/todos/:todoId/update', async (req, res) => {
   const { todoId } = req.params;
   // const { heading, message, category, user } = req.body;
 
@@ -291,8 +301,7 @@ app.patch('/todo/:todoId/completed', async (req, res) => {
 // ******** POST method habit ******** //
 app.post('/habits', authenticateUser);
 app.post('/habits', async (req, res) => {
-  const { heading, description, user, regularity, startDate, endDate } =
-    req.body;
+  const { heading, description, user, regularity, length } = req.body;
 
   try {
     const newHabit = await new Habit({
@@ -300,8 +309,7 @@ app.post('/habits', async (req, res) => {
       description,
       user: req.user,
       regularity,
-      startDate,
-      endDate,
+      length,
     }).save();
     res.status(201).json({ response: newHabit, success: true });
   } catch (error) {

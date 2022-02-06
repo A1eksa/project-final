@@ -18,6 +18,7 @@ import {
 export const CreateSlideOut = () => {
   const slideout = useSelector((store) => store.modal.slideout);
   const [form, setForm] = useState('todo');
+  const [overlay, setOverlay] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -27,32 +28,25 @@ export const CreateSlideOut = () => {
   };
 
   return (
-    <>
-      {/* <OpenToggleWrapper>
-        <P>Add todo/habit</P>
-        <OpenToggle onClick={showSlideOut}>
+    // <div className={overlay ? 'overlay' : 'hidden'}>
+    <div className={slideout ? 'modal active' : 'modal'}>
+      <CloseToggleWrapper>
+        <P>Close</P>
+        <CloseToggle className='close-button' onClick={closeSlideOut}>
           +
-        </OpenToggle>
-      </OpenToggleWrapper> */}
-      <div className={slideout ? 'modal active' : 'modal'}>
-        <CloseToggleWrapper>
-          <P>Close</P>
-          <CloseToggle className='close-button' onClick={closeSlideOut}>
-            +
-          </CloseToggle>
-        </CloseToggleWrapper>
+        </CloseToggle>
+      </CloseToggleWrapper>
 
-        <div className='form-toggle'>
-          <button className='choose-form-btn' onClick={() => setForm('todo')}>
-            Create todo
-          </button>
-          <button className='choose-form-btn' onClick={() => setForm('habit')}>
-            Create habit
-          </button>
-        </div>
-        {form === 'todo' && <TodoForm />}
-        {form === 'habit' && <HabitForm />}
+      <div className='form-toggle'>
+        <button className='choose-form-btn' onClick={() => setForm('todo')}>
+          Create todo
+        </button>
+        <button className='choose-form-btn' onClick={() => setForm('habit')}>
+          Create habit
+        </button>
       </div>
-    </>
+      {form === 'todo' && <TodoForm />}
+      {form === 'habit' && <HabitForm />}
+    </div>
   );
 };

@@ -87,6 +87,12 @@
   font-weight: 400;
 }
 
+/* .overlay {
+  background-color: var(--grey-100);
+  z-index: -1;
+  position: relative;
+} */
+
 /* .Overlay {
     background-color: rgba(0, 0, 0, 0.55);
     top: 0;

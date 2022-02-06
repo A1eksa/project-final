@@ -25,6 +25,18 @@ const todo = createSlice({
       );
       toggledTodo.isCompleted = !toggledTodo.isCompleted;
     },
+    updateTodo: (store, action) => {
+      const updatedTodos = store.items.map((item) => {
+        if (item._id === action.payload._id) {
+          item = action.payload;
+          return item;
+        } else {
+          return item;
+        }
+      });
+      store.items = updatedTodos;
+      console.log('updatedTodos', updatedTodos);
+    },
   },
 });
 

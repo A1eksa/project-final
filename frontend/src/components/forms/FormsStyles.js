@@ -17,7 +17,7 @@ export const RadioButton = styled.span`
   width: 95%;
   height: 32px;
   border-radius: 32px;
-  background-color: var(--level-one);
+  background-color: var(--grey-100);
   pointer-events: none;
   position: absolute;
   z-index: -1;
@@ -29,18 +29,23 @@ export const RadioButton = styled.span`
 
 export const CategoryLabel = styled.label`
   min-width: 70px;
+  height: 32px;
+  border-radius: 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-weight: 300;
   color: var(--text-primary);
-  //width: 100%;
   transition: 0.2s;
   font-size: 1rem;
   font-weight: 400;
   position: relative;
+  padding: 0 1rem;
+  background-color: var(--grey-100);
 `;
+
+//
 
 export const FormCategoryWrapper = styled.div`
   display: flex;

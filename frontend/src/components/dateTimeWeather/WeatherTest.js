@@ -15,6 +15,7 @@ import {
   Temp,
   Desc,
 } from './_DateTimeWeatherStyles';
+import { TimeTicker } from '../small components/TimeTicker';
 
 export const WeatherTest = () => {
   const [weather, setWeather] = useState({});
@@ -106,6 +107,7 @@ export const WeatherTest = () => {
           ''
         )}
       </WeatherWrapper>
+      {/* <TimeTicker /> */}
     </div>
   );
 };

@@ -18,12 +18,18 @@ import {
 export const HabitForm = () => {
   const [heading, setHeading] = useState('');
   const [description, setDescription] = useState('');
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
+  // const [startDate, setStartDate] = useState('');
+  // const [endDate, setEndDate] = useState('');
   const [regularity, setRegularity] = useState({
     onceAday: 'Once a day',
     everyOtherDay: 'Every other day',
     onceAweek: 'Once a week',
+  });
+  const [length, setLength] = useState({
+    thirty: '30 days',
+    ninety: '90 days',
+    sixmonth: '6 months',
+    year: '1 year',
   });
 
   const accessToken = useSelector((store) => store.user.accessToken);
@@ -43,8 +49,7 @@ export const HabitForm = () => {
         heading,
         description,
         regularity,
-        startDate,
-        endDate,
+        length,
       }),
     };
     fetch(API_URL('habits'), options)
@@ -76,9 +81,10 @@ export const HabitForm = () => {
           onChange={(e) => setDescription(e.target.value)}
         ></Input>
       </Label>
+
       <Label>Regularity</Label>
       <FormCategoryWrapper>
-        <CategoryLabel htmlFor='heading'>
+        <CategoryLabel htmlFor='once a day'>
           Daily
           <HiddenRadioButton
             type='radio'
@@ -89,7 +95,7 @@ export const HabitForm = () => {
           ></HiddenRadioButton>
           <RadioButton></RadioButton>
         </CategoryLabel>
-        <CategoryLabel htmlFor='heading'>
+        <CategoryLabel htmlFor='every other day'>
           Every other day
           <HiddenRadioButton
             type='radio'
@@ -100,7 +106,7 @@ export const HabitForm = () => {
           ></HiddenRadioButton>
           <RadioButton></RadioButton>
         </CategoryLabel>
-        <CategoryLabel htmlFor='heading'>
+        <CategoryLabel htmlFor='once a week'>
           Once a week
           <HiddenRadioButton
             type='radio'
@@ -112,7 +118,70 @@ export const HabitForm = () => {
           <RadioButton></RadioButton>
         </CategoryLabel>
       </FormCategoryWrapper>
-      <Label htmlFor='date'>
+
+      <Label>Length of habit</Label>
+      <FormCategoryWrapper>
+        <CategoryLabel htmlFor='30 days'>
+          30 days
+          <HiddenRadioButton
+            type='radio'
+            name='options'
+            id_='4'
+            value='30 days'
+            onChange={(e) => setLength(e.target.value)}
+          ></HiddenRadioButton>
+          <RadioButton></RadioButton>
+        </CategoryLabel>
+        <CategoryLabel htmlFor='90 days'>
+          90 days
+          <HiddenRadioButton
+            type='radio'
+            name='options'
+            id_='5'
+            value='90 days'
+            onChange={(e) => setLength(e.target.value)}
+          ></HiddenRadioButton>
+          <RadioButton></RadioButton>
+        </CategoryLabel>
+        <CategoryLabel htmlFor='6 months'>
+          6 months
+          <HiddenRadioButton
+            type='radio'
+            name='options'
+            id_='6'
+            value='6 months'
+            onChange={(e) => setLength(e.target.value)}
+          ></HiddenRadioButton>
+          <RadioButton></RadioButton>
+        </CategoryLabel>
+        <CategoryLabel htmlFor='1 year'>
+          1 year
+          <HiddenRadioButton
+            type='radio'
+            name='options'
+            id_='7'
+            value='1 year'
+            onChange={(e) => setLength(e.target.value)}
+          ></HiddenRadioButton>
+          <RadioButton></RadioButton>
+        </CategoryLabel>
+      </FormCategoryWrapper>
+
+      {/* <Label htmlFor='progress'>
+        How many days
+        <Input
+          type='text'
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        ></Input>
+      </Label> */}
+      <Button type='submit'>Save</Button>
+    </FormWrapper>
+  );
+};
+
+{
+  /* <Label htmlFor='date'>
         Start date
         <input
           type='date'
@@ -127,16 +196,5 @@ export const HabitForm = () => {
           value={endDate}
           onChange={(e) => setEndDate(e.target.value)}
         ></input>
-      </Label>
-      {/* <Label htmlFor='progress'>
-        How many days
-        <Input
-          type='text'
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        ></Input>
-      </Label> */}
-      <Button type='submit'>Save</Button>
-    </FormWrapper>
-  );
-};
+      </Label> */
+}

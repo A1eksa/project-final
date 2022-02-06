@@ -94,6 +94,7 @@ export const HabitList = () => {
       .then((data) => {
         if (data.success) {
           dispatch(habit.actions.setErrors(null));
+          dispatch(habit.actions.deleteHabit(habitId));
         } else {
           dispatch(habit.actions.setItems([]));
           dispatch(habit.actions.setErrors(data.response));
@@ -171,8 +172,8 @@ export const HabitList = () => {
               <HabitText>{items.description}</HabitText>
               <HabitTracker />
               <Dates>
-                <Start>Start {items.startDate}</Start>
-                <End>End {items.endDate}</End>
+                <Start>Duration {items.length}</Start>
+                <Start>Regularity {items.regularity}</Start>
               </Dates>
               <BottomContainer>
                 <LeftWrapper>

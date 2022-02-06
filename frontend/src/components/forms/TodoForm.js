@@ -30,6 +30,7 @@ export const TodoForm = () => {
   // );
 
   const [heading, setHeading] = useState('');
+  const [dueDate, setDueDate] = useState('');
   const [message, setMessage] = useState('');
   const [category, setCategory] = useState({
     home: 'Home',
@@ -44,13 +45,20 @@ export const TodoForm = () => {
   const dispatch = useDispatch();
 
   const onFormSubmit = () => {
+    // event.preventDefault();
     const options = {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         Authorization: accessToken,
       },
-      body: JSON.stringify({ heading, message, category, user: userId }),
+      body: JSON.stringify({
+        heading,
+        message,
+        category,
+        user: userId,
+        dueDate,
+      }),
     };
     fetch(API_URL('todos'), options)
       .then((res) => res.json())
@@ -124,7 +132,6 @@ export const TodoForm = () => {
             ></HiddenRadioButton>
             <RadioButton></RadioButton>
           </CategoryLabel>
-
           <CategoryLabel htmlFor='Family'>
             Family
             <HiddenRadioButton
@@ -135,7 +142,6 @@ export const TodoForm = () => {
             ></HiddenRadioButton>
             <RadioButton></RadioButton>
           </CategoryLabel>
-
           <CategoryLabel htmlFor='Work'>
             Work
             <HiddenRadioButton
@@ -146,7 +152,6 @@ export const TodoForm = () => {
             ></HiddenRadioButton>
             <RadioButton></RadioButton>
           </CategoryLabel>
-
           <CategoryLabel htmlFor='Friends'>
             Friends
             <HiddenRadioButton
@@ -158,6 +163,14 @@ export const TodoForm = () => {
             ></HiddenRadioButton>
             <RadioButton></RadioButton>
           </CategoryLabel>
+          <Label htmlFor='date'>
+            Due date
+            <input
+              type='date'
+              value={dueDate}
+              onChange={(e) => setDueDate(e.target.value)}
+            ></input>
+          </Label>
         </FormCategoryWrapper>
 
         <Button type='submit'>Save</Button>

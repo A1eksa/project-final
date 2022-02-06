@@ -26,7 +26,6 @@ export const TheHeader = () => {
       <DarkMode />
       <User>
         <H1>Hello {loggedInUser}!</H1>
-        {/* <LogOutButton onClick={handleLogout}>SIGN OUT</LogOutButton> */}
       </User>
       <OpenModalToggle />
     </HeaderWrapper>

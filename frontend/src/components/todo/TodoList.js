@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch, batch } from 'react-redux';
 // import Moment from 'moment';
 
 import { IconContext } from 'react-icons';
@@ -7,8 +7,8 @@ import { AiTwotoneEdit } from 'react-icons/ai';
 import { FaTimes } from 'react-icons/fa';
 import { API_URL } from '../../utils/constants';
 import todo from '../../reducers/todo';
-import modal from '../../reducers/modal';
-import editTodoModal from '../../reducers/editTodoModal';
+// import modal from '../../reducers/modal';
+import editModal from '../../reducers/editModal';
 
 import {
   H2,
@@ -39,8 +39,21 @@ export const TodoList = () => {
   //   dispatch(modal.actions.setSlideout(true));
   // };
 
-  const showTodoSlideOut = () => {
-    dispatch(editTodoModal.actions.setEditTodoSlideout(true));
+  // const showTodoSlideOut = (item) => {
+  //   dispatch(editModal.actions.setSelectedTodo(item));
+  //   dispatch(editModal.actions.setEditSlideout(true));
+  // };
+
+  const showEditSlideout = (item) => {
+    batch(() => {
+      // dispatch(editModal.actions.setSlideout(true));
+      // dispatch(editModal.actions.setSelectedId(_id));
+      dispatch(editModal.actions.setSelectedTodo(item));
+      // dispatch(editModal.actions.setSelectedHeading(item.heading));
+      // dispatch(editModal.actions.setSelectedDescription(item.description));
+      dispatch(editModal.actions.setEditSlideout(true));
+      // console.log('habitId line 36', item);
+    });
   };
 
   // const onToggleTodo = () => {
@@ -84,6 +97,7 @@ export const TodoList = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
+          dispatch(todo.actions.deleteTodo(todoId));
           dispatch(todo.actions.setErrors(null));
         } else {
           dispatch(todo.actions.setItems([]));
@@ -131,6 +145,9 @@ export const TodoList = () => {
               </CategoryWrapper>
               <TodoSubject>{items.heading}</TodoSubject>
               <TodoText>{items.message}</TodoText>
+              <div>
+                <p>Due date {items.dueDate}</p>
+              </div>
               <BottomContainer>
                 <LeftWrapper>
                   <IconContext.Provider
@@ -144,7 +161,7 @@ export const TodoList = () => {
                     <Button onClick={() => deleteTodo(items._id)}>
                       <FaTimes />
                     </Button>
-                    <Button onClick={() => showTodoSlideOut()}>
+                    <Button onClick={() => showEditSlideOut(item)}>
                       <AiTwotoneEdit />
                     </Button>
                   </IconContext.Provider>
