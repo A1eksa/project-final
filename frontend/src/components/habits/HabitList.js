@@ -168,7 +168,6 @@ export const HabitList = () => {
                 </Left>
                 <HabitTracker />
               </CardDivider>
-
             </CardWrapper>
           ))}
       </ListWrapper>

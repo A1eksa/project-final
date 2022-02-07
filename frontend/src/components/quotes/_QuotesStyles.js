@@ -2,18 +2,16 @@ import styled from 'styled-components';
 
 export const QuoteWrapper = styled.div`
 // margin-left: 220px;
-min-width: 343px;
-max-width: 50%;
-box-shadow: var(--box-shadow);
-border-radius: 10px;
-padding 1rem;
+max-width: 343px;
+// box-shadow: var(--box-shadow);
+// border-radius: 10px;
 box-sizing: border-box;
-margin-bottom: 1rem;`;
+`;
 
 export const QuoteText = styled.p`
-  font-size: 1.125rem;
-  font-weight: 400;
-  color: var(--text-primary);
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--text-secondary);
   margin-bottom: 0;
 `;
 
@@ -21,4 +19,28 @@ export const Name = styled.p`
   font-size: 14px;
   font-weight: 300;
   color: var(--text-secondary);
+`;
+
+export const QuoteButton = styled.button`
+  display: flex;
+  align-items: center;
+  height: 32px;
+  width: 32px;
+  border-radius: 16px;
+  color: var(--text-primary);
+  font-family: Raleway;
+  font-size: 1rem;
+  font-weight: 300;
+  margin-right: 0.5rem;
+  transition: 0.4s;
+  border: none;
+  max-width: 200px;
+  background-color: var(--accent-green);
+  :hover {
+    background-color: var(--grey-300);
+    color: var(--text-primary);
+    cursor: pointer;
+    transform: rotate(360deg);
+    cursor: pointer;
+  }
 `;

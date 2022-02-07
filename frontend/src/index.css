@@ -4,6 +4,7 @@ code {
 }
 
 body {
+  background: var(--background);
   box-sizing: border-box;
   margin: 0;
   padding: 0 0 10rem 0;
@@ -45,5 +46,5 @@ body {
   --grey-400: #868686;
   --grey-500: #494949;
   --grey-600: #333333;
-  --footer: #dedede80;
+  --footer: #00000080;
 }

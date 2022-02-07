@@ -11,6 +11,8 @@ import { TodoSlideOut } from '../modal/TodoSlideOut';
 import { TheHeader } from '../header/TheHeader';
 import { Footer } from '../footer/Footer';
 import { Quote } from '../quotes/Quote';
+import { QuoteTwo } from '../quotes/QuoteTwo';
+
 import { WeatherTest } from '../dateTimeWeather/WeatherTest';
 import '../modal/SlideOut.css';
 
@@ -24,6 +26,7 @@ import {
   Line,
   HeroText,
   UpperWrapper,
+  Left,
 } from './_DashboardStyles';
 
 const Dashboard = () => {
@@ -52,17 +55,20 @@ const Dashboard = () => {
       <TodoSlideOut />
       <DashboardWrapper>
         <UpperWrapper>
+        <Left>
           <HeroText>
             <Line></Line>
             <H2>What's on your mind?</H2>
             {/* <Thoughts /> */}
           </HeroText>
-          <Quote />
+          <QuoteTwo />
+          </Left>
           <WeatherTest />
           {/* <TimeTicker /> */}
         </UpperWrapper>
-
+        {/* <Quote /> */}
         <MainContentWrapper>
+
           <TodoList />
           <HabitList />
         </MainContentWrapper>

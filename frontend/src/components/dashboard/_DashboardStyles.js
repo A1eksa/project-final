@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
 export const DashboardWrapper = styled.div`
-  padding: 5% 10%;
+  padding: 5% 10% 0 10%;
   max-width: 1440px;
   background-color: var(--background);
+  height: 100vh;
 `;
 
 export const H1 = styled.h1`
@@ -19,7 +20,7 @@ export const Line = styled.div`
   margin-top: 1.3rem;
   height: 4px;
   width: 96px;
-  background-color: (--grey-200);
+  background-color: var(--grey-600);
 `;
 
 export const H2 = styled.h2`
@@ -46,6 +47,14 @@ export const UpperWrapper = styled.div`
   justify-content: space-between;
   align-items: flex-end;
   padding-bottom: 3rem;
+`;
+
+export const Left = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 4rem;
+  // padding-bottom: 4rem;
 `;
 
 export const MainContentWrapper = styled.div`
