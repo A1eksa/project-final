@@ -229,12 +229,6 @@ app.post('/todos', async (req, res) => {
   }
 });
 
-// ******** GET method todos ******** //
-// app.get('/todos', async (req, res) => {
-//   const todos = await Todo.find({}).sort({ createdAt: 'desc' });
-//   res.status(201).json({ response: todos, success: true });
-// });
-
 // ******** GET method user todos ******** //
 app.get('/todos/:userId', authenticateUser);
 app.get('/todos/:userId', async (req, res) => {
@@ -333,7 +327,6 @@ app.get('/habits/:userId', async (req, res) => {
 app.delete('/habits/:habitId', authenticateUser);
 app.delete('/habits/:habitId', async (req, res) => {
   const { habitId } = req.params;
-  // const { user } = req.body;
 
   try {
     const deletedHabit = await Habit.findByIdAndDelete({ _id: habitId });
@@ -345,21 +338,6 @@ app.delete('/habits/:habitId', async (req, res) => {
   } catch (error) {
     res.status(400).json({ message: 'could not delete habit', success: false });
   }
-
-  // try {
-  //   // const habitUser = await User.findById(user);
-  //   const deletedHabit = await Habit.deleteOne({
-  //     _id: habitId,
-  //     user: habitUser,
-  //   });
-  //   if (!deletedHabit) {
-  //     res.status(404).json({ message: 'No habit found', success: false });
-  //   } else {
-  //     res.status(200).json({ response: deletedHabit, success: true });
-  //   }
-  // } catch (error) {
-  //   res.status(400).json({ message: 'could not delete habit', success: false });
-  // }
 });
 
 // ******** PATCH method habits ******** //
@@ -396,13 +374,6 @@ app.patch('/habits/:habitId/completed', async (req, res) => {
       { new: true }
     );
     res.status(200).json({ response: updateIsCompleted, success: true });
-    // if (!updateIsCompleted) {
-    //   res
-    //     .status(404)
-    //     .json({ response: 'No task found with this Id', success: false });
-    // } else {
-    //   res.status(200).json({ response: updateIsCompleted, success: true });
-    // }
   } catch (error) {
     res.status(400).json({ response: error, success: false });
   }
