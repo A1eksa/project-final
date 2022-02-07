@@ -26,7 +26,7 @@ const habit = createSlice({
       store.items = decreasedHabits;
     },
     toggleHabit: (store, action) => {
-      const toggledHabit = store.items.filter(
+      const toggledHabit = store.items.find(
         (item) => item._id === action.payload
       );
       toggledHabit.isCompleted = !toggledHabit.isCompleted;

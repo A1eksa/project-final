@@ -2,7 +2,6 @@ import React from 'react';
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { ChakraProvider } from '@chakra-ui/react';
 
 import Dashboard from './components/dashboard/Dashboard';
 import SignIn from './components/signupin/SignIn';

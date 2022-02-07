@@ -20,7 +20,7 @@ const todo = createSlice({
       store.items = decreasedTodos;
     },
     toggleTodo: (store, action) => {
-      const toggledTodo = store.items.filter(
+      const toggledTodo = store.items.find(
         (item) => item._id === action.payload
       );
       toggledTodo.isCompleted = !toggledTodo.isCompleted;
