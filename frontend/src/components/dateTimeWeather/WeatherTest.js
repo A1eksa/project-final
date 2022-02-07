@@ -4,6 +4,7 @@ import { API_KEY } from '../../utils/constants';
 import { API_FIXED } from '../../utils/constants';
 import { IconContext, IconBase, FaAirbnb } from 'react-icons';
 import { WiDayCloudyHigh, WiHorizonAlt } from 'react-icons/wi';
+import { RiMoonClearLine }from 'react-icons/ri'
 
 import {
   WeatherWrapper,
@@ -14,6 +15,8 @@ import {
   City,
   Temp,
   Desc,
+  Month,
+  TempAndWeather,
 } from './_DateTimeWeatherStyles';
 import { TimeTicker } from '../small components/TimeTicker';
 
@@ -71,9 +74,13 @@ export const WeatherTest = () => {
       <DateWrapper>
         <DateNumber>{date}</DateNumber>
         <DayMonth>
-          <Day>{day} </Day>
-          <Day>{month}</Day>
+          <Day>{day}</Day>
+          <Month>{month}</Month>
+          <City>
+              {weather.name}, {weather.sys.country}
+            </City>
         </DayMonth>
+
       </DateWrapper>
     );
   };
@@ -95,13 +102,23 @@ export const WeatherTest = () => {
       <WeatherWrapper>
         {typeof weather.main != 'undefined' ? (
           <div>
-            <City>
-              {weather.name}, {weather.sys.country}{' '}
-            </City>
             <div className='date'>{dateBuilder(new Date())}</div>
             {/* <div>`${day}`</div> */}
-            <Temp className='weather'>{weather.main.temp}°C </Temp>
-            <Desc className='weather'>{weather.weather[0].description}</Desc>
+            <TempAndWeather>
+            <IconContext.Provider
+                    value={{
+                      color: 'var(--grey-200)',
+                      fontWeight: 'thin',
+                      className: 'global-class-name',
+                      size: '4rem',
+                      style: { verticalAlign: 'middle', marginRight: '1rem' },
+                    }}
+                  >
+                <RiMoonClearLine />
+              </IconContext.Provider>
+              <Desc className='weather'>{weather.weather[0].description}, </Desc>
+              <Temp className='weather'>{weather.main.temp}°c </Temp>
+            </TempAndWeather>
           </div>
         ) : (
           ''

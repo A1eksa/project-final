@@ -3,32 +3,33 @@ import { useSelector, useDispatch, batch } from 'react-redux';
 // import { API_URL } from '../../utils/constants'
 import styled from 'styled-components';
 import { IconContext } from 'react-icons';
-// import { FaCheck } from 'react-icons/fa';
-import { FaHandPeace } from 'react-icons/fa';
-import habit from '../../reducers/habit';
-import { HabitsSlideOut } from '../modal/HabitsSlideOut';
+import { FaCheck } from 'react-icons/fa';
+// import { FaHandPeace } from 'react-icons/fa';
 
 const ProgressWrapper = styled.div`
-  // transform: rotate(-90deg);
-  display: flex;
-  flex-direction: row;
-  gap: 0.5rem;
-  align-items: center;
-  margin-bottom: 1rem;
+  transform: rotate(-90deg);
 `;
 
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+`
+
 const Track = styled.div`
-  width: 150px;
-  height: 20px;
+  width: 120px;
+  height: 64px;
   background-color: #dedede;
   border-radius: 10px;
   box-shadow: inset 0 0 5 #000;
-  // margin-bottom: 1rem;
+  margin-left: -5rem;
 `;
 
 const TrackText = styled.p`
-  font-size: 1rem;
+  font-size: 2rem;
   line-height: 1rem;
+  font-weight: 200;
   margin: 0;
   color: var(--text-primary);
 `;
@@ -36,7 +37,7 @@ const TrackText = styled.p`
 const Thumb = styled.div`
   width: ${(props) => props.percentage}%;
   height: 100%;
-  background-color: #6bccf9;
+  background-color: var(--accent-green);
   border-radius: 10px;
   border-radius: 10px;
 `;
@@ -60,6 +61,15 @@ export const AddButton = styled.button`
     cursor: pointer;
     transform: rotate(360deg);
   }
+`;
+
+const Bottom = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+  bottom: 0;
 `;
 
 export const HabitTracker = () => {
@@ -121,12 +131,15 @@ export const HabitTracker = () => {
   // console.log('number of occations whitout decimal: ', occasions);
 
   return (
-    <>
+    <Wrapper>
       <ProgressWrapper>
         <Track>
           <Thumb percentage={progress.percentage}></Thumb>
         </Track>
+      </ProgressWrapper>
+    <Bottom>
         <TrackText>{progress.percentage}%</TrackText>
+        
         <IconContext.Provider
           value={{
             color: '#444444',
@@ -143,11 +156,11 @@ export const HabitTracker = () => {
               // })
             }
           >
-            <FaHandPeace />
+            <FaCheck />
           </AddButton>
           {/* <AddButton onClick={() => setProgress({ percentage: progress.percentage - 10})}></AddButton> */}
         </IconContext.Provider>
-      </ProgressWrapper>
-    </>
+        </Bottom>
+    </Wrapper>
   );
 };

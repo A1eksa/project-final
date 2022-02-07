@@ -19,7 +19,7 @@ export const Line = styled.div`
   margin-top: 1.3rem;
   height: 4px;
   width: 96px;
-  background-color: (--text-primary);
+  background-color: (--grey-200);
 `;
 
 export const H2 = styled.h2`

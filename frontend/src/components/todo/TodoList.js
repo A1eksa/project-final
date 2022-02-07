@@ -19,14 +19,11 @@ import {
   Category,
   Button,
   Label,
-  // InputLabel,
   CategoryWrapper,
-  //CustomCheckbox,
-  //HiddenCheckbox,
-  // CheckboxContainer,
   BottomContainer,
   LeftWrapper,
-  // DeleteIcon,
+  DeleteButton,
+  EditButton,
 } from '../todo/_TodoStyles';
 
 export const TodoList = () => {
@@ -154,12 +151,12 @@ export const TodoList = () => {
                       style: { verticalAlign: 'middle', marginLeft: '0.05rem' },
                     }}
                   >
-                    <Button onClick={() => deleteTodo(items._id)}>
+                    <DeleteButton onClick={() => deleteTodo(items._id)}>
                       <FaTimes />
-                    </Button>
-                    <Button onClick={() => showEditSlideout(items)}>
+                    </DeleteButton>
+                    <EditButton onClick={() => showEditSlideout(items)}>
                       <AiTwotoneEdit />
-                    </Button>
+                    </EditButton>
                   </IconContext.Provider>
                 </LeftWrapper>
                 <div>

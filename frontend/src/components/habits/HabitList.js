@@ -22,12 +22,13 @@ import {
   LeftWrapper,
   DeleteButton,
   EditButton,
-  RegularityWrapper,
-  RegularityText,
   Label,
-  Start,
-  End,
-  Dates,
+  Value,
+  TimeWrapper,
+  Wrapper,
+  CardDivider,
+  Subject,
+  Left,
 } from './_HabitStyles';
 
 export const HabitList = () => {
@@ -35,25 +36,10 @@ export const HabitList = () => {
   const accessToken = useSelector((store) => store.user.accessToken);
   const userId = useSelector((store) => store.user.userId);
 
-  // const showEditSlideout = (item) => {
-  //   // dispatch(editModal.actions.setSlideout(true));
-  //   dispatch(editModal.actions.setEditSlideout(true));
-  //   // dispatch(editModal.actions.setSelectedId(_id));
-  //   dispatch(editModal.actions.setSelectedHabit(item));
-  //   dispatch(editModal.actions.setSelectedHeading(item.heading));
-  //   dispatch(editModal.actions.setSelectedDescription(item.description));
-  //   console.log('habitId', item);
-  // };
-
   const showEditSlideout = (item) => {
     batch(() => {
-      // dispatch(editModal.actions.setSlideout(true));
-      // dispatch(editModal.actions.setSelectedId(_id));
       dispatch(editModal.actions.setSelectedHabit(item));
-      // dispatch(editModal.actions.setSelectedHeading(item.heading));
-      // dispatch(editModal.actions.setSelectedDescription(item.description));
       dispatch(editModal.actions.setEditSlideout(true));
-      // console.log('habitId line 36', item);
     });
   };
 
@@ -119,41 +105,7 @@ export const HabitList = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
-          console.log(data.response);
-          // dispatch(todo.actions.setItems(accessToken, userId));
           dispatch(habit.actions.toggleHabit(habitId));
-          dispatch(habit.actions.setErrors(null));
-        } else {
-          console.log('error');
-          dispatch(habit.actions.setErrors(data.response));
-        }
-      });
-  };
-
-  const updateHabit = (habitId, description, heading) => {
-    console.log(
-      'habit Id:',
-      habitId,
-      'description:',
-      description,
-      'heading:',
-      heading
-    );
-    const options = {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-        // Authorization: accessToken,
-      },
-      body: JSON.stringify({ description, heading, _id: habitId }),
-    };
-
-    fetch(API_URL(`habits/${habitId}/update`), options)
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.success) {
-          console.log(data.response);
-          dispatch(habit.actions.updateHabit(habitId));
           dispatch(habit.actions.setErrors(null));
         } else {
           dispatch(habit.actions.setErrors(data.response));
@@ -168,14 +120,23 @@ export const HabitList = () => {
         {habitItems &&
           habitItems.map((items) => (
             <CardWrapper key={items._id}>
-              <HabitSubject>{items.heading}</HabitSubject>
-              <HabitText>{items.description}</HabitText>
-              <HabitTracker />
-              <Dates>
-                <Start>Duration {items.length}</Start>
-                <Start>Regularity {items.regularity}</Start>
-              </Dates>
-              <BottomContainer>
+              <CardDivider>
+                <Left>
+                  <Subject>
+                    <HabitSubject>{items.heading}</HabitSubject>
+                    <HabitText>{items.description}</HabitText>
+                  </Subject>
+                  <TimeWrapper>
+                    <Wrapper>
+                      <Label>Duration</Label>
+                      <Value>{items.length}</Value>
+                    </Wrapper>
+                    <Wrapper>
+                      <Label>Regularity</Label>
+                      <Value>{items.regularity}</Value>
+                    </Wrapper>
+                  </TimeWrapper>
+                  <BottomContainer>
                 <LeftWrapper>
                   <IconContext.Provider
                     value={{
@@ -191,7 +152,6 @@ export const HabitList = () => {
                     <EditButton onClick={() => showEditSlideout(items)}>
                       <AiTwotoneEdit />
                     </EditButton>
-                    {/* <HabitEditButton /> */}
                   </IconContext.Provider>
                 </LeftWrapper>
                 <div>
@@ -204,20 +164,11 @@ export const HabitList = () => {
                     onChange={() => onToggleHabit(items._id, items.isCompleted)}
                   />
                 </div>
-                {/* <CheckboxContainer>
-            <InputLabel>Mark as done
-            <HiddenCheckbox
-                className='checkbox'
-                type='checkbox'>
-            </HiddenCheckbox>
-              <CustomCheckbox
-                  type='checkbox'
-                  checked={items.isCompleted}
-                  onChange={() => onToggleTodo(items._id)}>
-              </CustomCheckbox>
-            </InputLabel>
-          </CheckboxContainer> */}
               </BottomContainer>
+                </Left>
+                <HabitTracker />
+              </CardDivider>
+
             </CardWrapper>
           ))}
       </ListWrapper>
