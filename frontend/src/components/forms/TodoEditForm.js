@@ -5,7 +5,18 @@ import { API_URL } from '../../utils/constants';
 import todo from '../../reducers/todo';
 import editModal from '../../reducers/editModal';
 
-import { FormWrapper, Label, Input, Button, H3, Preamble } from './FormsStyles';
+import {
+  FormWrapper,
+  Label,
+  Input,
+  Button,
+  H3,
+  Preamble,
+  CategoryLabel,
+  HiddenRadioButton,
+  RadioButton,
+  FormCategoryWrapper,
+} from './FormsStyles';
 
 export const TodoEditForm = () => {
   const accessToken = useSelector((store) => store.user.accessToken);
@@ -85,11 +96,57 @@ export const TodoEditForm = () => {
         </Label>
         <Label htmlFor='category'>
           Category
-          <Input
+          {/* <Input
             type='text'
             defaultValue={selectedCategory}
             onChange={(e) => setCategory(e.target.value)}
-          ></Input>
+          ></Input> */}
+          <FormCategoryWrapper>
+            <CategoryLabel htmlFor='Home'>
+              Home
+              <HiddenRadioButton
+                type='radio'
+                name='options'
+                id_='1'
+                value={selectedCategory}
+                onChange={(e) => setCategory(e.target.value)}
+              ></HiddenRadioButton>
+              <RadioButton></RadioButton>
+            </CategoryLabel>
+            <CategoryLabel htmlFor='Family'>
+              Family
+              <HiddenRadioButton
+                type='radio'
+                name='options'
+                id_='2'
+                value={selectedCategory}
+                onChange={(e) => setCategory(e.target.value)}
+              ></HiddenRadioButton>
+              <RadioButton></RadioButton>
+            </CategoryLabel>
+            <CategoryLabel htmlFor='Work'>
+              Work
+              <HiddenRadioButton
+                type='radio'
+                name='options'
+                id_='3'
+                value={selectedCategory}
+                onChange={(e) => setCategory(e.target.value)}
+              ></HiddenRadioButton>
+              <RadioButton></RadioButton>
+            </CategoryLabel>
+            <CategoryLabel htmlFor='Friends'>
+              Friends
+              <HiddenRadioButton
+                type='radio'
+                name='options'
+                id_='4'
+                value={selectedCategory}
+                onChange={(e) => setCategory(e.target.value)}
+              ></HiddenRadioButton>
+              <RadioButton></RadioButton>
+            </CategoryLabel>
+          </FormCategoryWrapper>
         </Label>
         <Label htmlFor='category'>
           Due date

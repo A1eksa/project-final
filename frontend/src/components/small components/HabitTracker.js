@@ -66,23 +66,43 @@ export const HabitTracker = () => {
   const habitItems = useSelector((store) => store.habit.items);
   const [progress, setProgress] = useState({ percentage: 0 });
 
-  const startDate = new Date('22/02/01');
-  const endDate = new Date('22/02/12');
+  const length = habitItems.length;
+  const lengthNumber = 30;
+  const regularity = habitItems.regularity;
+  const regularityNumber = 2;
+  // console.log('length', habitItems[0].length);
+  // console.log('regularity', habitItems[0].regularity);
+  console.log(lengthNumber);
+  console.log(regularityNumber);
+  console.log(habitItems);
+
+  var numberOfOccasions = lengthNumber / regularityNumber;
+  console.log('numberofoccations', numberOfOccasions);
+
+  var occasions = Math.round((numberOfOccasions * 100) / 100);
+  console.log('occasions', occasions);
+  var increment = Math.round(100 / occasions);
+  console.log('increment', increment);
+  // console.log('increment', increment2);
+  // console.log('duration', duration);
+
+  // const startDate = new Date('22/02/01');
+  // const endDate = new Date('22/02/12');
 
   // const startDate = new Date(habitItems.startDate);
   // const endDate = new Date(habitItems.endDate);
 
-  console.log('start date', startDate);
-  const diffDays = Math.ceil(
-    Math.abs(endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24)
-  );
-  console.log('amount of days in period', diffDays);
+  // console.log('start date', startDate);
+  // const diffDays = Math.ceil(
+  //   Math.abs(endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24)
+  // );
+  // console.log('amount of days in period', diffDays);
 
-  const regularity = habitItems.regularity; // 1 är varje dag, 2 är varannan och 7 är varje vecka
+  //const regularity = habitItems.regularity;  1 är varje dag, 2 är varannan och 7 är varje vecka
 
-  var numberOfOccasions = diffDays / regularity;
-  var occasions = Math.round((numberOfOccasions * 100) / 100);
-  var increment = Math.round(100 / occasions);
+  // var numberOfOccasions = diffDays / regularity;
+  // var occasions = Math.round((numberOfOccasions * 100) / 100);
+  // var increment = Math.round(100 / occasions);
 
   // console.log('increment', increment);
   // console.log('occasions', occasions);
@@ -116,11 +136,11 @@ export const HabitTracker = () => {
           }}
         >
           <AddButton
-            onClick={(event) =>
-              // setProgress({ percentage: progress.percentage + 10 })
-              setProgress({
-                percentage: progress.percentage + `${increment}`,
-              })
+            onClick={
+              (event) => setProgress({ percentage: progress.percentage + 10 })
+              // setProgress({
+              //   percentage: progress.percentage + `${increment}`,
+              // })
             }
           >
             <FaHandPeace />

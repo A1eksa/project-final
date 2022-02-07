@@ -32,7 +32,6 @@ export const HabitForm = () => {
     sixmonth: '6 months',
     year: '1 year',
   });
-
   const accessToken = useSelector((store) => store.user.accessToken);
   // const insideStore = useSelector((store) => store.habit);
   // console.log('inside store', insideStore);
@@ -82,6 +81,7 @@ export const HabitForm = () => {
           onChange={(e) => setDescription(e.target.value)}
         ></Input>
       </Label>
+
       <Label>Regularity</Label>
       <FormCategoryWrapper>
         <RegularityLabel htmlFor='once a day'>
