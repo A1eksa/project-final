@@ -4,6 +4,7 @@ import { useSelector, useDispatch, batch } from 'react-redux';
 import { API_URL } from '../../utils/constants';
 import user from '../../reducers/user';
 import todo from '../../reducers/todo';
+import Swal from 'sweetalert2';
 
 import {
   FormCategoryWrapper,
@@ -28,6 +29,14 @@ export const TodoForm = () => {
 
   const dispatch = useDispatch();
 
+  // Swal.fire({
+  //   position: 'top-end',
+  //   icon: 'success',
+  //   title: 'Your work has been saved',
+  //   showConfirmButton: false,
+  //   timer: 1500,
+  // });
+
   const onFormSubmit = () => {
     // event.preventDefault();
     const options = {
@@ -48,7 +57,13 @@ export const TodoForm = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
-          console.log('add todo', data);
+          // Swal.fire({
+          //   position: 'top-end',
+          //   icon: 'success',
+          //   title: 'Your work has been saved',
+          //   showConfirmButton: false,
+          //   timer: 1500,
+          // });
           batch(() => {
             dispatch(user.actions.setUserId(data.response.userId));
           });

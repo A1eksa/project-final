@@ -3,19 +3,14 @@ import { useSelector, batch, useDispatch } from 'react-redux';
 import quote from '../../reducers/quote';
 import { API_URL } from '../../utils/constants';
 
-import { 
-  QuoteWrapper, 
-  Name, 
-  QuoteText,
-} from './_QuotesStyles';
-
+import { QuoteWrapper, Name, QuoteText } from './_QuotesStyles';
 
 export const Quote = () => {
   const quotes = useSelector((store) => store.quote);
   const message = useSelector((store) => store.quote.message);
   const author = useSelector((store) => store.quote.author);
   // const id = useSelector((store) => store.quote._id);
-  
+
   const dispatch = useDispatch();
 
   const refreshPage = () => {
@@ -26,7 +21,7 @@ export const Quote = () => {
     fetch(API_URL('quotes'))
       .then((res) => res.json())
       .then((data) => {
-        console.log('THE RESPONSE', data)
+        console.log('THE RESPONSE', data);
         if (data.success) {
           batch(() => {
             // dispatch(quote.actions.quoteId(data.response._id));
@@ -58,4 +53,3 @@ export const Quote = () => {
     </QuoteWrapper>
   );
 };
-

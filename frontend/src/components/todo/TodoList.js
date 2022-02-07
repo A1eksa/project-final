@@ -1,14 +1,13 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch, batch } from 'react-redux';
-// import Moment from 'moment';
 
 import { IconContext } from 'react-icons';
 import { AiTwotoneEdit } from 'react-icons/ai';
 import { FaTimes } from 'react-icons/fa';
 import { API_URL } from '../../utils/constants';
 import todo from '../../reducers/todo';
-// import modal from '../../reducers/modal';
 import editModal from '../../reducers/editModal';
+import Swal from 'sweetalert2';
 
 import {
   H2,
@@ -27,34 +26,16 @@ import {
 } from '../todo/_TodoStyles';
 
 export const TodoList = () => {
-  // const date = Moment()
   const todoItems = useSelector((store) => store.todo.items);
   const accessToken = useSelector((store) => store.user.accessToken);
   const userId = useSelector((store) => store.user.userId);
 
-  // const showSlideOut = () => {
-  //   dispatch(modal.actions.setSlideout(true));
-  // };
-
-  // const showTodoSlideOut = (item) => {
-  //   dispatch(editModal.actions.setSelectedTodo(item));
-  //   dispatch(editModal.actions.setEditSlideout(true));
-  // };
-
   const showEditSlideout = (item) => {
     batch(() => {
-      // dispatch(editModal.actions.setSlideout(true));
-      // dispatch(editModal.actions.setSelectedId(_id));
       dispatch(editModal.actions.setSelectedTodo(item));
-      // dispatch(editModal.actions.setSelectedHeading(item.heading));
-      // dispatch(editModal.actions.setSelectedDescription(item.description));
       dispatch(editModal.actions.setEditTodoSlideout(true));
     });
   };
-
-  // const onToggleTodo = () => {
-  //   dispatch(todo.actions.toggleTodo(true));
-  // };
 
   const dispatch = useDispatch();
 
@@ -92,8 +73,22 @@ export const TodoList = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
-          dispatch(todo.actions.setErrors(null));
-          dispatch(todo.actions.deleteTodo(todoId));
+          Swal.fire({
+            title: 'Are you sure you want to delete the todo?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: false,
+            confirmButtonColor: 'var(--accent-green)',
+            background: 'var(--level-three)',
+            color: 'var(--text-primary)',
+            confirmButtonText: 'Yes, delete it!',
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire('Deleted!', 'Your todo is deleted.', 'success');
+            }
+            dispatch(todo.actions.setErrors(null));
+            dispatch(todo.actions.deleteTodo(todoId));
+          });
         } else {
           dispatch(todo.actions.setItems([]));
           dispatch(todo.actions.setErrors(data.response));

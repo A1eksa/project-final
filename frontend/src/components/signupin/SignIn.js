@@ -1,7 +1,7 @@
 import React, { useState, useEffect, createContext } from 'react';
 import { useSelector, batch, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-
+import Swal from 'sweetalert2';
 import user from '../../reducers/user';
 import { API_URL } from '../../utils/constants';
 // import { SignInMargins } from './SignInMargins';
@@ -46,6 +46,15 @@ const SignIn = () => {
 
   useEffect(() => {
     if (accessToken) {
+      Swal.fire({
+        title: 'Welcome back!',
+        showCancelButton: false,
+        confirmButtonColor: 'var(--accent-green)',
+        confirmButtonBorder: false,
+        background: 'var(--level-three)',
+        color: 'var(--text-primary)',
+        confirmButtonText: "Let's go!",
+      });
       navigate('/');
     }
   }, [accessToken, navigate]);
