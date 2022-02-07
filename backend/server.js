@@ -106,20 +106,22 @@ const HabitSchema = new mongoose.Schema({
     required: true,
     enum: ['30 days', '90 days', '6 months', '1 year'],
   },
-  // startDate: {
-  //   type: String,
-  //   default: () => Date.now(),
-  // },
-  // endDate: {
-  //   type: String,
-  //   default: () => Date.now(),
-  // },
+});
+
+const QuoteSchema = new mongoose.Schema({
+  message: {
+    type: String,
+  },
+  author: {
+    type: String,
+  },
 });
 
 // ******** Models ******** //
 const User = mongoose.model('User', UserSchema);
 const Todo = mongoose.model('Todo', TodoSchema);
 const Habit = mongoose.model('Habit', HabitSchema);
+const Quote = mongoose.model('Quote', QuoteSchema);
 
 // ******** Defined Port ******** //
 const port = process.env.PORT || 8080;
@@ -147,6 +149,20 @@ const authenticateUser = async (req, res, next) => {
 };
 
 // ******** ENDPOINTS ******** //
+
+app.get('/quotes', async (req, res) => {
+  const Quotes = await Quote.find({});
+  const getRandomQuote = () =>
+    Quotes[Math.floor(Math.random() * Quotes.length)];
+  const random = getRandomQuote();
+  res.status(200).json({
+    response: random,
+    success: true,
+  });
+});
+
+// const quotes = await Quote.find({});
+// res.status(201).json({ response: quotes, success: true });
 
 // ******** POST method signup ******** //
 app.post('/signup', async (req, res) => {

@@ -17,7 +17,7 @@ export const QuoteText = styled.p`
   margin-bottom: 0;
 `;
 
-export const Author = styled.p`
+export const Name = styled.p`
   font-size: 14px;
   font-weight: 300;
   color: var(--text-secondary);

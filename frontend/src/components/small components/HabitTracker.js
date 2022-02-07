@@ -15,7 +15,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-`
+`;
 
 const Track = styled.div`
   width: 120px;
@@ -137,9 +137,9 @@ export const HabitTracker = () => {
           <Thumb percentage={progress.percentage}></Thumb>
         </Track>
       </ProgressWrapper>
-    <Bottom>
+      <Bottom>
         <TrackText>{progress.percentage}%</TrackText>
-        
+
         <IconContext.Provider
           value={{
             color: '#444444',
@@ -160,7 +160,7 @@ export const HabitTracker = () => {
           </AddButton>
           {/* <AddButton onClick={() => setProgress({ percentage: progress.percentage - 10})}></AddButton> */}
         </IconContext.Provider>
-        </Bottom>
+      </Bottom>
     </Wrapper>
   );
 };

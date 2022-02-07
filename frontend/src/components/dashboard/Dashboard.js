@@ -57,7 +57,7 @@ const Dashboard = () => {
             <H2>What's on your mind?</H2>
             {/* <Thoughts /> */}
           </HeroText>
-          {/* <Quote /> */}
+          <Quote />
           <WeatherTest />
           {/* <TimeTicker /> */}
         </UpperWrapper>
