@@ -8,6 +8,19 @@ import { QuoteWrapper, Name, QuoteText, QuoteButton } from './_QuotesStyles';
 export const QuoteTwo = () => {
   const [theQuote, setTheQuote] = useState({});
 
+  const getNewQuote = () => {
+    window.location.reload();
+  };
+
+  useEffect(() => {
+    fetch(API_URL('quotes'))
+      .then((res) => res.json())
+      .then((data) => {
+        setTheQuote(data.response);
+        console.log('Is this the quote', data);
+      });
+  }, []);
+
   // useEffect =
   //   (() => {
   //     getNewQuote();
@@ -16,14 +29,14 @@ export const QuoteTwo = () => {
 
   // useEffect = (() => {}, [theQuote]);
 
-  const getNewQuote = () => {
-    fetch(API_URL('quotes'))
-      .then((res) => res.json())
-      .then((data) => {
-        setTheQuote(data.response);
-        console.log('Is this the quote', data);
-      });
-  };
+  // const getNewQuote = () => {
+  //   fetch(API_URL('quotes'))
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setTheQuote(data.response);
+  //       console.log('Is this the quote', data);
+  //     });
+  // };
 
   return (
     <QuoteWrapper>

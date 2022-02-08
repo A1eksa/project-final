@@ -20,7 +20,7 @@ const Wrapper = styled.div`
 const Track = styled.div`
   width: 120px;
   height: 64px;
-  background-color: #dedede;
+  background-color: var(--progress-background);
   border-radius: 10px;
   box-shadow: inset 0 0 5 #000;
   margin-left: -5rem;
@@ -56,7 +56,7 @@ export const AddButton = styled.button`
   transition: 0.3s;
   //   margin-bottom: 1rem;
   :hover {
-    background-color: #f1f1f1;
+    background-color: var(--grey-300);
     color: var(--text-primary);
     cursor: pointer;
     transform: rotate(360deg);
@@ -72,73 +72,29 @@ const Bottom = styled.div`
   bottom: 0;
 `;
 
-export const HabitTracker = () => {
+export const HabitTracker = ({ durationNumber, regularityNumber }) => {
   const habitItems = useSelector((store) => store.habit.items);
-  const [progress, setProgress] = useState({ percentage: 0 });
+  // const [progress, setProgress] = useState({ percentage: 0 });
 
-  const length = habitItems.length;
-  const lengthNumber = 30;
-  const regularity = habitItems.regularity;
-  const regularityNumber = 2;
-  // console.log('length', habitItems[0].length);
-  // console.log('regularity', habitItems[0].regularity);
-  console.log(lengthNumber);
-  console.log(regularityNumber);
-  console.log(habitItems);
+  const durationNum = habitItems.durationNumber;
+  const regularityNum = habitItems.regularityNumber;
+  const incrementNum = habitItems.incrementNumber;
 
-  var numberOfOccasions = lengthNumber / regularityNumber;
-  console.log('numberofoccations', numberOfOccasions);
+  // console.log(habitItems[0].durationNumber);
 
-  var occasions = Math.round((numberOfOccasions * 100) / 100);
-  console.log('occasions', occasions);
-  var increment = Math.round(100 / occasions);
-  console.log('increment', increment);
-  // console.log('increment', increment2);
-  // console.log('duration', duration);
-
-  // const startDate = new Date('22/02/01');
-  // const endDate = new Date('22/02/12');
-
-  // const startDate = new Date(habitItems.startDate);
-  // const endDate = new Date(habitItems.endDate);
-
-  // console.log('start date', startDate);
-  // const diffDays = Math.ceil(
-  //   Math.abs(endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24)
-  // );
-  // console.log('amount of days in period', diffDays);
-
-  //const regularity = habitItems.regularity;  1 är varje dag, 2 är varannan och 7 är varje vecka
-
-  // var numberOfOccasions = diffDays / regularity;
-  // var occasions = Math.round((numberOfOccasions * 100) / 100);
-  // var increment = Math.round(100 / occasions);
-
-  // console.log('increment', increment);
-  // console.log('occasions', occasions);
-  // console.log('habitItems.endDate', habitItems.startDate);
-
-  // console.log(
-  //   'number of occations this task should be done: ',
-  //   Math.round((2.67 * 100) / 100)
-  // );
-
-  // console.log(
-  //   'number of occations this task should be done: ',
-  //   Math.round((numberOfOccasions * 100) / 100)
-  // );
-
-  // console.log('number of occations whitout decimal: ', occasions);
+  const Calculation = () => {
+    incrementNum = regularityNum / durationNum;
+    return Math.round(incrementNum * 100);
+  };
 
   return (
     <Wrapper>
       <ProgressWrapper>
-        <Track>
-          <Thumb percentage={progress.percentage}></Thumb>
-        </Track>
+        <Track>{/* <Thumb percentage={progress.percentage}></Thumb> */}</Track>
       </ProgressWrapper>
       <Bottom>
-        <TrackText>{progress.percentage}%</TrackText>
+        {/* <TrackText>{progress.percentage}%</TrackText> */}
+        {/* <TrackText>{habitItems.incrementNumber}%</TrackText> */}
 
         <IconContext.Provider
           value={{
@@ -149,12 +105,13 @@ export const HabitTracker = () => {
           }}
         >
           <AddButton
-            onClick={
-              (event) => setProgress({ percentage: progress.percentage + 10 })
-              // setProgress({
-              //   percentage: progress.percentage + `${increment}`,
-              // })
-            }
+          // onClick={() => Calculation()}
+          // onClick={
+          //   (event) => Calculation({ percentage: progress.percentage + 10 })
+          // setProgress({
+          //   percentage: progress.percentage + `${increment}`,
+          // })
+          // }
           >
             <FaCheck />
           </AddButton>

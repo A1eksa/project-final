@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 // import user from '../../reducers/user';
 import { OpenModalToggle } from '../small components/OpenModalToggle';
-import { DarkMode } from '../styling/DarkMode';
+// import { DarkMode } from '../styling/DarkMode';
 
 import {
   HeaderWrapper,
@@ -23,7 +23,7 @@ export const TheHeader = () => {
 
   return (
     <HeaderWrapper>
-      <DarkMode />
+      {/* <DarkMode /> */}
       <User>
         <H1>Hello {loggedInUser}!</H1>
       </User>

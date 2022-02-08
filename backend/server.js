@@ -106,6 +106,17 @@ const HabitSchema = new mongoose.Schema({
     required: true,
     enum: ['30 days', '90 days', '6 months', '1 year'],
   },
+  regularityNumber: {
+    type: Number,
+    required: true,
+  },
+  durationNumber: {
+    type: Number,
+    required: true,
+  },
+  incrementNumber: {
+    type: Number,
+  },
 });
 
 const QuoteSchema = new mongoose.Schema({
@@ -311,7 +322,16 @@ app.patch('/todo/:todoId/completed', async (req, res) => {
 // ******** POST method habit ******** //
 app.post('/habits', authenticateUser);
 app.post('/habits', async (req, res) => {
-  const { heading, description, user, regularity, length } = req.body;
+  const {
+    heading,
+    description,
+    user,
+    regularity,
+    length,
+    regularityNumber,
+    durationNumber,
+    // incrementNumber,
+  } = req.body;
 
   try {
     const newHabit = await new Habit({
@@ -320,6 +340,9 @@ app.post('/habits', async (req, res) => {
       user: req.user,
       regularity,
       length,
+      regularityNumber,
+      durationNumber,
+      // incrementNumber,
     }).save();
     res.status(201).json({ response: newHabit, success: true });
   } catch (error) {
@@ -360,12 +383,28 @@ app.delete('/habits/:habitId', async (req, res) => {
 app.patch('/habits/:habitId', authenticateUser);
 app.patch('/habits/:habitId/update', async (req, res) => {
   const { habitId } = req.params;
-  const { heading, description } = req.body;
+  const {
+    heading,
+    description,
+    regularityNumber,
+    durationNumber,
+    length,
+    regularity,
+    incrementNumber,
+  } = req.body;
   ///maybe try FindByIdAndUpdate??
   try {
     const updatedHabit = await Habit.findByIdAndUpdate(
       { _id: habitId },
-      { description, heading },
+      {
+        description,
+        heading,
+        regularityNumber,
+        durationNumber,
+        length,
+        regularity,
+        incrementNumber,
+      },
       { new: true }
     );
     if (updatedHabit) {

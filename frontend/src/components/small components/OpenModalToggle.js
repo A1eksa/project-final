@@ -52,7 +52,7 @@ export const OpenToggle = styled.button`
   border: none;
   transition: 0.3s;
   :hover {
-    background-color: var(--grey-600);
+    background-color: var(--openbuttonhover);
     color: var(--text-primary);
     cursor: pointer;
     transform: rotate(360deg);

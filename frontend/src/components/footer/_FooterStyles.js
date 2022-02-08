@@ -9,6 +9,7 @@ export const StyledFooter = styled.footer`
   bottom: 0;
   position: fixed;
   padding: 1.5rem;
+  z-index: 2;
 `;
 
 export const AddButtonWrapper = styled.div`

@@ -17,7 +17,7 @@ export const RadioButton = styled.span`
   width: 95%;
   height: 32px;
   border-radius: 32px;
-  background-color: var(--grey-300);
+  background-color: var(--radiobutton);
   pointer-events: none;
   position: absolute;
   z-index: -1;

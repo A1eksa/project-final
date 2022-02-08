@@ -137,11 +137,11 @@ export const TodoForm = () => {
           </CategoryLabel>
           <Label htmlFor='date'>
             Due date
-            <input
+            <Input
               type='date'
               value={dueDate}
               onChange={(e) => setDueDate(e.target.value)}
-            ></input>
+            ></Input>
           </Label>
         </FormCategoryWrapper>
 

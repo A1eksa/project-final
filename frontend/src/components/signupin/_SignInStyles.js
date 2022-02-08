@@ -131,4 +131,5 @@ export const BoldLink = styled.a`
   text-decoration: none;
   margin: 0 4px;
   cursor: pointer;
+  padding-top: 2rem;
 `;

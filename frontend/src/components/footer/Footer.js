@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import Swal from 'sweetalert2';
 
 import user from '../../reducers/user';
+import { DarkMode } from '../styling/DarkMode';
 
 import { StyledFooter, MadeByWrapper, P, LogOutButton } from './_FooterStyles';
 
@@ -25,9 +26,10 @@ export const Footer = () => {
 
   return (
     <StyledFooter>
-      <MadeByWrapper>
+      {/* <MadeByWrapper>
         <P>Aleksa & Jessi 2022</P>
-      </MadeByWrapper>
+      </MadeByWrapper> */}
+      <DarkMode />
       <LogOutButton onClick={handleLogout}>SIGN OUT</LogOutButton>
     </StyledFooter>
   );

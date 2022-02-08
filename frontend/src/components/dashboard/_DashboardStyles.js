@@ -5,6 +5,7 @@ export const DashboardWrapper = styled.div`
   max-width: 1440px;
   background-color: var(--background);
   height: 100vh;
+  z-index: 1;
 `;
 
 export const H1 = styled.h1`

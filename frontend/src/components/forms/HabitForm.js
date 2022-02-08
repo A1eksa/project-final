@@ -17,24 +17,17 @@ import {
 } from './FormsStyles';
 
 export const HabitForm = () => {
+  // const habitItems = useSelector((store) => store.habit.items);
+  const accessToken = useSelector((store) => store.user.accessToken);
+
   const [heading, setHeading] = useState('');
   const [description, setDescription] = useState('');
-  // const [startDate, setStartDate] = useState('');
-  // const [endDate, setEndDate] = useState('');
-  const [regularity, setRegularity] = useState({
-    onceAday: 'Once a day',
-    everyOtherDay: 'Every other day',
-    onceAweek: 'Once a week',
-  });
-  const [length, setLength] = useState({
-    thirty: '30 days',
-    ninety: '90 days',
-    sixmonth: '6 months',
-    year: '1 year',
-  });
-  const accessToken = useSelector((store) => store.user.accessToken);
-  // const insideStore = useSelector((store) => store.habit);
-  // console.log('inside store', insideStore);
+  const [regularityNumber, setRegularityNumber] = useState('');
+  const [durationNumber, setDurationNumber] = useState('');
+  // const [incrementNumber, setIncrementNumber] = useState('');
+
+  const [regularity, setRegularity] = useState('');
+  const [length, setLength] = useState('');
 
   const dispatch = useDispatch();
 
@@ -50,6 +43,8 @@ export const HabitForm = () => {
         description,
         regularity,
         length,
+        regularityNumber,
+        durationNumber,
       }),
     };
     fetch(API_URL('habits'), options)
@@ -88,10 +83,13 @@ export const HabitForm = () => {
           Daily
           <HiddenRadioButton
             type='radio'
-            name='options'
-            id_='1'
+            name='regularity'
+            id='1'
             value='once a day'
-            onChange={(e) => setRegularity(e.target.value)}
+            onChange={(e) => {
+              setRegularity(e.target.value);
+              setRegularityNumber(e.target.id);
+            }}
           ></HiddenRadioButton>
           <RadioButton></RadioButton>
         </RegularityLabel>
@@ -99,10 +97,13 @@ export const HabitForm = () => {
           Every other day
           <HiddenRadioButton
             type='radio'
-            name='options'
-            id_='2'
+            name='regularity'
+            id='2'
             value='every other day'
-            onChange={(e) => setRegularity(e.target.value)}
+            onChange={(e) => {
+              setRegularity(e.target.value);
+              setRegularityNumber(e.target.id);
+            }}
           ></HiddenRadioButton>
           <RadioButton></RadioButton>
         </CategoryLabel>
@@ -110,10 +111,13 @@ export const HabitForm = () => {
           Once a week
           <HiddenRadioButton
             type='radio'
-            name='options'
-            id_='3'
+            name='regularity'
+            id='7'
             value='once a week'
-            onChange={(e) => setRegularity(e.target.value)}
+            onChange={(e) => {
+              setRegularity(e.target.value);
+              setRegularityNumber(e.target.id);
+            }}
           ></HiddenRadioButton>
           <RadioButton></RadioButton>
         </CategoryLabel>
@@ -126,9 +130,12 @@ export const HabitForm = () => {
           <HiddenRadioButton
             type='radio'
             name='options'
-            id_='4'
+            id='30'
             value='30 days'
-            onChange={(e) => setLength(e.target.value)}
+            onChange={(e) => {
+              setLength(e.target.value);
+              setDurationNumber(e.target.id);
+            }}
           ></HiddenRadioButton>
           <RadioButton></RadioButton>
         </CategoryLabel>
@@ -137,9 +144,12 @@ export const HabitForm = () => {
           <HiddenRadioButton
             type='radio'
             name='options'
-            id_='5'
+            id='90'
             value='90 days'
-            onChange={(e) => setLength(e.target.value)}
+            onChange={(e) => {
+              setLength(e.target.value);
+              setDurationNumber(e.target.id);
+            }}
           ></HiddenRadioButton>
           <RadioButton></RadioButton>
         </CategoryLabel>
@@ -148,9 +158,12 @@ export const HabitForm = () => {
           <HiddenRadioButton
             type='radio'
             name='options'
-            id_='6'
+            id='182'
             value='6 months'
-            onChange={(e) => setLength(e.target.value)}
+            onChange={(e) => {
+              setLength(e.target.value);
+              setDurationNumber(e.target.id);
+            }}
           ></HiddenRadioButton>
           <RadioButton></RadioButton>
         </CategoryLabel>
@@ -159,9 +172,12 @@ export const HabitForm = () => {
           <HiddenRadioButton
             type='radio'
             name='options'
-            id_='7'
+            id='365'
             value='1 year'
-            onChange={(e) => setLength(e.target.value)}
+            onChange={(e) => {
+              setLength(e.target.value);
+              setDurationNumber(e.target.id);
+            }}
           ></HiddenRadioButton>
           <RadioButton></RadioButton>
         </CategoryLabel>

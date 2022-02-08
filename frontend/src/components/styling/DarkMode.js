@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { ChangeEventHandler } from 'react';
 
@@ -32,16 +33,21 @@ const toggleTheme = (e) => {
   }
 };
 
+// {dataTheme==='dark'&& ()}
+
 export const DarkMode = () => {
   return (
     <Label>
-      Set Dark Mode
       <Input
         onChange={toggleTheme}
         defaultChecked={defaultDark}
         type='checkbox'
       />
       <Switch></Switch>
+      Switch to xxxx theme
+      {/* Switch to {theme === 'light' ? 'Dark' : 'Light'} theme */}
+      {/* {'data-theme' === 'dark' ? 'Set Light Mode' : 'Set Pink Mode'} */}
+      {/* {storedTheme === 'dark' ? 'Set Light Mode' : 'Set Dark Mode'} */}
     </Label>
   );
 };

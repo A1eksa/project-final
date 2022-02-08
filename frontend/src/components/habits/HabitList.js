@@ -137,36 +137,44 @@ export const HabitList = () => {
                     </Wrapper>
                   </TimeWrapper>
                   <BottomContainer>
-                <LeftWrapper>
-                  <IconContext.Provider
-                    value={{
-                      color: '#444444',
-                      className: 'global-class-name',
-                      size: '1.125rem',
-                      style: { verticalAlign: 'middle', marginLeft: '0.05rem' },
-                    }}
-                  >
-                    <DeleteButton onClick={() => deleteHabit(items._id)}>
-                      <FaTimes />
-                    </DeleteButton>
-                    <EditButton onClick={() => showEditSlideout(items)}>
-                      <AiTwotoneEdit />
-                    </EditButton>
-                  </IconContext.Provider>
-                </LeftWrapper>
-                <div>
-                  <input
-                    className='checkbox'
-                    name={items._id}
-                    id={items._id}
-                    type='checkbox'
-                    checked={items.isCompleted}
-                    onChange={() => onToggleHabit(items._id, items.isCompleted)}
-                  />
-                </div>
-              </BottomContainer>
+                    <LeftWrapper>
+                      <IconContext.Provider
+                        value={{
+                          color: '#444444',
+                          className: 'global-class-name',
+                          size: '1.125rem',
+                          style: {
+                            verticalAlign: 'middle',
+                            marginLeft: '0.05rem',
+                          },
+                        }}
+                      >
+                        <DeleteButton onClick={() => deleteHabit(items._id)}>
+                          <FaTimes />
+                        </DeleteButton>
+                        <EditButton onClick={() => showEditSlideout(items)}>
+                          <AiTwotoneEdit />
+                        </EditButton>
+                      </IconContext.Provider>
+                    </LeftWrapper>
+                    <div>
+                      <input
+                        className='checkbox'
+                        name={items._id}
+                        id={items._id}
+                        type='checkbox'
+                        checked={items.isCompleted}
+                        onChange={() =>
+                          onToggleHabit(items._id, items.isCompleted)
+                        }
+                      />
+                    </div>
+                  </BottomContainer>
                 </Left>
-                <HabitTracker />
+                <HabitTracker
+                  durationNumber={items.durationNumber}
+                  regularityNumber={items.regularityNumber}
+                />
               </CardDivider>
             </CardWrapper>
           ))}

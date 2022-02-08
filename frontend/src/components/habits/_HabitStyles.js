@@ -26,6 +26,7 @@ padding 1rem;
 box-sizing: border-box;
 margin-bottom: 1rem;
 background-color: var(--level-one);
+z-index: 1;
 
 `;
 
@@ -46,12 +47,12 @@ export const RegularityText = styled.p`
 `;
 
 export const HabitSubject = styled.h3`
-margin: 0;
-font-size: 1.125rem;
-line-height: 1.5rem;
-font-weight: 600;
-color: var(--text-primary);
-margin-top: 0.5rem;
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-top: 0.5rem;
 `;
 
 export const HabitText = styled.p`
@@ -131,45 +132,41 @@ export const Label = styled.p`
 `;
 
 export const Value = styled.p`
-font-size: 14px;
-line-height: 14px;
-font-weight: 600;
-margin: 0;
-color: var(--text-primary);
+  font-size: 14px;
+  line-height: 14px;
+  font-weight: 600;
+  margin: 0;
+  color: var(--text-primary);
 `;
 
 export const TimeWrapper = styled.div`
-display: flex;
-flex-direction: row;
-align-items: center;
-gap: 1rem;
-border-bottom: 1px solid var(--grey-100);
-padding-bottom: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  border-bottom: 1px solid var(--grey-100);
+  padding-bottom: 1rem;
 `;
 
 export const Wrapper = styled.div`
-display: flex;
-flex-direction: column;
-gap: 0.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
 `;
 
 export const Left = styled.div`
-display: flex;
-flex-direction: column;
-min-width: 50%;
+  display: flex;
+  flex-direction: column;
+  min-width: 50%;
 `;
 
 export const CardDivider = styled.div`
-display: flex;
-flex-direction: row;
-justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 `;
 
 export const Subject = styled.div`
-display: flex;
-flex-direction: column;
+  display: flex;
+  flex-direction: column;
 `;
-
-
-
-
