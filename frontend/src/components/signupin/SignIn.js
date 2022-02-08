@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import user from '../../reducers/user';
 import { API_URL } from '../../utils/constants';
-// import { SignInMargins } from './SignInMargins';
 
 import {
   BoldLink,
@@ -20,29 +19,16 @@ import {
 } from './_SignInStyles';
 
 const SignIn = () => {
+  const accessToken = useSelector((store) => store.user.accessToken);
+
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [mode, setMode] = useState('signin');
   const [activeForm, setActiveForm] = useState('signin');
 
-  // const AccountContext = createContext();
-  // const [validationError, setValidationError] = useState(null);
-
-  const accessToken = useSelector((store) => store.user.accessToken);
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  // const onToggleClick = () => {
-  //   if (mode === 'signin') {
-  //     setMode('signup');
-  //     setIsContainerActive(true);
-  //   } else {
-  //     setMode('signin');
-  //     setIsContainerActive(false);
-  //   }
-  // };
 
   useEffect(() => {
     if (accessToken) {
@@ -99,7 +85,6 @@ const SignIn = () => {
             dispatch(user.actions.setAccessToken(null));
             dispatch(user.actions.setEmail(null));
             dispatch(user.actions.setError(data.response));
-            // setValidationError(data.message);
           });
         }
       });
@@ -132,12 +117,9 @@ const SignIn = () => {
               Signin
             </SubmitButton>
           </FormContainer>
-          {/* <MutedLink onClick={() => setActiveForm('signup')}> */}
-
           <BoldLink onClick={() => setActiveForm('signup')}>
             Wanna be friends? Signup
           </BoldLink>
-          {/* </MutedLink> */}
         </BoxContainer>
       )}
 
@@ -178,12 +160,9 @@ const SignIn = () => {
               Signup
             </SubmitButton>
           </FormContainer>
-          {/* <MutedLink > */}
-
           <BoldLink onClick={() => setActiveForm('signin')}>
             Already a user? Signin!
           </BoldLink>
-          {/* </MutedLink> */}
         </BoxContainer>
       )}
     </PageWrapper>

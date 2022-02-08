@@ -5,7 +5,6 @@ import { Provider } from 'react-redux';
 
 import Dashboard from './components/dashboard/Dashboard';
 import SignIn from './components/signupin/SignIn';
-//import { DarkMode } from './components/styling/DarkMode';
 
 import user from './reducers/user';
 import habit from './reducers/habit';
@@ -28,15 +27,10 @@ const store = configureStore({ reducer });
 function App() {
   return (
     <Provider store={store}>
-      {/* <DarkMode /> */}
       <BrowserRouter>
         <Routes>
           <Route exact path='/' element={<Dashboard />} />
-          {/* <Route path='edit' element={<SlideOut />} /> */}
-          {/* </Route> */}
           <Route path='/signin' element={<SignIn />} />
-
-          {/* <Route path='/habitform' element={<HabitForm />} /> */}
         </Routes>
       </BrowserRouter>
     </Provider>

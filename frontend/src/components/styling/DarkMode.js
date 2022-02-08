@@ -25,27 +25,17 @@ if (defaultDark) {
   setDark();
 }
 
-// const toggleThemeText = (e) => {
-//   if (e.target.checked) {
-//     return 'Light';
-//   } else {
-//     return 'Dark';
-//   }
-// };
-
-// {dataTheme==='dark'&& ()}
-
 export const DarkMode = () => {
-  const [text, setText] = useState(true)
-  console.log('text', text)
+  const [text, setText] = useState(true);
+  console.log('text', text);
 
   const toggleTheme = (e) => {
     if (e.target.checked) {
       setDark();
-      setText(true)
+      setText(true);
     } else {
       setLight();
-      setText(false)
+      setText(false);
     }
   };
 
@@ -57,10 +47,7 @@ export const DarkMode = () => {
         type='checkbox'
       />
       <Switch></Switch>
-      Switch to <p>{text ? 'Light' : 'Dark'}</p> theme
-      {/* The user is <b>{isLoggedIn ? 'currently' : 'not'}</b> logged in.  */}
-      {/* {'data-theme' === 'dark' ? 'Set Light Mode' : 'Set Pink Mode'} */}
-      {/* {storedTheme === 'dark' ? 'Set Light Mode' : 'Set Dark Mode'} */}
+      Switch to<p>{text ? 'Light' : 'Dark'}</p>theme
     </Label>
   );
 };

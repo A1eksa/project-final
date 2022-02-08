@@ -330,7 +330,6 @@ app.post('/habits', async (req, res) => {
     length,
     regularityNumber,
     durationNumber,
-    // incrementNumber,
   } = req.body;
 
   try {
@@ -342,7 +341,7 @@ app.post('/habits', async (req, res) => {
       length,
       regularityNumber,
       durationNumber,
-      // incrementNumber,
+      incrementNumber: 0,
     }).save();
     res.status(201).json({ response: newHabit, success: true });
   } catch (error) {

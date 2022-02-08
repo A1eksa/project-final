@@ -174,6 +174,7 @@ export const HabitList = () => {
                 <HabitTracker
                   durationNumber={items.durationNumber}
                   regularityNumber={items.regularityNumber}
+                  habitId={items._id}
                 />
               </CardDivider>
             </CardWrapper>
