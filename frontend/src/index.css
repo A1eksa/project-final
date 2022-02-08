@@ -31,7 +31,7 @@ body {
   --closebuttonhover: #dedede;
   --openbuttonhover: #dedede;
   --radiobutton: #dedede;
-  --footer: #dedede80;
+  --footer: #ffffff80;
 }
 
 [data-theme='dark'] {
