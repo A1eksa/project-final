@@ -108,24 +108,6 @@ export const EditButton = styled.button`
   }
 `;
 
-export const HiddenCheckbox = styled.input.attrs({ type: 'checkbox' })`
-  border: 0;
-  clip: rect(0 0 0 0);
-  clippath: inset(50%);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-`;
-
-export const CheckboxContainer = styled.div`
-  display: inline-block;
-  vertical-align: middle;
-`;
-
 export const CategoryLabel = styled.label`
   display: flex;
   flex-direction: column;
@@ -169,9 +151,7 @@ export const FormCategoryWrapper = styled.div`
   width: 100%;
 `;
 
-export const HiddenRadioButton = styled.input.attrs({
-  type: 'radio',
-})`
+export const HiddenCheckbox = styled.input.attrs({ type: 'checkbox' })`
   height: 32px;
   width: 48px;
   cursor: pointer;
@@ -179,7 +159,10 @@ export const HiddenRadioButton = styled.input.attrs({
   opacity: 0;
 `;
 
-export const RadioButton = styled.span`
+export const CheckboxContainer = styled.span`
+  // display: inline-block;
+  // vertical-align: middle;
+
   display: flex;
   width: 95%;
   height: 32px;
@@ -189,7 +172,52 @@ export const RadioButton = styled.span`
   position: absolute;
   z-index: -1;
 
-  ${HiddenRadioButton}:checked + && {
+  ${HiddenCheckbox}:checked + && {
     background-color: var(--accent-green);
   }
 `;
+
+export const CheckboxLabel = styled.label`
+  min-width: 70px;
+  height: 32px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: 300;
+  color: var(--text-primary);
+  transition: 0.2s;
+  font-size: 1rem;
+  font-weight: 400;
+  position: relative;
+  padding: 0 1rem;
+  // background-color: var(--level-three);
+  margin-bottom: 1rem;
+  z-index: 2;
+`;
+
+// export const HiddenRadioButton = styled.input.attrs({
+//   type: 'radio',
+// })`
+//   height: 32px;
+//   width: 48px;
+//   cursor: pointer;
+//   position: absolute;
+//   opacity: 0;
+// `;
+
+// export const RadioButton = styled.span`
+//   display: flex;
+//   width: 95%;
+//   height: 32px;
+//   border-radius: 32px;
+//   background-color: var(--grey-100);
+//   pointer-events: none;
+//   position: absolute;
+//   z-index: -1;
+
+//   ${HiddenRadioButton}:checked + && {
+//     background-color: var(--accent-green);
+//   }
+// `;

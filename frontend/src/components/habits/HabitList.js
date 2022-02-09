@@ -10,8 +10,8 @@ import habit from '../../reducers/habit';
 import editModal from '../../reducers/editModal';
 // import { RealProgress } from '../small components/RealProgress';
 import { HabitTracker } from '../small components/HabitTracker';
-import { EmptyHabit } from '../small components/EmptyHabit'
-
+import { EmptyHabit } from '../small components/EmptyHabit';
+import Swal from 'sweetalert2';
 
 import {
   HabitWrapper,
@@ -32,6 +32,8 @@ import {
   CardDivider,
   Subject,
   Left,
+  HiddenRadioButton,
+  RadioButton,
 } from './_HabitStyles';
 
 export const HabitList = () => {
@@ -82,8 +84,16 @@ export const HabitList = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
-          dispatch(habit.actions.setErrors(null));
-          dispatch(habit.actions.deleteHabit(habitId));
+          Swal.fire({
+            title: 'Deleted!',
+            text: 'Your habit is deleted.',
+            confirmButtonColor: 'var(--accent-green)',
+            background: 'var(--level-three)',
+            color: 'var(--text-primary)',
+          }).then(() => {
+            dispatch(habit.actions.setErrors(null));
+            dispatch(habit.actions.deleteHabit(habitId));
+          });
         } else {
           dispatch(habit.actions.setItems([]));
           dispatch(habit.actions.setErrors(data.response));
@@ -117,52 +127,51 @@ export const HabitList = () => {
   };
 
   if (habitItems.length > 0)
-  return (
-    <HabitWrapper>
-      <H2>Your habits</H2>
-      <ListWrapper>
-        {habitItems &&
-          habitItems.map((items) => (
-            <CardWrapper key={items._id}>
-              <CardDivider>
-                <Left>
-                  <Subject>
-                    <HabitSubject>{items.heading}</HabitSubject>
-                    <HabitText>{items.description}</HabitText>
-                  </Subject>
-                  <TimeWrapper>
-                    <Wrapper>
-                      <Label>Duration</Label>
-                      <Value>{items.length}</Value>
-                    </Wrapper>
-                    <Wrapper>
-                      <Label>Regularity</Label>
-                      <Value>{items.regularity}</Value>
-                    </Wrapper>
-                  </TimeWrapper>
-                  <BottomContainer>
-                    <LeftWrapper>
-                      <IconContext.Provider
-                        value={{
-                          color: '#444444',
-                          className: 'global-class-name',
-                          size: '1.125rem',
-                          style: {
-                            verticalAlign: 'middle',
-                            marginLeft: '0.05rem',
-                          },
-                        }}
-                      >
-                        <DeleteButton onClick={() => deleteHabit(items._id)}>
-                          <FaTimes />
-                        </DeleteButton>
-                        <EditButton onClick={() => showEditSlideout(items)}>
-                          <AiTwotoneEdit />
-                        </EditButton>
-                      </IconContext.Provider>
-                    </LeftWrapper>
-                    <div>
-                      <input
+    return (
+      <HabitWrapper>
+        <H2>Your habits</H2>
+        <ListWrapper>
+          {habitItems &&
+            habitItems.map((items) => (
+              <CardWrapper key={items._id}>
+                <CardDivider>
+                  <Left>
+                    <Subject>
+                      <HabitSubject>{items.heading}</HabitSubject>
+                      <HabitText>{items.description}</HabitText>
+                    </Subject>
+                    <TimeWrapper>
+                      <Wrapper>
+                        <Label>Duration</Label>
+                        <Value>{items.length}</Value>
+                      </Wrapper>
+                      <Wrapper>
+                        <Label>Regularity</Label>
+                        <Value>{items.regularity}</Value>
+                      </Wrapper>
+                    </TimeWrapper>
+                    <BottomContainer>
+                      <LeftWrapper>
+                        <IconContext.Provider
+                          value={{
+                            color: '#444444',
+                            className: 'global-class-name',
+                            size: '1.125rem',
+                            style: {
+                              verticalAlign: 'middle',
+                              marginLeft: '0.05rem',
+                            },
+                          }}
+                        >
+                          <DeleteButton onClick={() => deleteHabit(items._id)}>
+                            <FaTimes />
+                          </DeleteButton>
+                          <EditButton onClick={() => showEditSlideout(items)}>
+                            <AiTwotoneEdit />
+                          </EditButton>
+                        </IconContext.Provider>
+                      </LeftWrapper>
+                      {/* <input
                         className='checkbox'
                         name={items._id}
                         id={items._id}
@@ -171,26 +180,25 @@ export const HabitList = () => {
                         onChange={() =>
                           onToggleHabit(items._id, items.isCompleted)
                         }
-                      />
-                    </div>
-                  </BottomContainer>
-                </Left>
-                <HabitTracker
-                  length={items.length}
-                  regularity={items.regularity}
-                  heading={items.heading}
-                  description={items.description}
-                  durationNumber={items.durationNumber}
-                  regularityNumber={items.regularityNumber}
-                  incrementNumber={items.incrementNumber}
-                  habitId={items._id}
-                />
-              </CardDivider>
-            </CardWrapper>
-          ))}
-      </ListWrapper>
-    </HabitWrapper>
-  );
+                      /> */}
+                    </BottomContainer>
+                  </Left>
+                  <HabitTracker
+                    length={items.length}
+                    regularity={items.regularity}
+                    heading={items.heading}
+                    description={items.description}
+                    durationNumber={items.durationNumber}
+                    regularityNumber={items.regularityNumber}
+                    incrementNumber={items.incrementNumber}
+                    habitId={items._id}
+                  />
+                </CardDivider>
+              </CardWrapper>
+            ))}
+        </ListWrapper>
+      </HabitWrapper>
+    );
   return (
     <ListWrapperEmpty>
       <H2>Your habits</H2>
@@ -198,5 +206,5 @@ export const HabitList = () => {
         <EmptyHabit />
       </CardWrapper>
     </ListWrapperEmpty>
-)
+  );
 };

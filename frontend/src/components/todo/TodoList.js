@@ -8,7 +8,7 @@ import { API_URL } from '../../utils/constants';
 import todo from '../../reducers/todo';
 import editModal from '../../reducers/editModal';
 import Swal from 'sweetalert2';
-import { EmptyTodo } from '../small components/EmptyTodo'
+import { EmptyTodo } from '../small components/EmptyTodo';
 
 import {
   H2,
@@ -24,6 +24,9 @@ import {
   LeftWrapper,
   DeleteButton,
   EditButton,
+  HiddenCheckbox,
+  CheckboxContainer,
+  CheckboxLabel,
 } from '../todo/_TodoStyles';
 
 export const TodoList = () => {
@@ -75,18 +78,12 @@ export const TodoList = () => {
       .then((data) => {
         if (data.success) {
           Swal.fire({
-            title: 'Are you sure you want to delete the todo?',
-            text: "You won't be able to revert this!",
-            icon: 'warning',
-            showCancelButton: false,
+            title: 'Deleted!',
+            text: 'Your todo is deleted.',
             confirmButtonColor: 'var(--accent-green)',
             background: 'var(--level-three)',
             color: 'var(--text-primary)',
-            confirmButtonText: 'Yes, delete it!',
-          }).then((result) => {
-            if (result.isConfirmed) {
-              Swal.fire('Deleted!', 'Your todo is deleted.', 'success');
-            }
+          }).then(() => {
             dispatch(todo.actions.setErrors(null));
             dispatch(todo.actions.deleteTodo(todoId));
           });
@@ -124,49 +121,57 @@ export const TodoList = () => {
   };
 
   if (todoItems.length > 0)
-  return (
-    <>
-      <ListWrapper>
-        <H2>Your todos</H2>
-        {todoItems &&
-          todoItems.map((items) => (
-            <CardWrapper key={items._id}>
-              <CategoryWrapper>
-                <Label>Category </Label>
-                <Category>{items.category}</Category>
-              </CategoryWrapper>
-              <TodoSubject>{items.heading}</TodoSubject>
-              <TodoText>{items.message}</TodoText>
-              <TodoText>Due date {items.dueDate}</TodoText>
-              <BottomContainer>
-                <LeftWrapper>
-                  <IconContext.Provider
-                    value={{
-                      color: '#444444',
-                      className: 'global-class-name',
-                      size: '1.125rem',
-                      style: { verticalAlign: 'middle', marginLeft: '0.05rem' },
-                    }}
-                  >
-                    <DeleteButton onClick={() => deleteTodo(items._id)}>
-                      <FaTimes />
-                    </DeleteButton>
-                    <EditButton onClick={() => showEditSlideout(items)}>
-                      <AiTwotoneEdit />
-                    </EditButton>
-                  </IconContext.Provider>
-                </LeftWrapper>
-                <div>
-                  <input
-                    className='checkbox'
-                    name={items._id}
-                    id={items._id}
-                    type='checkbox'
-                    checked={items.isCompleted}
-                    onChange={() => onToggleTodo(items._id, items.isCompleted)}
-                  />
-                </div>
-                {/* <CheckboxContainer>
+    return (
+      <>
+        <ListWrapper>
+          <H2>Your todos</H2>
+          {todoItems &&
+            todoItems.map((items) => (
+              <CardWrapper key={items._id}>
+                <CategoryWrapper>
+                  <Label>Category</Label>
+                  <Category>{items.category}</Category>
+                </CategoryWrapper>
+                <TodoSubject>{items.heading}</TodoSubject>
+                <TodoText>{items.message}</TodoText>
+                <TodoText>Due date {items.dueDate}</TodoText>
+                <BottomContainer>
+                  <LeftWrapper>
+                    <IconContext.Provider
+                      value={{
+                        color: '#444444',
+                        className: 'global-class-name',
+                        size: '1.125rem',
+                        style: {
+                          verticalAlign: 'middle',
+                          marginLeft: '0.05rem',
+                        },
+                      }}
+                    >
+                      <DeleteButton onClick={() => deleteTodo(items._id)}>
+                        <FaTimes />
+                      </DeleteButton>
+                      <EditButton onClick={() => showEditSlideout(items)}>
+                        <AiTwotoneEdit />
+                      </EditButton>
+                    </IconContext.Provider>
+                  </LeftWrapper>
+                  <CheckboxLabel>
+                    Completed
+                    <HiddenCheckbox
+                      className='checkbox'
+                      name={items._id}
+                      id={items._id}
+                      type='checkbox'
+                      checked={items.isCompleted}
+                      onChange={() =>
+                        onToggleTodo(items._id, items.isCompleted)
+                      }
+                    ></HiddenCheckbox>
+                    <CheckboxContainer></CheckboxContainer>
+                  </CheckboxLabel>
+
+                  {/* <CheckboxContainer>
               <InputLabel>Mark as done
               <HiddenCheckbox
                   className='checkbox'
@@ -179,12 +184,12 @@ export const TodoList = () => {
                 </CustomCheckbox>
               </InputLabel>
             </CheckboxContainer> */}
-              </BottomContainer>
-            </CardWrapper>
-          ))}
-      </ListWrapper>
-    </>
-  );
+                </BottomContainer>
+              </CardWrapper>
+            ))}
+        </ListWrapper>
+      </>
+    );
   return (
     <ListWrapper>
       <H2>Your todos</H2>
@@ -192,5 +197,5 @@ export const TodoList = () => {
         <EmptyTodo />
       </CardWrapper>
     </ListWrapper>
-)
+  );
 };

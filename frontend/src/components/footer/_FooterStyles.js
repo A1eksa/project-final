@@ -19,15 +19,13 @@ export const AddButtonWrapper = styled.div`
 `;
 
 export const RightWrapper = styled.div`
- margin-right: 2rem;
- display: flex;
- justify-content: space-between;
- align-items: center;
-
+  margin-right: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
-export const MadeByWrapper = styled.div`
-`;
+export const MadeByWrapper = styled.div``;
 
 export const P = styled.p`
   font-size: 1.125rem;
@@ -46,7 +44,7 @@ export const LogOutButton = styled.button`
   font-weight: 300;
   transition: 0.4s;
   border: none;
-  margin: 0 4rem 0 2rem;
+  margin: 0 4rem 0 1.5rem;
   max-width: 200px;
   background-color: var(--accent-green);
   :hover {

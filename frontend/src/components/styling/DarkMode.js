@@ -47,7 +47,7 @@ export const DarkMode = () => {
         type='checkbox'
       />
       <Switch></Switch>
-      Switch to<p>{text ? 'Light' : 'Dark'}</p>theme
+      {text ? 'Light' : 'Dark'} theme
     </Label>
   );
 };

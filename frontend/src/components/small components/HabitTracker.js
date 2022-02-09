@@ -21,7 +21,7 @@ const Track = styled.div`
   width: 120px;
   height: 64px;
   background-color: var(--progress-background);
-  border-radius: 10px;
+  border-radius: 0 10px 10px 0;
   box-shadow: inset 0 0 5 #000;
   margin-left: -5rem;
 `;
@@ -35,11 +35,11 @@ const TrackText = styled.p`
 `;
 
 const Thumb = styled.div`
-  width: ${(props) => props.percentage <= 100 ? props.percentage : 100 }%;
+  width: ${(props) => (props.percentage <= 100 ? props.percentage : 100)}%;
   height: 100%;
   background-color: var(--accent-green);
-  border-radius: 10px;
-  border-radius: 10px;
+  border-radius: 0 10px 10px 0;
+  // border-radius: 10px;
 `;
 
 export const AddButton = styled.button`
@@ -112,7 +112,10 @@ export const HabitTracker = ({
         Authorization: accessToken,
       },
       body: JSON.stringify({
-        incrementNumber: incrementNumber + calculationNumber <=  100 ? incrementNumber + calculationNumber : 100,
+        incrementNumber:
+          incrementNumber + calculationNumber <= 100
+            ? incrementNumber + calculationNumber
+            : 100,
         heading,
         description,
         regularityNumber,
@@ -137,7 +140,7 @@ export const HabitTracker = ({
       });
   };
 
-  console.log('progress', progress)
+  console.log('progress', progress);
 
   return (
     <Wrapper>

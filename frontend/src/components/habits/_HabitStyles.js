@@ -123,7 +123,7 @@ export const BottomContainer = styled.div`
   align-items: center;
   justify-content: left;
   padding-top: 1rem;
-  max-width: 50%;
+  max-width: 80%;
 `;
 
 export const LeftWrapper = styled.div`
