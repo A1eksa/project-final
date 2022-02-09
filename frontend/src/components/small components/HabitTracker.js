@@ -35,7 +35,7 @@ const TrackText = styled.p`
 `;
 
 const Thumb = styled.div`
-  width: ${(props) => props.percentage}%;
+  width: ${(props) => props.percentage <= 100 ? props.percentage : 100 }%;
   height: 100%;
   background-color: var(--accent-green);
   border-radius: 10px;
@@ -84,7 +84,7 @@ export const HabitTracker = ({
 }) => {
   const accessToken = useSelector((store) => store.user.accessToken);
 
-  const [progress, setProgress] = useState({ incrementNumber });
+  const [progress, setProgress] = useState(incrementNumber);
   const [progressValue, setProgressValue] = useState({ incrementNumber });
 
   const dispatch = useDispatch();
@@ -112,7 +112,7 @@ export const HabitTracker = ({
         Authorization: accessToken,
       },
       body: JSON.stringify({
-        incrementNumber: incrementNumber + calculationNumber,
+        incrementNumber: incrementNumber + calculationNumber <=  100 ? incrementNumber + calculationNumber : 100,
         heading,
         description,
         regularityNumber,
@@ -137,6 +137,8 @@ export const HabitTracker = ({
       });
   };
 
+  console.log('progress', progress)
+
   return (
     <Wrapper>
       <ProgressWrapper>
@@ -148,7 +150,9 @@ export const HabitTracker = ({
       </ProgressWrapper>
       <Bottom>
         {/* // set state to 0 from start  with proggressValue// */}
-        <TrackText>{incrementNumber + calculationNumber}%</TrackText>
+        {/* <TrackText>{incrementNumber + calculationNumber}%</TrackText> */}
+        <TrackText>{incrementNumber}%</TrackText>
+
         <IconContext.Provider
           value={{
             color: '#444444',
