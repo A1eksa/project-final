@@ -176,6 +176,10 @@ export const HabitList = () => {
                   </BottomContainer>
                 </Left>
                 <HabitTracker
+                  length={items.length}
+                  regularity={items.regularity}
+                  heading={items.heading}
+                  description={items.description}
                   durationNumber={items.durationNumber}
                   regularityNumber={items.regularityNumber}
                   incrementNumber={items.incrementNumber}

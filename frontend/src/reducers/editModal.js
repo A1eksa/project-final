@@ -32,6 +32,18 @@ const editModal = createSlice({
     setSelectedDescription: (store, action) => {
       store.selectedDescription = action.payload;
     },
+    setSelectedRegularity: (store, action) => {
+    store.selectedRegularity = action.payload;
+    },
+    setSelectedLength: (store, action) => {
+      store.selectedLength = action.payload;
+    },
+    setSelectedRegularityNumber: (store, action) => {
+      store.selectedRegularityNumber = action.payload;
+    },
+    setSelectedDurationNumber: (store, action) => {
+      store.selectedDurationNumber = action.payload;
+    },
 
     // TODO //
     setEditTodoSlideout: (store, action) => {

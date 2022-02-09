@@ -72,8 +72,9 @@ const Bottom = styled.div`
   bottom: 0;
 `;
 
-export const HabitTracker = ({ durationNumber, regularityNumber, incrementNumber, habitId }) => {
+export const HabitTracker = ({ heading,description, length, regularity, durationNumber, regularityNumber, incrementNumber, habitId }) => {
   const accessToken = useSelector((store) => store.user.accessToken);
+
   const [progress, setProgress] = useState({ incrementNumber });
 
   const dispatch = useDispatch();
@@ -93,6 +94,12 @@ export const HabitTracker = ({ durationNumber, regularityNumber, incrementNumber
       },
       body: JSON.stringify({
         incrementNumber: incrementNumber + 1,
+        heading,
+        description,
+        regularityNumber,
+        durationNumber,
+        length,
+        regularity,
         _id: habitId,
       }),
     };
