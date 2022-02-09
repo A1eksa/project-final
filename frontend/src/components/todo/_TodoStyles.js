@@ -13,8 +13,8 @@ export const ListWrapper = styled.section`
 `;
 
 export const CardWrapper = styled.div`
-min-width: 343px;
-width: 100%;
+min-width: 400px;
+// width: 100%;
 box-shadow: var(--box-shadow);
 border-radius: 10px;
 padding 1rem;

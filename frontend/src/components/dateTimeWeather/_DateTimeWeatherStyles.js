@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const WeatherWrapper = styled.div`
-min-width: 343px;
-max-width: 50%;
+// min-width: 343px;
+max-width: 343px;
 padding 1rem;
 box-sizing: border-box;
 // margin-bottom: 1rem;

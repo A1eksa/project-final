@@ -1,26 +1,26 @@
 import React from 'react';
 import styled from 'styled-components';
 import { IconContext } from 'react-icons';
-import { FaRainbow } from 'react-icons/fa';
+import { FaSeedling } from 'react-icons/fa';
 
 
-export const EmptyTodo = () => {
+export const EmptyHabit = () => {
 
     return (
 
         <EmptyState>
-            <Label>You don't have any todos</Label>
+            <Label>You don't have any habits</Label>
             <H4>Let's create some!</H4>
             <P>Click the green button in the upper right corner.</P>
             <IconContext.Provider
-                    value={{
-                      color: '#444444',
-                      className: 'global-class-name',
-                      size: '4rem',
-                      style: { verticalAlign: 'middle', marginLeft: '0.05rem' },
-                    }}
-                  >
-                                  <FaRainbow />
+                value={{
+                    color: '#444444',
+                    className: 'global-class-name',
+                    size: '4rem',
+                    style: { verticalAlign: 'middle', marginLeft: '0.05rem' },
+                }}
+                >
+                <FaSeedling />
             </IconContext.Provider>
         </EmptyState>
 )
@@ -30,8 +30,6 @@ export const EmptyTodo = () => {
 const EmptyState = styled.div`
 // background-color: var(--level-two);
 // box-shadow: var(--box-shadow);
-height: 100%;
-max-width: 343px;
 height: 190px;
 padding: 3rem;
 border-radius: 10px;

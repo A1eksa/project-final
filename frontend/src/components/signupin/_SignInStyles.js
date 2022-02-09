@@ -21,7 +21,7 @@ export const Line = styled.div`
   margin-top: 4rem;
   height: 4px;
   width: 96px;
-  background-color: var(--grey-200);
+  background-color: var(--text-primary);
 `;
 
 export const H1 = styled.h1`

@@ -35,8 +35,8 @@ export const HabitEditForm = () => {
   console.log(selectedDescription, selectedHeading);
   const [heading, setHeading] = useState(selectedHeading);
   const [description, setDescription] = useState(selectedDescription);
-  // const [regularityNumber, setRegularityNumber] = useState('');
-  // const [durationNumber, setDurationNumber] = useState('');
+  const [regularityNumber, setRegularityNumber] = useState('');
+  const [durationNumber, setDurationNumber] = useState('');
 
   const dispatch = useDispatch();
 
@@ -55,6 +55,8 @@ export const HabitEditForm = () => {
         description,
         regularity,
         length,
+        regularityNumber,
+        durationNumber,
       }),
     };
 
@@ -122,6 +124,7 @@ export const HabitEditForm = () => {
             ></HiddenRadioButton>
             <RadioButton></RadioButton>
           </CategoryLabel>
+
           <CategoryLabel htmlFor='once a week'>
             Once a week
             <HiddenRadioButton
@@ -134,6 +137,7 @@ export const HabitEditForm = () => {
             <RadioButton></RadioButton>
           </CategoryLabel>
         </FormCategoryWrapper>
+
         <Label>Length of habit</Label>
         <FormCategoryWrapper>
           <CategoryLabel htmlFor='30 days'>
@@ -158,6 +162,7 @@ export const HabitEditForm = () => {
             ></HiddenRadioButton>
             <RadioButton></RadioButton>
           </CategoryLabel>
+
           <CategoryLabel htmlFor='6 months'>
             6 months
             <HiddenRadioButton
@@ -169,6 +174,7 @@ export const HabitEditForm = () => {
             ></HiddenRadioButton>
             <RadioButton></RadioButton>
           </CategoryLabel>
+
           <CategoryLabel htmlFor='1 year'>
             1 year
             <HiddenRadioButton
@@ -180,6 +186,7 @@ export const HabitEditForm = () => {
             ></HiddenRadioButton>
             <RadioButton></RadioButton>
           </CategoryLabel>
+
         </FormCategoryWrapper>
         <Button type='submit'>Update you habit</Button>
       </FormWrapper>

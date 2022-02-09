@@ -72,63 +72,52 @@ const Bottom = styled.div`
   bottom: 0;
 `;
 
-export const HabitTracker = ({ durationNumber, regularityNumber, habitId }) => {
-  const currentIncrement = useSelector((store) => store.habit.incrementNumber);
+export const HabitTracker = ({ durationNumber, regularityNumber, incrementNumber, habitId }) => {
   const accessToken = useSelector((store) => store.user.accessToken);
-  const habitItems = useSelector((store) => store.habit.items);
-  const [progress, setProgress] = useState({ percentage: 0 });
+  const [progress, setProgress] = useState({ incrementNumber });
 
   const dispatch = useDispatch();
-  // console.log('items', items);
-  console.log('durationNumber', durationNumber);
-  console.log('regularityNumber', regularityNumber);
-  console.log('habitId', habitId);
 
-  // const durationNum = habitItems.durationNumber;
-  // const regularityNum = habitItems.regularityNumber;
-  // const incrementNum = habitItems.incrementNumber;
+  const Calculation = () => {
+    return Math.round((regularityNumber / durationNumber) * 100) * 100;
+  };
 
-  // console.log(habitItems[0].durationNumber);
-
-  // const Calculation = () => {
-  //   return Math.round((regularityNumber / durationNumber) * 100);
-  // };
-
-  // const onIncrement = () => {
-  //   const options = {
-  //     method: 'PATCH',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       Authorization: accessToken,
-  //     },
-  //     body: JSON.stringify({
-  //       incrementNumber: currentIncrement + Calculation(),
-  //       _id: habitId,
-  //     }),
-  //   };
-  //   fetch(API_URL(`habits/${habitId}/update`), options)
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       if (data.success) {
-  //         batch(() => {
-  //           // dispatch(habit.actions.setItems())
-  //           dispatch(habit.actions.updateHabit(data.response));
-  //           dispatch(habit.actions.setErrors(null));
-  //         });
-  //       } else {
-  //         dispatch(habit.actions.setErrors(data.response));
-  //       }
-  //     });
-  // };
+  const onIncrement = () => {
+    console.log('onIncrement')
+    setProgress(incrementNumber + 1)
+    const options = {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: accessToken,
+      },
+      body: JSON.stringify({
+        incrementNumber: incrementNumber + 1,
+        _id: habitId,
+      }),
+    };
+    fetch(API_URL(`habits/${habitId}/update`), options)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          batch(() => {
+            // dispatch(habit.actions.setItems())
+            dispatch(habit.actions.updateHabit(data.response));
+            dispatch(habit.actions.setErrors(null));
+          });
+        } else {
+          dispatch(habit.actions.setErrors(data.response));
+        }
+      });
+  };
 
   return (
     <Wrapper>
       <ProgressWrapper>
-        <Track>{/* <Thumb percentage={progress.percentage}></Thumb> */}</Track>
+        <Track><Thumb percentage={progress}></Thumb></Track>
       </ProgressWrapper>
       <Bottom>
-        {/* <TrackText>{progress.percentage}%</TrackText> */}
-        {/* <TrackText>{habitItems.incrementNumber}%</TrackText> */}
+        <TrackText>{Calculation()}%</TrackText>
 
         <IconContext.Provider
           value={{
@@ -138,17 +127,7 @@ export const HabitTracker = ({ durationNumber, regularityNumber, habitId }) => {
             style: { verticalAlign: 'middle', marginBottom: '0.1rem' },
           }}
         >
-          <AddButton
-          // onClick={
-          //   (event) => Calculation({ percentage: progress.percentage + 10 })
-          // setProgress({
-          //   percentage: progress.percentage + `${increment}`,
-          // })
-          // }
-          >
-            <FaCheck />
-          </AddButton>
-          {/* <AddButton onClick={() => onIncrement()}></AddButton> */}
+          <AddButton onClick={() => onIncrement()}><FaCheck /></AddButton>
         </IconContext.Provider>
       </Bottom>
     </Wrapper>

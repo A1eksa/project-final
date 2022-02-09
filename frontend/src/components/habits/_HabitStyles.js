@@ -18,6 +18,13 @@ export const ListWrapper = styled.section`
   grid-gap: 1rem;
 `;
 
+export const ListWrapperEmpty = styled.section`
+  // display: grid;
+  // grid-template-columns: repeat(auto-fit, minmax(343px, 1fr));
+  // grid-gap: 1rem;
+  width: 100%;
+`;
+
 export const CardWrapper = styled.div`
 min-height: 148px;
 box-shadow: var(--box-shadow);

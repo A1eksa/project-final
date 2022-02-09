@@ -62,7 +62,7 @@ export const RegularityLabel = styled.label`
   position: relative;
   padding: 0 1rem;
   // background-color: var(--level-three);
-  margin-bottom: 1rem;
+  // margin-bottom: 1rem;
 `;
 
 //
@@ -72,7 +72,7 @@ export const FormCategoryWrapper = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   padding-top: 1rem;
-  padding-bottom: 2rem;
+  // padding-bottom: 2rem;
   width: 100%;
   justify-content: space-between;
 `;

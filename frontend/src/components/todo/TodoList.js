@@ -8,6 +8,7 @@ import { API_URL } from '../../utils/constants';
 import todo from '../../reducers/todo';
 import editModal from '../../reducers/editModal';
 import Swal from 'sweetalert2';
+import { EmptyTodo } from '../small components/EmptyTodo'
 
 import {
   H2,
@@ -122,6 +123,7 @@ export const TodoList = () => {
       });
   };
 
+  if (todoItems.length > 0)
   return (
     <>
       <ListWrapper>
@@ -183,4 +185,12 @@ export const TodoList = () => {
       </ListWrapper>
     </>
   );
+  return (
+    <ListWrapper>
+      <H2>Your todos</H2>
+      <CardWrapper>
+        <EmptyTodo />
+      </CardWrapper>
+    </ListWrapper>
+)
 };

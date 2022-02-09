@@ -10,11 +10,14 @@ import habit from '../../reducers/habit';
 import editModal from '../../reducers/editModal';
 // import { RealProgress } from '../small components/RealProgress';
 import { HabitTracker } from '../small components/HabitTracker';
+import { EmptyHabit } from '../small components/EmptyHabit'
+
 
 import {
   HabitWrapper,
   CardWrapper,
   ListWrapper,
+  ListWrapperEmpty,
   H2,
   HabitSubject,
   HabitText,
@@ -113,6 +116,7 @@ export const HabitList = () => {
       });
   };
 
+  if (habitItems.length > 0)
   return (
     <HabitWrapper>
       <H2>Your habits</H2>
@@ -174,6 +178,7 @@ export const HabitList = () => {
                 <HabitTracker
                   durationNumber={items.durationNumber}
                   regularityNumber={items.regularityNumber}
+                  incrementNumber={items.incrementNumber}
                   habitId={items._id}
                 />
               </CardDivider>
@@ -182,4 +187,12 @@ export const HabitList = () => {
       </ListWrapper>
     </HabitWrapper>
   );
+  return (
+    <ListWrapperEmpty>
+      <H2>Your habits</H2>
+      <CardWrapper>
+        <EmptyHabit />
+      </CardWrapper>
+    </ListWrapperEmpty>
+)
 };
