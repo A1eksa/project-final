@@ -72,20 +72,45 @@ const Bottom = styled.div`
   bottom: 0;
 `;
 
-export const HabitTracker = ({ heading,description, length, regularity, durationNumber, regularityNumber, incrementNumber, habitId }) => {
+export const HabitTracker = ({
+  heading,
+  description,
+  length,
+  regularity,
+  durationNumber,
+  regularityNumber,
+  incrementNumber,
+  habitId,
+}) => {
   const accessToken = useSelector((store) => store.user.accessToken);
 
   const [progress, setProgress] = useState({ incrementNumber });
+  // const [progressValue, setProgressValue] = useState({ incrementNumber });
 
   const dispatch = useDispatch();
 
-  const Calculation = () => {
-    return Math.round((regularityNumber / durationNumber) * 100) * 100;
-  };
+  // const Calculation = () => {
+  //   return Math.round((regularityNumber / durationNumber) * 100);
+  // };
+
+  const calculationNumber = Math.round(
+    (regularityNumber / durationNumber) * 100
+  );
+
+  // const plusOneNumber= Calculation;
+
+  //return Math.round((regularityNumber / durationNumber) * 100);
+
+  //return Math.round((incrementNumber + 1 / durationNumber) * 100);
+
+  // const Calculation = () => {
+  //   return Math.round((1 / 90) * 100);
+  // };
 
   const onIncrement = () => {
-    console.log('onIncrement')
-    setProgress(incrementNumber + 1)
+    console.log('onIncrement');
+    setProgress(incrementNumber + 1);
+    // setProgressValue(incrementNumber + 1);
     const options = {
       method: 'PATCH',
       headers: {
@@ -93,7 +118,7 @@ export const HabitTracker = ({ heading,description, length, regularity, duration
         Authorization: accessToken,
       },
       body: JSON.stringify({
-        incrementNumber: incrementNumber + 1,
+        incrementNumber: incrementNumber + calculationNumber,
         heading,
         description,
         regularityNumber,
@@ -121,10 +146,12 @@ export const HabitTracker = ({ heading,description, length, regularity, duration
   return (
     <Wrapper>
       <ProgressWrapper>
-        <Track><Thumb percentage={progress}></Thumb></Track>
+        <Track>
+          <Thumb percentage={progress}></Thumb>
+        </Track>
       </ProgressWrapper>
       <Bottom>
-        <TrackText>{Calculation()}%</TrackText>
+        <TrackText>{incrementNumber + calculationNumber}%</TrackText>
 
         <IconContext.Provider
           value={{
@@ -134,7 +161,9 @@ export const HabitTracker = ({ heading,description, length, regularity, duration
             style: { verticalAlign: 'middle', marginBottom: '0.1rem' },
           }}
         >
-          <AddButton onClick={() => onIncrement()}><FaCheck /></AddButton>
+          <AddButton onClick={() => onIncrement()}>
+            <FaCheck />
+          </AddButton>
         </IconContext.Provider>
       </Bottom>
     </Wrapper>
