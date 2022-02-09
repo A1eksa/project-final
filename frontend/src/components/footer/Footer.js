@@ -3,9 +3,10 @@ import { useDispatch } from 'react-redux';
 import Swal from 'sweetalert2';
 
 import user from '../../reducers/user';
+import { TimeTicker } from '../small components/TimeTicker';
 import { DarkMode } from '../styling/DarkMode';
 
-import { StyledFooter, MadeByWrapper, P, LogOutButton } from './_FooterStyles';
+import { StyledFooter, MadeByWrapper, P, LogOutButton, RightWrapper } from './_FooterStyles';
 
 export const Footer = () => {
   const dispatch = useDispatch();
@@ -30,7 +31,10 @@ export const Footer = () => {
         <P>Aleksa & Jessi 2022</P>
       </MadeByWrapper> */}
       <DarkMode />
-      <LogOutButton onClick={handleLogout}>SIGN OUT</LogOutButton>
+      <RightWrapper>
+        <TimeTicker />
+        <LogOutButton onClick={handleLogout}>SIGN OUT</LogOutButton>
+      </RightWrapper>
     </StyledFooter>
   );
 };

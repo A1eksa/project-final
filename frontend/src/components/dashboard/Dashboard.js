@@ -7,7 +7,7 @@ import { HabitList } from '../habits/HabitList';
 import { CreateSlideOut } from '../modal/CreateSlideOut';
 import { HabitsSlideOut } from '../modal/HabitsSlideOut';
 import { TodoSlideOut } from '../modal/TodoSlideOut';
-//import { TimeTicker } from '../small components/TimeTicker';
+import { TimeTicker } from '../small components/TimeTicker';
 import { TheHeader } from '../header/TheHeader';
 import { Footer } from '../footer/Footer';
 import { Quote } from '../quotes/Quote';
