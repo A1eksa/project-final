@@ -85,7 +85,7 @@ export const HabitTracker = ({
   const accessToken = useSelector((store) => store.user.accessToken);
 
   const [progress, setProgress] = useState({ incrementNumber });
-  // const [progressValue, setProgressValue] = useState({ incrementNumber });
+  const [progressValue, setProgressValue] = useState({ incrementNumber });
 
   const dispatch = useDispatch();
 
@@ -97,20 +97,14 @@ export const HabitTracker = ({
     (regularityNumber / durationNumber) * 100
   );
 
-  // const plusOneNumber= Calculation;
-
   //return Math.round((regularityNumber / durationNumber) * 100);
 
   //return Math.round((incrementNumber + 1 / durationNumber) * 100);
 
-  // const Calculation = () => {
-  //   return Math.round((1 / 90) * 100);
-  // };
-
   const onIncrement = () => {
     console.log('onIncrement');
     setProgress(incrementNumber + 1);
-    // setProgressValue(incrementNumber + 1);
+    setProgressValue(incrementNumber);
     const options = {
       method: 'PATCH',
       headers: {
@@ -147,12 +141,14 @@ export const HabitTracker = ({
     <Wrapper>
       <ProgressWrapper>
         <Track>
+          {/* //progressbar needs to stop at 100%// */}
+          {/* //progressbar needs to stay at state when reload// */}
           <Thumb percentage={progress}></Thumb>
         </Track>
       </ProgressWrapper>
       <Bottom>
+        {/* // set state to 0 from start  with proggressValue// */}
         <TrackText>{incrementNumber + calculationNumber}%</TrackText>
-
         <IconContext.Provider
           value={{
             color: '#444444',
