@@ -50,6 +50,9 @@ export const HabitEditForm = () => {
   );
   const [durationNumber, setDurationNumber] = useState(selectedDurationNumber);
 
+  console.log(selectedRegularity);
+  console.log(regularity);
+
   const dispatch = useDispatch();
 
   const updateHabit = (event, habitId) => {
@@ -77,7 +80,8 @@ export const HabitEditForm = () => {
         if (data.success) {
           batch(() => {
             dispatch(habit.actions.updateHabit(data.response));
-            dispatch(editModal.actions.setError(null));
+            // dispatch(editModal.actions.setErrors(null));
+            dispatch(editModal.actions.setEditSlideout(false));
           });
         } else {
           dispatch(editModal.actions.setErrors(data.response));
@@ -127,7 +131,7 @@ export const HabitEditForm = () => {
             <RadioButton></RadioButton>
           </RegularityLabel>
 
-          <CategoryLabel htmlFor='every other day'>
+          <RegularityLabel htmlFor='every other day'>
             Every other day
             <HiddenRadioButton
               type='radio'
@@ -141,9 +145,9 @@ export const HabitEditForm = () => {
               }}
             ></HiddenRadioButton>
             <RadioButton></RadioButton>
-          </CategoryLabel>
+          </RegularityLabel>
 
-          <CategoryLabel htmlFor='once a week'>
+          <RegularityLabel htmlFor='once a week'>
             Once a week
             <HiddenRadioButton
               type='radio'
@@ -157,7 +161,7 @@ export const HabitEditForm = () => {
               }}
             ></HiddenRadioButton>
             <RadioButton></RadioButton>
-          </CategoryLabel>
+          </RegularityLabel>
         </FormCategoryWrapper>
 
         <Label>Length of habit</Label>

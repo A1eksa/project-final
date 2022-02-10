@@ -11,7 +11,6 @@ import habit from './reducers/habit';
 import todo from './reducers/todo';
 import modal from './reducers/modal';
 import editModal from './reducers/editModal';
-import quote from './reducers/quote';
 
 const reducer = combineReducers({
   user: user.reducer,
@@ -19,7 +18,6 @@ const reducer = combineReducers({
   todo: todo.reducer,
   modal: modal.reducer,
   editModal: editModal.reducer,
-  quote: quote.reducer,
 });
 
 const store = configureStore({ reducer });

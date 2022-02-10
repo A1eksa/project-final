@@ -46,7 +46,7 @@ export const CategoryLabel = styled.label`
 `;
 
 export const RegularityLabel = styled.label`
-  width: 45%;
+  width: 38%;
   height: 32px;
   border-radius: 16px;
   display: flex;
@@ -60,6 +60,7 @@ export const RegularityLabel = styled.label`
   font-weight: 400;
   position: relative;
   padding: 0 1rem;
+  margin-bottom: 1rem;
 `;
 
 //

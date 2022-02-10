@@ -34,7 +34,7 @@ export const SignIn = () => {
   useEffect(() => {
     if (accessToken) {
       Swal.fire({
-        title: 'Welcome back!',
+        title: 'Welcome!',
         showCancelButton: false,
         confirmButtonColor: 'var(--accent-green)',
         confirmButtonBorder: false,

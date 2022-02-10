@@ -30,8 +30,8 @@ export const TodoEditForm = () => {
   const selectedCategory = useSelector(
     (store) => store.editModal?.selectedTodo?.category
   );
-  console.log('Jocke', selectedCategory === 'Friends')
-  
+  // console.log('categort', selectedCategory);
+
   const selectedDueDate = useSelector(
     (store) => store.editModal?.selectedTodo?.dueDate
   );
@@ -40,7 +40,10 @@ export const TodoEditForm = () => {
   const [message, setMessage] = useState(selectedMessage);
   const [category, setCategory] = useState(selectedCategory);
   const [dueDate, setDueDate] = useState(selectedDueDate);
-
+  // if (selectedCategory && category) {
+  console.log(selectedCategory);
+  console.log(category);
+  // }
   const dispatch = useDispatch();
 
   const updateTodo = (event, todoId) => {
@@ -65,7 +68,8 @@ export const TodoEditForm = () => {
         if (data.success) {
           batch(() => {
             dispatch(todo.actions.updateTodo(data.response));
-            dispatch(editModal.actions.setError(null));
+            // dispatch(editModal.actions.setErrors(null));
+            dispatch(editModal.actions.setEditTodoSlideout(false));
           });
         } else {
           dispatch(editModal.actions.setErrors(data.response));
@@ -97,8 +101,7 @@ export const TodoEditForm = () => {
         <Label htmlFor='category'>
           Category
           <FormCategoryWrapper>
-
-            <CategoryLabel htmlFor='home'>
+            <CategoryLabel htmlFor='Home'>
               Home
               <HiddenRadioButton
                 type='radio'
@@ -111,7 +114,7 @@ export const TodoEditForm = () => {
               <RadioButton></RadioButton>
             </CategoryLabel>
 
-            <CategoryLabel htmlFor='family'>
+            <CategoryLabel htmlFor='Family'>
               Family
               <HiddenRadioButton
                 type='radio'
@@ -124,7 +127,7 @@ export const TodoEditForm = () => {
               <RadioButton></RadioButton>
             </CategoryLabel>
 
-            <CategoryLabel htmlFor='work'>
+            <CategoryLabel htmlFor='Work'>
               Work
               <HiddenRadioButton
                 type='radio'
@@ -149,10 +152,9 @@ export const TodoEditForm = () => {
               ></HiddenRadioButton>
               <RadioButton></RadioButton>
             </CategoryLabel>
-
           </FormCategoryWrapper>
         </Label>
-        <Label htmlFor='category'>
+        <Label htmlFor='date'>
           Due date
           <Input
             type='date'

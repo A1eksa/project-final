@@ -26,7 +26,7 @@ export const TodoSlideOut = () => {
             +
           </CloseToggle>
         </CloseToggleWrapper>
-        <TodoEditForm />
+        {editTodoSlideout && <TodoEditForm />}
       </div>
     </>
   );

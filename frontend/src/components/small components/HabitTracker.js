@@ -5,6 +5,9 @@ import { IconContext } from 'react-icons';
 import { FaCheck } from 'react-icons/fa';
 import { API_URL } from '../../utils/constants';
 
+// import Lottie from 'react-lottie';
+// import animationData from './lotties/loader';
+
 import habit from '../../reducers/habit';
 
 const ProgressWrapper = styled.div`
