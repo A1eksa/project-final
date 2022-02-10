@@ -4,22 +4,14 @@ import { HabitEditForm } from '../forms/HabitEditForm';
 import './SlideOut.css';
 import editModal from '../../reducers/editModal';
 
-import {
-  P,
-  CloseToggle,
-  // SlideOutWrapper,
-  // OpenToggleWrapper,
-  CloseToggleWrapper,
-} from './_ModalStyles';
+import { P, CloseToggle, CloseToggleWrapper } from './_ModalStyles';
 
-// const SlideOut = (isEditModalActive, toggleEditModal) => {
 export const HabitsSlideOut = () => {
   const editSlideout = useSelector((store) => store.editModal.editSlideout);
 
   const dispatch = useDispatch();
 
   const closeEditSlideOut = () => {
-    // dispatch modal.actions.setSlideout
     dispatch(editModal.actions.setEditSlideout(false));
   };
 

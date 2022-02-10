@@ -88,24 +88,3 @@
   border-bottom: 4px solid var(--grey-100);
   font-weight: 400;
 }
-
-/* .overlay {
-  background-color: var(--grey-100);
-  z-index: -1;
-  position: relative;
-} */
-
-/* .Overlay {
-    background-color: rgba(0, 0, 0, 0.55);
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    position: fixed;
-    display: none;
-    z-index: 5;
-  }
-
-  .Overlay.Show {
-    display: block;
-  } */

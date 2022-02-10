@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { FaTimes } from 'react-icons/fa';
 
 export const H2 = styled.h2`
   font-size: 1.5rem;
@@ -9,12 +8,10 @@ export const H2 = styled.h2`
 export const ListWrapper = styled.section`
   display: flex;
   flex-direction: column;
-  // min-width: 300px;
 `;
 
 export const CardWrapper = styled.div`
 min-width: 400px;
-// width: 100%;
 box-shadow: var(--box-shadow);
 border-radius: 10px;
 padding 1rem;
@@ -160,9 +157,6 @@ export const HiddenCheckbox = styled.input.attrs({ type: 'checkbox' })`
 `;
 
 export const CheckboxContainer = styled.span`
-  // display: inline-block;
-  // vertical-align: middle;
-
   display: flex;
   width: 95%;
   height: 32px;
@@ -193,6 +187,5 @@ export const CheckboxLabel = styled.label`
   font-weight: 400;
   position: relative;
   padding: 0 1rem;
-  // background-color: var(--level-three);
   z-index: 2;
 `;

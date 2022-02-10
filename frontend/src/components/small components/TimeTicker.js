@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 export const TimeWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   height: 56px;
   border-right: 2px solid var(--text-primary);
   padding-right: 2rem;
@@ -16,7 +16,6 @@ export const H4 = styled.h4`
   font-weight: 200;
   margin: 0;
   color: var(--text-primary);
-//   font-feature-settings: 'lnum' 1;
   font-family: oxygen mono;
 `;
 
@@ -39,7 +38,6 @@ export const TimeTicker = () => {
     }, 1000);
   }, []);
 
-
   return (
     <TimeWrapper>
       <Label>Your local time is</Label>
@@ -47,5 +45,3 @@ export const TimeTicker = () => {
     </TimeWrapper>
   );
 };
-
-// setInterval(TimeTicker, 1000);

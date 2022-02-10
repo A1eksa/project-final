@@ -17,15 +17,12 @@ import {
 } from './FormsStyles';
 
 export const HabitForm = () => {
-  // const habitItems = useSelector((store) => store.habit.items);
   const accessToken = useSelector((store) => store.user.accessToken);
 
   const [heading, setHeading] = useState('');
   const [description, setDescription] = useState('');
   const [regularityNumber, setRegularityNumber] = useState('');
   const [durationNumber, setDurationNumber] = useState('');
-  // const [incrementNumber, setIncrementNumber] = useState('');
-
   const [regularity, setRegularity] = useState('');
   const [length, setLength] = useState('');
 
@@ -52,7 +49,6 @@ export const HabitForm = () => {
       .then((data) => {
         if (data.success) {
           batch(() => {
-            //dispatch(habit.actions.setItems(data.response.items));
             dispatch(user.actions.setUserId(data.response.userId));
           });
         }
@@ -182,35 +178,7 @@ export const HabitForm = () => {
           <RadioButton></RadioButton>
         </CategoryLabel>
       </FormCategoryWrapper>
-
-      {/* <Label htmlFor='progress'>
-        How many days
-        <Input
-          type='text'
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        ></Input>
-      </Label> */}
       <Button type='submit'>Save</Button>
     </FormWrapper>
   );
 };
-
-{
-  /* <Label htmlFor='date'>
-        Start date
-        <input
-          type='date'
-          value={startDate}
-          onChange={(e) => setStartDate(e.target.value)}
-        ></input>
-      </Label>
-      <Label htmlFor='date'>
-        End date
-        <input
-          type='date'
-          value={endDate}
-          onChange={(e) => setEndDate(e.target.value)}
-        ></input>
-      </Label> */
-}

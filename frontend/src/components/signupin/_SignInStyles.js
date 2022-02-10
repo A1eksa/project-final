@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-//******** SIGNIN FORM NEW ********//
+//******** SIGNIN FORM ********//
 
 export const PageWrapper = styled.section`
   min-height: 100vh;

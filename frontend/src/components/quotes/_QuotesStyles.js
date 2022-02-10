@@ -1,11 +1,8 @@
 import styled from 'styled-components';
 
 export const QuoteWrapper = styled.div`
-// margin-left: 220px;
-max-width: 343px;
-// box-shadow: var(--box-shadow);
-// border-radius: 10px;
-box-sizing: border-box;
+  max-width: 343px;
+  box-sizing: border-box;
 `;
 
 export const QuoteText = styled.p`

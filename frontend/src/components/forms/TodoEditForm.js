@@ -21,7 +21,6 @@ import {
 export const TodoEditForm = () => {
   const accessToken = useSelector((store) => store.user.accessToken);
   const selectedTodo = useSelector((store) => store.editModal.selectedTodo);
-
   const selectedTodoHeading = useSelector(
     (store) => store.editModal?.selectedTodo?.heading
   );
@@ -63,7 +62,6 @@ export const TodoEditForm = () => {
       .then((data) => {
         if (data.success) {
           batch(() => {
-            // dispatch(habit.actions.setItems())
             dispatch(todo.actions.updateTodo(data.response));
             dispatch(editModal.actions.setError(null));
           });
@@ -96,11 +94,6 @@ export const TodoEditForm = () => {
         </Label>
         <Label htmlFor='category'>
           Category
-          {/* <Input
-            type='text'
-            defaultValue={selectedCategory}
-            onChange={(e) => setCategory(e.target.value)}
-          ></Input> */}
           <FormCategoryWrapper>
             <CategoryLabel htmlFor='Home'>
               Home

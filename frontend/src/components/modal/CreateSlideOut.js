@@ -2,33 +2,23 @@ import React, { useState } from 'react';
 import { HabitForm } from '../forms/HabitForm';
 import { TodoForm } from '../forms/TodoForm';
 import { useSelector, useDispatch } from 'react-redux';
-import modal from '../../reducers/modal';
 import './SlideOut.css';
 
-import {
-  P,
-  OpenToggle,
-  CloseToggle,
-  // SlideOutWrapper,
-  // OpenToggleWrapper,
-  CloseToggleWrapper,
-} from './_ModalStyles';
+import modal from '../../reducers/modal';
 
-// const SlideOut = (isEditModalActive, toggleEditModal) => {
+import { P, CloseToggle, CloseToggleWrapper } from './_ModalStyles';
+
 export const CreateSlideOut = () => {
   const slideout = useSelector((store) => store.modal.slideout);
   const [form, setForm] = useState('todo');
-  const [overlay, setOverlay] = useState(false);
 
   const dispatch = useDispatch();
 
   const closeSlideOut = () => {
-    // dispatch modal.actions.setSlideout
     dispatch(modal.actions.setSlideout(false));
   };
 
   return (
-    // <div className={overlay ? 'overlay' : 'hidden'}>
     <div className={slideout ? 'modal active' : 'modal'}>
       <CloseToggleWrapper>
         <P>Close</P>

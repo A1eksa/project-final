@@ -19,9 +19,6 @@ export const ListWrapper = styled.section`
 `;
 
 export const ListWrapperEmpty = styled.section`
-  // display: grid;
-  // grid-template-columns: repeat(auto-fit, minmax(343px, 1fr));
-  // grid-gap: 1rem;
   width: 100%;
 `;
 

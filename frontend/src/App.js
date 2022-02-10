@@ -3,8 +3,8 @@ import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
-import Dashboard from './components/dashboard/Dashboard';
-import SignIn from './components/signupin/SignIn';
+import { Dashboard } from './components/dashboard/Dashboard';
+import { SignIn } from './components/signupin/SignIn';
 
 import user from './reducers/user';
 import habit from './reducers/habit';

@@ -16,7 +16,6 @@ justify-content: space-between;
 position: fixed;
 top:0;
 background-color: var(--background);
-
 `;
 
 export const User = styled.div`

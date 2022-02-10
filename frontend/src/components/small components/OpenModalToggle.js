@@ -7,10 +7,6 @@ import modal from '../../reducers/modal';
 export const OpenModalToggle = () => {
   const dispatch = useDispatch();
 
-  // const showSlideOut = () => {
-  //       dispatch(modal.actions.setSlideout(true));
-  //     };
-
   const showSlideOut = () => {
     dispatch(modal.actions.setSlideout(true));
   };
@@ -35,8 +31,6 @@ export const OpenToggleWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  // justify-content: flex-end;
-  // margin-right: 1.5rem;
 `;
 
 export const OpenToggle = styled.button`

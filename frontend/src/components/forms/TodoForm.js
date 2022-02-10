@@ -3,15 +3,12 @@ import { useSelector, useDispatch, batch } from 'react-redux';
 
 import { API_URL } from '../../utils/constants';
 import user from '../../reducers/user';
-import todo from '../../reducers/todo';
-import Swal from 'sweetalert2';
 
 import {
   FormCategoryWrapper,
   HiddenRadioButton,
   RadioButton,
   CategoryLabel,
-  Inputlabel,
   FormWrapper,
   Label,
   Input,
@@ -30,7 +27,6 @@ export const TodoForm = () => {
   const dispatch = useDispatch();
 
   const onFormSubmit = () => {
-    // event.preventDefault();
     const options = {
       method: 'POST',
       headers: {
@@ -49,13 +45,6 @@ export const TodoForm = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
-          // Swal.fire({
-          //   position: 'top-end',
-          //   icon: 'success',
-          //   title: 'Your work has been saved',
-          //   showConfirmButton: false,
-          //   timer: 1500,
-          // });
           batch(() => {
             dispatch(user.actions.setUserId(data.response.userId));
           });
@@ -136,7 +125,6 @@ export const TodoForm = () => {
             ></Input>
           </Label>
         </FormCategoryWrapper>
-
         <Button type='submit'>Save</Button>
       </FormWrapper>
     </>

@@ -36,8 +36,6 @@ export const H2 = styled.h2`
 
 export const HeroText = styled.div`
   max-width: 1440px;
-  // margin: 0 auto;
-  // padding-bottom: 1rem;
   color: var(--text-primary);
 `;
 
@@ -55,7 +53,6 @@ export const Left = styled.div`
   flex-direction: row;
   align-items: flex-end;
   gap: 4rem;
-  // padding-bottom: 4rem;
 `;
 
 export const MainContentWrapper = styled.div`

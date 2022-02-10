@@ -7,7 +7,6 @@ export const CloseToggleWrapper = styled.div`
   margin-top: 2rem;
   align-items: center;
   justify-content: flex-end;
-  // margin-right: 1.5rem;
 `;
 
 export const P = styled.p`

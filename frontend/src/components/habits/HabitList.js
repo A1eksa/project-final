@@ -5,13 +5,12 @@ import { API_URL } from '../../utils/constants';
 import { IconContext } from 'react-icons';
 import { AiTwotoneEdit } from 'react-icons/ai';
 import { FaTimes } from 'react-icons/fa';
-import { HabitEditButton } from '../small components/HabitEditButton';
-import habit from '../../reducers/habit';
-import editModal from '../../reducers/editModal';
-// import { RealProgress } from '../small components/RealProgress';
 import { HabitTracker } from '../small components/HabitTracker';
 import { EmptyHabit } from '../small components/EmptyHabit';
 import Swal from 'sweetalert2';
+
+import habit from '../../reducers/habit';
+import editModal from '../../reducers/editModal';
 
 import {
   HabitWrapper,
@@ -32,8 +31,6 @@ import {
   CardDivider,
   Subject,
   Left,
-  HiddenRadioButton,
-  RadioButton,
 } from './_HabitStyles';
 
 export const HabitList = () => {
@@ -101,31 +98,6 @@ export const HabitList = () => {
       });
   };
 
-  const onToggleHabit = (habitId, isCompleted) => {
-    console.log(habitId, isCompleted);
-
-    const options = {
-      method: 'PATCH',
-      body: JSON.stringify({
-        isCompleted: !isCompleted,
-        _id: habitId,
-      }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    };
-    fetch(API_URL(`habits/${habitId}/completed`), options)
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.success) {
-          dispatch(habit.actions.toggleHabit(habitId));
-          dispatch(habit.actions.setErrors(null));
-        } else {
-          dispatch(habit.actions.setErrors(data.response));
-        }
-      });
-  };
-
   if (habitItems.length > 0)
     return (
       <HabitWrapper>
@@ -171,16 +143,6 @@ export const HabitList = () => {
                           </EditButton>
                         </IconContext.Provider>
                       </LeftWrapper>
-                      {/* <input
-                        className='checkbox'
-                        name={items._id}
-                        id={items._id}
-                        type='checkbox'
-                        checked={items.isCompleted}
-                        onChange={() =>
-                          onToggleHabit(items._id, items.isCompleted)
-                        }
-                      /> */}
                     </BottomContainer>
                   </Left>
                   <HabitTracker

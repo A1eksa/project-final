@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { IconContext } from 'react-icons';
 import { AiTwotoneEdit } from 'react-icons/ai';
 
-// import modal from "../../reducers/modal";
 import editModal from '../../reducers/editModal';
 
 export const Button = styled.button`
@@ -30,13 +29,8 @@ export const Button = styled.button`
 `;
 
 export const HabitEditButton = () => {
-  // const editSlideout = useSelector((store) => store.editModal.editSlideout);
-
   const dispatch = useDispatch();
 
-  // const editHabit = () => {
-  //       dispatch(modal.actions.setSlideout(true));
-  //     };
   const editHabit = () => {
     dispatch(editModal.actions.setEditSlideout(true));
   };

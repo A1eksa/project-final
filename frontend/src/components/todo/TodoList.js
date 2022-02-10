@@ -7,10 +7,11 @@ import { FaTimes } from 'react-icons/fa';
 import { FaCheck } from 'react-icons/fa';
 import { FaQuestion } from 'react-icons/fa';
 import { API_URL } from '../../utils/constants';
-import todo from '../../reducers/todo';
-import editModal from '../../reducers/editModal';
 import Swal from 'sweetalert2';
 import { EmptyTodo } from '../small components/EmptyTodo';
+
+import todo from '../../reducers/todo';
+import editModal from '../../reducers/editModal';
 
 import {
   H2,

@@ -1,9 +1,10 @@
-import React, { useState, useEffect, createContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, batch, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import user from '../../reducers/user';
 import { API_URL } from '../../utils/constants';
+
+import user from '../../reducers/user';
 
 import {
   BoldLink,
@@ -18,7 +19,7 @@ import {
   Preamble,
 } from './_SignInStyles';
 
-const SignIn = () => {
+export const SignIn = () => {
   const accessToken = useSelector((store) => store.user.accessToken);
 
   const [username, setUsername] = useState('');
@@ -168,4 +169,3 @@ const SignIn = () => {
     </PageWrapper>
   );
 };
-export default SignIn;

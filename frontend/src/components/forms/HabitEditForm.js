@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch, batch } from 'react-redux';
 import { API_URL } from '../../utils/constants';
 
-import habit from '../../reducers/habit';
-
 import editModal from '../../reducers/editModal';
+import habit from '../../reducers/habit';
 
 import {
   FormWrapper,
@@ -23,19 +22,32 @@ import {
 export const HabitEditForm = () => {
   const accessToken = useSelector((store) => store.user.accessToken);
   const selectedHabit = useSelector((store) => store.editModal.selectedHabit);
-  const selectedHeading = useSelector((store) => store.editModal?.selectedHabit?.heading);
-  const selectedDescription = useSelector((store) => store.editModal?.selectedHabit?.description);
-  const selectedRegularity = useSelector((store) => store.editModal?.selectedHabit?.regularity);
-  const selectedLength = useSelector((store) => store.editModal?.selectedHabit?.length);
-  const selectedDurationNumber = useSelector((store) => store.editModal?.selectedHabit?.durationNumber);
-  const selectedRegularityNumber = useSelector((store) => store.editModal?.selectedHabit?.regularityNumber);
-
+  const selectedHeading = useSelector(
+    (store) => store.editModal?.selectedHabit?.heading
+  );
+  const selectedDescription = useSelector(
+    (store) => store.editModal?.selectedHabit?.description
+  );
+  const selectedRegularity = useSelector(
+    (store) => store.editModal?.selectedHabit?.regularity
+  );
+  const selectedLength = useSelector(
+    (store) => store.editModal?.selectedHabit?.length
+  );
+  const selectedDurationNumber = useSelector(
+    (store) => store.editModal?.selectedHabit?.durationNumber
+  );
+  const selectedRegularityNumber = useSelector(
+    (store) => store.editModal?.selectedHabit?.regularityNumber
+  );
 
   const [regularity, setRegularity] = useState(selectedRegularity);
   const [length, setLength] = useState(selectedLength);
   const [heading, setHeading] = useState(selectedHeading);
   const [description, setDescription] = useState(selectedDescription);
-  const [regularityNumber, setRegularityNumber] = useState(selectedRegularityNumber);
+  const [regularityNumber, setRegularityNumber] = useState(
+    selectedRegularityNumber
+  );
   const [durationNumber, setDurationNumber] = useState(selectedDurationNumber);
 
   const dispatch = useDispatch();
@@ -64,7 +76,6 @@ export const HabitEditForm = () => {
       .then((data) => {
         if (data.success) {
           batch(() => {
-            // dispatch(habit.actions.setItems())
             dispatch(habit.actions.updateHabit(data.response));
             dispatch(editModal.actions.setError(null));
           });
@@ -213,7 +224,6 @@ export const HabitEditForm = () => {
             ></HiddenRadioButton>
             <RadioButton></RadioButton>
           </CategoryLabel>
-
         </FormCategoryWrapper>
         <Button type='submit'>Update you habit</Button>
       </FormWrapper>

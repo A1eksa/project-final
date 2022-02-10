@@ -1,12 +1,13 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+
+import { TimeTicker } from '../small components/TimeTicker';
+import { DarkMode } from '../theme/DarkMode';
 import Swal from 'sweetalert2';
 
 import user from '../../reducers/user';
-import { TimeTicker } from '../small components/TimeTicker';
-import { DarkMode } from '../styling/DarkMode';
 
-import { StyledFooter, MadeByWrapper, P, LogOutButton, RightWrapper } from './_FooterStyles';
+import { StyledFooter, LogOutButton, RightWrapper } from './_FooterStyles';
 
 export const Footer = () => {
   const dispatch = useDispatch();
@@ -27,9 +28,6 @@ export const Footer = () => {
 
   return (
     <StyledFooter>
-      {/* <MadeByWrapper>
-        <P>Aleksa & Jessi 2022</P>
-      </MadeByWrapper> */}
       <DarkMode />
       <RightWrapper>
         <TimeTicker />

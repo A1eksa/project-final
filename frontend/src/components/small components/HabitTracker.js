@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { IconContext } from 'react-icons';
 import { FaCheck } from 'react-icons/fa';
 import { API_URL } from '../../utils/constants';
+
 import habit from '../../reducers/habit';
 
 const ProgressWrapper = styled.div`
@@ -39,7 +40,6 @@ const Thumb = styled.div`
   height: 100%;
   background-color: var(--accent-green);
   border-radius: 0 10px 10px 0;
-  // border-radius: 10px;
 `;
 
 export const AddButton = styled.button`
@@ -54,7 +54,6 @@ export const AddButton = styled.button`
   font-weight: 600;
   border: none;
   transition: 0.3s;
-  //   margin-bottom: 1rem;
   :hover {
     background-color: var(--grey-300);
     color: var(--text-primary);
@@ -85,26 +84,16 @@ export const HabitTracker = ({
   const accessToken = useSelector((store) => store.user.accessToken);
 
   const [progress, setProgress] = useState(incrementNumber);
-  const [progressValue, setProgressValue] = useState({ incrementNumber });
 
   const dispatch = useDispatch();
-
-  // const Calculation = () => {
-  //   return Math.round((regularityNumber / durationNumber) * 100);
-  // };
 
   const calculationNumber = Math.round(
     (regularityNumber / durationNumber) * 100
   );
 
-  //return Math.round((regularityNumber / durationNumber) * 100);
-
-  //return Math.round((incrementNumber + 1 / durationNumber) * 100);
-
   const onIncrement = () => {
     console.log('onIncrement');
     setProgress(incrementNumber + 1);
-    setProgressValue(incrementNumber);
     const options = {
       method: 'PATCH',
       headers: {
@@ -130,7 +119,6 @@ export const HabitTracker = ({
       .then((data) => {
         if (data.success) {
           batch(() => {
-            // dispatch(habit.actions.setItems())
             dispatch(habit.actions.updateHabit(data.response));
             dispatch(habit.actions.setErrors(null));
           });
@@ -146,14 +134,10 @@ export const HabitTracker = ({
     <Wrapper>
       <ProgressWrapper>
         <Track>
-          {/* //progressbar needs to stop at 100%// */}
-          {/* //progressbar needs to stay at state when reload// */}
           <Thumb percentage={progress}></Thumb>
         </Track>
       </ProgressWrapper>
       <Bottom>
-        {/* // set state to 0 from start  with proggressValue// */}
-        {/* <TrackText>{incrementNumber + calculationNumber}%</TrackText> */}
         <TrackText>{incrementNumber}%</TrackText>
 
         <IconContext.Provider
