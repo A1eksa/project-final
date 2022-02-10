@@ -20,7 +20,7 @@ border-radius: 10px;
 padding 1rem;
 box-sizing: border-box;
 margin-bottom: 1rem;
-background-color: var(--level-one);
+background-color: var(--todo-card);
 `;
 
 export const TodoSubject = styled.h3`
@@ -167,7 +167,7 @@ export const CheckboxContainer = styled.span`
   width: 95%;
   height: 32px;
   border-radius: 32px;
-  background-color: var(--grey-100);
+  background-color: var(--checkbox);
   pointer-events: none;
   position: absolute;
   z-index: -1;
@@ -182,7 +182,8 @@ export const CheckboxLabel = styled.label`
   height: 32px;
   border-radius: 16px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  gap: 0.5rem;
   align-items: center;
   justify-content: center;
   font-weight: 300;

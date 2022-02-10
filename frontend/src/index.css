@@ -27,11 +27,13 @@ body {
   --grey-400: #868686;
   --grey-500: #494949;
   --grey-600: #333333;
+  --habit-card: #f8f8f8;
   --progress-background: #dedede;
   --closebuttonhover: #dedede;
   --openbuttonhover: #dedede;
   --radiobutton: #dedede;
   --footer: #ffffff80;
+  --checkbox: #dedede;
 }
 
 [data-theme='dark'] {
@@ -50,9 +52,12 @@ body {
   --grey-400: #868686;
   --grey-500: #494949;
   --grey-600: #333333;
+  --habit-card: #1a1a1a;
+  --todo-card: #292929;
   --progress-background: #444444;
   --closebuttonhover: #444444;
   --openbuttonhover: #444444;
   --radiobutton: #2c2c2c;
   --footer: #00000080;
+  --checkbox: #494949;
 }

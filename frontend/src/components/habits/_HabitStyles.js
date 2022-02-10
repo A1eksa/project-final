@@ -32,7 +32,7 @@ border-radius: 10px;
 padding 1rem;
 box-sizing: border-box;
 margin-bottom: 1rem;
-background-color: var(--level-one);
+background-color: var(--habit-card);
 z-index: 1;
 
 `;

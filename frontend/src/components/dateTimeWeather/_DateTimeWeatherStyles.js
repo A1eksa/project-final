@@ -57,25 +57,28 @@ export const Month = styled.p`
 `;
 
 export const TempAndWeather = styled.div`
-display: flex;
-flex-direction: row;
-align-items: center;
-margin-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 1rem;
 `;
 
-
 export const Temp = styled.p`
-font-size: 1.5rem;
-line-height: 2rem;
-font-weight: 500;
-margin: 0 0.5rem;
-color: var(--text-secondary);
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 500;
+  margin: 0 0.5rem;
+  color: var(--text-secondary);
+`;
+
+export const Icon = styled.img`
+  margin-left: 0;
 `;
 
 export const Desc = styled.p`
-font-size: 1.5rem;
-line-height: 2rem;
-font-weight: 500;
-margin: 0;
-color: var(--text-secondary);
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 500;
+  margin: 0;
+  color: var(--text-secondary);
 `;

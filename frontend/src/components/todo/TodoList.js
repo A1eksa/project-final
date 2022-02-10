@@ -4,6 +4,8 @@ import { useSelector, useDispatch, batch } from 'react-redux';
 import { IconContext } from 'react-icons';
 import { AiTwotoneEdit } from 'react-icons/ai';
 import { FaTimes } from 'react-icons/fa';
+import { FaCheck } from 'react-icons/fa';
+import { FaQuestion } from 'react-icons/fa';
 import { API_URL } from '../../utils/constants';
 import todo from '../../reducers/todo';
 import editModal from '../../reducers/editModal';
@@ -155,34 +157,34 @@ export const TodoList = () => {
                       </EditButton>
                     </IconContext.Provider>
                   </LeftWrapper>
-                  <CheckboxLabel>
-                    Completed
-                    <HiddenCheckbox
-                      className='checkbox'
-                      name={items._id}
-                      id={items._id}
-                      type='checkbox'
-                      checked={items.isCompleted}
-                      onChange={() =>
-                        onToggleTodo(items._id, items.isCompleted)
-                      }
-                    ></HiddenCheckbox>
-                    <CheckboxContainer></CheckboxContainer>
-                  </CheckboxLabel>
 
-                  {/* <CheckboxContainer>
-              <InputLabel>Mark as done
-              <HiddenCheckbox
-                  className='checkbox'
-                  type='checkbox'>
-              </HiddenCheckbox>
-                <CustomCheckbox
-                    type='checkbox'
-                    checked={items.isCompleted}
-                    onChange={() => onToggleTodo(items._id)}>
-                </CustomCheckbox>
-              </InputLabel>
-            </CheckboxContainer> */}
+                  <IconContext.Provider
+                    value={{
+                      color: '#444444',
+                      className: 'global-class-name',
+                      size: '0.875rem',
+                      style: {
+                        verticalAlign: 'middle',
+                        marginLeft: '0.05rem',
+                      },
+                    }}
+                  >
+                    <CheckboxLabel>
+                      Completed
+                      {items.isCompleted ? <FaCheck /> : <FaQuestion />}
+                      <HiddenCheckbox
+                        className='checkbox'
+                        name={items._id}
+                        id={items._id}
+                        type='checkbox'
+                        checked={items.isCompleted}
+                        onChange={() =>
+                          onToggleTodo(items._id, items.isCompleted)
+                        }
+                      ></HiddenCheckbox>
+                      <CheckboxContainer></CheckboxContainer>
+                    </CheckboxLabel>
+                  </IconContext.Provider>
                 </BottomContainer>
               </CardWrapper>
             ))}
