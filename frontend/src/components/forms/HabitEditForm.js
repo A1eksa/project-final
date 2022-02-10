@@ -117,7 +117,7 @@ export const HabitEditForm = () => {
               type='radio'
               checked={regularity === 'once a day'}
               name='regularity'
-              id_='1'
+              id='1'
               value='once a day'
               onChange={(e) => {
                 setRegularity(e.target.value);
@@ -149,7 +149,7 @@ export const HabitEditForm = () => {
               type='radio'
               checked={regularity === 'once a week'}
               name='regularity'
-              id_='7'
+              id='7'
               value='once a week'
               onChange={(e) => {
                 setRegularity(e.target.value);

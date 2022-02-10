@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { HabitEditForm } from '../forms/HabitEditForm';
 import './SlideOut.css';

@@ -11,13 +11,13 @@ export const ListWrapper = styled.section`
 `;
 
 export const CardWrapper = styled.div`
-min-width: 400px;
-box-shadow: var(--box-shadow);
-border-radius: 10px;
-padding 1rem;
-box-sizing: border-box;
-margin-bottom: 1rem;
-background-color: var(--todo-card);
+  min-width: 400px;
+  box-shadow: var(--box-shadow);
+  border-radius: 10px;
+  padding 1rem;
+  box-sizing: border-box;
+  margin-bottom: 1rem;
+  background-color: var(--todo-card);
 `;
 
 export const TodoSubject = styled.h3`
@@ -181,7 +181,7 @@ export const CheckboxLabel = styled.label`
   align-items: center;
   justify-content: center;
   font-weight: 300;
-  color: var(--text-primary);
+  color: var(--grey-600);
   transition: 0.2s;
   font-size: 14px;
   font-weight: 400;

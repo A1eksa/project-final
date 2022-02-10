@@ -74,7 +74,7 @@ export const FormCategoryWrapper = styled.div`
 `;
 
 export const FormWrapper = styled.form`
-  padding: 2rem;
+  padding: 1rem 2rem;
   border-radius: 10px;
   margin-top: 3rem;
   box-shadow: var(--box-shadow);

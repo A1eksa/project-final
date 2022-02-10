@@ -161,7 +161,7 @@ export const TodoList = () => {
 
                   <IconContext.Provider
                     value={{
-                      color: '#444444',
+                      color: 'var(--complete-icon)',
                       className: 'global-class-name',
                       size: '0.875rem',
                       style: {

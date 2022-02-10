@@ -3,17 +3,16 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = localStorage.getItem('editModal')
   ? {
       editSlideout: JSON.parse(localStorage.getItem('editModal')).editSlideout,
-      // selectedId: JSON.parse(localStorage.getItem('editModal')).selectedId,
     }
   : {
       editSlideout: false,
-      // selectedId: '',
     };
 
 const editModal = createSlice({
   name: 'editModal',
   initialState,
   reducers: {
+    
     // HABIT //
     setEditSlideout: (store, action) => {
       store.editSlideout = action.payload;

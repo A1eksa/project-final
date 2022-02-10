@@ -63,7 +63,7 @@ export const HabitText = styled.p`
   font-size: 0.875rem;
   margin-top: 0.5rem;
   color: var(--text-primary);
-  border-bottom: 1px solid var(--grey-100);
+  // border-bottom: 1px solid var(--grey-100);
   padding-bottom: 1rem;
 `;
 
@@ -148,7 +148,7 @@ export const TimeWrapper = styled.div`
   flex-direction: row;
   align-items: center;
   gap: 1rem;
-  border-bottom: 1px solid var(--grey-100);
+  border-bottom: 1px solid var(--habit-line);
   padding-bottom: 1rem;
 `;
 

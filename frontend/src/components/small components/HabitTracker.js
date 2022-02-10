@@ -33,6 +33,8 @@ const TrackText = styled.p`
   font-weight: 200;
   margin: 0;
   color: var(--text-primary);
+  width: 72px;
+  text-align: right;
 `;
 
 const Thumb = styled.div`

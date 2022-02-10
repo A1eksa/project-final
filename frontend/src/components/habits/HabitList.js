@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch, batch } from 'react-redux';
 
 import { API_URL } from '../../utils/constants';

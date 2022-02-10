@@ -30,6 +30,8 @@ export const TodoEditForm = () => {
   const selectedCategory = useSelector(
     (store) => store.editModal?.selectedTodo?.category
   );
+  console.log('Jocke', selectedCategory === 'Friends')
+  
   const selectedDueDate = useSelector(
     (store) => store.editModal?.selectedTodo?.dueDate
   );
@@ -95,50 +97,59 @@ export const TodoEditForm = () => {
         <Label htmlFor='category'>
           Category
           <FormCategoryWrapper>
-            <CategoryLabel htmlFor='Home'>
+
+            <CategoryLabel htmlFor='home'>
               Home
               <HiddenRadioButton
                 type='radio'
-                name='options'
-                id_='1'
-                value={selectedCategory}
+                checked={category === 'Home'}
+                name='category'
+                id='1'
+                value='Home'
                 onChange={(e) => setCategory(e.target.value)}
               ></HiddenRadioButton>
               <RadioButton></RadioButton>
             </CategoryLabel>
-            <CategoryLabel htmlFor='Family'>
+
+            <CategoryLabel htmlFor='family'>
               Family
               <HiddenRadioButton
                 type='radio'
-                name='options'
-                id_='2'
-                value={selectedCategory}
+                checked={category === 'Family'}
+                name='category'
+                id='2'
+                value='Family'
                 onChange={(e) => setCategory(e.target.value)}
               ></HiddenRadioButton>
               <RadioButton></RadioButton>
             </CategoryLabel>
-            <CategoryLabel htmlFor='Work'>
+
+            <CategoryLabel htmlFor='work'>
               Work
               <HiddenRadioButton
                 type='radio'
-                name='options'
-                id_='3'
-                value={selectedCategory}
+                checked={category === 'Work'}
+                name='category'
+                id='3'
+                value='Work'
                 onChange={(e) => setCategory(e.target.value)}
               ></HiddenRadioButton>
               <RadioButton></RadioButton>
             </CategoryLabel>
+
             <CategoryLabel htmlFor='Friends'>
               Friends
               <HiddenRadioButton
                 type='radio'
-                name='options'
-                id_='4'
-                value={selectedCategory}
+                checked={category === 'Friends'}
+                name='category'
+                id='4'
+                value='Friends'
                 onChange={(e) => setCategory(e.target.value)}
               ></HiddenRadioButton>
               <RadioButton></RadioButton>
             </CategoryLabel>
+
           </FormCategoryWrapper>
         </Label>
         <Label htmlFor='category'>
