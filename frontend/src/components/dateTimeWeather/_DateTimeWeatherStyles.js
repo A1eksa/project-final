@@ -14,7 +14,7 @@ export const City = styled.p`
   font-size: 14px;
   font-weight: 400;
   line-height: 14px;
-  margin-bottom: 0;
+  margin: 0.3rem 0 0 0;
   color: var(--text-secondary);
 `;
 
@@ -28,7 +28,7 @@ export const DateWrapper = styled.div`
 `;
 
 export const DateNumber = styled.h3`
-  font-size: 6rem;
+  font-size: 5rem;
   line-height: 3rem;
   font-weight: 100;
   color: var(--text-primary);
@@ -65,17 +65,17 @@ margin-top: 1rem;
 
 
 export const Temp = styled.p`
-font-size: 2rem;
+font-size: 1.5rem;
 line-height: 2rem;
-font-weight: 200;
+font-weight: 500;
 margin: 0 0.5rem;
 color: var(--text-secondary);
 `;
 
 export const Desc = styled.p`
-font-size: 2rem;
+font-size: 1.5rem;
 line-height: 2rem;
-font-weight: 200;
+font-weight: 500;
 margin: 0;
 color: var(--text-secondary);
 `;

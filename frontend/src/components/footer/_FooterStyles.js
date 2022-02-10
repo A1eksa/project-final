@@ -8,7 +8,7 @@ export const StyledFooter = styled.footer`
   justify-content: space-between;
   bottom: 0;
   position: fixed;
-  padding: 1.5rem;
+  padding: 1.5rem 2rem;
   z-index: 2;
 `;
 
@@ -19,7 +19,6 @@ export const AddButtonWrapper = styled.div`
 `;
 
 export const RightWrapper = styled.div`
-  margin-right: 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;

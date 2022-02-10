@@ -118,7 +118,7 @@ const SignIn = () => {
             </SubmitButton>
           </FormContainer>
           <BoldLink onClick={() => setActiveForm('signup')}>
-            Wanna be friends? Signup
+            Wanna be friends? 😍 Sign up!
           </BoldLink>
         </BoxContainer>
       )}
@@ -161,7 +161,7 @@ const SignIn = () => {
             </SubmitButton>
           </FormContainer>
           <BoldLink onClick={() => setActiveForm('signin')}>
-            Already a user? Signin!
+            Already a user? ❤️ Sign in!
           </BoldLink>
         </BoxContainer>
       )}

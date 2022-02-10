@@ -6,15 +6,14 @@ export const PageWrapper = styled.section`
   min-height: 100vh;
   margin: 0 auto;
   background-color: var(--background);
+  padding-top: 3rem;
 `;
 
 export const BoxContainer = styled.div`
-  max-width: 400px;
+  max-width: 343px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  // align-items: center;
-  margin-top: 10px;
 `;
 
 export const Line = styled.div`
@@ -49,7 +48,7 @@ export const FormContainer = styled.form`
   flex-direction: column;
   padding: 2rem;
   border-radius: 10px;
-  margin-top: 3rem;
+  margin-top: 2rem;
   box-shadow: var(--box-shadow);
   background-color: var(--level-one);
 `;
@@ -79,7 +78,7 @@ export const NewInput = styled.input`
   padding: 16px;
   border: 1px solid var(--grey-100);
   background-color: var(--level-one);
-  margin-bottom: 1rem;
+  margin-bottom: 0.3rem;
   margin-top: 0.5rem;
   outline: none;
   transition: 0.4s;
@@ -99,6 +98,7 @@ export const NewInput = styled.input`
     }
     :focus {
       color: var(--text-secondary);
+      box-shadow: var(--box-shadow);
       font-size: 14px;
     }
   }
@@ -110,7 +110,7 @@ export const SubmitButton = styled.button`
   color: var(--grey-600);
   font-family: Raleway;
   font-size: 1rem;
-  font-weight: 300;
+  font-weight: 500;
   transition: 0.4s;
   border: none;
   width: 100%;

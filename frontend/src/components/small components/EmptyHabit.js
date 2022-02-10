@@ -11,7 +11,7 @@ export const EmptyHabit = () => {
         <EmptyState>
             <Label>You don't have any habits</Label>
             <H4>Let's create some!</H4>
-            <P>Click the green button in the upper right corner.</P>
+            <P>Click the green button in the upper right corner. Good luck!</P>
             <IconContext.Provider
                 value={{
                     color: '#444444',
@@ -30,7 +30,7 @@ export const EmptyHabit = () => {
 const EmptyState = styled.div`
 // background-color: var(--level-two);
 // box-shadow: var(--box-shadow);
-height: 190px;
+min-height: 190px;
 padding: 3rem;
 border-radius: 10px;
 `

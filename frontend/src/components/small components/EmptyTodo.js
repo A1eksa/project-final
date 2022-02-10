@@ -32,7 +32,7 @@ const EmptyState = styled.div`
 // box-shadow: var(--box-shadow);
 height: 100%;
 max-width: 343px;
-height: 190px;
+min-height: 190px;
 padding: 3rem;
 border-radius: 10px;
 `

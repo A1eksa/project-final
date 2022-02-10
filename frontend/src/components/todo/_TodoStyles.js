@@ -188,36 +188,10 @@ export const CheckboxLabel = styled.label`
   font-weight: 300;
   color: var(--text-primary);
   transition: 0.2s;
-  font-size: 1rem;
+  font-size: 14px;
   font-weight: 400;
   position: relative;
   padding: 0 1rem;
   // background-color: var(--level-three);
-  margin-bottom: 1rem;
   z-index: 2;
 `;
-
-// export const HiddenRadioButton = styled.input.attrs({
-//   type: 'radio',
-// })`
-//   height: 32px;
-//   width: 48px;
-//   cursor: pointer;
-//   position: absolute;
-//   opacity: 0;
-// `;
-
-// export const RadioButton = styled.span`
-//   display: flex;
-//   width: 95%;
-//   height: 32px;
-//   border-radius: 32px;
-//   background-color: var(--grey-100);
-//   pointer-events: none;
-//   position: absolute;
-//   z-index: -1;
-
-//   ${HiddenRadioButton}:checked + && {
-//     background-color: var(--accent-green);
-//   }
-// `;

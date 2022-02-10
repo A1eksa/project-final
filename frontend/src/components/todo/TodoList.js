@@ -17,7 +17,6 @@ import {
   TodoSubject,
   TodoText,
   Category,
-  Button,
   Label,
   CategoryWrapper,
   BottomContainer,
