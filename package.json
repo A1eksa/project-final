@@ -11,8 +11,5 @@
     "react-datepicker": "^4.6.0",
     "sweetalert2": "^11.4.0",
     "use-local-storage": "^2.2.6"
-  },
-  "devDependencies": {
-    "mini-css-extract-plugin": "2.4.5"
   }
 }
