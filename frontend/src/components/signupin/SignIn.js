@@ -37,7 +37,6 @@ export const SignIn = () => {
         title: 'Welcome!',
         showCancelButton: false,
         confirmButtonColor: 'var(--accent-green)',
-        confirmButtonBorder: false,
         background: 'var(--level-three)',
         color: 'var(--text-primary)',
         confirmButtonText: "Let's go!",
