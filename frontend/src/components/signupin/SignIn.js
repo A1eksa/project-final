@@ -109,7 +109,7 @@ export const SignIn = () => {
             <Label htmlFor='password'>
               Password
               <NewInput
-                type='text'
+                type='password'
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
