@@ -3,9 +3,17 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
 import crypto from 'crypto';
+import { readFile } from 'fs/promises';
+
+const thoughts = JSON.parse(
+  await readFile(new URL('./thoughts.json', import.meta.url))
+);
+// import thoughts from './../frontend/src/utils/thoughts.cjs';
 
 const mongoUrl =
   process.env.MONGO_URL || 'https://aleksa-jessi-final-project.herokuapp.com';
+//process.env.MONGO_URL || 'mongodb://localhost/project-final';
+
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
 // mongoose.set('useCreateIndex', true); //added due to deprecation error 26868
 mongoose.Promise = Promise;
@@ -120,20 +128,41 @@ const HabitSchema = new mongoose.Schema({
   },
 });
 
-const QuoteSchema = new mongoose.Schema({
-  message: {
-    type: String,
-  },
-  author: {
-    type: String,
-  },
-});
+// const QuoteSchema = new mongoose.Schema({
+//   message: {
+//     type: String,
+//   },
+//   author: {
+//     type: String,
+//   },
+// });
+
+// const QuoteSchema = new mongoose.Schema({
+//   message: String,
+//   author: String,
+// });
 
 // ******** Models ******** //
 const User = mongoose.model('User', UserSchema);
 const Todo = mongoose.model('Todo', TodoSchema);
 const Habit = mongoose.model('Habit', HabitSchema);
-const Quote = mongoose.model('Quote', QuoteSchema);
+const Quote = mongoose.model('Quote', {
+  message: String,
+  author: String,
+});
+
+if (process.env.RESET_DB) {
+  const seedDatabase = async () => {
+    await Quote.deleteMany({});
+
+    thoughts.forEach((item) => {
+      const newQuote = new Quote(item);
+      newQuote.save();
+    });
+  };
+
+  seedDatabase();
+}
 
 // ******** Defined Port ******** //
 const port = process.env.PORT || 8080;

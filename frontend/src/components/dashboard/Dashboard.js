@@ -8,7 +8,7 @@ import { HabitsSlideOut } from '../modal/HabitsSlideOut';
 import { TodoSlideOut } from '../modal/TodoSlideOut';
 import { TheHeader } from '../header/TheHeader';
 import { Footer } from '../footer/Footer';
-// import { Quote } from '../quotes/Quote';
+import { Quote } from '../quotes/Quote';
 import { WeatherTest } from '../dateTimeWeather/WeatherTest';
 import '../modal/SlideOut.css';
 
@@ -45,7 +45,7 @@ export const Dashboard = () => {
               <Line></Line>
               <H2>What's on your mind?</H2>
             </HeroText>
-            {/* <Quote /> */}
+            <Quote />
           </Left>
           <WeatherTest />
         </UpperWrapper>
