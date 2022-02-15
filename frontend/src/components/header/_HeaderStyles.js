@@ -16,6 +16,12 @@ justify-content: space-between;
 position: fixed;
 top:0;
 background-color: var(--background);
+
+@media (max-width: 767px) {
+  align-items: flex-start;
+  padding-top: 2rem;
+  padding-left: 1.5rem;
+}
 `;
 
 export const User = styled.div`
@@ -24,6 +30,11 @@ export const User = styled.div`
   align-items: center;
   max-width: 50%;
   gap: 1.5rem;
+
+  @media (max-width: 767px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `;
 
 export const H1 = styled.h1`
@@ -33,4 +44,9 @@ export const H1 = styled.h1`
   max-width: 220px;
   margin: 0;
   color: var(--text-primary);
+
+  @media (max-width: 767px) {
+    font-size: 1.5rem;
+    line-height: 1rem;
+  }
 `;

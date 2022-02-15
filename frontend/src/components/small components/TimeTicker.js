@@ -8,6 +8,11 @@ export const TimeWrapper = styled.div`
   height: 56px;
   border-right: 2px solid var(--text-primary);
   padding-right: 2rem;
+
+  @media (max-width: 767px) {
+    padding-right: 4rem;
+  }
+}
 `;
 
 export const H4 = styled.h4`
@@ -17,6 +22,11 @@ export const H4 = styled.h4`
   margin: 0;
   color: var(--text-primary);
   font-family: oxygen mono;
+
+  @media (max-width: 767px) {
+    font-size: 2rem;
+    line-height: 1.5rem;
+  }
 `;
 
 export const Label = styled.p`
@@ -26,6 +36,10 @@ export const Label = styled.p`
   margin: 0 0 0.2rem 0;
   text-align: right;
   font-family: oxygen mono;
+
+  @media (max-width: 767px) {
+    text-align: left;
+  }
 `;
 
 export const TimeTicker = () => {

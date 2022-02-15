@@ -134,6 +134,7 @@ export const HabitTracker = ({
   };
 
   console.log('progress', progress);
+  console.log('increment', incrementNumber);
 
   return (
     <Wrapper>
@@ -148,7 +149,6 @@ export const HabitTracker = ({
         <IconContext.Provider
           value={{
             color: '#444444',
-            className: 'global-class-name',
             size: '1rem',
             style: { verticalAlign: 'middle', marginBottom: '0.1rem' },
           }}

@@ -6,6 +6,11 @@ max-width: 343px;
 padding 1rem;
 box-sizing: border-box;
 // margin-bottom: 1rem;
+
+@media (max-width: 767px) {
+  padding 0;
+  margin-top: 1.5rem;
+}
 `;
 
 // CITY //
@@ -34,6 +39,11 @@ export const DateNumber = styled.h3`
   color: var(--text-primary);
   font-feature-settings: 'lnum' 1;
   margin: 0;
+
+  @media (max-width: 767px) {
+    font-size: 4rem;
+    line-height: 2rem;
+  }
 `;
 
 export const DayMonth = styled.div`
@@ -54,6 +64,11 @@ export const Month = styled.p`
   font-weight: 200;
   margin: 0.2rem 0 0 0;
   color: var(--text-secondary);
+
+  @media (max-width: 767px) {
+    font-size: 1rem;
+    line-height: 1rem;
+  }
 `;
 
 export const TempAndWeather = styled.div`
@@ -69,6 +84,11 @@ export const Temp = styled.p`
   font-weight: 500;
   margin: 0 0.5rem;
   color: var(--text-secondary);
+
+  @media (max-width: 767px) {
+    font-size: 1rem;
+    line-height: 1rem;
+  }
 `;
 
 export const Icon = styled.img`
@@ -81,4 +101,9 @@ export const Desc = styled.p`
   font-weight: 500;
   margin: 0;
   color: var(--text-secondary);
+
+  @media (max-width: 767px) {
+    font-size: 1rem;
+    line-height: 1rem;
+  }
 `;

@@ -142,7 +142,7 @@ export const TodoList = () => {
                     <IconContext.Provider
                       value={{
                         color: '#444444',
-                        className: 'global-class-name',
+                        // className: 'global-class-name',
                         size: '1.125rem',
                         style: {
                           verticalAlign: 'middle',
@@ -162,7 +162,7 @@ export const TodoList = () => {
                   <IconContext.Provider
                     value={{
                       color: 'var(--complete-icon)',
-                      className: 'global-class-name',
+                      // className: 'global-class-name',
                       size: '0.875rem',
                       style: {
                         verticalAlign: 'middle',

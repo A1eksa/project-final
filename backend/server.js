@@ -8,14 +8,13 @@ import { readFile } from 'fs/promises';
 const thoughts = JSON.parse(
   await readFile(new URL('./thoughts.json', import.meta.url))
 );
-// import thoughts from './../frontend/src/utils/thoughts.cjs';
 
 const mongoUrl =
   process.env.MONGO_URL || 'https://aleksa-jessi-final-project.herokuapp.com';
 //process.env.MONGO_URL || 'mongodb://localhost/project-final';
 
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
-// mongoose.set('useCreateIndex', true); //added due to deprecation error 26868
+mongoose.set('useCreateIndex', true); //added due to deprecation error 26868
 mongoose.Promise = Promise;
 
 // ******** Schemas ******** //
@@ -128,20 +127,6 @@ const HabitSchema = new mongoose.Schema({
   },
 });
 
-// const QuoteSchema = new mongoose.Schema({
-//   message: {
-//     type: String,
-//   },
-//   author: {
-//     type: String,
-//   },
-// });
-
-// const QuoteSchema = new mongoose.Schema({
-//   message: String,
-//   author: String,
-// });
-
 // ******** Models ******** //
 const User = mongoose.model('User', UserSchema);
 const Todo = mongoose.model('Todo', TodoSchema);
@@ -201,9 +186,6 @@ app.get('/quotes', async (req, res) => {
     success: true,
   });
 });
-
-// const quotes = await Quote.find({});
-// res.status(201).json({ response: quotes, success: true });
 
 // ******** POST method signup ******** //
 app.post('/signup', async (req, res) => {
@@ -316,7 +298,6 @@ app.delete('/todos/:todoId', async (req, res) => {
 app.patch('/todos/:todoId', authenticateUser);
 app.patch('/todos/:todoId/update', async (req, res) => {
   const { todoId } = req.params;
-  // const { heading, message, category, user } = req.body;
 
   try {
     const updatedTodo = await Todo.findOneAndUpdate({ _id: todoId }, req.body, {
@@ -421,7 +402,6 @@ app.patch('/habits/:habitId/update', async (req, res) => {
     regularity,
     incrementNumber,
   } = req.body;
-  ///maybe try FindByIdAndUpdate??
   try {
     const updatedHabit = await Habit.findByIdAndUpdate(
       { _id: habitId },

@@ -27,7 +27,7 @@ export const P = styled.p`
 
 export const OpenToggleWrapper = styled.div`
   background-color: transparent;
-  height: 64px;
+  // height: 64px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -50,5 +50,10 @@ export const OpenToggle = styled.button`
     color: var(--text-primary);
     cursor: pointer;
     transform: rotate(360deg);
+  }
+
+  @media (max-width: 767px) {
+    height: 44px;
+    width: 44px;
   }
 `;

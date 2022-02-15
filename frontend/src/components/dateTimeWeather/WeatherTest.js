@@ -4,6 +4,7 @@ import { API_FIXED } from '../../utils/constants';
 import { IconContext } from 'react-icons';
 import { WiDayCloudyHigh, WiHorizonAlt } from 'react-icons/wi';
 import { RiMoonClearLine } from 'react-icons/ri';
+import index from '../../../src/index.css';
 
 import {
   WeatherWrapper,

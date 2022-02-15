@@ -63,3 +63,8 @@ body {
   --footer: #00000080;
   --checkbox: #707070;
 }
+
+.global-class-name {
+  width: 2rem;
+  height: 2rem;
+}

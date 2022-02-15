@@ -18,6 +18,10 @@ export const CardWrapper = styled.div`
   box-sizing: border-box;
   margin-bottom: 1rem;
   background-color: var(--todo-card);
+
+  @media (max-width: 767px) {
+    min-width: 320px;
+  }
 `;
 
 export const TodoSubject = styled.h3`

@@ -7,6 +7,11 @@ export const StyledAvatar = styled.img`
   height: 56px;
   //   border-radius: 50%;
   //background-color: pink;
+
+  @media (max-width: 767px) {
+    width: 48px;
+    height: 48px;
+  }
 `;
 
 export const Avatar = () => {

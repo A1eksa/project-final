@@ -40,6 +40,9 @@ export const HabitEditForm = () => {
   const selectedRegularityNumber = useSelector(
     (store) => store.editModal?.selectedHabit?.regularityNumber
   );
+  // const selectedIncrementNumber = useSelector(
+  //   (store) => store.editModal?.selectedHabit?.incrementNumber
+  // );
 
   const [regularity, setRegularity] = useState(selectedRegularity);
   const [length, setLength] = useState(selectedLength);
@@ -80,6 +83,7 @@ export const HabitEditForm = () => {
         if (data.success) {
           batch(() => {
             dispatch(habit.actions.updateHabit(data.response));
+            // dispatch(editModal.actions.selectedIncrementNumber(data.response));
             // dispatch(editModal.actions.setErrors(null));
             dispatch(editModal.actions.setEditSlideout(false));
           });

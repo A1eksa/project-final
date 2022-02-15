@@ -10,18 +10,27 @@ export const StyledFooter = styled.footer`
   position: fixed;
   padding: 1.5rem 2rem;
   z-index: 2;
+
+  @media (max-width: 767px) {
+    flex-direction: column;
+  }
 `;
 
-export const AddButtonWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-`;
+// export const AddButtonWrapper = styled.div`
+//   display: flex;
+//   flex-direction: row;
+//   gap: 1rem;
+// `;
 
 export const RightWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 480px) {
+    align-items: flex-end;
+    margin-top: 1.5rem;
+  }
 `;
 
 export const MadeByWrapper = styled.div``;

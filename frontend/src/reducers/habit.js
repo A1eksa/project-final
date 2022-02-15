@@ -12,6 +12,7 @@ const habit = createSlice({
     durationNumber: null,
     // error: null,
     slideout: false,
+    // incrementNumber: 0,
   },
   reducers: {
     setItems: (store, action) => {

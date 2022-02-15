@@ -1,11 +1,16 @@
 import styled from 'styled-components';
 
 export const DashboardWrapper = styled.div`
-  padding: 5% 10% 0 10%;
+  padding: 5% 10% 10% 10%;
   max-width: 1440px;
   background-color: var(--background);
   height: 100vh;
   z-index: 1;
+
+  @media (max-width: 767px) {
+    padding: 1rem 1.5rem 0 1.5rem;
+    height: 100%;
+  }
 `;
 
 export const H1 = styled.h1`
@@ -32,6 +37,12 @@ export const H2 = styled.h2`
   max-width: 200px;
   margin-top: 1.5rem;
   color: var(--text-primary);
+
+  @media (max-width: 767px) {
+    font-size: 2rem;
+    font-weight: 200;
+    line-height: 2rem;
+  }
 `;
 
 export const HeroText = styled.div`
@@ -46,6 +57,13 @@ export const UpperWrapper = styled.div`
   justify-content: space-between;
   align-items: flex-end;
   padding-bottom: 3rem;
+
+  @media (max-width: 767px) {
+    flex-direction: column;
+    padding-bottom: 1rem;
+    align-items: flex-start;
+    padding-top: 7rem;
+  }
 `;
 
 export const Left = styled.div`
@@ -53,6 +71,12 @@ export const Left = styled.div`
   flex-direction: row;
   align-items: flex-end;
   gap: 4rem;
+
+  @media (max-width: 767px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
 `;
 
 export const MainContentWrapper = styled.div`

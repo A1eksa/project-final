@@ -127,7 +127,7 @@ export const HabitList = () => {
                         <IconContext.Provider
                           value={{
                             color: '#444444',
-                            className: 'global-class-name',
+                            // className: 'global-class-name',
                             size: '1.125rem',
                             style: {
                               verticalAlign: 'middle',
