@@ -81,6 +81,10 @@ export const FormWrapper = styled.form`
   box-shadow: var(--box-shadow);
   background-color: var(--level-one);
   z-index: -1;
+
+  @media (max-width: 767px) {
+    margin-top: 1rem;
+  }
 `;
 
 export const Label = styled.label`
@@ -160,6 +164,12 @@ export const Preamble = styled.p`
   margin-bottom: 0;
   max-width: 400px;
   color: var(--text-primary);
+
+  @media (max-width: 767px) {
+    font-size: 1rem;
+    line-height: 1.3rem;
+    margin-left: 0.5rem;
+  }
 `;
 
 export const H3 = styled.h3`
@@ -170,4 +180,12 @@ export const H3 = styled.h3`
   max-width: 240px;
   margin-top: 4rem;
   color: var(--text-primary);
+
+  @media (max-width: 767px) {
+    margin-top: 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1rem;
+    margin-left: 0.5rem;
+  }
 `;

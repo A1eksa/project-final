@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const DashboardWrapper = styled.div`
-  padding: 5% 10% 10% 10%;
+  padding: 5% 10% 0 10%;
   max-width: 1440px;
   background-color: var(--background);
   height: 100vh;

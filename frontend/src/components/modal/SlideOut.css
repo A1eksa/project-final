@@ -24,20 +24,6 @@
   z-index: 3;
 }
 
-@media (max-width: 550px) {
-  .modal {
-    right: -120%;
-    width: 90%;
-    top: 0;
-  }
-}
-
-@media (min-width: 768px) {
-  .modal {
-    top: 0;
-  }
-}
-
 .modal.active {
   right: 0;
   transition: 350ms;
@@ -101,4 +87,29 @@
 .choose-form-btn:focus {
   border-bottom: 4px solid var(--grey-100);
   font-weight: 400;
+}
+
+@media (max-width: 550px) {
+  .modal {
+    right: -120%;
+    width: 92%;
+    padding: 0 1rem;
+    top: 0;
+  }
+
+  .form-toggle {
+    margin-top: 1rem;
+  }
+
+  .choose-form-btn {
+    font-size: 14px;
+    line-height: 20px;
+    padding-bottom: 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .modal {
+    top: 0;
+  }
 }

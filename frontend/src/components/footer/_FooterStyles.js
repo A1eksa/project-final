@@ -13,6 +13,8 @@ export const StyledFooter = styled.footer`
 
   @media (max-width: 767px) {
     flex-direction: column;
+    position: relative;
+    bottom: 0;
   }
 `;
 
