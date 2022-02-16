@@ -46,6 +46,7 @@ export const TodoForm = () => {
     fetch(API_URL('todos'), options)
       .then((res) => res.json())
       .then((data) => {
+        console.log('todo form ', data);
         if (data.success) {
           batch(() => {
             dispatch(user.actions.setUserId(data.response.userId));
