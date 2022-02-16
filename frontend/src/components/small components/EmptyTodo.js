@@ -13,7 +13,7 @@ export const EmptyTodo = () => {
         value={{
           color: '#444444',
           className: 'global-class-name',
-          size: '4rem',
+          size: '64px',
           style: { verticalAlign: 'middle', marginLeft: '0.05rem' },
         }}
       >

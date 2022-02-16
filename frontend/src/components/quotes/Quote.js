@@ -29,7 +29,7 @@ export const Quote = () => {
         value={{
           color: '#444444',
           className: 'global-class-name',
-          size: '1.125rem',
+          size: '18px',
           fontWeight: 'bold',
           style: { verticalAlign: 'middle', marginLeft: '0.05rem' },
         }}
