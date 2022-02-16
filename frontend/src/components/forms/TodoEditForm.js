@@ -47,7 +47,7 @@ export const TodoEditForm = () => {
   const dispatch = useDispatch();
 
   const updateTodo = (event, todoId) => {
-    // event.preventDefault();
+    event.preventDefault();
     const options = {
       method: 'PATCH',
       headers: {
