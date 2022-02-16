@@ -26,7 +26,10 @@ export const HabitEditForm = () => {
     (store) => store.editModal?.selectedHabit?.heading
   );
   const selectedDescription = useSelector(
-    (store) => store.editModal?.selectedHabit?.description
+    (store) => {
+    console.log(store)
+    return  store.editModal?.selectedHabit?.description
+    }
   );
   const selectedRegularity = useSelector(
     (store) => store.editModal?.selectedHabit?.regularity
@@ -40,9 +43,9 @@ export const HabitEditForm = () => {
   const selectedRegularityNumber = useSelector(
     (store) => store.editModal?.selectedHabit?.regularityNumber
   );
-  // const selectedIncrementNumber = useSelector(
-  //   (store) => store.editModal?.selectedHabit?.incrementNumber
-  // );
+  const selectedIncrementNumber = useSelector(
+    (store) => store.editModal?.selectedHabit?.incrementNumber
+  );
 
   const [regularity, setRegularity] = useState(selectedRegularity);
   const [length, setLength] = useState(selectedLength);
@@ -52,6 +55,8 @@ export const HabitEditForm = () => {
     selectedRegularityNumber
   );
   const [durationNumber, setDurationNumber] = useState(selectedDurationNumber);
+  // const [incrementNumber, setincrementNumber] = useState(selectedincrementNumber);
+
 
   console.log(selectedRegularity);
   console.log(regularity);
@@ -74,6 +79,7 @@ export const HabitEditForm = () => {
         length,
         regularityNumber,
         durationNumber,
+        incrementNumber: selectedIncrementNumber
       }),
     };
 

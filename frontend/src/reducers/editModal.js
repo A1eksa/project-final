@@ -40,9 +40,9 @@ const editModal = createSlice({
     setSelectedDurationNumber: (store, action) => {
       store.selectedDurationNumber = action.payload;
     },
-    // setSelectedIncrementNumber: (store, action) => {
-    //   store.selectedIncrementNumber = action.payload;
-    // },
+    setSelectedIncrementNumber: (store, action) => {
+      store.selectedIncrementNumber = action.payload;
+    },
 
     // TODO //
     setEditTodoSlideout: (store, action) => {

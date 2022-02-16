@@ -92,13 +92,19 @@ export const HabitTracker = ({
 
   const dispatch = useDispatch();
 
-  const calculationNumber = Math.round(
-    (regularityNumber / durationNumber) * 100
-  );
+  const calculationNumber = 
+    (regularityNumber / durationNumber)
+    console.log('calcu', calculationNumber)
+    console.log('regu', regularityNumber)
+    console.log('dur', durationNumber)
 
   const onIncrement = () => {
     console.log('onIncrement');
-    setProgress(incrementNumber + 1);
+    setProgress((progress) => {
+      if ((progress * calculationNumber * 100) < 100)
+       {return progress + 1}
+      else {return progress}
+    });
     const options = {
       method: 'PATCH',
       headers: {
@@ -106,10 +112,11 @@ export const HabitTracker = ({
         Authorization: accessToken,
       },
       body: JSON.stringify({
-        incrementNumber:
-          incrementNumber + calculationNumber <= 100
-            ? incrementNumber + calculationNumber
-            : 100,
+        // incrementNumber:
+        //   (incrementNumber * calculationNumber * 100) <= 100
+        //     ? progress
+        //     : incrementNumber,
+        incrementNumber: progress,
         heading,
         description,
         regularityNumber,
@@ -140,11 +147,11 @@ export const HabitTracker = ({
     <Wrapper>
       <ProgressWrapper>
         <Track>
-          <Thumb percentage={progress}></Thumb>
+          <Thumb percentage={Math.round(progress * calculationNumber * 100)}></Thumb>
         </Track>
       </ProgressWrapper>
       <Bottom>
-        <TrackText>{incrementNumber}%</TrackText>
+        <TrackText>{Math.round(progress * calculationNumber * 100)}%</TrackText>
 
         <IconContext.Provider
           value={{
