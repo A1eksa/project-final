@@ -64,8 +64,8 @@ export const TodoEditForm = () => {
     fetch(API_URL(`todos/${todoId}/update`), options)
       .then((res) => res.json())
       .then((data) => {
+        console.log('todo edit form ', data);
         if (data.success) {
-          console.log('todo edit form ', data);
           batch(() => {
             dispatch(todo.actions.updateTodo(data.response));
 
