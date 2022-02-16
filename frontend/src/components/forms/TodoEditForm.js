@@ -68,7 +68,6 @@ export const TodoEditForm = () => {
         if (data.success) {
           batch(() => {
             dispatch(todo.actions.updateTodo(data.response));
-
             dispatch(editModal.actions.setEditTodoSlideout(false));
           });
         } else {
