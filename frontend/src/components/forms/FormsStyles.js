@@ -189,3 +189,13 @@ export const H3 = styled.h3`
     margin-left: 0.5rem;
   }
 `;
+
+export const Asterix = styled.span`
+  font-size: 30px;
+`;
+
+export const Required = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+`;

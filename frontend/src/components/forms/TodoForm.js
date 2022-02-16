@@ -14,6 +14,8 @@ import {
   Label,
   Input,
   Button,
+  Asterix,
+  Required,
 } from './FormsStyles';
 
 export const TodoForm = () => {
@@ -57,7 +59,9 @@ export const TodoForm = () => {
     <>
       <FormWrapper onSubmit={onFormSubmit}>
         <Label htmlFor='heading'>
-          Heading
+          <Required>
+            Heading<Asterix>*</Asterix>
+          </Required>
           <Input
             type='text'
             value={heading}
@@ -65,7 +69,9 @@ export const TodoForm = () => {
           ></Input>
         </Label>
         <Label htmlFor='message'>
-          Message
+          <Required>
+            Message<Asterix>*</Asterix>
+          </Required>
           <Input
             type='text'
             value={message}
@@ -73,7 +79,12 @@ export const TodoForm = () => {
           ></Input>
         </Label>
 
-        <Label htmlFor='categories'> Choose category </Label>
+        <Label htmlFor='categories'>
+          {' '}
+          <Required>
+            Choose category<Asterix>*</Asterix>{' '}
+          </Required>
+        </Label>
 
         <FormCategoryWrapper>
           <CategoryLabel htmlFor='Home'>
@@ -118,7 +129,9 @@ export const TodoForm = () => {
             <RadioButton></RadioButton>
           </CategoryLabel>
           <Label htmlFor='date'>
-            Due date
+            <Required>
+              Due date<Asterix>*</Asterix>
+            </Required>
             <Input
               type='date'
               value={dueDate}
@@ -127,6 +140,12 @@ export const TodoForm = () => {
           </Label>
         </FormCategoryWrapper>
         <Button type='submit'>Save</Button>
+        <Label>
+          <Required>
+            <Asterix>*</Asterix>
+            Required
+          </Required>
+        </Label>
       </FormWrapper>
     </>
   );

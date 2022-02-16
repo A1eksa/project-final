@@ -14,6 +14,8 @@ import {
   Input,
   Button,
   RegularityLabel,
+  Asterix,
+  Required,
 } from './FormsStyles';
 
 export const HabitForm = () => {
@@ -56,7 +58,9 @@ export const HabitForm = () => {
   return (
     <FormWrapper onSubmit={onHabitSubmit}>
       <Label htmlFor='heading'>
-        Heading
+        <Required>
+          Heading<Asterix>*</Asterix>
+        </Required>
         <Input
           type='text'
           value={heading}
@@ -64,15 +68,22 @@ export const HabitForm = () => {
         ></Input>
       </Label>
       <Label htmlFor='description'>
-        Message
+        <Required>
+          Message<Asterix>*</Asterix>
+        </Required>
+
         <Input
           type='text'
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         ></Input>
       </Label>
+      <Label>
+        <Required>
+          Regularity<Asterix>*</Asterix>
+        </Required>
+      </Label>
 
-      <Label>Regularity</Label>
       <FormCategoryWrapper>
         <RegularityLabel htmlFor='once a day'>
           Daily
@@ -117,8 +128,11 @@ export const HabitForm = () => {
           <RadioButton></RadioButton>
         </CategoryLabel>
       </FormCategoryWrapper>
-
-      <Label>Length of habit</Label>
+      <Label>
+        <Required>
+          Length<Asterix>*</Asterix>
+        </Required>
+      </Label>
       <FormCategoryWrapper>
         <CategoryLabel htmlFor='30 days'>
           30 days
@@ -178,6 +192,12 @@ export const HabitForm = () => {
         </CategoryLabel>
       </FormCategoryWrapper>
       <Button type='submit'>Save</Button>
+      <Label>
+        <Required>
+          <Asterix>*</Asterix>
+          Required
+        </Required>
+      </Label>
     </FormWrapper>
   );
 };
