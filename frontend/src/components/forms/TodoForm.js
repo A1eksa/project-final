@@ -48,8 +48,10 @@ export const TodoForm = () => {
       .then((data) => {
         if (data.success) {
           batch(() => {
+            dispatch(todo.actions.setItems(data.response));
+            // this is added
             dispatch(user.actions.setUserId(data.response.userId));
-            // dispatch(modal.actions.setSlideout(false));
+            dispatch(modal.actions.setSlideout(false));
           });
         }
       });
