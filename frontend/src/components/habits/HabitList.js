@@ -128,7 +128,7 @@ export const HabitList = () => {
                           value={{
                             color: '#444444',
                             // className: 'global-class-name',
-                            size: '1.125rem',
+                            size: '18px',
                             style: {
                               verticalAlign: 'middle',
                               marginLeft: '0.05rem',

@@ -98,7 +98,7 @@ export const WeatherTest = () => {
                   color: 'var(--grey-200)',
                   fontWeight: 'thin',
                   className: 'global-class-name',
-                  size: '4rem',
+                  size: '64px',
                   style: { verticalAlign: 'middle', marginRight: '1rem' },
                 }}
               >

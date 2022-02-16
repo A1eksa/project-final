@@ -92,18 +92,19 @@ export const HabitTracker = ({
 
   const dispatch = useDispatch();
 
-  const calculationNumber = 
-    (regularityNumber / durationNumber)
-    console.log('calcu', calculationNumber)
-    console.log('regu', regularityNumber)
-    console.log('dur', durationNumber)
+  const calculationNumber = regularityNumber / durationNumber;
+  console.log('calcu', calculationNumber);
+  console.log('regu', regularityNumber);
+  console.log('dur', durationNumber);
 
   const onIncrement = () => {
     console.log('onIncrement');
     setProgress((progress) => {
-      if ((progress * calculationNumber * 100) < 100)
-       {return progress + 1}
-      else {return progress}
+      if (progress * calculationNumber * 100 < 100) {
+        return progress + 1;
+      } else {
+        return progress;
+      }
     });
     const options = {
       method: 'PATCH',
@@ -147,7 +148,9 @@ export const HabitTracker = ({
     <Wrapper>
       <ProgressWrapper>
         <Track>
-          <Thumb percentage={Math.round(progress * calculationNumber * 100)}></Thumb>
+          <Thumb
+            percentage={Math.round(progress * calculationNumber * 100)}
+          ></Thumb>
         </Track>
       </ProgressWrapper>
       <Bottom>
@@ -156,7 +159,7 @@ export const HabitTracker = ({
         <IconContext.Provider
           value={{
             color: '#444444',
-            size: '1rem',
+            size: '16px',
             style: { verticalAlign: 'middle', marginBottom: '0.1rem' },
           }}
         >
