@@ -28,7 +28,8 @@ export const HabitForm = () => {
 
   const dispatch = useDispatch();
 
-  const onHabitSubmit = () => {
+  const onHabitSubmit = (event) => {
+    event.preventDefault();
     const options = {
       method: 'POST',
       headers: {
@@ -48,9 +49,7 @@ export const HabitForm = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
-          batch(() => {
-            dispatch(user.actions.setUserId(data.response.userId));
-          });
+          window.location.reload();
         }
       });
   };

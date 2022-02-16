@@ -48,11 +48,7 @@ export const TodoForm = () => {
       .then((data) => {
         console.log('todo form ', data);
         if (data.success) {
-          batch(() => {
-            // dispatch(user.actions.setUserId(data.response.userId));
-            // dispatch(modal.actions.setSlideout(false));
-            window.location.reload();
-          });
+          window.location.reload();
         }
       });
   };
