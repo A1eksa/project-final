@@ -27,8 +27,8 @@ export const TodoForm = () => {
 
   const dispatch = useDispatch();
 
-  const onFormSubmit = (event) => {
-    event.preventDefault();
+  const onFormSubmit = () => {
+    // event.preventDefault();
     const options = {
       method: 'POST',
       headers: {
@@ -47,7 +47,6 @@ export const TodoForm = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
-          console.log('This is todo post', data);
           batch(() => {
             dispatch(user.actions.setUserId(data.response.userId));
             // dispatch(modal.actions.setSlideout(false));
