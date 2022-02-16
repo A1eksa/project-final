@@ -3,7 +3,7 @@ import { useSelector, useDispatch, batch } from 'react-redux';
 import { API_URL } from '../../utils/constants';
 
 import user from '../../reducers/user';
-import modal from '../../reducers/modal';
+// import modal from '../../reducers/modal';
 
 import {
   FormCategoryWrapper,
@@ -27,8 +27,8 @@ export const TodoForm = () => {
 
   const dispatch = useDispatch();
 
-  const onFormSubmit = (event) => {
-    event.preventDefault();
+  const onFormSubmit = () => {
+    // event.preventDefault();
     const options = {
       method: 'POST',
       headers: {
@@ -49,7 +49,7 @@ export const TodoForm = () => {
         if (data.success) {
           batch(() => {
             dispatch(user.actions.setUserId(data.response.userId));
-            dispatch(modal.actions.setSlideout(false));
+            // dispatch(modal.actions.setSlideout(false));
           });
         }
       });
