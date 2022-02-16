@@ -27,8 +27,8 @@ export const TodoForm = () => {
 
   const dispatch = useDispatch();
 
-  const onFormSubmit = (event) => {
-    event.preventDefault();
+  const onFormSubmit = () => {
+    // event.preventDefault();
     const options = {
       method: 'POST',
       headers: {
@@ -39,6 +39,7 @@ export const TodoForm = () => {
         heading,
         message,
         category,
+
         user: userId,
         dueDate,
       }),
@@ -48,10 +49,8 @@ export const TodoForm = () => {
       .then((data) => {
         if (data.success) {
           batch(() => {
-            dispatch(todo.actions.setItems(data.response));
-            // this is added
             dispatch(user.actions.setUserId(data.response.userId));
-            dispatch(modal.actions.setSlideout(false));
+            // dispatch(modal.actions.setSlideout(false));
           });
         }
       });
