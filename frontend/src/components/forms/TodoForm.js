@@ -49,7 +49,7 @@ export const TodoForm = () => {
         console.log('todo form ', data);
         if (data.success) {
           batch(() => {
-            dispatch(user.actions.setUserId(data.response.user.userId));
+            dispatch(user.actions.setUserId(data.response.user));
             // dispatch(modal.actions.setSlideout(false));
             window.location.reload();
           });
