@@ -30,7 +30,6 @@ export const TodoEditForm = () => {
   const selectedCategory = useSelector(
     (store) => store.editModal?.selectedTodo?.category
   );
-  // console.log('categort', selectedCategory);
 
   const selectedDueDate = useSelector(
     (store) => store.editModal?.selectedTodo?.dueDate

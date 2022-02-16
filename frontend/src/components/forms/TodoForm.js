@@ -27,8 +27,8 @@ export const TodoForm = () => {
 
   const dispatch = useDispatch();
 
-  const onFormSubmit = () => {
-    // event.preventDefault();
+  const onFormSubmit = (event) => {
+    event.preventDefault();
     const options = {
       method: 'POST',
       headers: {
