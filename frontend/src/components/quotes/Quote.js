@@ -23,8 +23,10 @@ export const Quote = () => {
 
   return (
     <QuoteWrapper>
-      <QuoteText>{theQuote.message}</QuoteText>
-      <Name>/ {theQuote.author}</Name>
+      <div>
+        <QuoteText>{theQuote.message}</QuoteText>
+        <Name>/ {theQuote.author}</Name>
+      </div>
       <IconContext.Provider
         value={{
           color: '#444444',

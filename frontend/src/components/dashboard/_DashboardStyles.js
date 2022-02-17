@@ -1,15 +1,16 @@
 import styled from 'styled-components';
 
 export const DashboardWrapper = styled.div`
-  padding: 5% 10% 0 10%;
+  padding: 5% 10%;
   max-width: 1440px;
   background-color: var(--background);
   height: 100vh;
   z-index: 1;
 
   @media (max-width: 767px) {
-    padding: 1rem 1.5rem 0 1.5rem;
+    padding: 1rem;
     height: 100%;
+    width: 100%;
   }
 `;
 
@@ -45,24 +46,30 @@ export const H2 = styled.h2`
 `;
 
 export const HeroText = styled.div`
-  max-width: 1440px;
-  color: var(--text-primary);
+  // max-width: 1440px;
+  // color: var(--text-primary);
+
+  @media (max-width: 767px) {
+    padding-top: 5rem;
+  }
 `;
 
 export const UpperWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  padding-top: 3rem;
+  padding: 4rem 0;
   justify-content: space-between;
   align-items: flex-end;
-  padding-bottom: 3rem;
   gap: 0 3rem;
 
-  @media (max-width: 960px) {
+  @media (max-width: 1180px) {
     flex-direction: column;
-    padding-bottom: 1rem;
     align-items: flex-start;
-    padding-top: 7rem;
+    padding: 3rem 0;
+  }
+
+  @media (max-width: 960px) {
+    padding: 4rem 0;
   }
 `;
 
@@ -73,18 +80,21 @@ export const Right = styled.div`
   gap: 4rem;
 
   @media (max-width: 767px) {
+    flex-direction: column;
     align-items: flex-start;
-    gap: 2rem;
-    justify-content: space-between;
+    gap: 1.5rem;
+    align-items: flex-start;
+    // justify-content: space-between;
+    margin-top: 2rem;
   }
 `;
 
 export const MainContentWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  max-width: 1440px;
+  // max-width: 1440px;
   gap: 2rem;
-  margin: 0 auto;
+  // margin: 0 auto;
 
   @media (max-width: 767px) {
     flex-direction: column;
@@ -96,9 +106,9 @@ export const User = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  max-width: 1440px;
+  // max-width: 1440px;
   gap: 1.5rem;
-  margin: 0 auto;
+  // margin: 0 auto;
 `;
 
 export const LogOutButton = styled.button`

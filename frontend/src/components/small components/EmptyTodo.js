@@ -25,10 +25,15 @@ export const EmptyTodo = () => {
 
 const EmptyState = styled.div`
   height: 100%;
-  max-width: 343px;
+  // max-width: 343px;
   min-height: 190px;
   padding: 3rem;
   border-radius: 10px;
+
+  @media (max-width: 767px) {
+    min-height: 100px;
+    padding: 1rem;
+  }
 `;
 
 const H4 = styled.h4`
@@ -37,6 +42,11 @@ const H4 = styled.h4`
   color: var(--text-secondary);
   font-weight: 200;
   margin: 0.5rem 0;
+
+  @media (max-width: 767px) {
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+  }
 `;
 
 const P = styled.p`

@@ -10,7 +10,7 @@ export const TimeWrapper = styled.div`
   padding-right: 2rem;
 
   @media (max-width: 767px) {
-    padding-right: 4rem;
+    justify-content: center;
   }
 }
 `;
@@ -24,7 +24,7 @@ export const H4 = styled.h4`
   font-family: oxygen mono;
 
   @media (max-width: 767px) {
-    font-size: 2rem;
+    font-size: 1.5rem;
     line-height: 1.5rem;
   }
 `;

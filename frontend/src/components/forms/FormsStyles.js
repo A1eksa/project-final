@@ -14,7 +14,7 @@ export const HiddenRadioButton = styled.input.attrs({
 
 export const RadioButton = styled.span`
   display: flex;
-  width: 95%;
+  width: 100%;
   height: 32px;
   border-radius: 32px;
   background-color: var(--radiobutton);
@@ -28,7 +28,7 @@ export const RadioButton = styled.span`
 `;
 
 export const CategoryLabel = styled.label`
-  min-width: 70px;
+  min-width: 90px;
   height: 32px;
   border-radius: 16px;
   display: flex;
@@ -46,7 +46,7 @@ export const CategoryLabel = styled.label`
 `;
 
 export const RegularityLabel = styled.label`
-  width: 38%;
+  // min-width: 50%;
   height: 32px;
   border-radius: 16px;
   display: flex;
@@ -75,11 +75,11 @@ export const FormCategoryWrapper = styled.div`
 `;
 
 export const FormWrapper = styled.form`
-  padding: 1rem 2rem;
+  // padding: 1rem 2rem;
   border-radius: 10px;
   margin-top: 3rem;
-  box-shadow: var(--box-shadow);
-  background-color: var(--level-one);
+  // box-shadow: var(--box-shadow);
+  // background-color: var(--level-one);
   z-index: -1;
 
   @media (max-width: 767px) {
@@ -95,6 +95,7 @@ export const Label = styled.label`
   width: 100%;
   transition: 0.2s;
   font-size: 1rem;
+  line-height: 1.3rem;
   font-weight: 400;
   margin-top: 1rem;
 `;
@@ -110,10 +111,9 @@ export const Input = styled.input`
   width: 100%;
   height: 3rem;
   padding: 16px;
-  border: 1px solid var(--grey-200);
+  border: 1px solid var(--grey-500);
   background-color: var(--level-one);
-  margin-bottom: 1rem;
-  margin-top: 0.5rem;
+  margin: 0.5rem 0 0.5rem 0;
   outline: none;
   transition: 0.4s;
   :hover {
@@ -143,7 +143,7 @@ export const Button = styled.button`
   color: var(--grey-600);
   font-family: Raleway;
   font-size: 1rem;
-  font-weight: 300;
+  font-weight: 500;
   transition: 0.4s;
   border: none;
   width: 100%;
@@ -192,6 +192,7 @@ export const H3 = styled.h3`
 
 export const Asterix = styled.span`
   font-size: 30px;
+  color: var(--text-primary);
 `;
 
 export const Required = styled.div`

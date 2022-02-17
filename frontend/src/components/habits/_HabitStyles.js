@@ -1,5 +1,16 @@
 import styled from 'styled-components';
 
+export const ListWrapper = styled.section`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+
+  @media (max-width: 1180px) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+`;
+
 export const HabitWrapper = styled.section`
   display: flex;
   flex-direction: column;
@@ -10,15 +21,9 @@ export const H2 = styled.h2`
   font-size: 1.5rem;
   font-weight: 400;
   color: var(--text-primary);
-`;
-
-export const ListWrapper = styled.section`
-  display: grid;
-  grid-template-columns: repeat(2, 2fr);
-  grid-gap: 1rem;
 
   @media (max-width: 767px) {
-    grid-template-columns: repeat(1fr);
+    font-size: 1.125rem;
   }
 `;
 
@@ -27,18 +32,14 @@ export const ListWrapperEmpty = styled.section`
 `;
 
 export const CardWrapper = styled.div`
-min-height: 148px;
-box-shadow: var(--box-shadow);
-border-radius: 10px;
-padding 1rem;
-box-sizing: border-box;
-margin-bottom: 1rem;
-background-color: var(--habit-card);
-z-index: 1;
-
-@media (max-width: 767px) {
-  width: 100%;
-}
+  min-height: 148px;
+  box-shadow: var(--box-shadow);
+  border-radius: 10px;
+  padding 1rem;
+  box-sizing: border-box;
+  margin-bottom: 1rem;
+  background-color: var(--habit-card);
+  z-index: 1;
 `;
 
 export const RegularityWrapper = styled.div`

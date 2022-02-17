@@ -15,14 +15,9 @@ export const StyledFooter = styled.footer`
     flex-direction: column;
     position: relative;
     bottom: 0;
+    padding: 1.5rem 1rem;
   }
 `;
-
-// export const AddButtonWrapper = styled.div`
-//   display: flex;
-//   flex-direction: row;
-//   gap: 1rem;
-// `;
 
 export const RightWrapper = styled.div`
   display: flex;
@@ -31,7 +26,7 @@ export const RightWrapper = styled.div`
 
   @media (max-width: 480px) {
     align-items: flex-end;
-    margin-top: 1.5rem;
+    margin-top: 1rem;
   }
 `;
 
@@ -48,7 +43,7 @@ export const LogOutButton = styled.button`
   height: 48px;
   border-radius: 24px;
   padding: 0 2rem;
-  color: var(--text-primary);
+  color: var(--button-text);
   font-family: Raleway;
   font-size: 1rem;
   font-weight: 300;
@@ -61,5 +56,10 @@ export const LogOutButton = styled.button`
     background-color: var(--level-two);
     color: var(--text-primary);
     cursor: pointer;
+  }
+
+  @media (max-width: 480px) {
+    max-width: 140px;
+    margin: 0;
   }
 `;

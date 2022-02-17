@@ -1,15 +1,13 @@
 import styled from 'styled-components';
 
 export const WeatherWrapper = styled.div`
-// min-width: 343px;
-// max-width: 400px;
-// padding 1rem 0;
-box-sizing: border-box;
-// margin-bottom: 1rem;
+  box-sizing: border-box;
 
 @media (max-width: 767px) {
-  padding 0;
-  margin-top: 1.5rem;
+  box-shadow: var(--box-shadow);
+  background-color: var(--level-one);
+  border-radius: 10px;
+  padding 1rem;
 }
 `;
 
@@ -47,7 +45,10 @@ export const DateNumber = styled.h3`
 `;
 
 export const DayMonth = styled.div`
-  margin-left: 1rem;
+  margin-left: 0.5rem;
+
+  @media (max-width: 767px) {
+  }
 `;
 
 export const Day = styled.p`
@@ -73,9 +74,13 @@ export const Month = styled.p`
 
 export const TempAndWeather = styled.div`
   display: flex;
-  flex-direction: row;
+  // flex-direction: row;
   align-items: center;
   margin-top: 1rem;
+
+  @media (max-width: 767px) {
+    align-items: right:
+  }
 `;
 
 export const Temp = styled.p`
@@ -110,6 +115,6 @@ export const Desc = styled.p`
 
 export const DescTemp = styled.div`
   display: flex;
-  flex-direction: column;
-  min-width: 200px;
+  flex-direction: row;
+  gap: 0.5rem;
 `;

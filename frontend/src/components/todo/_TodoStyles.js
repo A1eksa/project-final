@@ -1,21 +1,22 @@
 import styled from 'styled-components';
 
+export const ListWrapper = styled.section`
+  display: flex;
+  flex-direction: column;
+`;
+
 export const H2 = styled.h2`
   font-size: 1.5rem;
   font-weight: 400;
   color: var(--text-primary);
-`;
-export const ListWrapper = styled.section`
-  display: flex;
-  flex-direction: column;
 
   @media (max-width: 767px) {
-    width: 100%;
+    font-size: 1.125rem;
   }
 `;
 
 export const CardWrapper = styled.div`
-  min-width: 400px;
+  min-width: 343px;
   box-shadow: var(--box-shadow);
   border-radius: 10px;
   padding 1rem;
@@ -23,9 +24,9 @@ export const CardWrapper = styled.div`
   margin-bottom: 1rem;
   background-color: var(--todo-card);
 
-  // @media (max-width: 767px) {
-  //   width: 100%;
-  // }
+  @media (max-width: 767px) {
+    min-width: 320px;
+  }
 `;
 
 export const TodoSubject = styled.h3`

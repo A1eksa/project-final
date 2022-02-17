@@ -6,10 +6,7 @@ export const HeaderWrapper = styled.header`
 box-sizing: border-box;
 width: 100%;
 height: 64px;
-padding-left: 10%;
-padding-right: 2rem;
-padding-top: 4rem;
-padding-bottom:2.5rem;
+padding: 4rem 2rem 2.5rem 2rem;
 display flex;
 align-items: center;
 justify-content: space-between;
@@ -19,8 +16,7 @@ background-color: var(--background);
 
 @media (max-width: 767px) {
   align-items: flex-start;
-  padding-top: 2rem;
-  padding-left: 1.5rem;
+  padding: 1rem 1rem 2rem 1rem;
 }
 `;
 
