@@ -81,10 +81,10 @@ export const DeleteButton = styled.button`
   height: 32px;
   width: 32px;
   border-radius: 16px;
-  color: var(--text-primary);
-  font-family: Raleway;
-  font-size: 1rem;
-  font-weight: 300;
+  // color: var(--text-primary);
+  // font-family: Raleway;
+  // font-size: 1rem;
+  // font-weight: 300;
   margin-right: 0.5rem;
   transition: 0.4s;
   border: none;
@@ -92,7 +92,7 @@ export const DeleteButton = styled.button`
   background-color: var(--accent-yellow);
   :hover {
     background-color: var(--grey-300);
-    color: var(--text-primary);
+    // color: var(--text-primary);
     cursor: pointer;
     transform: rotate(360deg);
     cursor: pointer;
@@ -105,10 +105,10 @@ export const EditButton = styled.button`
   height: 32px;
   width: 32px;
   border-radius: 16px;
-  color: var(--text-primary);
-  font-family: Raleway;
-  font-size: 1rem;
-  font-weight: 300;
+  // color: var(--text-primary);
+  // font-family: Raleway;
+  // font-size: 1rem;
+  // font-weight: 300;
   margin-right: 0.5rem;
   transition: 0.4s;
   border: none;
@@ -116,7 +116,7 @@ export const EditButton = styled.button`
   background-color: var(--accent-green);
   :hover {
     background-color: var(--grey-300);
-    color: var(--text-primary);
+    // color: var(--text-primary);
     cursor: pointer;
     transform: rotate(360deg);
     cursor: pointer;
