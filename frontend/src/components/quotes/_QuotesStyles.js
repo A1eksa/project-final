@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const QuoteWrapper = styled.div`
-  max-width: 343px;
+  max-width: 500px;
   box-sizing: border-box;
 `;
 

@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 export const WeatherWrapper = styled.div`
 // min-width: 343px;
-max-width: 343px;
-padding 1rem;
+// max-width: 400px;
+// padding 1rem 0;
 box-sizing: border-box;
 // margin-bottom: 1rem;
 
@@ -82,7 +82,7 @@ export const Temp = styled.p`
   font-size: 1.5rem;
   line-height: 2rem;
   font-weight: 500;
-  margin: 0 0.5rem;
+  margin: 0.5px 0;
   color: var(--text-secondary);
 
   @media (max-width: 767px) {
@@ -106,4 +106,10 @@ export const Desc = styled.p`
     font-size: 1rem;
     line-height: 1rem;
   }
+`;
+
+export const DescTemp = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-width: 200px;
 `;

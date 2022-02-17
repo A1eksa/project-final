@@ -17,6 +17,7 @@ import {
   Desc,
   Month,
   TempAndWeather,
+  DescTemp
 } from './_DateTimeWeatherStyles';
 
 export const WeatherTest = () => {
@@ -102,12 +103,14 @@ export const WeatherTest = () => {
                   style: { verticalAlign: 'middle', marginRight: '1rem' },
                 }}
               >
-                <RiMoonClearLine />
+              <RiMoonClearLine />
               </IconContext.Provider>
-              <Desc className='weather'>
-                {weather.weather[0].description},{' '}
-              </Desc>
-              <Temp className='weather'>{weather.main.temp}°c </Temp>
+              <DescTemp>
+                <Desc className='weather'>
+                  {weather.weather[0].description},{' '}
+                </Desc>
+                <Temp className='weather'>{weather.main.temp}°c </Temp>
+              </DescTemp>
             </TempAndWeather>
           </div>
         ) : (

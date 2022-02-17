@@ -19,7 +19,7 @@ import {
   Line,
   HeroText,
   UpperWrapper,
-  Left,
+  Right,
 } from './_DashboardStyles';
 
 export const Dashboard = () => {
@@ -40,14 +40,14 @@ export const Dashboard = () => {
       <TodoSlideOut />
       <DashboardWrapper>
         <UpperWrapper>
-          <Left>
             <HeroText>
               <Line></Line>
               <H2>What's on your mind?</H2>
             </HeroText>
-            <Quote />
-          </Left>
-          <WeatherTest />
+            <Right>
+              <Quote />
+              <WeatherTest />
+            </Right>
         </UpperWrapper>
         <MainContentWrapper>
           <TodoList />

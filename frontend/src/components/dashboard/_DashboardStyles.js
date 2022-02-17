@@ -17,7 +17,7 @@ export const H1 = styled.h1`
   font-size: 2rem;
   line-height: 2rem;
   font-weight: 300;
-  max-width: 220px;
+  min-width: 220px;
   margin: 0;
   color: var(--text-primary);
 `;
@@ -34,13 +34,12 @@ export const H2 = styled.h2`
   font-weight: 300;
   line-height: 3.3rem;
   margin-bottom: 0;
-  max-width: 200px;
+  width: 200px;
   margin-top: 1.5rem;
   color: var(--text-primary);
 
   @media (max-width: 767px) {
     font-size: 2rem;
-    font-weight: 200;
     line-height: 2rem;
   }
 `;
@@ -57,8 +56,9 @@ export const UpperWrapper = styled.div`
   justify-content: space-between;
   align-items: flex-end;
   padding-bottom: 3rem;
+  gap: 0 3rem;
 
-  @media (max-width: 767px) {
+  @media (max-width: 960px) {
     flex-direction: column;
     padding-bottom: 1rem;
     align-items: flex-start;
@@ -66,16 +66,16 @@ export const UpperWrapper = styled.div`
   }
 `;
 
-export const Left = styled.div`
+export const Right = styled.div`
   display: flex;
   flex-direction: row;
   align-items: flex-end;
   gap: 4rem;
 
   @media (max-width: 767px) {
-    flex-direction: column;
     align-items: flex-start;
-    gap: 1rem;
+    gap: 2rem;
+    justify-content: space-between;
   }
 `;
 

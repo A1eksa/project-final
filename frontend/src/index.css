@@ -64,7 +64,10 @@ body {
   --checkbox: #707070;
 }
 
-.global-class-name {
+
+@media (max-width: 767px) {
+  .global-class-name {
   width: 32px;
   height: 32px;
+}
 }

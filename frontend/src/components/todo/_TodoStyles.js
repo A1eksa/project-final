@@ -8,6 +8,10 @@ export const H2 = styled.h2`
 export const ListWrapper = styled.section`
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 767px) {
+    width: 100%;
+  }
 `;
 
 export const CardWrapper = styled.div`
@@ -19,9 +23,9 @@ export const CardWrapper = styled.div`
   margin-bottom: 1rem;
   background-color: var(--todo-card);
 
-  @media (max-width: 767px) {
-    min-width: 320px;
-  }
+  // @media (max-width: 767px) {
+  //   width: 100%;
+  // }
 `;
 
 export const TodoSubject = styled.h3`
