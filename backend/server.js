@@ -11,7 +11,7 @@ const thoughts = JSON.parse(
 
 const mongoUrl =
   process.env.MONGO_URL || 'https://aleksa-jessi-final-project.herokuapp.com';
-// process.env.MONGO_URL || 'mongodb://localhost/project-final';
+//  process.env.MONGO_URL || 'mongodb://localhost/project-final';
 
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.set('useCreateIndex', true); //added due to deprecation error 26868

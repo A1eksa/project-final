@@ -69,7 +69,7 @@ export const UpperWrapper = styled.div`
   }
 
   @media (max-width: 960px) {
-    padding: 4rem 0;
+    padding: 1rem 0;
   }
 `;
 
@@ -89,7 +89,7 @@ export const Right = styled.div`
     gap: 1.5rem;
     align-items: flex-start;
     // justify-content: space-between;
-    margin-top: 3rem;
+    margin-top: 1.5rem;
   }
 `;
 

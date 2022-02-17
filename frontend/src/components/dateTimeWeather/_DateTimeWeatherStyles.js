@@ -8,10 +8,11 @@ export const WeatherWrapper = styled.div`
   background-color: var(--level-one);
   border-radius: 10px;
   padding 1rem;
+  min-width: 100vw;
 }
 `;
 
-// CITY //
+// CITY //  
 
 export const City = styled.p`
   font-size: 14px;

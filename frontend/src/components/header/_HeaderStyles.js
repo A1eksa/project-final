@@ -5,8 +5,8 @@ import styled from 'styled-components';
 export const HeaderWrapper = styled.header`
 box-sizing: border-box;
 width: 100%;
-height: 64px;
-padding: 4rem 2rem 2.5rem 2rem;
+// height: 64px;
+padding: 2rem 2rem 2.5rem 2rem;
 display flex;
 align-items: center;
 justify-content: space-between;
@@ -16,7 +16,7 @@ background-color: var(--background);
 
 @media (max-width: 767px) {
   align-items: flex-start;
-  padding: 1rem 1rem 2rem 1rem;
+  padding: 1rem;
 }
 `;
 
@@ -35,7 +35,7 @@ export const User = styled.div`
 
 export const H1 = styled.h1`
   font-size: 2rem;
-  line-height: 2rem;
+  line-height: 2.5rem;
   font-weight: 300;
   max-width: 220px;
   margin: 0;
@@ -43,6 +43,6 @@ export const H1 = styled.h1`
 
   @media (max-width: 767px) {
     font-size: 1.5rem;
-    line-height: 1rem;
+    line-height: 1.5rem;
   }
 `;

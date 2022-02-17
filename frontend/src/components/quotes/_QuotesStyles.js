@@ -40,7 +40,6 @@ export const StyledReloadButton = styled.button`
   height: 32px;
   width: 32px;
   border-radius: 16px;
-  margin-right: 0.5rem;
   transition: 0.4s;
   border: none;
   max-width: 200px;
@@ -57,4 +56,8 @@ export const StyledReloadButton = styled.button`
 export const StyledReloadIcon = styled.img`
   height: 18px;
   width: 18px;
+`
+
+export const Left = styled.div`
+  max-width: 80%;
 `

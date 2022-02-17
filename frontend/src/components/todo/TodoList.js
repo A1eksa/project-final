@@ -2,13 +2,13 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch, batch } from 'react-redux';
 
 import { IconContext } from 'react-icons';
-import { AiTwotoneEdit } from 'react-icons/ai';
-import { FaTimes } from 'react-icons/fa';
 import { FaCheck } from 'react-icons/fa';
 import { FaQuestion } from 'react-icons/fa';
 import { API_URL } from '../../utils/constants';
 import Swal from 'sweetalert2';
 import { EmptyTodo } from '../small components/EmptyTodo';
+import deleteIcon from '../../utils/deleteIcon.svg';
+import editIcon from '../../utils/editIcon.svg';
 
 import todo from '../../reducers/todo';
 import editModal from '../../reducers/editModal';
@@ -24,11 +24,13 @@ import {
   CategoryWrapper,
   BottomContainer,
   LeftWrapper,
-  DeleteButton,
-  EditButton,
   HiddenCheckbox,
   CheckboxContainer,
   CheckboxLabel,
+  StyledDeleteButton,
+  StyledDeleteIcon,
+  StyledEditButton,
+  StyledEditIcon,
 } from '../todo/_TodoStyles';
 
 export const TodoList = () => {
@@ -139,23 +141,12 @@ export const TodoList = () => {
                 <TodoText>Due date {items.dueDate}</TodoText>
                 <BottomContainer>
                   <LeftWrapper>
-                    <IconContext.Provider
-                      value={{
-                        color: '#444444',
-                        size: '18px',
-                        style: {
-                          verticalAlign: 'middle',
-                          marginLeft: '0.05rem',
-                        },
-                      }}
-                    >
-                      <DeleteButton onClick={() => deleteTodo(items._id)}>
-                        <FaTimes />
-                      </DeleteButton>
-                      <EditButton onClick={() => showEditSlideout(items)}>
-                        <AiTwotoneEdit />
-                      </EditButton>
-                    </IconContext.Provider>
+                    <StyledDeleteButton onClick={() => deleteTodo(items._id)}>
+                        <StyledDeleteIcon src={deleteIcon}></StyledDeleteIcon>
+                      </StyledDeleteButton>
+                      <StyledEditButton onClick={() => showEditSlideout(items)}>
+                        <StyledEditIcon src={editIcon}></StyledEditIcon>
+                      </StyledEditButton>
                   </LeftWrapper>
 
                   <IconContext.Provider
