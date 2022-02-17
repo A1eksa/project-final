@@ -138,6 +138,19 @@ export const HabitList = () => {
                           <DeleteButton onClick={() => deleteHabit(items._id)}>
                             <FaTimes />
                           </DeleteButton>
+                        </IconContext.Provider>
+
+                        <IconContext.Provider
+                          value={{
+                            color: '#444444',
+                            // className: 'global-class-name',
+                            size: '18px',
+                            style: {
+                              verticalAlign: 'middle',
+                              marginLeft: '0.05rem',
+                            },
+                          }}
+                        >
                           <EditButton onClick={() => showEditSlideout(items)}>
                             <AiTwotoneEdit />
                           </EditButton>
