@@ -79,13 +79,17 @@ export const Right = styled.div`
   align-items: flex-end;
   gap: 4rem;
 
+  @media (max-width: 1180px) {
+    margin-top: 2rem;
+  }
+
   @media (max-width: 767px) {
     flex-direction: column;
     align-items: flex-start;
     gap: 1.5rem;
     align-items: flex-start;
     // justify-content: space-between;
-    margin-top: 2rem;
+    margin-top: 3rem;
   }
 `;
 

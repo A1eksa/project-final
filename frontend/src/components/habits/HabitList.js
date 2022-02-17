@@ -4,7 +4,9 @@ import { useSelector, useDispatch, batch } from 'react-redux';
 import { API_URL } from '../../utils/constants';
 import { IconContext } from 'react-icons';
 import { AiTwotoneEdit } from 'react-icons/ai';
-import { FaTimes } from 'react-icons/fa';
+// import { FaTimes } from 'react-icons/fa';
+import { RiEditFill } from 'react-icons/ri';
+import { RiCloseFill } from 'react-icons/ri';
 import { HabitTracker } from '../small components/HabitTracker';
 import { EmptyHabit } from '../small components/EmptyHabit';
 import Swal from 'sweetalert2';
@@ -128,15 +130,16 @@ export const HabitList = () => {
                           value={{
                             color: '#444444',
                             // className: 'global-class-name',
-                            size: '18px',
+                            size: '32px',
                             style: {
                               verticalAlign: 'middle',
-                              marginLeft: '0.05rem',
+                              // marginLeft: '0.05rem',
                             },
                           }}
                         >
                           <DeleteButton onClick={() => deleteHabit(items._id)}>
-                            <FaTimes />
+                            {/* <FaTimes /> */}
+                            <RiCloseFill/>
                           </DeleteButton>
                         </IconContext.Provider>
 
@@ -144,15 +147,16 @@ export const HabitList = () => {
                           value={{
                             color: '#444444',
                             // className: 'global-class-name',
-                            size: '18px',
+                            size: '16px',
                             style: {
                               verticalAlign: 'middle',
-                              marginLeft: '0.05rem',
+                              marginLeft: '0.16rem',
                             },
                           }}
                         >
                           <EditButton onClick={() => showEditSlideout(items)}>
-                            <AiTwotoneEdit />
+                            {/* <AiTwotoneEdit /> */}
+                            <RiEditFill/>
                           </EditButton>
                         </IconContext.Provider>
                       </LeftWrapper>
