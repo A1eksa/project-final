@@ -7,6 +7,10 @@ export const PageWrapper = styled.section`
   margin: 0 auto;
   background-color: var(--background);
   padding-top: 3rem;
+
+  @media (max-width: 767px) {
+    padding-top: 0;
+  }
 `;
 
 export const BoxContainer = styled.div`
@@ -31,6 +35,11 @@ export const H1 = styled.h1`
   max-width: 240px;
   margin-top: 1.5rem;
   color: var(--text-primary);
+
+  @media (max-width: 767px) {
+    font-size: 2.5rem;
+    line-height: 3rem;
+  }
 `;
 
 export const Preamble = styled.p`
@@ -40,13 +49,17 @@ export const Preamble = styled.p`
   margin-bottom: 0;
   max-width: 400px;
   color: var(--text-primary);
+
+  @media (max-width: 767px) {
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+  }
 `;
 
 export const FormContainer = styled.form`
-  width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 2rem;
+  padding: 1.5rem;
   border-radius: 10px;
   margin-top: 2rem;
   box-shadow: var(--box-shadow);
@@ -132,4 +145,9 @@ export const BoldLink = styled.a`
   margin: 0 4px;
   cursor: pointer;
   padding-top: 2rem;
+`;
+
+export const P = styled.p`
+  font-size: 14px;
+  color: var(--error);
 `;

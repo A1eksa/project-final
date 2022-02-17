@@ -88,6 +88,7 @@ export const MainContentWrapper = styled.div`
 
   @media (max-width: 767px) {
     flex-direction: column;
+    gap: 1rem;
   }
 `;
 

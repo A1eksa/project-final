@@ -14,12 +14,11 @@ export const H2 = styled.h2`
 
 export const ListWrapper = styled.section`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(343px, 1fr));
+  grid-template-columns: repeat(2, 2fr);
   grid-gap: 1rem;
 
   @media (max-width: 767px) {
-    width: 100%;
-    grid-template-columns: repeat(auto-fit, max(343px, 1fr));
+    grid-template-columns: repeat(1fr);
   }
 `;
 
@@ -37,9 +36,9 @@ margin-bottom: 1rem;
 background-color: var(--habit-card);
 z-index: 1;
 
-// @media (max-width: 767px) {
-//   width: 100%;
-// }
+@media (max-width: 767px) {
+  width: 100%;
+}
 `;
 
 export const RegularityWrapper = styled.div`

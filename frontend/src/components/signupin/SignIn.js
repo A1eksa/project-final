@@ -17,6 +17,7 @@ import {
   Line,
   H1,
   Preamble,
+  P,
 } from './_SignInStyles';
 
 export const SignIn = () => {
@@ -27,6 +28,8 @@ export const SignIn = () => {
   const [email, setEmail] = useState('');
   const [mode, setMode] = useState('signin');
   const [activeForm, setActiveForm] = useState('signin');
+
+  const [validationError, setValidationError] = useState(null);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -40,6 +43,7 @@ export const SignIn = () => {
         background: 'var(--level-three)',
         color: 'var(--text-primary)',
         confirmButtonText: "Let's go!",
+        width: '343px',
       });
       navigate('/');
     }
@@ -67,6 +71,7 @@ export const SignIn = () => {
             dispatch(user.actions.setAccessToken(data.response.accessToken));
             dispatch(user.actions.setEmail(data.response.email));
             dispatch(user.actions.setError(null));
+            setValidationError(data.message);
 
             localStorage.setItem(
               'user',
@@ -85,6 +90,7 @@ export const SignIn = () => {
             dispatch(user.actions.setAccessToken(null));
             dispatch(user.actions.setEmail(null));
             dispatch(user.actions.setError(data.response));
+            setValidationError(data.message);
           });
         }
       });
@@ -116,6 +122,7 @@ export const SignIn = () => {
             <SubmitButton type='submit' onClick={() => setMode('signin')}>
               Signin
             </SubmitButton>
+            {validationError !== null && <P>{validationError}</P>}
           </FormContainer>
           <BoldLink onClick={() => setActiveForm('signup')}>
             Wanna be friends? 😍 Sign up!
@@ -156,9 +163,15 @@ export const SignIn = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </Label>
+            {password && password.length < 5 ? (
+              <P>Password must be over 5 characters</P>
+            ) : (
+              ''
+            )}
             <SubmitButton type='submit' onClick={() => setMode('signup')}>
               Signup
             </SubmitButton>
+            {validationError !== null && <P>{validationError}</P>}
           </FormContainer>
           <BoldLink onClick={() => setActiveForm('signin')}>
             Already a user? ❤️ Sign in!

@@ -35,6 +35,7 @@ body {
   --habit-line: #dedede;
   --footer: #ffffff80;
   --checkbox: #dedede;
+  --error: #9f000a;
 }
 
 [data-theme='dark'] {
@@ -62,12 +63,12 @@ body {
   --habit-line: #363636;
   --footer: #00000080;
   --checkbox: #707070;
+  --error: #ff594f;
 }
-
 
 @media (max-width: 767px) {
   .global-class-name {
-  width: 32px;
-  height: 32px;
-}
+    width: 32px;
+    height: 32px;
+  }
 }
