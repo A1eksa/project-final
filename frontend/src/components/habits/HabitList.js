@@ -2,15 +2,11 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch, batch } from 'react-redux';
 
 import { API_URL } from '../../utils/constants';
-import { IconContext } from 'react-icons';
-// import { AiTwotoneEdit } from 'react-icons/ai';
-// import { FaTimes } from 'react-icons/fa';
-// import { RiEditFill } from 'react-icons/ri';
-// import { RiCloseFill } from 'react-icons/ri';
-import { DeleteIcon } from '../small components/DeleteIcon'
 import { HabitTracker } from '../small components/HabitTracker';
 import { EmptyHabit } from '../small components/EmptyHabit';
 import Swal from 'sweetalert2';
+import deleteIcon from '../../utils/deleteIcon.svg';
+import editIcon from '../../utils/editIcon.svg';
 
 import habit from '../../reducers/habit';
 import editModal from '../../reducers/editModal';
@@ -25,8 +21,6 @@ import {
   HabitText,
   BottomContainer,
   LeftWrapper,
-  DeleteButton,
-  EditButton,
   Label,
   Value,
   TimeWrapper,
@@ -34,6 +28,10 @@ import {
   CardDivider,
   Subject,
   Left,
+  StyledDeleteButton,
+  StyledDeleteIcon,
+  StyledEditButton,
+  StyledEditIcon,
 } from './_HabitStyles';
 
 export const HabitList = () => {
@@ -127,40 +125,12 @@ export const HabitList = () => {
                     </TimeWrapper>
                     <BottomContainer>
                       <LeftWrapper>
-                        {/* <IconContext.Provider
-                          value={{
-                            color: '#444444',
-                            // className: 'global-class-name',
-                            size: '32px',
-                            style: {
-                              verticalAlign: 'middle',
-                              // marginLeft: '0.05rem',
-                            },
-                          }}
-                        > */}
-                          <DeleteButton onClick={() => deleteHabit(items._id)}>
-                            {/* <FaTimes /> */}
-                            {/* <RiCloseFill/> */}
-                            <DeleteIcon />
-                          </DeleteButton>
-                        {/* </IconContext.Provider> */}
-
-                        <IconContext.Provider
-                          value={{
-                            color: '#444444',
-                            // className: 'global-class-name',
-                            size: '16px',
-                            style: {
-                              verticalAlign: 'middle',
-                              marginLeft: '0.16rem',
-                            },
-                          }}
-                        >
-                          <EditButton onClick={() => showEditSlideout(items)}>
-                            {/* <AiTwotoneEdit /> */}
-                            {/* <RiEditFill/> */}
-                          </EditButton>
-                        </IconContext.Provider>
+                      <StyledDeleteButton onClick={() => deleteHabit(items._id)}>
+                        <StyledDeleteIcon src={deleteIcon}></StyledDeleteIcon>
+                      </StyledDeleteButton>
+                      <StyledEditButton onClick={() => showEditSlideout(items)}>
+                        <StyledEditIcon src={editIcon}></StyledEditIcon>
+                      </StyledEditButton>
                       </LeftWrapper>
                     </BottomContainer>
                   </Left>

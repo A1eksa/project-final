@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { API_URL } from '../../utils/constants';
-import { IconContext } from 'react-icons';
-import { FaRedoAlt } from 'react-icons/fa';
+import reload from '../../utils/reload.svg';
 
-import { QuoteWrapper, Name, QuoteText, QuoteButton } from './_QuotesStyles';
+import { QuoteWrapper, Name, QuoteText, StyledReloadButton, StyledReloadIcon } from './_QuotesStyles';
 
 export const Quote = () => {
   const [theQuote, setTheQuote] = useState({});
@@ -27,19 +26,9 @@ export const Quote = () => {
         <QuoteText>{theQuote.message}</QuoteText>
         <Name>/ {theQuote.author}</Name>
       </div>
-      <IconContext.Provider
-        value={{
-          color: '#444444',
-          className: 'global-class-name',
-          size: '18px',
-          fontWeight: 'bold',
-          style: { verticalAlign: 'middle', marginLeft: '0.05rem' },
-        }}
-      >
-        <QuoteButton onClick={() => getNewQuote()}>
-          <FaRedoAlt />
-        </QuoteButton>
-      </IconContext.Provider>
+        <StyledReloadButton onClick={() => getNewQuote()}>
+              <StyledReloadIcon src={reload}></StyledReloadIcon>
+        </StyledReloadButton>
     </QuoteWrapper>
   );
 };

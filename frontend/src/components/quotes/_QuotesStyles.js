@@ -32,16 +32,14 @@ export const Name = styled.p`
   color: var(--text-secondary);
 `;
 
-export const QuoteButton = styled.button`
+
+export const StyledReloadButton = styled.button`
   display: flex;
   align-items: center;
+  justify-content: center;
   height: 32px;
   width: 32px;
   border-radius: 16px;
-  color: var(--text-primary);
-  font-family: Raleway;
-  font-size: 1rem;
-  font-weight: 300;
   margin-right: 0.5rem;
   transition: 0.4s;
   border: none;
@@ -49,13 +47,14 @@ export const QuoteButton = styled.button`
   background-color: var(--accent-green);
   :hover {
     background-color: var(--grey-300);
-    color: var(--text-primary);
+    // color: var(--text-primary);
     cursor: pointer;
     transform: rotate(360deg);
     cursor: pointer;
   }
-
-  @media (max-width: 767px) {
-    margin-right: 0;
-  }
 `;
+
+export const StyledReloadIcon = styled.img`
+  height: 18px;
+  width: 18px;
+`

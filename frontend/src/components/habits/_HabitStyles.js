@@ -75,29 +75,6 @@ export const HabitText = styled.p`
   padding-bottom: 1rem;
 `;
 
-export const DeleteButton = styled.button`
-  display: flex;
-  align-items: center;
-  height: 32px;
-  width: 32px;
-  border-radius: 16px;
-  // color: var(--text-primary);
-  // font-family: Raleway;
-  // font-size: 1rem;
-  // font-weight: 300;
-  margin-right: 0.5rem;
-  transition: 0.4s;
-  border: none;
-  max-width: 200px;
-  background-color: var(--accent-yellow);
-  :hover {
-    background-color: var(--grey-300);
-    // color: var(--text-primary);
-    cursor: pointer;
-    transform: rotate(360deg);
-    cursor: pointer;
-  }
-`;
 
 export const EditButton = styled.button`
   display: flex;
@@ -182,3 +159,56 @@ export const Subject = styled.div`
   display: flex;
   flex-direction: column;
 `;
+
+
+export const StyledDeleteButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  width: 32px;
+  border-radius: 16px;
+  margin-right: 0.5rem;
+  transition: 0.4s;
+  border: none;
+  max-width: 200px;
+  background-color: var(--accent-yellow);
+  :hover {
+    background-color: var(--grey-300);
+    // color: var(--text-primary);
+    cursor: pointer;
+    transform: rotate(360deg);
+    cursor: pointer;
+  }
+`;
+
+export const StyledDeleteIcon = styled.img`
+  height: 14px;
+  width: 14px;
+`
+
+export const StyledEditButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  width: 32px;
+  border-radius: 16px;
+  margin-right: 0.5rem;
+  transition: 0.4s;
+  border: none;
+  max-width: 200px;
+  background-color: var(--accent-green);
+  :hover {
+    background-color: var(--grey-300);
+    // color: var(--text-primary);
+    cursor: pointer;
+    transform: rotate(360deg);
+    cursor: pointer;
+  }
+`;
+
+export const StyledEditIcon = styled.img`
+  height: 18px;
+  width: 18px;
+`

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch, batch } from 'react-redux';
 import styled from 'styled-components';
-import { IconContext } from 'react-icons';
-import { FaCheck } from 'react-icons/fa';
+import check from '../../utils/check.svg';
+
 import { API_URL } from '../../utils/constants';
 
 // import Lottie from 'react-lottie';
@@ -53,10 +53,6 @@ export const AddButton = styled.button`
   border-radius: 16px;
   background-color: var(--accent-green);
   color: #444444;
-  // font-size: 2.5rem;
-  // line-height: 1rem;
-  // font-family: Raleway;
-  // font-weight: 600;
   border: none;
   transition: 0.3s;
   :hover {
@@ -64,6 +60,28 @@ export const AddButton = styled.button`
     color: var(--text-primary);
     cursor: pointer;
     transform: rotate(360deg);
+  }
+`;
+
+
+export const EditButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  width: 32px;
+  border-radius: 16px;
+  margin-right: 0.5rem;
+  transition: 0.4s;
+  border: none;
+  max-width: 200px;
+  background-color: var(--accent-green);
+  :hover {
+    background-color: var(--grey-300);
+    // color: var(--text-primary);
+    cursor: pointer;
+    transform: rotate(360deg);
+    cursor: pointer;
   }
 `;
 
@@ -75,6 +93,12 @@ const Bottom = styled.div`
   gap: 1rem;
   bottom: 0;
 `;
+
+export const StyledCheckIcon = styled.img`
+  margin-top: 0.2rem;
+  height: 16px;
+  width: 16px;
+`
 
 export const HabitTracker = ({
   heading,
@@ -156,17 +180,9 @@ export const HabitTracker = ({
       <Bottom>
         <TrackText>{Math.round(progress * calculationNumber * 100)}%</TrackText>
 
-        <IconContext.Provider
-          value={{
-            color: '#444444',
-            size: '16px',
-            style: { verticalAlign: 'middle', marginBottom: '0.1rem' },
-          }}
-        >
           <AddButton onClick={() => onIncrement()}>
-            <FaCheck />
+              <StyledCheckIcon src={check}></StyledCheckIcon>
           </AddButton>
-        </IconContext.Provider>
       </Bottom>
     </Wrapper>
   );
