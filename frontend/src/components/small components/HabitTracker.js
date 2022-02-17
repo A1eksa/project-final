@@ -53,10 +53,10 @@ export const AddButton = styled.button`
   border-radius: 16px;
   background-color: var(--accent-green);
   color: #444444;
-  font-size: 2.5rem;
-  line-height: 1rem;
-  font-family: Raleway;
-  font-weight: 600;
+  // font-size: 2.5rem;
+  // line-height: 1rem;
+  // font-family: Raleway;
+  // font-weight: 600;
   border: none;
   transition: 0.3s;
   :hover {

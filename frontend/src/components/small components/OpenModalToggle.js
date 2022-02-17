@@ -55,5 +55,6 @@ export const OpenToggle = styled.button`
   @media (max-width: 767px) {
     height: 44px;
     width: 44px;
+    border-radius: 22px;
   }
 `;
