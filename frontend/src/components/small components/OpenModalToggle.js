@@ -36,7 +36,7 @@ export const OpenToggleWrapper = styled.div`
 export const OpenToggle = styled.button`
   height: 48px;
   width: 48px;
-  border-radius: 50%;
+  border-radius: 24px;
   background-color: var(--accent-green);
   color: var(--grey-600);
   font-size: 3rem;

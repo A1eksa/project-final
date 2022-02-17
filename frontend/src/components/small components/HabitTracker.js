@@ -50,7 +50,7 @@ const Thumb = styled.div`
 export const AddButton = styled.button`
   height: 32px;
   width: 32px;
-  border-radius: 50%;
+  border-radius: 16px;
   background-color: var(--accent-green);
   color: #444444;
   font-size: 2.5rem;
