@@ -42,5 +42,5 @@ We have also developed the Backend for this application which consists of a REST
 
 ## Find us here 👯‍♀️
 
-<a href="https://a1eksa-portfoliotechnigo.netlify.app/"> Aleksa Safranko</a> 
-<a href="https://github.com/hemmahosjessi">Jessi Nygren Walhed</a>. 
+<a href="https://a1eksa-portfoliotechnigo.netlify.app/">⭐️ Aleksa Safranko </a> 
+<a href="https://github.com/hemmahosjessi">⭐️ Jessi Nygren Walhed</a>. 
