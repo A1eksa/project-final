@@ -11,7 +11,7 @@ This is a multi-page React application built using React router and Redux as sta
 
 A user can post, edit, delete and complete created todos and habits fetched from the database. In the Habit tracker section we have also implemented a progress bar for each specific habit. A user injects duration and regularity data in the post and that data is stored in Redux store to be used for calculating the progress in the Habit tracker component.
 
-Additonal feature is Dark mode done in Styled components and CSS variables.
+Additonal feature is Dark mode made with Styled components and CSS variables.
 
 ### Backend
 
