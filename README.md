@@ -32,7 +32,9 @@ We have also developed the Backend for this application which consists of a REST
 - Download it locally.
 - Change URL in server.js (backend folder) and in constants.js (frontend folder) to localhost. 
 - Npm install both in Backend and Frontend folders. 
-- Run backend with npm run dev. and frontend with npm start.
+- Run Backend with npm run dev.
+- Run Frontend with npm start.
+- Now you are all set! 
 
 
 ## View it live
