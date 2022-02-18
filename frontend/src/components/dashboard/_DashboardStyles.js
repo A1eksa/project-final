@@ -63,12 +63,8 @@ export const UpperWrapper = styled.div`
   @media (max-width: 1180px) {
     flex-direction: column;
     align-items: flex-start;
-    // padding: 3rem 0;
+    padding: 4rem 0 2rem 0;
   }
-
-  // @media (min-width: 768px) {
-
-  // }
 
   @media (max-width: 767px) {
     padding: 1rem 0;
