@@ -5,7 +5,7 @@ Our idea was to create a Todo and Habit tracker where several features like loca
 
 ## How we built it and what we learned 👩‍💻
 
-## Frontend
+### Frontend
 
 This is a multi-page React application built using React router and Redux as state manager.We started by building the backend with signup and signin logic that takes a user directly to the Dashboard. The Dashboard is a restricted area where we have implemented authentication and only registred users can have access.
 
@@ -13,18 +13,18 @@ A user can post, edit, delete and complete created todos and habits fetched from
 
 Additonal feature is Dark mode done in Styled components and CSS variables.
 
-## Backend
+### Backend
 
 We have also developed the Backend for this application which consists of a RESTful API built with Node.js and Express and with data collected via MongoDB and mongoose.
 
-### Additional Packages used
+## Additional Packages used
 
 -Moment.js
 -Sweetalert
 -React icons
 -Styled components
 
-#### Setup
+## Setup
 
 👉🏽 To run this project:
 - Download it locally.
@@ -32,13 +32,13 @@ We have also developed the Backend for this application which consists of a REST
 - Npm install both in Backend and Frontend folders. 
 - Run backend with npm run dev. and frontend with npm start.
 
-##### View it live
+## View it live
 
 ✨ Frontend:https://musing-austin-306143.netlify.app/
 🔥 Backend :https://aleksa-jessi-final-project.herokuapp.com/
 
 
-###### Find us here 👯‍♀️
+## Find us here 👯‍♀️
 
 <a href="https://a1eksa-portfoliotechnigo.netlify.app/"> Aleksa Safranko</a> 
 <a href="https://github.com/hemmahosjessi">Jessi Nygren Walhed</a>. 
