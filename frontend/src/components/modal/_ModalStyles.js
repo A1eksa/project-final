@@ -30,6 +30,7 @@ export const CloseToggle = styled.button`
   font-family: Raleway;
   font-weight: 400;
   border: none;
+  padding: 0;
   transition: 0.3s;
   transform: rotate(45deg);
   :hover {

@@ -50,6 +50,7 @@ export const OpenToggle = styled.button`
   background-color: var(--accent-green);
   border: none;
   transition: 0.3s;
+  padding: 0;
   :hover {
     background-color: var(--openbuttonhover);
     color: var(--text-primary);
