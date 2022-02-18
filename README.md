@@ -20,10 +20,10 @@ We have also developed the Backend for this application which consists of a REST
 
 ## Additional Packages used
 
--Moment.js
--Sweetalert
--React icons
--Styled components
+- Moment.js
+- Sweetalert
+- React icons
+- Styled components
 
 
 ## Setup
@@ -36,11 +36,12 @@ We have also developed the Backend for this application which consists of a REST
 
 ## View it live
 
-✨ Frontend:https://musing-austin-306143.netlify.app/
-🔥 Backend :https://aleksa-jessi-final-project.herokuapp.com/
+- ✨ Frontend:https://musing-austin-306143.netlify.app/
+- 🔥 Backend :https://aleksa-jessi-final-project.herokuapp.com/
 
 
-## Find us here 👯‍♀️
+## Find us here 
 
-<a href="https://a1eksa-portfoliotechnigo.netlify.app/">⭐️ Aleksa Safranko </a> 
-<a href="https://github.com/hemmahosjessi">⭐️ Jessi Nygren Walhed</a>
+👯‍♀️
+- <a href="https://a1eksa-portfoliotechnigo.netlify.app/">⭐️ Aleksa Safranko </a> 
+- <a href="https://github.com/hemmahosjessi">⭐️ Jessi Nygren Walhed</a>
