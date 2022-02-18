@@ -1,22 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-import { API_KEY } from '../../utils/constants';
+import { API_FIXED } from '../../utils/constants';
+import { IconContext } from 'react-icons';
+import { WiDayCloudyHigh, WiHorizonAlt } from 'react-icons/wi';
+import { RiMoonClearLine } from 'react-icons/ri';
+
+
+import {
+  WeatherWrapper,
+  DateNumber,
+  DateWrapper,
+  DayMonth,
+  Day,
+  City,
+  Temp,
+  Desc,
+  Month,
+  TempAndWeather,
+  DescTemp
+} from './_DateTimeWeatherStyles';
 
 export const Weather = () => {
-  const [query, setQuery] = useState('');
   const [weather, setWeather] = useState({});
 
-  const search = (event) => {
-    if (event.key === 'Enter') {
-      fetch(`${api}weather?q=${query}&units=metric&APPID=${API_KEY}`)
-        .then((res) => res.json())
-        .then((data) => {
-          setWeather(data);
-          setQuery('');
-          console.log(data);
-        });
-    }
-  };
+  useEffect(() => {
+    fetch(API_FIXED)
+      .then((res) => res.json())
+      .then((result) => {
+        setWeather(result);
+      });
+  }, []);
 
   const dateBuilder = (d) => {
     let months = [
@@ -45,34 +58,63 @@ export const Weather = () => {
     let day = days[d.getDay()];
     let date = d.getDate();
     let month = months[d.getMonth()];
-    let year = d.getFullYear();
 
-    return `${day}${date}${month}${year}`;
+    return (
+      <DateWrapper>
+        <DateNumber>{date}</DateNumber>
+        <DayMonth>
+          <Day>{day}</Day>
+          <Month>{month}</Month>
+          <City>
+            {weather.name}, {weather.sys.country}
+          </City>
+        </DayMonth>
+      </DateWrapper>
+    );
   };
 
   return (
-    <div className='weather'>
-      <main>
-        <div className='search-box'>
-          <input
-            type='text'
-            className='search-bar'
-            placeholder='Search...'
-            onChange={(event) => setWeather(event.target.value)}
-            value={query}
-            onKeyPress={search}
-          />
-        </div>
-        <div className='location-box'>
-          <div className='location'>{weather.name}</div>
-          {/* <div className='location-country'>{weather.sys.country}</div> */}
-          <div className='date'>{dateBuilder(new Date())}</div>
-        </div>
-        <div className='weather-box'>
-          <div className='temp'>{weather.base}</div>
-        </div>
-        <div className='weather'>sunny</div>
-      </main>
+    <div
+      className={
+        typeof weather.main != 'undefined' ? (
+          weather.main.temp > 20 ? (
+            <WiDayCloudyHigh />
+          ) : (
+            <WiHorizonAlt />
+          )
+        ) : (
+          <WiHorizonAlt />
+        )
+      }
+    >
+      <WeatherWrapper>
+        {typeof weather.main != 'undefined' ? (
+          <div>
+            <div className='date'>{dateBuilder(new Date())}</div>
+            <TempAndWeather>
+              <IconContext.Provider
+                value={{
+                  color: 'var(--grey-200)',
+                  fontWeight: 'thin',
+                  className: 'global-class-name',
+                  size: '64px',
+                  style: { verticalAlign: 'middle', marginRight: '1rem' },
+                }}
+              >
+              <RiMoonClearLine />
+              </IconContext.Provider>
+              <DescTemp>
+                <Desc className='weather'>
+                  {weather.weather[0].description},{' '}
+                </Desc>
+                <Temp className='weather'>{weather.main.temp}°c </Temp>
+              </DescTemp>
+            </TempAndWeather>
+          </div>
+        ) : (
+          ''
+        )}
+      </WeatherWrapper>
     </div>
   );
 };

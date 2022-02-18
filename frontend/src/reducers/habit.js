@@ -10,9 +10,7 @@ const habit = createSlice({
     duration: null,
     regularityNumber: null,
     durationNumber: null,
-    // error: null,
     slideout: false,
-    // incrementNumber: 0,
   },
   reducers: {
     setItems: (store, action) => {
@@ -46,7 +44,6 @@ const habit = createSlice({
         }
       });
       store.items = updatedHabits;
-      console.log('updatedHabit', updatedHabits);
     },
   },
 });

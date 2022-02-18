@@ -9,7 +9,7 @@ import { TodoSlideOut } from '../modal/TodoSlideOut';
 import { TheHeader } from '../header/TheHeader';
 import { Footer } from '../footer/Footer';
 import { Quote } from '../quotes/Quote';
-import { WeatherTest } from '../dateTimeWeather/WeatherTest';
+import { Weather } from '../dateTimeWeather/Weather';
 import '../modal/SlideOut.css';
 
 import {
@@ -46,7 +46,7 @@ export const Dashboard = () => {
             </HeroText>
             <Right>
               <Quote />
-              <WeatherTest />
+              <Weather />
             </Right>
         </UpperWrapper>
         <MainContentWrapper>

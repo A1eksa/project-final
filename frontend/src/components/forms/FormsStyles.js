@@ -63,7 +63,6 @@ export const RegularityLabel = styled.label`
   margin-bottom: 1rem;
 `;
 
-//
 
 export const FormCategoryWrapper = styled.div`
   display: flex;
@@ -75,11 +74,8 @@ export const FormCategoryWrapper = styled.div`
 `;
 
 export const FormWrapper = styled.form`
-  // padding: 1rem 2rem;
   border-radius: 10px;
   margin-top: 3rem;
-  // box-shadow: var(--box-shadow);
-  // background-color: var(--level-one);
   z-index: -1;
 
   @media (max-width: 767px) {

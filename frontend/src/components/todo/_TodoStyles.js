@@ -166,7 +166,6 @@ export const StyledDeleteButton = styled.button`
   background-color: var(--accent-yellow);
   :hover {
     background-color: var(--grey-300);
-    // color: var(--text-primary);
     cursor: pointer;
     transform: rotate(360deg);
     cursor: pointer;
@@ -192,7 +191,6 @@ export const StyledEditButton = styled.button`
   background-color: var(--accent-green);
   :hover {
     background-color: var(--grey-300);
-    // color: var(--text-primary);
     cursor: pointer;
     transform: rotate(360deg);
     cursor: pointer;

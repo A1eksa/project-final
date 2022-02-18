@@ -1,6 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
+
+export const TimeTicker = () => {
+  const [timeState, setTimeState] = useState();
+
+  useEffect(() => {
+    setInterval(() => {
+      const date = new Date();
+      setTimeState(date.toLocaleTimeString());
+    }, 1000);
+  }, []);
+
+  return (
+    <TimeWrapper>
+      <Label>Your local time is</Label>
+      <H4>{timeState}</H4>
+    </TimeWrapper>
+  );
+};
+
+// S T Y L I N G //
+
 export const TimeWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -41,21 +62,3 @@ export const Label = styled.p`
     text-align: left;
   }
 `;
-
-export const TimeTicker = () => {
-  const [timeState, setTimeState] = useState();
-
-  useEffect(() => {
-    setInterval(() => {
-      const date = new Date();
-      setTimeState(date.toLocaleTimeString());
-    }, 1000);
-  }, []);
-
-  return (
-    <TimeWrapper>
-      <Label>Your local time is</Label>
-      <H4>{timeState}</H4>
-    </TimeWrapper>
-  );
-};

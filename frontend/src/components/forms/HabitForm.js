@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch, batch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { API_URL } from '../../utils/constants';
-
-import user from '../../reducers/user';
 
 import {
   HiddenRadioButton,
@@ -28,7 +26,6 @@ export const HabitForm = () => {
   const [regularity, setRegularity] = useState('');
   const [length, setLength] = useState('');
 
-  const dispatch = useDispatch();
 
   const onHabitSubmit = (event) => {
     event.preventDefault();

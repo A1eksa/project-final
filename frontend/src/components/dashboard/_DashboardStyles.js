@@ -46,8 +46,6 @@ export const H2 = styled.h2`
 `;
 
 export const HeroText = styled.div`
-  // max-width: 1440px;
-  // color: var(--text-primary);
 
   @media (max-width: 767px) {
     padding-top: 5rem;
@@ -98,9 +96,7 @@ export const Right = styled.div`
 export const MainContentWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  // max-width: 1440px;
   gap: 2rem;
-  // margin: 0 auto;
 
   @media (max-width: 767px) {
     flex-direction: column;

@@ -5,7 +5,6 @@ import styled from 'styled-components';
 export const HeaderWrapper = styled.header`
 box-sizing: border-box;
 width: 100%;
-// height: 64px;
 padding: 2rem 2rem 2.5rem 2rem;
 display flex;
 align-items: center;
@@ -13,10 +12,12 @@ justify-content: space-between;
 position: fixed;
 top:0;
 background-color: var(--background);
+z-index: 3;
 
 @media (max-width: 767px) {
   align-items: flex-start;
   padding: 1rem;
+  background-color: var(--footer);
 }
 `;
 

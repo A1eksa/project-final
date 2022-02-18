@@ -23,6 +23,8 @@ export const EmptyHabit = () => {
   );
 };
 
+// S T Y L I N G //
+
 const EmptyState = styled.div`
   min-height: 190px;
   padding: 3rem;

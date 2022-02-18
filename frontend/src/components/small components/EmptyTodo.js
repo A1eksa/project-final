@@ -23,9 +23,10 @@ export const EmptyTodo = () => {
   );
 };
 
+// S T Y L I N G //
+
 const EmptyState = styled.div`
   height: 100%;
-  // max-width: 343px;
   min-height: 190px;
   padding: 3rem;
   border-radius: 10px;

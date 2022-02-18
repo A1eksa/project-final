@@ -1,7 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import add from '../../utils/add.svg';
 
 import modal from '../../reducers/modal';
 
@@ -15,7 +14,6 @@ export const OpenModalToggle = () => {
     <OpenToggleWrapper>
       <P>Add todo/habit</P>
       <OpenToggle onClick={showSlideOut}>+
-        {/* <StyledAddIcon src={add}></StyledAddIcon> */}
       </OpenToggle>
     </OpenToggleWrapper>
   );
@@ -64,11 +62,3 @@ export const OpenToggle = styled.button`
     border-radius: 44px;
   }
 `;
-
-// export const StyledAddIcon = styled.img`
-//   height: 18px;
-//   width: 18px;
-//   :hover {
-//     fill: var(--grey-400);
-//   }
-// `

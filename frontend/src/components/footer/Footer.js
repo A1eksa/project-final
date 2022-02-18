@@ -17,7 +17,6 @@ export const Footer = () => {
       title: 'You are logged out!',
       showCancelButton: false,
       confirmButtonColor: 'var(--accent-green)',
-      confirmButtonBorder: false,
       background: 'var(--level-three)',
       color: 'var(--text-primary)',
       confirmButtonText: 'See you soon!',

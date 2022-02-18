@@ -5,10 +5,88 @@ import check from '../../utils/check.svg';
 
 import { API_URL } from '../../utils/constants';
 
-// import Lottie from 'react-lottie';
-// import animationData from './lotties/loader';
-
 import habit from '../../reducers/habit';
+
+
+export const HabitTracker = ({
+  heading,
+  description,
+  length,
+  regularity,
+  durationNumber,
+  regularityNumber,
+  incrementNumber,
+  habitId,
+}) => {
+  const accessToken = useSelector((store) => store.user.accessToken);
+
+  const [progress, setProgress] = useState(incrementNumber);
+
+  const dispatch = useDispatch();
+
+  const calculationNumber = regularityNumber / durationNumber;
+
+  const onIncrement = () => {
+    setProgress((progress) => {
+      if (progress * calculationNumber * 100 < 100) {
+        return progress + 1;
+      } else {
+        return progress;
+      }
+    });
+    const options = {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: accessToken,
+      },
+      body: JSON.stringify({
+        incrementNumber: progress,
+        heading,
+        description,
+        regularityNumber,
+        durationNumber,
+        length,
+        regularity,
+        _id: habitId,
+      }),
+    };
+    fetch(API_URL(`habits/${habitId}/update`), options)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          batch(() => {
+            dispatch(habit.actions.updateHabit(data.response));
+            dispatch(habit.actions.setErrors(null));
+          });
+        } else {
+          dispatch(habit.actions.setErrors(data.response));
+        }
+      });
+  };
+
+  return (
+    <Wrapper>
+      <ProgressWrapper>
+        <Track>
+          <Thumb
+            percentage={Math.round(progress * calculationNumber * 100)}
+          ></Thumb>
+        </Track>
+      </ProgressWrapper>
+      <Bottom>
+        <TrackText>{Math.round(progress * calculationNumber * 100)}%</TrackText>
+
+          <AddButton onClick={() => onIncrement()}>
+              <StyledCheckIcon src={check}></StyledCheckIcon>
+          </AddButton>
+      </Bottom>
+    </Wrapper>
+  );
+};
+
+
+// S T Y L I N G //
 
 const ProgressWrapper = styled.div`
   transform: rotate(-90deg);
@@ -78,7 +156,6 @@ export const EditButton = styled.button`
   background-color: var(--accent-green);
   :hover {
     background-color: var(--grey-300);
-    // color: var(--text-primary);
     cursor: pointer;
     transform: rotate(360deg);
     cursor: pointer;
@@ -99,91 +176,3 @@ export const StyledCheckIcon = styled.img`
   height: 16px;
   width: 16px;
 `
-
-export const HabitTracker = ({
-  heading,
-  description,
-  length,
-  regularity,
-  durationNumber,
-  regularityNumber,
-  incrementNumber,
-  habitId,
-}) => {
-  const accessToken = useSelector((store) => store.user.accessToken);
-
-  const [progress, setProgress] = useState(incrementNumber);
-
-  const dispatch = useDispatch();
-
-  const calculationNumber = regularityNumber / durationNumber;
-  console.log('calcu', calculationNumber);
-  console.log('regu', regularityNumber);
-  console.log('dur', durationNumber);
-
-  const onIncrement = () => {
-    console.log('onIncrement');
-    setProgress((progress) => {
-      if (progress * calculationNumber * 100 < 100) {
-        return progress + 1;
-      } else {
-        return progress;
-      }
-    });
-    const options = {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: accessToken,
-      },
-      body: JSON.stringify({
-        // incrementNumber:
-        //   (incrementNumber * calculationNumber * 100) <= 100
-        //     ? progress
-        //     : incrementNumber,
-        incrementNumber: progress,
-        heading,
-        description,
-        regularityNumber,
-        durationNumber,
-        length,
-        regularity,
-        _id: habitId,
-      }),
-    };
-    fetch(API_URL(`habits/${habitId}/update`), options)
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.success) {
-          batch(() => {
-            dispatch(habit.actions.updateHabit(data.response));
-            dispatch(habit.actions.setErrors(null));
-          });
-        } else {
-          dispatch(habit.actions.setErrors(data.response));
-        }
-      });
-  };
-
-  console.log('progress', progress);
-  console.log('increment', incrementNumber);
-
-  return (
-    <Wrapper>
-      <ProgressWrapper>
-        <Track>
-          <Thumb
-            percentage={Math.round(progress * calculationNumber * 100)}
-          ></Thumb>
-        </Track>
-      </ProgressWrapper>
-      <Bottom>
-        <TrackText>{Math.round(progress * calculationNumber * 100)}%</TrackText>
-
-          <AddButton onClick={() => onIncrement()}>
-              <StyledCheckIcon src={check}></StyledCheckIcon>
-          </AddButton>
-      </Bottom>
-    </Wrapper>
-  );
-};

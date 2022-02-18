@@ -35,7 +35,6 @@ const todo = createSlice({
         }
       });
       store.items = updatedTodos;
-      console.log('updatedTodos', updatedTodos);
     },
   },
 });

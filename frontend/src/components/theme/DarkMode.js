@@ -26,7 +26,6 @@ if (defaultDark) {
 
 export const DarkMode = () => {
   const [text, setText] = useState(true);
-  console.log('text', text);
 
   const toggleTheme = (e) => {
     if (e.target.checked) {
@@ -50,6 +49,9 @@ export const DarkMode = () => {
     </Label>
   );
 };
+
+
+// S T Y L I N G //
 
 const Label = styled.label`
   display: flex;

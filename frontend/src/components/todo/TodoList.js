@@ -99,7 +99,6 @@ export const TodoList = () => {
   };
 
   const onToggleTodo = (todoId, isCompleted) => {
-    console.log(todoId, isCompleted);
     const options = {
       method: 'PATCH',
       body: JSON.stringify({
@@ -114,11 +113,9 @@ export const TodoList = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
-          console.log(data.response);
           dispatch(todo.actions.toggleTodo(todoId));
           dispatch(todo.actions.setErrors(null));
         } else {
-          console.log('error');
           dispatch(todo.actions.setErrors(data.response));
         }
       });
@@ -152,7 +149,6 @@ export const TodoList = () => {
                   <IconContext.Provider
                     value={{
                       color: 'var(--complete-icon)',
-                      // className: 'global-class-name',
                       size: '14px',
                       style: {
                         verticalAlign: 'middle',

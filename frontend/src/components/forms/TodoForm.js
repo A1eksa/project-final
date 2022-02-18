@@ -3,7 +3,6 @@ import { useSelector, useDispatch, batch } from 'react-redux';
 import { API_URL } from '../../utils/constants';
 
 import user from '../../reducers/user';
-// import modal from '../../reducers/modal';
 
 import {
   FormCategoryWrapper,
@@ -48,7 +47,6 @@ export const TodoForm = () => {
     fetch(API_URL('todos'), options)
       .then((res) => res.json())
       .then((data) => {
-        console.log('todo form ', data);
         if (data.success) {
           window.location.reload();
         }

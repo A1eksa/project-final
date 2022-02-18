@@ -16,7 +16,6 @@ export const Quote = () => {
       .then((res) => res.json())
       .then((data) => {
         setTheQuote(data.response);
-        console.log('Is this the quote', data);
       });
   }, []);
 

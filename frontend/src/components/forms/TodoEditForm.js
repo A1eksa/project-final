@@ -39,10 +39,7 @@ export const TodoEditForm = () => {
   const [message, setMessage] = useState(selectedMessage);
   const [category, setCategory] = useState(selectedCategory);
   const [dueDate, setDueDate] = useState(selectedDueDate);
-  // if (selectedCategory && category) {
-  console.log(selectedCategory);
-  console.log(category);
-  // }
+
   const dispatch = useDispatch();
 
   const updateTodo = (event, todoId) => {
@@ -64,7 +61,6 @@ export const TodoEditForm = () => {
     fetch(API_URL(`todos/${todoId}/update`), options)
       .then((res) => res.json())
       .then((data) => {
-        console.log('todo edit form ', data);
         if (data.success) {
           batch(() => {
             dispatch(todo.actions.updateTodo(data.response));

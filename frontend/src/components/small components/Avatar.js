@@ -2,6 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import avatar from '../../utils/avatar.png';
 
+
+export const Avatar = () => {
+  return <StyledAvatar src={avatar}></StyledAvatar>;
+};
+
+// S T Y L I N G //
+
 export const StyledAvatar = styled.img`
   width: 56px;
   height: 56px;
@@ -13,7 +20,3 @@ export const StyledAvatar = styled.img`
     height: 48px;
   }
 `;
-
-export const Avatar = () => {
-  return <StyledAvatar src={avatar}></StyledAvatar>;
-};
