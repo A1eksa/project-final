@@ -17,7 +17,6 @@ export const CloseToggleWrapper = styled.div`
 export const P = styled.p`
   margin: 0 1rem 0 0;
   color: var(--text-primary);
-  transform: rotate(45deg);
 `;
 
 export const CloseToggle = styled.button`
@@ -32,6 +31,7 @@ export const CloseToggle = styled.button`
   font-weight: 400;
   border: none;
   transition: 0.3s;
+  transform: rotate(45deg);
   :hover {
     background-color: var(--closebuttonhover);
     color: var(--text-primary);
