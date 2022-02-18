@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
+import add from '../../utils/add.svg';
 
 import modal from '../../reducers/modal';
 
@@ -13,7 +14,9 @@ export const OpenModalToggle = () => {
   return (
     <OpenToggleWrapper>
       <P>Add todo/habit</P>
-      <OpenToggle onClick={showSlideOut}>+</OpenToggle>
+      <OpenToggle onClick={showSlideOut}>+
+        {/* <StyledAddIcon src={add}></StyledAddIcon> */}
+      </OpenToggle>
     </OpenToggleWrapper>
   );
 };
@@ -27,22 +30,24 @@ export const P = styled.p`
 
 export const OpenToggleWrapper = styled.div`
   background-color: transparent;
-  // height: 64px;
   display: flex;
   flex-direction: row;
   align-items: center;
 `;
 
 export const OpenToggle = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 48px;
   width: 48px;
-  border-radius: 24px;
-  background-color: var(--accent-green);
+  border-radius: 48px;
   color: var(--grey-600);
   font-size: 3rem;
   line-height: 2rem;
   font-family: Raleway;
-  font-weight: 200;
+  font-weight: 400;
+  background-color: var(--accent-green);
   border: none;
   transition: 0.3s;
   :hover {
@@ -58,3 +63,11 @@ export const OpenToggle = styled.button`
     border-radius: 22px;
   }
 `;
+
+// export const StyledAddIcon = styled.img`
+//   height: 18px;
+//   width: 18px;
+//   :hover {
+//     fill: var(--grey-400);
+//   }
+// `

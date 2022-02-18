@@ -22,14 +22,15 @@ export const P = styled.p`
 export const CloseToggle = styled.button`
   height: 48px;
   width: 48px;
-  border-radius: 24px;
+  border-radius: 48px;
   background-color: var(--accent-green);
   color: var(--grey-600);
   font-size: 3rem;
   line-height: 2rem;
   font-family: Raleway;
-  font-weight: 200;
+  font-weight: 400;
   border: none;
+  transform: rotate(45deg);
   transition: 0.3s;
   :hover {
     background-color: var(--closebuttonhover);
