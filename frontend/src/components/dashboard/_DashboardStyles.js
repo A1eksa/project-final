@@ -55,7 +55,7 @@ export const HeroText = styled.div`
 export const UpperWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  padding: 4rem 0;
+  padding: 4rem 0 3rem 0;
   justify-content: space-between;
   align-items: flex-end;
   gap: 0 3rem;
