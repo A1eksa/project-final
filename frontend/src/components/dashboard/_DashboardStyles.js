@@ -69,6 +69,10 @@ export const UpperWrapper = styled.div`
   }
 
   @media (max-width: 960px) {
+    padding: 3rem 0;
+  }
+
+  @media (max-width: 767px) {
     padding: 1rem 0;
   }
 `;
