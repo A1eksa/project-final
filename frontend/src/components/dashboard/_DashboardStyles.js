@@ -57,7 +57,7 @@ export const HeroText = styled.div`
 export const UpperWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  padding: 5rem 0;
+  padding: 4rem 0;
   justify-content: space-between;
   align-items: flex-end;
   gap: 0 3rem;
@@ -65,7 +65,7 @@ export const UpperWrapper = styled.div`
   @media (max-width: 1180px) {
     flex-direction: column;
     align-items: flex-start;
-    padding: 3rem 0;
+    padding: 4rem 0;
   }
 
   @media (max-width: 960px) {
