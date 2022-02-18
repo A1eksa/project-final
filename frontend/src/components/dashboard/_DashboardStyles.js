@@ -68,7 +68,7 @@ export const UpperWrapper = styled.div`
     padding: 4rem 0;
   }
 
-  @media (max-width: 960px) {
+  @media (min-width: 768px) and (max-width: 960px) {
     padding: 3rem 0;
   }
 
