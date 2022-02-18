@@ -39,7 +39,7 @@ We have also developed the Backend for this application which consists of a REST
 
 ## View it live
 
-- ✨ Frontend:https://musing-austin-306143.netlify.app/
+- ✨ Frontend:https://habit-tracker-jessi-aleksa.netlify.app/
 - 🔥 Backend :https://aleksa-jessi-final-project.herokuapp.com/
 
 

@@ -57,7 +57,7 @@ export const HeroText = styled.div`
 export const UpperWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  padding: 4rem 0;
+  padding: 5rem 0;
   justify-content: space-between;
   align-items: flex-end;
   gap: 0 3rem;
@@ -88,7 +88,6 @@ export const Right = styled.div`
     align-items: flex-start;
     gap: 1.5rem;
     align-items: flex-start;
-    // justify-content: space-between;
     margin-top: 1.5rem;
   }
 `;
@@ -110,9 +109,7 @@ export const User = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  // max-width: 1440px;
   gap: 1.5rem;
-  // margin: 0 auto;
 `;
 
 export const LogOutButton = styled.button`
