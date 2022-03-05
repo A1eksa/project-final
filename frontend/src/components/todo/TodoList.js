@@ -139,11 +139,11 @@ export const TodoList = () => {
                 <BottomContainer>
                   <LeftWrapper>
                     <StyledDeleteButton onClick={() => deleteTodo(items._id)}>
-                        <StyledDeleteIcon src={deleteIcon}></StyledDeleteIcon>
-                      </StyledDeleteButton>
-                      <StyledEditButton onClick={() => showEditSlideout(items)}>
-                        <StyledEditIcon src={editIcon}></StyledEditIcon>
-                      </StyledEditButton>
+                      <StyledDeleteIcon src={deleteIcon}></StyledDeleteIcon>
+                    </StyledDeleteButton>
+                    <StyledEditButton onClick={() => showEditSlideout(items)}>
+                      <StyledEditIcon src={editIcon}></StyledEditIcon>
+                    </StyledEditButton>
                   </LeftWrapper>
 
                   <IconContext.Provider

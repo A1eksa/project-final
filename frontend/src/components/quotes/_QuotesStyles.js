@@ -32,7 +32,6 @@ export const Name = styled.p`
   color: var(--text-secondary);
 `;
 
-
 export const StyledReloadButton = styled.button`
   display: flex;
   align-items: center;
@@ -55,8 +54,8 @@ export const StyledReloadButton = styled.button`
 export const StyledReloadIcon = styled.img`
   height: 18px;
   width: 18px;
-`
+`;
 
 export const Left = styled.div`
   max-width: 80%;
-`
+`;

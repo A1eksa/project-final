@@ -36,6 +36,7 @@ import {
 
 export const HabitList = () => {
   const habitItems = useSelector((store) => store.habit.items);
+  console.log('habit items', habitItems);
   const accessToken = useSelector((store) => store.user.accessToken);
   const userId = useSelector((store) => store.user.userId);
 
@@ -125,12 +126,16 @@ export const HabitList = () => {
                     </TimeWrapper>
                     <BottomContainer>
                       <LeftWrapper>
-                      <StyledDeleteButton onClick={() => deleteHabit(items._id)}>
-                        <StyledDeleteIcon src={deleteIcon}></StyledDeleteIcon>
-                      </StyledDeleteButton>
-                      <StyledEditButton onClick={() => showEditSlideout(items)}>
-                        <StyledEditIcon src={editIcon}></StyledEditIcon>
-                      </StyledEditButton>
+                        <StyledDeleteButton
+                          onClick={() => deleteHabit(items._id)}
+                        >
+                          <StyledDeleteIcon src={deleteIcon}></StyledDeleteIcon>
+                        </StyledDeleteButton>
+                        <StyledEditButton
+                          onClick={() => showEditSlideout(items)}
+                        >
+                          <StyledEditIcon src={editIcon}></StyledEditIcon>
+                        </StyledEditButton>
                       </LeftWrapper>
                     </BottomContainer>
                   </Left>

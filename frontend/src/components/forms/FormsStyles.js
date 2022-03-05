@@ -63,19 +63,18 @@ export const RegularityLabel = styled.label`
   margin-bottom: 1rem;
 `;
 
-
 export const FormCategoryWrapper = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  padding-top: 1rem;
+  // padding-top: 1rem;
   width: 100%;
   justify-content: space-between;
 `;
 
 export const FormWrapper = styled.form`
   border-radius: 10px;
-  margin-top: 3rem;
+  margin-top: 1rem;
   z-index: -1;
 
   @media (max-width: 767px) {
@@ -143,7 +142,7 @@ export const Button = styled.button`
   transition: 0.4s;
   border: none;
   width: 100%;
-  margin-bottom: 1rem;
+  // margin-bottom: 1rem;
   margin-top: 1rem;
   background-color: var(--accent-green);
   :hover {
@@ -174,7 +173,7 @@ export const H3 = styled.h3`
   line-height: 2rem;
   margin-bottom: 0;
   max-width: 240px;
-  margin-top: 4rem;
+  margin-top: 1rem;
   color: var(--text-primary);
 
   @media (max-width: 767px) {
