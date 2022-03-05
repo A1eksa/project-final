@@ -67,7 +67,7 @@ export const FormCategoryWrapper = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  // padding-top: 1rem;
+  padding-top: 0.5rem;
   width: 100%;
   justify-content: space-between;
 `;
@@ -93,6 +93,7 @@ export const Label = styled.label`
   line-height: 1.3rem;
   font-weight: 400;
   margin-top: 1rem;
+  margin-bottom: 3px;
 `;
 
 export const Input = styled.input`
