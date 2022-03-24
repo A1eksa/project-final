@@ -245,7 +245,6 @@ app.post('/signup', async (req, res) => {
   }
 });
 
-
 app.post('/signin', async (req, res) => {
   const { username, password } = req.body;
 

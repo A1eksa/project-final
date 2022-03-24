@@ -40,14 +40,14 @@ export const Dashboard = () => {
       <TodoSlideOut />
       <DashboardWrapper>
         <UpperWrapper>
-            <HeroText>
-              <Line></Line>
-              <H2>What's on your mind?</H2>
-            </HeroText>
-            <Right>
-              <Quote />
-              <Weather />
-            </Right>
+          <HeroText>
+            <Line></Line>
+            <H2>What's on your mind?</H2>
+          </HeroText>
+          <Right>
+            <Quote />
+            <Weather />
+          </Right>
         </UpperWrapper>
         <MainContentWrapper>
           <TodoList />

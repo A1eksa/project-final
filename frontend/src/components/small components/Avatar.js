@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import avatar from '../../utils/avatar.png';
 
-
 export const Avatar = () => {
   return <StyledAvatar src={avatar}></StyledAvatar>;
 };

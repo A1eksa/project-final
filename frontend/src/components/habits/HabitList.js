@@ -36,7 +36,7 @@ import {
 
 export const HabitList = () => {
   const habitItems = useSelector((store) => store.habit.items);
-  console.log('habit items', habitItems);
+
   const accessToken = useSelector((store) => store.user.accessToken);
   const userId = useSelector((store) => store.user.userId);
 

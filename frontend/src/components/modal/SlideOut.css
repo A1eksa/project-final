@@ -72,8 +72,14 @@
   line-height: 1.125rem;
   border: none;
   padding-bottom: 1.5rem;
+  /* border-bottom: 4px solid var(--grey-100); */
   border-bottom: 4px transparent;
 }
+
+/* aded for styling */
+/* .choose-form-btn:active {
+  border-bottom: 4px solid var(--grey-100);
+} */
 
 .choose-form-btn:hover {
   cursor: pointer;
